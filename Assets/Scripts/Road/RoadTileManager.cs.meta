@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 4de0bab6b48a2304d934b88cf946681b
+timeCreated: 1507638845
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - _Grass: {fileID: 1859122360195510, guid: 5bd922324e66a5e42bfc9677ceddebaf, type: 2}
+  - _Pavement: {fileID: 1624038391742094, guid: e371008d8e166ef4ea29886c7d891ab5,
+      type: 2}
+  - _Straight: {fileID: 1752521039438022, guid: 425d5e7081851214f8a22bb582632355,
+      type: 2}
+  - _Corner: {fileID: 1997272006033160, guid: d479ec2da67f2304288d73233bcc072a, type: 2}
+  - _T: {fileID: 1307087632248406, guid: 851e03c9990247c449bd2805ca6e31ea, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

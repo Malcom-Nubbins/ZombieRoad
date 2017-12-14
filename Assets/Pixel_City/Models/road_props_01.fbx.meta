@@ -1,0 +1,152 @@
+fileFormatVersion: 2
+guid: d18cfb1989fa26846a478eada15736e0
+timeCreated: 1443205735
+licenseType: Store
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: Cylinder_000_Cylinder_001
+    100002: Cylinder_001_Cylinder_003
+    100004: Cylinder_002_Cylinder_000
+    100006: Cylinder_004
+    100008: Cylinder_005
+    100010: Cylinder_006
+    100012: Cylinder_007
+    100014: Cylinder_008
+    100016: Cylinder_009
+    100018: //RootNode
+    100020: bench
+    100022: bench_2
+    100024: hydrant
+    100026: lamp
+    100028: lamp_street
+    100030: lid
+    100032: traffic_light
+    100034: vent
+    400000: Cylinder_000_Cylinder_001
+    400002: Cylinder_001_Cylinder_003
+    400004: Cylinder_002_Cylinder_000
+    400006: Cylinder_004
+    400008: Cylinder_005
+    400010: Cylinder_006
+    400012: Cylinder_007
+    400014: Cylinder_008
+    400016: Cylinder_009
+    400018: //RootNode
+    400020: bench
+    400022: bench_2
+    400024: hydrant
+    400026: lamp
+    400028: lamp_street
+    400030: lid
+    400032: traffic_light
+    400034: vent
+    2300000: Cylinder_000_Cylinder_001
+    2300002: Cylinder_001_Cylinder_003
+    2300004: Cylinder_002_Cylinder_000
+    2300006: Cylinder_004
+    2300008: Cylinder_005
+    2300010: Cylinder_006
+    2300012: Cylinder_007
+    2300014: Cylinder_008
+    2300016: Cylinder_009
+    2300018: bench
+    2300020: bench_2
+    2300022: hydrant
+    2300024: lamp
+    2300026: lamp_street
+    2300028: lid
+    2300030: traffic_light
+    2300032: vent
+    3300000: Cylinder_000_Cylinder_001
+    3300002: Cylinder_001_Cylinder_003
+    3300004: Cylinder_002_Cylinder_000
+    3300006: Cylinder_004
+    3300008: Cylinder_005
+    3300010: Cylinder_006
+    3300012: Cylinder_007
+    3300014: Cylinder_008
+    3300016: Cylinder_009
+    3300018: bench
+    3300020: bench_2
+    3300022: hydrant
+    3300024: lamp
+    3300026: lamp_street
+    3300028: lid
+    3300030: traffic_light
+    3300032: vent
+    4300000: Cylinder_009
+    4300002: Cylinder_008
+    4300004: Cylinder_007
+    4300006: Cylinder_006
+    4300008: Cylinder_005
+    4300010: Cylinder_004
+    4300012: Cylinder_001_Cylinder_003
+    4300014: Cylinder_000_Cylinder_001
+    4300016: Cylinder_002_Cylinder_000
+    4300018: lamp_street
+    4300020: vent
+    4300022: lid
+    4300024: bench
+    4300026: traffic_light
+    4300028: bench_2
+    4300030: hydrant
+    4300032: lamp
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 100
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,33 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class Scenes : MonoBehaviour
+{
+    public enum Scene
+    {
+        LOADING = 0,
+        GAME = 1,
+        UNLOCK = 2,
+        GAME_OVER = 3,
+    }
+    public string[] sceneNames;
+
+    public static Scenes instance;
+
+    private void OnEnable()
+    {
+        instance = this;
+    }
+	
+	public string GetSceneName(Scene scene)
+    {
+        return sceneNames[(int)scene];
+    }
+
+    public void LoadScene(Scene scene, LoadSceneMode mode = LoadSceneMode.Single)
+    {
+        SceneManager.LoadScene(GetSceneName(scene), mode);
+    }
+}

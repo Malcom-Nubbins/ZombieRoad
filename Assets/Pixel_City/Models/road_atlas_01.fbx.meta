@@ -1,0 +1,107 @@
+fileFormatVersion: 2
+guid: 990ffd3511a63b94b97ee93d53e92ea0
+timeCreated: 1443203678
+licenseType: Store
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: roads:barrier
+    100004: roads:corner
+    100006: roads:end
+    100008: roads:junction
+    100010: roads:sign
+    100012: roads:sign_big
+    100014: roads:straight
+    100016: roads:t
+    400000: //RootNode
+    400002: roads:barrier
+    400004: roads:corner
+    400006: roads:end
+    400008: roads:junction
+    400010: roads:sign
+    400012: roads:sign_big
+    400014: roads:straight
+    400016: roads:t
+    2300000: roads:barrier
+    2300002: roads:corner
+    2300004: roads:end
+    2300006: roads:junction
+    2300008: roads:sign
+    2300010: roads:sign_big
+    2300012: roads:straight
+    2300014: roads:t
+    3300000: roads:barrier
+    3300002: roads:corner
+    3300004: roads:end
+    3300006: roads:junction
+    3300008: roads:sign
+    3300010: roads:sign_big
+    3300012: roads:straight
+    3300014: roads:t
+    4300000: roads:sign
+    4300002: roads:sign_big
+    4300004: roads:end
+    4300006: roads:corner
+    4300008: roads:t
+    4300010: roads:junction
+    4300012: roads:straight
+    4300014: roads:barrier
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 100
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
