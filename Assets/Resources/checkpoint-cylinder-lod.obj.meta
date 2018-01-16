@@ -1,19 +1,29 @@
 fileFormatVersion: 2
-guid: a75410c5e9d34a04087742b1e543d2d6
-timeCreated: 1508237493
+guid: 8e4eb5e1e6bce2e43bbdb57c34ead3ca
+timeCreated: 1516097505
 licenseType: Free
 ModelImporter:
   serializedVersion: 21
   fileIDToRecycleName:
     100000: //RootNode
     100002: Cylinder001
+    100004: Cylinder002
+    100006: Cylinder003
     400000: //RootNode
     400002: Cylinder001
+    400004: Cylinder002
+    400006: Cylinder003
     2300000: Cylinder001
+    2300002: Cylinder002
+    2300004: Cylinder003
     3300000: Cylinder001
+    3300002: Cylinder002
+    3300004: Cylinder003
     4300000: Cylinder001
+    4300002: Cylinder002
+    4300004: Cylinder003
   materials:
-    importMaterials: 0
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
   animations:

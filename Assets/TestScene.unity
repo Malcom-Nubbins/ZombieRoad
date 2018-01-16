@@ -1556,28 +1556,9 @@ Prefab:
       objectReference: {fileID: 1550227342}
     - target: {fileID: 114195961261252844, guid: 9dc67150a3482df46bb27a10d5e9ea1c,
         type: 2}
-      propertyPath: World
-      value: 
-      objectReference: {fileID: 1156095235}
-    - target: {fileID: 114195961261252844, guid: 9dc67150a3482df46bb27a10d5e9ea1c,
-        type: 2}
       propertyPath: RoadMapRoot
       value: 
       objectReference: {fileID: 1156095235}
-    - target: {fileID: 33874694679617166, guid: 9dc67150a3482df46bb27a10d5e9ea1c,
-        type: 2}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 4300000, guid: a75410c5e9d34a04087742b1e543d2d6, type: 3}
-    - target: {fileID: 4086879032599666, guid: 9dc67150a3482df46bb27a10d5e9ea1c, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 23387511809279282, guid: 9dc67150a3482df46bb27a10d5e9ea1c,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 549c8619fca936d4bb1029ef18423fd1, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9dc67150a3482df46bb27a10d5e9ea1c, type: 2}
   m_IsPrefabParent: 0
