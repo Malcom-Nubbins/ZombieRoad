@@ -483,7 +483,7 @@ MonoBehaviour:
   YOffset: 0
   DebugLogs: 0
   MySpecificDebug: 
-  CullingExempt: 1
+  CullingExempt: 0
 --- !u!114 &114361014979683124
 MonoBehaviour:
   m_ObjectHideFlags: 1
