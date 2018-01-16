@@ -1939,11 +1939,11 @@ MonoBehaviour:
   _DeadEnd: {fileID: 1457282254043896, guid: 51c7a43f381b8184d9f8ac7c9ae26fb8, type: 2}
   _FourWay: {fileID: 1434552417590124, guid: ef7f8846947f6be4d8664d5921a32719, type: 2}
   _Checkpoint: {fileID: 370589254}
-  ChanceStraight: 50
+  ChanceStraight: 42
   ChanceCorner: 25
-  ChanceT: 25
-  ChancePavement: 50
-  ChanceGrass: 50
+  ChanceT: 33
+  ChancePavement: 80
+  ChanceGrass: 20
   _Cull: 1
 --- !u!4 &501691856
 Transform:
