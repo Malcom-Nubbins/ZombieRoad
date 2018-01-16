@@ -16,6 +16,8 @@ public class DisableVehicle : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
+		if (!followCamera && transform.position.y < -20) Destroy(gameObject);
+
 		if (!followCamera || followCamera.GetComponent<FollowCamera>().target!=gameObject)
 		{
 			transform.GetComponent<Movement>().enabled = false;
