@@ -10,14 +10,19 @@ public class VehicleGenerator : MonoBehaviour
 	{
 		GameObject player = RoadTileManager.checkpoint.FollowCamera.GetComponent<FollowCamera>().target;
 		RoadGenerator rg = gameObject.GetComponent<RoadGenerator>();
+		int i = rg.Exit[(int)RoadGenerator.Direction.North] ? (int)RoadGenerator.Direction.West : (int)RoadGenerator.Direction.South;
 
-		//GameObject streetlightTemplate = Resources.Load<GameObject>("Prefabs/Destructable Scenery/street_light");
-		int r /*= Random.Range(0, 2)*/;
-		//r = r * 2 - 1;
-		//r *= 5;
-		int i/* = rg.Exit[(int)RoadGenerator.Direction.North] ? (int)RoadGenerator.Direction.West : (int)RoadGenerator.Direction.North*/;
-		//GameObject streetlight = Instantiate(streetlightTemplate, gameObject.transform.position + new Vector3(RoadGenerator.Xoffset(i) / 4 *1.1f, 0.6f, RoadGenerator.Zoffset(i) / 4 * 1.1f), gameObject.transform.rotation);
-		//streetlight.transform.Rotate(0, (i==(int)RoadGenerator.Direction.West?1:-1) * 90, 0);
+		int r = Random.Range(0, 10);
+		if (r == 1)
+		{
+			r = Random.Range(0, 2);
+			bool bSpinBench = false;
+			if (r == 1) { i -= 4; bSpinBench = true; } // place bench east or north instead of west or south
+
+			GameObject benchTemplate = Resources.Load<GameObject>("Prefabs/Destructable Scenery/bench");
+			GameObject bench = Instantiate(benchTemplate, gameObject.transform.position + new Vector3(RoadGenerator.Xoffset(i) / 2.25f + RoadGenerator.Xoffset(RoadGenerator.Wrap0to7(i-2)) / 5, 1.6f, RoadGenerator.Zoffset(i) / 2.25f + RoadGenerator.Zoffset(RoadGenerator.Wrap0to7(i-2)) / 5), gameObject.transform.rotation);
+			if (bSpinBench) bench.transform.Rotate(0, 180, 0);
+		}
 
 		if (!player.GetComponent<BaseVehicleClass>() || player.GetComponent<BaseVehicleClass>().GetFuelPercentage() < 0.1f)
 		{
