@@ -39,8 +39,9 @@ public class OccupyVehicle : MonoBehaviour
 			vehicle.GetComponent<DisableVehicle>().followCamera = followCamera;
 			vehicle.GetComponent<BaseVehicleClass>().SetDriver(gameObject);
 			followCamera.GetComponent<FollowCamera>().target = vehicle;
-			gameObject.transform.Translate(0, -10, 0);
+			gameObject.transform.Translate(0, 100, 0);
             gameObject.GetComponent<Rigidbody>().useGravity = false;
+            gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
 
             Camera.main.GetComponent<TransparentifyObject>().player = vehicle.transform;
 		}

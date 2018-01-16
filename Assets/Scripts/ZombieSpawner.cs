@@ -51,7 +51,7 @@ public class ZombieSpawner : MonoBehaviour
         }
         else
         {
-            float minTimeBetweenSpawns = Mathf.Lerp(4.0f, 0.5f, Mathf.Clamp01(level / 2.0f));
+            float minTimeBetweenSpawns = Mathf.Lerp(5.0f, 1.5f, Mathf.Clamp01(level / 20.0f));
             float maxTimeBetweenSpawns = 5.0f;
             timeBetweenSpawns = Random.Range(minTimeBetweenSpawns, maxTimeBetweenSpawns);
         }
