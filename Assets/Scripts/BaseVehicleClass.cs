@@ -16,7 +16,7 @@ public class BaseVehicleClass : Movement
 	public float GetFuelPercentage() { return totalFuel / maxFuel; }
 
 	public static float timeBeforeNoButtonsPressedRemovesPlayer;
-	GameObject _driver;
+	GameObject _driver = null;
 	float timeWithNoButtonsPressed = 0;
 
     float timeNotMoving;
@@ -125,7 +125,6 @@ public class BaseVehicleClass : Movement
 		_driver.transform.SetPositionAndRotation(playerReposition, Quaternion.Euler(0.0f, 0.0f, 0.0f));
 		_driver.transform.RotateAround(transform.localPosition, Vector3.up, transform.eulerAngles.y);
 		_driver.GetComponent<Rigidbody>().useGravity = true;
-        _driver.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
         _driver.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
         
         GameObject[] zombies = zombiesOnRoof.ToArray();//copy because zombies will be removed while looping
