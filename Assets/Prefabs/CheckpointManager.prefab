@@ -36,7 +36,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1743793012868726}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 17.09, y: -0.01, z: 5}
+  m_LocalPosition: {x: 13.44474, y: -0.1, z: -2.257874}
   m_LocalScale: {x: 20, y: 8, z: 20}
   m_Children: []
   m_Father: {fileID: 0}
@@ -55,7 +55,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 116bf125753deed4690922b0e96a22a2, type: 2}
+  - {fileID: 2100000, guid: 549c8619fca936d4bb1029ef18423fd1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -80,7 +80,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1743793012868726}
-  m_Mesh: {fileID: 4300000, guid: a75410c5e9d34a04087742b1e543d2d6, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 8e4eb5e1e6bce2e43bbdb57c34ead3ca, type: 3}
 --- !u!114 &114195961261252844
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -94,3 +94,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FollowCamera: {fileID: 0}
   RoadMapRoot: {fileID: 0}
+  DebugDisableTimer: 1
+  checkpointRadius: 0
+  lods:
+  - {fileID: 4300000, guid: 8e4eb5e1e6bce2e43bbdb57c34ead3ca, type: 3}
+  - {fileID: 4300002, guid: 8e4eb5e1e6bce2e43bbdb57c34ead3ca, type: 3}
+  - {fileID: 4300004, guid: 8e4eb5e1e6bce2e43bbdb57c34ead3ca, type: 3}
