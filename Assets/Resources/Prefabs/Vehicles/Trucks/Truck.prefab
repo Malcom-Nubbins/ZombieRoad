@@ -721,6 +721,7 @@ MonoBehaviour:
   fuelConsumptionRate: 1
   maxSpeed: 15
   acceleration: 4.5
+  debugDisableAutoExit: 0
 --- !u!114 &114977081763088170
 MonoBehaviour:
   m_ObjectHideFlags: 1
