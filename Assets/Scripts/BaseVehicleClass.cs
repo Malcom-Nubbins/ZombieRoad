@@ -212,6 +212,9 @@ public class BaseVehicleClass : Movement
 	// Update is called once per frame
 	protected new void FixedUpdate()
 	{
+        if (_driver == null)
+            return;
+
         // Implement damage from zombies
         if (health <= 0)
 			deadState = true;
@@ -285,6 +288,9 @@ public class BaseVehicleClass : Movement
 
 	private void OnCollisionEnter(Collision collision)
 	{
+        if (_driver == null)
+            return;
+
 		if (_lastHitTime > 0.0f)
 		{
 			_lastHitTime -= Time.deltaTime;
