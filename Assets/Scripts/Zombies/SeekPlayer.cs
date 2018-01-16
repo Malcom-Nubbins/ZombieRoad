@@ -30,7 +30,7 @@ public class SeekPlayer : MonoBehaviour
         Vector3 toPlayer = FollowCamera.GetComponent<FollowCamera>().target.transform.position - transform.position;
         toPlayer.y = 0;//dont move up or down, physics will handle that
 
-        if (toPlayer.magnitude <= 50)
+        if (toPlayer.magnitude <= 200)
         {
             Vector3 seekDirection = toPlayer.normalized;
             float seekAngle = Mathf.Atan2(seekDirection.z, seekDirection.x);
