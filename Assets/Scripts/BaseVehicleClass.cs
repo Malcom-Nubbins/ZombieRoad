@@ -16,7 +16,7 @@ public class BaseVehicleClass : Movement
 	public float GetFuelPercentage() { return totalFuel / maxFuel; }
 
 	public static float timeBeforeNoButtonsPressedRemovesPlayer;
-	GameObject driver;
+	GameObject _driver;
 	float timeWithNoButtonsPressed = 0;
 
     float timeNotMoving;
@@ -48,7 +48,8 @@ public class BaseVehicleClass : Movement
 	// Use this for initialization
 	void Start()
 	{
-		if (!_vehicleUIGroup) _vehicleUIGroup = GameObject.Find("VehicleUI").GetComponent<CanvasGroup>();
+        Debug.Log("Vehicle Started: " + gameObject.name);
+        if (!_vehicleUIGroup) _vehicleUIGroup = GameObject.Find("VehicleUI").GetComponent<CanvasGroup>();
 		_vehicleUIGroup.alpha = 0.0f;
 
 		vehicleRB = GetComponent<Rigidbody>();
@@ -68,6 +69,9 @@ public class BaseVehicleClass : Movement
 
 	private void OnEnable()
 	{
+        if (_driver == null)
+            return;
+
 		_fuelSlider = GameObject.Find("FuelSlider").GetComponent<Slider>();
 		_vehHealthSlider = GameObject.Find("VehicleHealthSlider").GetComponent<Slider>();
 		_vehExitButton = GameObject.Find("ExitVehicleButton").GetComponent<Button>();
@@ -86,12 +90,12 @@ public class BaseVehicleClass : Movement
 		_vehExitButton.onClick.AddListener(TaskOnClick);
 	}
 
-	protected void InitialiseBase()
-	{
-		Start();
-	}
+    protected void InitialiseBase()
+    {
+        Start();
+    }
 
-	void TaskOnClick()
+    void TaskOnClick()
 	{
 		Debug.Log("Button Pressed");
 		speed = 0.0f;
@@ -100,7 +104,7 @@ public class BaseVehicleClass : Movement
 
 	private void TryExitVehicle()
 	{
-		if (driver == null) return;
+		if (_driver == null) return;
 
 		_vehicleUIGroup.alpha = 0.0f;
 		_vehicleExitButtonGroup.alpha = 0.0f;
@@ -109,8 +113,8 @@ public class BaseVehicleClass : Movement
 
 		GameObject followCamera = gameObject.GetComponent<DisableVehicle>().followCamera;
 		gameObject.GetComponent<DisableVehicle>().followCamera = null;
-		driver.GetComponent<DisableVehicle>().followCamera = followCamera;
-		followCamera.GetComponent<FollowCamera>().target = driver;
+		_driver.GetComponent<DisableVehicle>().followCamera = followCamera;
+		followCamera.GetComponent<FollowCamera>().target = _driver;
 
 		Vector3 playerReposition = new Vector3(
 			((transform.localPosition.x - 5) + (transform.localScale.x)),
@@ -118,9 +122,11 @@ public class BaseVehicleClass : Movement
 			((transform.localPosition.z) + (transform.localScale.z)));
 
 
-		driver.transform.SetPositionAndRotation(playerReposition, Quaternion.Euler(0.0f, 0.0f, 0.0f));
-		driver.transform.RotateAround(transform.localPosition, Vector3.up, transform.eulerAngles.y);
-		driver.GetComponent<Rigidbody>().useGravity = true;
+		_driver.transform.SetPositionAndRotation(playerReposition, Quaternion.Euler(0.0f, 0.0f, 0.0f));
+		_driver.transform.RotateAround(transform.localPosition, Vector3.up, transform.eulerAngles.y);
+		_driver.GetComponent<Rigidbody>().useGravity = true;
+        _driver.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+        _driver.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
         
         GameObject[] zombies = zombiesOnRoof.ToArray();//copy because zombies will be removed while looping
         foreach (GameObject zombie in zombies)
@@ -129,9 +135,9 @@ public class BaseVehicleClass : Movement
             zombie.GetComponent<Rigidbody>().AddForce((transform.forward + Vector3.up * 0.5f).normalized * 500, ForceMode.Acceleration);
         }
 
-        Camera.main.GetComponent<TransparentifyObject>().player = driver.transform;
+        Camera.main.GetComponent<TransparentifyObject>().player = _driver.transform;
 
-        driver = null;
+        _driver = null;
 
         timeNotMoving = 0.0f;
     }
@@ -335,12 +341,12 @@ public class BaseVehicleClass : Movement
 
 	public GameObject GetDriver()
 	{
-		return driver;
+		return _driver;
 	}
 
 	public void SetDriver(GameObject driver)
 	{
-		this.driver = driver;
+		_driver = driver;
 		timeWithNoButtonsPressed = -1.0f;//extra time to press buttons when entering vehicle
 	}
 

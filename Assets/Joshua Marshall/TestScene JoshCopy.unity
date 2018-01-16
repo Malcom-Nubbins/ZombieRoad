@@ -1372,7 +1372,7 @@ Prefab:
     - target: {fileID: 114195961261252844, guid: 9dc67150a3482df46bb27a10d5e9ea1c,
         type: 2}
       propertyPath: DebugDisableTimer
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9dc67150a3482df46bb27a10d5e9ea1c, type: 2}
@@ -1723,9 +1723,9 @@ MonoBehaviour:
   _DeadEnd: {fileID: 1457282254043896, guid: 51c7a43f381b8184d9f8ac7c9ae26fb8, type: 2}
   _FourWay: {fileID: 1434552417590124, guid: ef7f8846947f6be4d8664d5921a32719, type: 2}
   _Checkpoint: {fileID: 370589254}
-  ChanceStraight: 50
-  ChanceCorner: 25
-  ChanceT: 25
+  ChanceStraight: 0
+  ChanceCorner: 50
+  ChanceT: 50
   ChancePavement: 50
   ChanceGrass: 50
   _Cull: 1
