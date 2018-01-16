@@ -81,7 +81,6 @@ public class BaseVehicleClass : Movement
 		_vehicleUIGroup.alpha = 1.0f;
 
 		_vehicleExitButtonGroup.alpha = 1.0f;
-		_maxHealth = health;
 
 		_fuelSlider.maxValue = maxFuel;
         _fuelSlider.value = totalFuel;
