@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: 54157117800517460}
   m_Layer: 0
   m_Name: traffic_light (1)
-  m_TagString: Untagged
+  m_TagString: Zombie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -68,7 +68,7 @@ GameObject:
   - component: {fileID: 54786073717902446}
   m_Layer: 0
   m_Name: traffic_light
-  m_TagString: Untagged
+  m_TagString: Zombie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 54845996791274698}
   m_Layer: 0
   m_Name: traffic_light (2)
-  m_TagString: Untagged
+  m_TagString: Zombie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
