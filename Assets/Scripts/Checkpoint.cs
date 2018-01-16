@@ -49,6 +49,7 @@ public class Checkpoint : MonoBehaviour
 
 		Vector3 playerPosition = FollowCamera.GetComponent<FollowCamera>().target.transform.position;
 		Vector3 distance = playerPosition - checkpointPosition;
+        distance.y = 0;
 
 		if (distance.magnitude >= checkpointRadius)
 		{
