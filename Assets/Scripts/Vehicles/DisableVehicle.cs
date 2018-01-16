@@ -22,9 +22,10 @@ public class DisableVehicle : MonoBehaviour
 		{
 			transform.GetComponent<Movement>().enabled = false;
 		}
-		else if (transform.rotation.z >= 0.43f || transform.rotation.z <= -0.43f)
+		else if (transform.rotation.z >= 0.66f || transform.rotation.z <= -0.66f)
 		{
 			transform.GetComponent<Movement>().enabled = false;
+
 			//Debug.Log("Shouldn't be moving");
 		}
 		else
