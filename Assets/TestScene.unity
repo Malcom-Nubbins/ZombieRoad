@@ -5514,8 +5514,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 615707482}
-  offset: {x: 0, y: 15, z: -16}
-  CullDistance: 100
+  offset: {x: 0, y: 30, z: -33}
+  CullDistance: 200
 --- !u!114 &1550227349
 MonoBehaviour:
   m_ObjectHideFlags: 0
