@@ -50,7 +50,7 @@ public class BaseVehicleClass : Movement
 	{
         Debug.Log("Vehicle Started: " + gameObject.name);
         if (!_vehicleUIGroup) _vehicleUIGroup = GameObject.Find("VehicleUI").GetComponent<CanvasGroup>();
-		_vehicleUIGroup.alpha = 0.0f;
+		//_vehicleUIGroup.alpha = 0.0f;
 
 		vehicleRB = GetComponent<Rigidbody>();
         vehicleRB.centerOfMass = centerOfMass;
@@ -61,7 +61,7 @@ public class BaseVehicleClass : Movement
 		_maxHealth = health;
 
 		if (!_vehicleExitButtonGroup) _vehicleExitButtonGroup = GameObject.Find("ExitVehicleButton").GetComponent<CanvasGroup>();
-		_vehicleExitButtonGroup.alpha = 0.0f;
+		//_vehicleExitButtonGroup.alpha = 0.0f;
 
         // Debug
         //timeBeforeNoButtonsPressedRemovesPlayer = 10000.0f;
@@ -72,11 +72,11 @@ public class BaseVehicleClass : Movement
         if (_driver == null)
             return;
 
-		_fuelSlider = GameObject.Find("FuelSlider").GetComponent<Slider>();
+        if (!_vehicleUIGroup) _vehicleUIGroup = GameObject.Find("VehicleUI").GetComponent<CanvasGroup>();
+        if (!_vehicleExitButtonGroup) _vehicleExitButtonGroup = GameObject.Find("ExitVehicleButton").GetComponent<CanvasGroup>();
+        _fuelSlider = GameObject.Find("FuelSlider").GetComponent<Slider>();
 		_vehHealthSlider = GameObject.Find("VehicleHealthSlider").GetComponent<Slider>();
 		_vehExitButton = GameObject.Find("ExitVehicleButton").GetComponent<Button>();
-		if (!_vehicleUIGroup) _vehicleUIGroup = GameObject.Find("VehicleUI").GetComponent<CanvasGroup>();
-		if (!_vehicleExitButtonGroup) _vehicleExitButtonGroup = GameObject.Find("ExitVehicleButton").GetComponent<CanvasGroup>();
 
 		_vehicleUIGroup.alpha = 1.0f;
 
@@ -84,7 +84,10 @@ public class BaseVehicleClass : Movement
 		_maxHealth = health;
 
 		_fuelSlider.maxValue = maxFuel;
+        _fuelSlider.value = totalFuel;
+
 		_vehHealthSlider.maxValue = _maxHealth;
+        _vehHealthSlider.value = health;
 
 	   // Button btn = _vehExitButton.GetComponent<Button>();
 		_vehExitButton.onClick.AddListener(TaskOnClick);
