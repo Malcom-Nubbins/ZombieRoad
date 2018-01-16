@@ -310,7 +310,7 @@ public class BaseVehicleClass : Movement
 			//TakeDamage(0.5f);
 			health -= 0.5f;
 			_vehHealthSlider.value = health;
-			_lastHitTime = 1.0f;
+			_lastHitTime = 0.5f;
 		}
 		else
 		{
