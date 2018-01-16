@@ -28,7 +28,7 @@ GameObject:
   - component: {fileID: 114120709303691022}
   - component: {fileID: 114073963236570632}
   m_Layer: 0
-  m_Name: car_small_blue
+  m_Name: car_sports_blue
   m_TagString: Vehicle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -597,9 +597,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8813d7f832cbd00498d769024d7772f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unlockableID: CarSmallBlue
+  unlockableID: CarSportsBlue
   type: 4
-  unlocked: 1
+  unlocked: 0
 --- !u!114 &114644126986228774
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -622,6 +622,7 @@ MonoBehaviour:
   fuelConsumptionRate: 0.8
   maxSpeed: 20
   acceleration: 3.5
+  debugDisableAutoExit: 0
 --- !u!114 &114987043331759766
 MonoBehaviour:
   m_ObjectHideFlags: 1

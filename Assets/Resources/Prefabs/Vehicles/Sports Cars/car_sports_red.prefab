@@ -154,7 +154,7 @@ GameObject:
   - component: {fileID: 114200062863944200}
   - component: {fileID: 114583668557035408}
   m_Layer: 0
-  m_Name: car_small_red
+  m_Name: car_sports_red
   m_TagString: Vehicle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -566,6 +566,7 @@ MonoBehaviour:
   fuelConsumptionRate: 0.8
   maxSpeed: 18
   acceleration: 3.5
+  debugDisableAutoExit: 0
 --- !u!114 &114187579890621332
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -605,7 +606,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8813d7f832cbd00498d769024d7772f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unlockableID: CarSmallRed
+  unlockableID: CarSportsRed
   type: 4
   unlocked: 0
 --- !u!114 &114572470766825248
