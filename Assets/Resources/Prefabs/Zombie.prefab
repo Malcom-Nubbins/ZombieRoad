@@ -107,7 +107,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4175520656040392}
-  - component: {fileID: 135055649806871040}
+  - component: {fileID: 136439443064522788}
   m_Layer: 8
   m_Name: DeadCollider
   m_TagString: Zombie
@@ -135,7 +135,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1938573540502596}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4887137264382174}
@@ -176,7 +176,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1413953601214954}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 21.363451, y: 0.25000012, z: -19.809277}
+  m_LocalPosition: {x: 18.93812, y: 0.25000006, z: -19.854023}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4570504254207556}
@@ -367,9 +367,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aliveCollider: {fileID: 136750434405716360}
-  deadCollider: {fileID: 135055649806871040}
---- !u!135 &135055649806871040
-SphereCollider:
+  deadCollider: {fileID: 136439443064522788}
+--- !u!136 &136439443064522788
+CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -377,9 +377,10 @@ SphereCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 0
-  serializedVersion: 2
-  m_Radius: 0.28
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.3
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!136 &136750434405716360
 CapsuleCollider:
   m_ObjectHideFlags: 1
