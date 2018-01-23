@@ -1519,8 +1519,8 @@ MonoBehaviour:
   ChanceStraight: 50
   ChanceCorner: 25
   ChanceT: 25
-  ChancePavement: 40
-  ChanceGrass: 60
+  ChancePavement: 60
+  ChanceGrass: 40
   _Cull: 1
 --- !u!4 &501691856
 Transform:
