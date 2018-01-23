@@ -635,7 +635,21 @@ public class RoadGenerator : MonoBehaviour
 	// where i is the Direction
 	public static int Zoffset(int i) { return 20 * ((i % 4 != 2) ? 1 : 0) * ((i > 2 && i < 6) ? -1 : 1); }
 
-	public static int randCwCcw() { return Random.Range(0, 1)*2-1; }
+	public static int randCwCcw() { return Random.Range(0, 2)*2-1; }
+	public int biasCwCCw()
+	{
+		int r = Random.Range(0, 3);
+		if (transform.position.x < RoadTileManager.checkpoint.transform.position.x)
+		{
+			if (r < 2) return 1;
+			else return -1;
+		}
+		else
+		{
+			if (r < 2) return -1;
+			else return 1;
+		}
+	}
 
 	public void RefreshExits()
 	{
