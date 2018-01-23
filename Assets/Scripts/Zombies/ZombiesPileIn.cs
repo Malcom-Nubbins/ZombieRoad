@@ -19,7 +19,7 @@ public class ZombiesPileIn : MonoBehaviour
 	
 	void Update()
     {
-		foreach (GameObject zombie in zombieDetector.GetNearbyZombies())
+		foreach (GameObject zombie in zombieDetector.GetNearbyZombies(1))
         {
             if (!zombie.GetComponent<PileIn>())
             {

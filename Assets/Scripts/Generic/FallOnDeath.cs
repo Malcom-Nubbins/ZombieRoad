@@ -7,11 +7,13 @@ public class FallOnDeath : MonoBehaviour
     Rigidbody rb;
     bool dead = false;
     float timeDead = 0;
+    Vector3 axisToRotateAround;
 
 	void Start()
     {
         rb = GetComponent<Rigidbody>();
         GetComponent<Health>().onDeath += OnDeath;
+        SetAxisToRotateAround(transform.right);
 	}
 
     void Update()
@@ -22,7 +24,7 @@ public class FallOnDeath : MonoBehaviour
             timeDead += Time.deltaTime;
             if (timeDead <= fallTime)
             {
-                transform.Rotate(transform.right, (-90.0f / fallTime) * Time.deltaTime);
+                transform.Rotate(axisToRotateAround, (-90.0f / fallTime) * Time.deltaTime);
             }
         }
     }
@@ -37,15 +39,20 @@ public class FallOnDeath : MonoBehaviour
         if (!dead) return;
         if (collision.gameObject.layer == LayerMask.NameToLayer("Road"))
         {
-            Vector3 pointOnFloor = new Vector3(transform.position.x, 0.0f, transform.position.z);
-            //RaycastHit hitInfo;
-            //if (Physics.Raycast(new Ray(transform.position + Vector3.up * 2, Vector3.down), out hitInfo, 10, LayerMask.NameToLayer("Road")))
-            //{
-            //    pointOnFloor = hitInfo.point;
-            //}
+            Vector3 pointOnFloor = new Vector3(transform.position.x, 0.5f, transform.position.z);
+            RaycastHit hitInfo;
+            if (Physics.Raycast(new Ray(transform.position + Vector3.up * 2, Vector3.down), out hitInfo, 10, LayerMask.NameToLayer("Road")))
+            {
+                pointOnFloor = hitInfo.point;
+            }
             transform.position = pointOnFloor;
             rb.mass = 1;
             rb.constraints = RigidbodyConstraints.FreezeAll;
         }
+    }
+
+    public void SetAxisToRotateAround(Vector3 axis)
+    {
+        axisToRotateAround = axis;
     }
 }
