@@ -32,17 +32,21 @@ public class ZombieDetector : MonoBehaviour
             Debug.Log(Vector3.Distance(transform.position, zombie.transform.position));
             i++;
         }
-        if (sortedZombies[0].GetComponent<Health>().health > 0)
-        {
-        nearestZombie = sortedZombies[0];
-        nearestDistance = Vector3.Distance(transform.position, sortedZombies[0].transform.position);
-        Debug.Log(nearestDistance);
-        }
-        else
-        {
-            sortedZombies.RemoveAt(0);
-            Debug.Log("REMOVING DEAD ZOMBIE");
-        }
+
+		if (sortedZombies.Count > 0)
+		{
+			if (sortedZombies[0].GetComponent<Health>().health > 0)
+			{
+				nearestZombie = sortedZombies[0];
+				nearestDistance = Vector3.Distance(transform.position, sortedZombies[0].transform.position);
+				Debug.Log(nearestDistance);
+			}
+			else
+			{
+				sortedZombies.RemoveAt(0);
+				Debug.Log("REMOVING DEAD ZOMBIE");
+			}
+		}
 
 
         /*
