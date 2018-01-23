@@ -66,7 +66,7 @@ public class RoadTileManager : MonoBehaviour
 			bCull = !bCull;
 	}
 
-	public static GameObject RandomRoadTile()
+	public static GameObject RandomRoadTile(bool bAllowQuad)
 	{
 		int r = Random.Range(0, 100);
 
@@ -76,22 +76,22 @@ public class RoadTileManager : MonoBehaviour
 		}
 		else if (r < instance.ChanceCorner + instance.ChanceT)
 		{
-			return T;
+			return bAllowQuad ? FourWay : T;
 		}
 
 		return Straight;
 	}
 
-	public static GameObject RandCornerT()
+	public static GameObject RandCornerT(bool bAllowQuad)
 	{
 		int r = Random.Range(0, instance.ChanceCorner + instance.ChanceT);
 
 		if (r < instance.ChanceCorner)
 		{
-			return Corner;
+			return bAllowQuad ? T : Corner;
 		}
 
-		return T;
+		return bAllowQuad ? FourWay : T;
 	}
 
 	public static GameObject RandStraightT()
@@ -108,14 +108,14 @@ public class RoadTileManager : MonoBehaviour
 
 	public static GameObject RandQuadT()
 	{
-		int r = Random.Range(0, instance.ChanceStraight + instance.ChanceT);
+		//int r = Random.Range(0, instance.ChanceStraight + instance.ChanceT);
 
-		if (r < instance.ChanceStraight)
-		{
-			return FourWay;
-		}
+		//if (r < instance.ChanceStraight)
+		//{
+		//	return FourWay;
+		//}
 
-		return T;
+		return FourWay;
 	}
 
 	public static GameObject RandCornerDead()
