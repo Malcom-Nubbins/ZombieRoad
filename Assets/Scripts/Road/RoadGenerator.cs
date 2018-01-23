@@ -86,7 +86,7 @@ public class RoadGenerator : MonoBehaviour
 
 		CachedPlayerPosition = CurrentPlayerPosition;
 
-		if (Vector3.Distance(CachedPlayerPosition, transform.position) > RoadTileManager.checkpoint.FollowCamera.GetComponent<FollowCamera>().CullDistance + 20) return false;
+		if (Vector3.Distance(CachedPlayerPosition, transform.position) > RoadTileManager.checkpoint.FollowCamera.GetComponent<FollowCamera>().CullDistance + (GetComponent<DisabledRoadGenerator>()?0:40)) return false;
 		//if (Vector3.Distance(RoadTileManager.checkpoint.transform.position, transform.position) > (RoadTileManager.checkpoint.gameObject.transform.localScale.x/2) + 20) return false;
 		//if (DebugLogs) Debug.Log(gameObject.name + " standing by at " + Vector3.Distance(RoadTileManager.checkpoint.transform.position, transform.position) + " from " + RoadTileManager.checkpoint.transform.position + " (compare to "+( RoadTileManager.checkpoint.gameObject.transform.localScale.x+10)+")" );
 
@@ -139,7 +139,7 @@ public class RoadGenerator : MonoBehaviour
 							if (DebugLogs) Debug.Log(gameObject.name + " checking " + (Direction)i + " that the tile to the right (" + (Direction)Wrap0to7(i + 1) + ") has an exit facing " + (Direction)Wrap0to7(i - 2));
 							if (hit[Wrap0to7(i + 1)].collider.gameObject.GetComponent<RoadGenerator>().Exit[Wrap0to7(i - 2)])
 							{
-								GameObject newTile = GenerateCornerOrT(i, RoadTileManager.checkpoint.RoadMapRoot.transform);
+								GameObject newTile = GenerateCornerOrT(i, RoadTileManager.checkpoint.RoadMapRoot.transform, true);
 
 								MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " because the occupied tile to the right has a valid exit, and the left is unoccupied\n";
 								//MySpecificDebug += "exit " + (Direction)(Wrap0to7(i + 4)) + ":" + (newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 4)]) + " && exit " + (Direction)(Wrap0to7(i + 2)) + ":" + (newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 2)]) + "\n";
@@ -175,7 +175,7 @@ public class RoadGenerator : MonoBehaviour
 							if (DebugLogs) Debug.Log(gameObject.name + " checking " + (Direction)i + " that the tile to the left (" + (Direction)Wrap0to7(i - 1) + ") has an exit facing " + (Direction)Wrap0to7(i + 2));
 							if (hit[Wrap0to7(i - 1)].collider.gameObject.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 2)])
 							{
-								GameObject newTile = GenerateCornerOrT(i, RoadTileManager.checkpoint.RoadMapRoot.transform);
+								GameObject newTile = GenerateCornerOrT(i, RoadTileManager.checkpoint.RoadMapRoot.transform, true);
 
 								MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " because the occupied tile to the left has a valid exit, and the right is unoccupied\n";
 								//MySpecificDebug += "exit " + (Direction)(Wrap0to7(i + 4)) + ":" + (newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 4)]) + " && exit " + (Direction)(Wrap0to7(i - 2)) + ":" + (newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i - 2)]) + "\n";
@@ -719,9 +719,9 @@ public class RoadGenerator : MonoBehaviour
 	}
 
 	// where i is the Direction
-	protected GameObject GenerateCornerOrT(int i, Transform RoadMapRootTransform)
+	protected GameObject GenerateCornerOrT(int i, Transform RoadMapRootTransform, bool bAllowQuad = false)
 	{
-		GameObject newTileClass = RoadTileManager.RandCornerT();
+		GameObject newTileClass = RoadTileManager.RandCornerT(bAllowQuad);
 		GameObject newTile = Instantiate(newTileClass, transform.position + new Vector3(Xoffset(i), newTileClass.GetComponent<RoadGenerator>().YOffset, Zoffset(i)), Quaternion.identity, RoadMapRootTransform);
 		newTile.transform.SetAsFirstSibling();
 		bHaveExpanded = true;

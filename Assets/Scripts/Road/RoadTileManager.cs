@@ -82,16 +82,16 @@ public class RoadTileManager : MonoBehaviour
 		return Straight;
 	}
 
-	public static GameObject RandCornerT()
+	public static GameObject RandCornerT(bool bAllowQuad)
 	{
 		int r = Random.Range(0, instance.ChanceCorner + instance.ChanceT);
 
 		if (r < instance.ChanceCorner)
 		{
-			return Corner;
+			return bAllowQuad ? T : Corner;
 		}
 
-		return T;
+		return bAllowQuad ? FourWay : T;
 	}
 
 	public static GameObject RandStraightT()
