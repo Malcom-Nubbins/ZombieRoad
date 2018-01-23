@@ -4,33 +4,75 @@ using UnityEngine;
 
 public class VehicleSmokeFX : MonoBehaviour {
 
-    public GameObject smokeParticleSystemPrefab;
+    public GameObject darkSmokeParticleSystemPrefab;
+    public GameObject lightSmokeParticleSystemPrefab;
+    public GameObject fireParticleSystemPrefab;
 
     public Transform smokeEffectEngine;
-    private ParticleSystem smokeParticleSystem;
+
+    private ParticleSystem lightSmokeParticleSystem;
+    private ParticleSystem darkSmokeParticleSystem;
+    private ParticleSystem fireParticleSystem;
 
     BaseVehicleClass vehicle;
 	// Use this for initialization
 	void Start () {
         vehicle = GetComponent<BaseVehicleClass>();
-        GameObject smokeEffect = Instantiate(smokeParticleSystemPrefab, Vector3.zero, Quaternion.identity, smokeEffectEngine);
-        smokeEffect.transform.localPosition = Vector3.zero;
 
-        smokeParticleSystem = smokeEffect.GetComponent<ParticleSystem>();
-	}
+        GameObject darkSmokeEffect = Instantiate(darkSmokeParticleSystemPrefab, Vector3.zero, Quaternion.identity, smokeEffectEngine);
+        darkSmokeEffect.transform.localPosition = Vector3.zero;
+
+        GameObject lightSmokeEffect = Instantiate(lightSmokeParticleSystemPrefab, Vector3.zero, Quaternion.identity, smokeEffectEngine);
+        lightSmokeEffect.transform.localPosition = Vector3.zero;
+
+        GameObject fireEffect = Instantiate(fireParticleSystemPrefab, Vector3.zero, Quaternion.identity, smokeEffectEngine);
+        fireEffect.transform.localPosition = Vector3.zero;
+
+        darkSmokeParticleSystem = darkSmokeEffect.GetComponent<ParticleSystem>();
+        lightSmokeParticleSystem = lightSmokeEffect.GetComponent<ParticleSystem>();
+        fireParticleSystem = fireEffect.GetComponent<ParticleSystem>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
-        if (vehicle.health <= vehicle.GetMaxHealth() / 3)
-        { 
 
-            if(!smokeParticleSystem.isPlaying)
-                smokeParticleSystem.Play();
+        if(vehicle.health > vehicle.GetMaxHealth() / 2)
+        {
+            if (lightSmokeParticleSystem.isPlaying)
+                lightSmokeParticleSystem.Stop();
+
+            if (darkSmokeParticleSystem.isPlaying)
+                darkSmokeParticleSystem.Stop();
+
+            if (fireParticleSystem.isPlaying)
+                fireParticleSystem.Stop();
         }
         else
         {
-            if (smokeParticleSystem.isPlaying)
-                smokeParticleSystem.Stop();
+            if (vehicle.health <= vehicle.GetMaxHealth() / 2 && vehicle.health > vehicle.GetMaxHealth() / 3)
+            {
+                if (!lightSmokeParticleSystem.isPlaying)
+                    lightSmokeParticleSystem.Play();
+            }
+            else if (vehicle.health <= vehicle.GetMaxHealth() / 3 && vehicle.health > 0.5f)
+            {
+                if (lightSmokeParticleSystem.isPlaying)
+                    lightSmokeParticleSystem.Stop();
+
+                if (!darkSmokeParticleSystem.isPlaying)
+                    darkSmokeParticleSystem.Play();
+            }
+            else
+            {
+                if (darkSmokeParticleSystem.isPlaying)
+                    darkSmokeParticleSystem.Stop();
+
+                if (!lightSmokeParticleSystem.isPlaying)
+                    lightSmokeParticleSystem.Play();
+
+                if (!fireParticleSystem.isPlaying)
+                    fireParticleSystem.Play();
+            }
         }
 	}
 }

@@ -1898,7 +1898,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27260ed7322b9af4fa1b756cb21f4f67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ChanceFences: 45
+  ChanceFences: 25
   MaximumTreeDensity: 6
   _Tree: {fileID: 1997872951183702, guid: 2031344614f19c94aa235a9c5de38bed, type: 2}
 --- !u!1 &503605699

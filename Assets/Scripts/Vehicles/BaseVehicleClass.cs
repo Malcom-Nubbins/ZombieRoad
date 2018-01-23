@@ -339,7 +339,8 @@ public class BaseVehicleClass : Movement
 
 	void Crash()
 	{
-        health -= 5.5f;
+        float damageFromCrash = _maxHealth / 3;
+        health -= damageFromCrash;
 
         _vehHealthSlider.value = health;
         speed = 0;
