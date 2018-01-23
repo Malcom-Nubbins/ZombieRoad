@@ -131,7 +131,7 @@ public class RoadGenerator : MonoBehaviour
 					{
 						if (!hit[Wrap0to7(i - 1)].collider && !hit[Wrap0to7(i + 1)].collider) // if spaces to left and right
 						{
-							GameObject newTile = GenerateRandomTile(i, RoadTileManager.checkpoint.RoadMapRoot.transform);
+							GameObject newTile = GenerateRandomTile(i, RoadTileManager.checkpoint.RoadMapRoot.transform, true);
 							MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " due to freeze pace\n";
 						}
 						else if (!hit[Wrap0to7(i - 1)].collider && hit[Wrap0to7(i + 1)].collider) // if space left and not right
@@ -700,9 +700,9 @@ public class RoadGenerator : MonoBehaviour
 	}
 
 	// where i is the Direction
-	protected GameObject GenerateRandomTile(int i, Transform RoadMapRootTransform)
+	protected GameObject GenerateRandomTile(int i, Transform RoadMapRootTransform, bool bAllowQuad = false)
 	{
-		GameObject newTileClass = (Exit[Wrap0to7(i+4)]&&!(Exit[Wrap0to7(i+2)]|| Exit[Wrap0to7(i-2)]))?RoadTileManager.RandomRoadTile() : RoadTileManager.Straight;
+		GameObject newTileClass = (Exit[Wrap0to7(i+4)]&&!(Exit[Wrap0to7(i+2)]|| Exit[Wrap0to7(i-2)])) ? RoadTileManager.RandomRoadTile(bAllowQuad) : RoadTileManager.Straight;
 		GameObject newTile = Instantiate(newTileClass, transform.position + new Vector3(Xoffset(i), newTileClass.GetComponent<RoadGenerator>().YOffset, Zoffset(i)), Quaternion.identity, RoadMapRootTransform);
 		newTile.transform.SetAsFirstSibling();
 		bHaveExpanded = true;
