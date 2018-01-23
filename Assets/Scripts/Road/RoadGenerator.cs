@@ -690,6 +690,7 @@ public class RoadGenerator : MonoBehaviour
 	{
 		GameObject newTileClass = (Exit[Wrap0to7(i+4)]&&!(Exit[Wrap0to7(i+2)]|| Exit[Wrap0to7(i-2)]))?RoadTileManager.RandomRoadTile() : RoadTileManager.Straight;
 		GameObject newTile = Instantiate(newTileClass, transform.position + new Vector3(Xoffset(i), newTileClass.GetComponent<RoadGenerator>().YOffset, Zoffset(i)), Quaternion.identity, RoadMapRootTransform);
+		newTile.transform.SetAsFirstSibling();
 		bHaveExpanded = true;
 		//newTile.GetComponent<RoadGenerator>().Extend(RoadTileManager.checkpoint);
 		newTile.GetComponent<RoadGenerator>().RefreshExits();
@@ -708,6 +709,7 @@ public class RoadGenerator : MonoBehaviour
 	{
 		GameObject newTileClass = RoadTileManager.RandCornerT();
 		GameObject newTile = Instantiate(newTileClass, transform.position + new Vector3(Xoffset(i), newTileClass.GetComponent<RoadGenerator>().YOffset, Zoffset(i)), Quaternion.identity, RoadMapRootTransform);
+		newTile.transform.SetAsFirstSibling();
 		bHaveExpanded = true;
 		//newTile.GetComponent<RoadGenerator>().Extend(RoadTileManager.checkpoint);
 		newTile.GetComponent<RoadGenerator>().RefreshExits();
@@ -726,6 +728,7 @@ public class RoadGenerator : MonoBehaviour
 	{
 		GameObject newTileClass = (Exit[Wrap0to7(i + 4)] && !(Exit[Wrap0to7(i + 2)] || Exit[Wrap0to7(i - 2)])) ? RoadTileManager.RandStraightT() : RoadTileManager.Straight;
 		GameObject newTile = Instantiate(newTileClass, transform.position + new Vector3(Xoffset(i), newTileClass.GetComponent<RoadGenerator>().YOffset, Zoffset(i)), Quaternion.identity, RoadMapRootTransform);
+		newTile.transform.SetAsFirstSibling();
 		bHaveExpanded = true;
 		//newTile.GetComponent<RoadGenerator>().Extend(RoadTileManager.checkpoint);
 		newTile.GetComponent<RoadGenerator>().RefreshExits();
@@ -744,6 +747,7 @@ public class RoadGenerator : MonoBehaviour
 	{
 		GameObject newTileClass = RoadTileManager.RandQuadT();
 		GameObject newTile = Instantiate(newTileClass, transform.position + new Vector3(Xoffset(i), newTileClass.GetComponent<RoadGenerator>().YOffset, Zoffset(i)), Quaternion.identity, RoadMapRootTransform);
+		newTile.transform.SetAsFirstSibling();
 		bHaveExpanded = true;
 		//newTile.GetComponent<RoadGenerator>().Extend(RoadTileManager.checkpoint);
 		newTile.GetComponent<RoadGenerator>().RefreshExits();
@@ -762,6 +766,7 @@ public class RoadGenerator : MonoBehaviour
 	{
 		GameObject newTileClass = RoadTileManager.RandCornerDead();
 		GameObject newTile = Instantiate(newTileClass, transform.position + new Vector3(Xoffset(i), newTileClass.GetComponent<RoadGenerator>().YOffset, Zoffset(i)), Quaternion.identity, RoadMapRootTransform);
+		newTile.transform.SetAsFirstSibling();
 		bHaveExpanded = true;
 		//newTile.GetComponent<RoadGenerator>().Extend(RoadTileManager.checkpoint);
 		newTile.GetComponent<RoadGenerator>().RefreshExits();
@@ -779,6 +784,7 @@ public class RoadGenerator : MonoBehaviour
 	protected GameObject GeneratePiece(GameObject newTileClass, int i, Transform RoadMapRootTransform)
 	{
 		GameObject newTile = Instantiate(newTileClass, transform.position + new Vector3(Xoffset(i), newTileClass.GetComponent<RoadGenerator>().YOffset, Zoffset(i)), Quaternion.identity, RoadMapRootTransform);
+		newTile.transform.SetAsFirstSibling();
 		bHaveExpanded = true;
 		//newTile.GetComponent<RoadGenerator>().Extend(RoadTileManager.checkpoint);
 		newTile.GetComponent<RoadGenerator>().RefreshExits();
