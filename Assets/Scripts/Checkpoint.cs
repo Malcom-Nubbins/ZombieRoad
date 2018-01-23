@@ -89,7 +89,7 @@ public class Checkpoint : MonoBehaviour
         float distFromEdge = checkpointRadius - distFromCentre;
         checkpointDistance.text = distFromEdge.ToString("0") + "m";
 
-		RoadMapRoot.BroadcastMessage("Extend");
+		RoadMapRoot.BroadcastMessage("Extend", false);
 	}
 
 	void UpdateCheckpoint()

@@ -104,16 +104,23 @@ public class RoadGenerator : MonoBehaviour
 
 		bCanExtend = DoHits();
 
-		if (!bCanExtend) return bCanExtend; // if none of the new Raycasts didn't hit anything then we can't expand and can bail
+		if (!bCanExtend) return bCanExtend; // if none of the new Raycasts didn't not hit anything then we can't expand and can bail
 
 		return bCanExtend;
 	}
 
-	public virtual void Extend()
+	public virtual void Extend(bool bForceOOBExtension = false)
 	{
 		bHaveExpanded = false;
 
-		if (!ShouldExtend()) return;
+		if (!bForceOOBExtension)
+		{
+			if (!ShouldExtend()) return;
+		}
+		else
+		{
+			if (!DoHits()) return;
+		}
 
 		for (int i = 0; i < hitPlus.Length; i += 2)
 		{

@@ -15,7 +15,7 @@ public class DisabledRoadGenerator : RoadGenerator
 
 	public Type TileClassification;
 
-	override public void Extend()
+	override public void Extend(bool bForceOOBExtension = false)
 	{
 		bHaveExpanded = false;
 
