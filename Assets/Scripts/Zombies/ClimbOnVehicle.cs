@@ -49,6 +49,11 @@ public class ClimbOnVehicle : MonoBehaviour
                 }
                 Vector3 localTargetPos = Vector3.Lerp(start, end, lerp);
                 transform.position = vehicleAttachedTo.transform.TransformPoint(localTargetPos);
+                //SeekPlayer script is disabled so won't face vehicle
+                Vector3 lookTowardsVehicle = vehicleAttachedTo.transform.position - transform.position;
+                lookTowardsVehicle.y = 0;
+                lookTowardsVehicle.Normalize();
+                transform.rotation = Quaternion.LookRotation(lookTowardsVehicle);
 
                 Debug.DrawLine(vehicleAttachedTo.transform.TransformPoint(localStartClimbPosition), vehicleAttachedTo.transform.TransformPoint(localEndClimbPosition), Color.red);
 
