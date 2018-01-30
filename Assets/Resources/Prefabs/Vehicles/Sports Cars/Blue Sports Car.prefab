@@ -28,7 +28,7 @@ GameObject:
   - component: {fileID: 114120709303691022}
   - component: {fileID: 114073963236570632}
   m_Layer: 0
-  m_Name: car_small_blue
+  m_Name: Blue Sports Car
   m_TagString: Vehicle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -65,6 +65,23 @@ GameObject:
   - component: {fileID: 135440671432555416}
   m_Layer: 0
   m_Name: wheel_04
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1493343768608418
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4570297895659318}
+  - component: {fileID: 33772557777300974}
+  - component: {fileID: 23832686779617212}
+  m_Layer: 0
+  m_Name: engine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -163,7 +180,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1010170593791510}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.891551, y: 0.14753512, z: 19.580914}
+  m_LocalPosition: {x: -1.3334179, y: 0.14753512, z: 18.967596}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children:
   - {fileID: 4706842656557844}
@@ -183,6 +200,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4706842656557844}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4570297895659318
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1493343768608418}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.30526567, z: -2.5383415}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4706842656557844}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4609831098669990
 Transform:
@@ -224,6 +254,7 @@ Transform:
   - {fileID: 4545655340623416}
   - {fileID: 4930558304271582}
   - {fileID: 4609831098669990}
+  - {fileID: 4570297895659318}
   m_Father: {fileID: 4372527579862904}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -278,6 +309,38 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1262837587265030}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 7ad728bed83b6994cbf204590f9ae71e, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!23 &23832686779617212
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1493343768608418}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -428,6 +491,13 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1558910631837616}
   m_Mesh: {fileID: 4300008, guid: b01842fa301dbe24799542372bd7eed1, type: 3}
+--- !u!33 &33772557777300974
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1493343768608418}
+  m_Mesh: {fileID: 4300000, guid: b01842fa301dbe24799542372bd7eed1, type: 3}
 --- !u!33 &33935799130707628
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -491,7 +561,7 @@ MonoBehaviour:
     type: 2}
   fireParticleSystemPrefab: {fileID: 1459066268151376, guid: 74d0618bd6416a04aaa35d06d9ee9e6c,
     type: 2}
-  smokeEffectEngine: {fileID: 0}
+  smokeEffectEngine: {fileID: 4570297895659318}
 --- !u!114 &114120709303691022
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -531,9 +601,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8813d7f832cbd00498d769024d7772f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unlockableID: CarSmallBlue
+  unlockableID: CarSportsBlue
   type: 4
-  unlocked: 1
+  unlocked: 0
 --- !u!114 &114644126986228774
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -554,7 +624,7 @@ MonoBehaviour:
   speedModifier: 1.2
   totalFuel: 50
   fuelConsumptionRate: 0.8
-  maxSpeed: 16
+  maxSpeed: 20
   acceleration: 3.5
   debugDisableAutoExit: 0
 --- !u!114 &114987043331759766
