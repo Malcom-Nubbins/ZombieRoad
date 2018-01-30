@@ -6,6 +6,7 @@ public class Health : MonoBehaviour
 {
     public float startingHealth = 1.0f;
     private float _health;
+	public static FollowCamera _followCamera;
     public float health
     {
         get
@@ -28,11 +29,13 @@ public class Health : MonoBehaviour
     void Start()
     {
         health = startingHealth;
-    }
+
+		if (_followCamera == null) _followCamera = RoadTileManager.checkpoint.FollowCamera.GetComponent<FollowCamera>();
+	}
 
     void Update()
     {
-        if (transform.position.y < -10)
+        if (transform.position.y < -10 || Vector3.Distance(transform.position, _followCamera.target.transform.position) > _followCamera.CullDistance)
         {
             health = 0;
             Destroy(gameObject);
