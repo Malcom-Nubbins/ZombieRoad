@@ -387,10 +387,10 @@ MonoBehaviour:
   - {fileID: 1261247030906472, guid: e5e83df07dc7afd4b8de494454f2bb59, type: 2}
   _Shops:
   - {fileID: 1341576955345710, guid: 2e3e9779d6f60824688c24081eab4c43, type: 2}
-  ChanceSkyscraper: 0
-  ChanceHouses: 0
-  ChanceShops: 0
-  ChanceNothing: 100
+  ChanceSkyscraper: 30
+  ChanceHouses: 45
+  ChanceShops: 20
+  ChanceNothing: 5
 --- !u!114 &501691855
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -415,6 +415,7 @@ MonoBehaviour:
   ChanceT: 25
   ChancePavement: 40
   ChanceGrass: 60
+  ChanceBarrier: 10
   _Cull: 1
 --- !u!4 &501691856
 Transform:

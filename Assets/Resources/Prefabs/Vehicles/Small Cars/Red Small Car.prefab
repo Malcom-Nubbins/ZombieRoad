@@ -120,23 +120,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1879252287334536
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4833783395485030}
-  - component: {fileID: 33537388238571910}
-  - component: {fileID: 23412033389582150}
-  m_Layer: 0
-  m_Name: engine
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1963580973415620
 GameObject:
   m_ObjectHideFlags: 0
@@ -154,7 +137,7 @@ GameObject:
   - component: {fileID: 114200062863944200}
   - component: {fileID: 114583668557035408}
   m_Layer: 0
-  m_Name: car_sports_red
+  m_Name: Red Small Car
   m_TagString: Vehicle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -174,7 +157,6 @@ Transform:
   - {fileID: 4853757268076936}
   - {fileID: 4097311128547934}
   - {fileID: 4201273156374668}
-  - {fileID: 4833783395485030}
   m_Father: {fileID: 4224901709952232}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -211,7 +193,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1963580973415620}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.2552037, y: 0.14753515, z: 18.953802}
+  m_LocalPosition: {x: -13.0304785, y: 0.14753512, z: 19.597855}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children:
   - {fileID: 4045244707531532}
@@ -244,19 +226,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4045244707531532}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4833783395485030
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1879252287334536}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.30526567, z: -2.5383415}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4045244707531532}
-  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4853757268076936
 Transform:
@@ -309,38 +278,6 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1630501739279216}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_Materials:
-  - {fileID: 2100000, guid: 0419a0b70b52da14f85c5a9a5f240068, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!23 &23412033389582150
-MeshRenderer:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1879252287334536}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -491,13 +428,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1552451123811934}
   m_Mesh: {fileID: 4300004, guid: b01842fa301dbe24799542372bd7eed1, type: 3}
---- !u!33 &33537388238571910
-MeshFilter:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1879252287334536}
-  m_Mesh: {fileID: 4300000, guid: b01842fa301dbe24799542372bd7eed1, type: 3}
 --- !u!33 &33955765616183418
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -564,7 +494,7 @@ MonoBehaviour:
   speedModifier: 1.2
   totalFuel: 50
   fuelConsumptionRate: 0.8
-  maxSpeed: 18
+  maxSpeed: 14
   acceleration: 3.5
   debugDisableAutoExit: 0
 --- !u!114 &114187579890621332
@@ -606,7 +536,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8813d7f832cbd00498d769024d7772f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unlockableID: CarSportsRed
+  unlockableID: CarSmallRed
   type: 4
   unlocked: 0
 --- !u!114 &114572470766825248
@@ -638,7 +568,7 @@ MonoBehaviour:
     type: 2}
   fireParticleSystemPrefab: {fileID: 1459066268151376, guid: 74d0618bd6416a04aaa35d06d9ee9e6c,
     type: 2}
-  smokeEffectEngine: {fileID: 4833783395485030}
+  smokeEffectEngine: {fileID: 0}
 --- !u!135 &135027294837779416
 SphereCollider:
   m_ObjectHideFlags: 1

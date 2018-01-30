@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4243224913013360}
   - component: {fileID: 114057574929689842}
   m_Layer: 10
-  m_Name: House Yellow
+  m_Name: Yellow House
   m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

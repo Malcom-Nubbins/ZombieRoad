@@ -48,14 +48,16 @@ public class UnlockManager : MonoBehaviour
 
     public void ResetUnlocks()
     {
-        foreach (Unlockable u in allUnlockables)
+        for(int i = 0; i < allUnlockables.Length; i++)
         {
-            u.unlocked = false;
+            allUnlockables[i].unlocked = false;
         }
-        foreach (Unlockable u in startUnlocked)
+
+        for(int i = 0; i < startUnlocked.Length; i++)
         {
-            u.unlocked = true;
+            startUnlocked[i].unlocked = true;
         }
+
         SaveUnlocks();
     }
 
@@ -117,5 +119,17 @@ public class UnlockManager : MonoBehaviour
                 lockedCount++;
         }
         return lockedCount;
+    }
+
+    public Unlockable[] GetLockedItems()
+    {
+        List<Unlockable> lockedItemsList = new List<Unlockable>();
+        foreach(Unlockable item in allUnlockables)
+        {
+            if (!item.unlocked)
+                lockedItemsList.Add(item);
+        }
+
+        return lockedItemsList.ToArray();
     }
 }

@@ -40,6 +40,9 @@ public class RoadTileManager : MonoBehaviour
 	[Range(0, 100)]
 	public int ChanceGrass;
 
+	[Range(0, 100)]
+	public int ChanceBarrier;
+
 	public bool _Cull = true;
 	public static bool bCull;
 
