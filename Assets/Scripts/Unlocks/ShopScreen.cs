@@ -13,8 +13,6 @@ public class ShopScreen : MonoBehaviour {
 
     float _currentCooldownTime = 0.0f;
 
-    Vector3 itemRotation;
-
 	// Use this for initialization
 	void Start () {
         UnlockManager um = GameObject.Find("UnlockManager").GetComponent<UnlockManager>();
@@ -25,7 +23,7 @@ public class ShopScreen : MonoBehaviour {
         _lockedItemDisplay = Instantiate(prefab, Vector3.zero, Quaternion.identity, transform);
 
         _itemNameText = GameObject.Find("ItemNameText").GetComponent<Text>();
-        _itemNameText.text = _lockedItemDisplay.name;
+        _itemNameText.text = _lockedItemDisplay.name.Substring(0, _lockedItemDisplay.name.IndexOf('('));
     }
 	
     void onNextClick()
@@ -39,7 +37,7 @@ public class ShopScreen : MonoBehaviour {
         GameObject prefab = _lockedItems[_currentSelectedItem].gameObject;
         Quaternion rotation = Quaternion.Euler(0.0f, 180.0f, 0.0f);
         _lockedItemDisplay = Instantiate(prefab, Vector3.zero, transform.rotation, transform);
-        _itemNameText.text = _lockedItemDisplay.name;
+        _itemNameText.text = _lockedItemDisplay.name.Substring(0, _lockedItemDisplay.name.IndexOf('('));
     }
 
     void onPrevClick()
@@ -53,7 +51,7 @@ public class ShopScreen : MonoBehaviour {
         GameObject prefab = _lockedItems[_currentSelectedItem].gameObject;
         Quaternion rotation = Quaternion.Euler(0.0f, 180.0f, 0.0f);
         _lockedItemDisplay = Instantiate(prefab, Vector3.zero, transform.rotation, transform);
-        _itemNameText.text = _lockedItemDisplay.name;
+        _itemNameText.text = _lockedItemDisplay.name.Substring(0, _lockedItemDisplay.name.IndexOf('('));
     }
 
 	// Update is called once per frame
