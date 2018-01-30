@@ -53,8 +53,14 @@ public class BuildingGenerator : MonoBehaviour
 			{
 				GameObject newBuilding = Instantiate(newBuildingClass, transform.position, transform.rotation, transform);
 			}
+			else
+			{
+				GameObject[] RoadBlocks = Resources.LoadAll<GameObject>("Prefabs/Destructable Scenery/Fences/Pavement Barriers");
+				int r = Random.Range(0, RoadBlocks.Length);
+				Instantiate(RoadBlocks[r], transform.position, transform.rotation, transform);
+			}
 
-			//bRunOnce = true;
+		//bRunOnce = true;
 		//}
 		enabled = false;
 	}
