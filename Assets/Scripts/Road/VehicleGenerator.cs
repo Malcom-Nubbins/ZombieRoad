@@ -26,7 +26,7 @@ public class VehicleGenerator : MonoBehaviour
 
 		r = Random.Range(0, 100);
 
-		if (!player.GetComponent<BaseVehicleClass>() || player.GetComponent<BaseVehicleClass>().GetFuelPercentage() < 0.25f)
+		if (!player.GetComponent<BaseVehicleClass>() || player.GetComponent<BaseVehicleClass>().GetFuelPercentage() < 0.33f)
 		{
 			if (r <= 10 && UnlockManager.instance)
 			{
