@@ -35,3 +35,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Ben Crawford Test Scene/BenCrawfordGameOverScene.unity
     guid: 79006402d0941c948906e07183cca94b
+  - enabled: 1
+    path: Assets/ShopScene.unity
+    guid: 1e15910d36b92884fb07d54246fcda73
