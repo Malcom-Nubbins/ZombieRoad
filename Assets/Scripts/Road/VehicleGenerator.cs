@@ -24,9 +24,10 @@ public class VehicleGenerator : MonoBehaviour
 			if (bSpinBench) bench.transform.Rotate(0, 180, 0);
 		}
 
-		if (!player.GetComponent<BaseVehicleClass>() || player.GetComponent<BaseVehicleClass>().GetFuelPercentage() < 0.1f)
+		r = Random.Range(0, 100);
+
+		if (!player.GetComponent<BaseVehicleClass>() || player.GetComponent<BaseVehicleClass>().GetFuelPercentage() < 0.25f)
 		{
-			r = Random.Range(0, 100);
 			if (r <= 10 && UnlockManager.instance)
 			{
 				GameObject[] UnlockedCars = UnlockManager.instance.GetUnlockedItems(UnlockableType.VEHICLE);
@@ -36,6 +37,12 @@ public class VehicleGenerator : MonoBehaviour
 				//rg.MySpecificDebug += "generated vehicle @ " + car.transform.position + ", will not cull\n";
 				//rg.CullingExempt = true;
 			}
+		}
+		else if (r < RoadTileManager.instance.ChanceBarrier)
+		{
+			GameObject[] RoadBlocks = Resources.LoadAll<GameObject>("Prefabs/Destructable Scenery/Fences/Road Barriers");
+			r = Random.Range(0, RoadBlocks.Length);
+			Instantiate(RoadBlocks[r], transform.position, transform.rotation, transform);
 		}
 		enabled = false;
 	}
