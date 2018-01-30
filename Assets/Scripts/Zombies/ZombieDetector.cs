@@ -25,21 +25,15 @@ public class ZombieDetector : MonoBehaviour
         //Debug.Log(nearbyZombies.Count);
         //Debug.Log("Contains: "+nearbyZombies[0].name);
         sortedZombies = nearbyZombies.OrderBy(x => Vector2.Distance(transform.position, x.transform.position)).ToList();
-        Debug.Log("ZOMBIES SIZE: " + sortedZombies.Count);
-        foreach(GameObject zombie in sortedZombies)
-        {
-            Debug.Log("ZOMBIE " + i);
-            Debug.Log(Vector3.Distance(transform.position, zombie.transform.position));
-            i++;
-        }
+
 
 		if (sortedZombies.Count > 0)
 		{
-			if (sortedZombies[0].GetComponent<Health>().health > 0)
+			if (sortedZombies[0].GetComponent<Health>().health > 0) // make sure nearest zombie is alive
 			{
 				nearestZombie = sortedZombies[0];
 				nearestDistance = Vector3.Distance(transform.position, sortedZombies[0].transform.position);
-				Debug.Log(nearestDistance);
+				//Debug.Log(nearestDistance);
 			}
 			else
 			{
@@ -71,7 +65,30 @@ public class ZombieDetector : MonoBehaviour
         return nearestZombie;
     }
 
-    public GameObject[] GetNearbyZombies(int size)
+    public GameObject[] GetSortedZombies(int size, float range)
+    {
+        sortedZombies = nearbyZombies.OrderBy(x => Vector2.Distance(transform.position, x.transform.position)).ToList();
+       // Debug.Log("SIZE OF ARRAY BEFORE REMOVING ZOMBIES OUT OF RANGE" + sortedZombies.Count());
+        sortedZombies.RemoveAll(x => Vector2.Distance(transform.position, x.transform.position) > range);
+        //Debug.Log("SIZE OF ARRAY AFTETR REMOVING ZOMBIES OUT OF RANGE" + sortedZombies.Count());
+//        for(int x = 0; x< sortedZombies.Count(); x++)
+//       {
+//            Debug.Log("zombieE: " + x + "distance: " + Vector2.Distance(transform.position, sortedZombies[x].transform.position));
+//        }
+        if (sortedZombies.Count >= size)
+        {
+            sortedZombies.GetRange(0, size);
+            List<GameObject> tmpZombies = sortedZombies.GetRange(0, size);
+            return tmpZombies.ToArray();
+        }
+        else
+        {
+            return sortedZombies.ToArray();
+        }
+
+    }
+
+    public GameObject[] GetNearbyZombies()
     {
         return nearbyZombies.ToArray();
     }
@@ -79,16 +96,24 @@ public class ZombieDetector : MonoBehaviour
     void OnTriggerEnter(Collider collider)
     {
         if (collider.gameObject.CompareTag("Zombie"))
-        {
-            nearbyZombies.Add(collider.GetComponentInParent<Health>().gameObject);
+        { 
+            if (collider.GetComponentInParent<Health>() != null)
+            {
+                nearbyZombies.Add(collider.GetComponentInParent<Health>().gameObject);
+            }
+
         }
+
     }
 
     void OnTriggerExit(Collider collider)
     {
         if (collider.gameObject.CompareTag("Zombie"))
         {
-            nearbyZombies.Remove(collider.GetComponentInParent<Health>().gameObject);
+            if (collider.GetComponentInParent<Health>() != null)
+            {
+                nearbyZombies.Remove(collider.GetComponentInParent<Health>().gameObject);
+            }
         }
     }
 }

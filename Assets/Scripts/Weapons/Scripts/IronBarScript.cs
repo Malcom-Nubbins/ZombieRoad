@@ -11,6 +11,8 @@ public class IronBarScript : WeaponScript
 		"IronBar",
 		3.0f, // range
 		1.0f, //delay
-		30);  //durability/ammo
-	}
+		30,  //durability/ammo
+        false,
+        1);
+    }
 }

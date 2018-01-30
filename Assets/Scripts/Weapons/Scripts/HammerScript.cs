@@ -10,6 +10,8 @@ public class HammerScript : WeaponScript {
 		"Hammer",
 		3.0f, // range
 		1.0f, //delay
-		20);  //durability/ammo
+		20,  //durability/ammo
+        false,
+        1);
 	}
 }

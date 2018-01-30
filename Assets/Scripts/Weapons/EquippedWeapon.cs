@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EquippedWeapon : MonoBehaviour
 {
@@ -9,11 +10,12 @@ public class EquippedWeapon : MonoBehaviour
     public GameObject Bullet;
     GameObject SpawnedBullet;
     public ZombieDetector zombieDetector;
-	GameObject zombie;
+	public GameObject zombie;
 	public GameObject followCamera;
     float AttackCooldown;
+    Text weaponInfo;
 
-	public bool attacking = false;
+    public bool attacking = false;
 	int zombieMask;
 	// Use this for initialization
 	void Start()
@@ -66,8 +68,20 @@ public class EquippedWeapon : MonoBehaviour
 				attacking = false;
 			}
 		}
+        weaponInfo = GameObject.Find("WeaponInfo").GetComponent<Text>();
+        if(equippedWeapon == null)
+        {
+            weaponInfo.text = " ";
+        }
+        else
+        {
+            weaponInfo.text = equippedWeapon.getWeaponName() + "\n Durability: " + equippedWeapon.getDurability() ;
+        }
+        
 
-	}
+
+
+    }
 
 	public void attack()
 	{
@@ -80,20 +94,48 @@ public class EquippedWeapon : MonoBehaviour
             
 		}
 
-        if(equippedWeapon.getWeaponName() == "Handgun" || equippedWeapon.getWeaponName() == "Shotgun")
+
+
+        //attack - pass in the zombie the player is attacking - only 1 for now
+        //until they are tagged
+        GameObject[] zombiesToAttack = zombieDetector.GetSortedZombies(equippedWeapon.getWeaponTargetCount(), equippedWeapon.getAttackingDistance());
+        Debug.Log(zombiesToAttack.Length);
+        for(int x = 0; x < zombiesToAttack.Length; x++)
+        {
+            equippedWeapon.attack(zombiesToAttack[x].gameObject);
+            
+		    //Debug.Log(equippedWeapon.getWeaponName() + " Durability: " + equippedWeapon.getDurability());
+            AttackCooldown = equippedWeapon.getAttackingDelay();
+        }
+        equippedWeapon.reduceDurability();
+        if(equippedWeapon.getRanged()) // spawn bullets if weapon is ranged.
+        {
+            for (int x = 0; x < zombiesToAttack.Length; x++)
+            {
+                SpawnedBullet = Instantiate(Bullet, transform.position, Quaternion.identity);
+                SpawnedBullet.GetComponent<BulletScript>().ShootBullet(zombiesToAttack[x].gameObject);
+            }
+        }
+        /*
+        if(equippedWeapon.getWeaponName() == "Handgun")
         {
             SpawnedBullet = Instantiate(Bullet, transform.position, Quaternion.identity);
             //Destroy(SpawnedBullet, 1.5f);
             SpawnedBullet.GetComponent<BulletScript>().ShootBullet(zombie);
             
         }
-		//attack - pass in the zombie the player is attacking - only 1 for now
-		//until they are tagged
+        else if (equippedWeapon.getWeaponName() == "Shotgun")
+        {
 
-		equippedWeapon.attack(zombie);
-        equippedWeapon.reduceDurability();
-		//Debug.Log(equippedWeapon.getWeaponName() + " Durability: " + equippedWeapon.getDurability());
-        AttackCooldown = equippedWeapon.getAttackingDelay();
+            for (int x = 0; x < zombiesToAttack.Length; x++)
+            {
+                SpawnedBullet = Instantiate(Bullet, transform.position, Quaternion.identity);
+                //Destroy(SpawnedBullet, 1.5f);
+                SpawnedBullet.GetComponent<BulletScript>().ShootBullet(zombiesToAttack[x].gameObject);
+            }
+        }
+        */
+        
 	   
 
 	}

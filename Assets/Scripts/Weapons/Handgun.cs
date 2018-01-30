@@ -12,8 +12,8 @@ public class Handgun : HandWeapon
 //	ParticleSystem ParticleEmitterPS;
 //    ParticleSystem.Particle[] particles;
 
-	public Handgun(string weaponName, float attackingDistance, float attackingDelay, int durability) : base(weaponName, attackingDistance, attackingDelay, durability)
-	{
+	public Handgun(string weaponName, float attackingDistance, float attackingDelay, int durability, bool ranged, int weaponTargetCount) : base(weaponName, attackingDistance, attackingDelay, durability, ranged, weaponTargetCount)
+    {
 //		if (ParticleEmitter) SetParticleEmitter(ParticleEmitter);
         //Bullet = GameObject.Find("Bullet");
 	}

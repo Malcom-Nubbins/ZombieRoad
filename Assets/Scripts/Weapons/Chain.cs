@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Chain : HandWeapon
 {
-	public Chain(string weaponName, float attackingDistance, float attackingDelay, int durability) : base(weaponName, attackingDistance, attackingDelay, durability)
-	{
+	public Chain(string weaponName, float attackingDistance, float attackingDelay, int durability, bool ranged, int weaponTargetCount) : base(weaponName, attackingDistance, attackingDelay, durability, ranged, weaponTargetCount)
+    {
 	}
 
 	public override void attack(GameObject gameObject)

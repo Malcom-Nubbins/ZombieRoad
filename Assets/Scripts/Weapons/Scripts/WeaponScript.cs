@@ -77,7 +77,7 @@ public class WeaponScript : MonoBehaviour
 
 		//assign the equipped weapon
 		equipped.equippedWeapon = weapon;
-	}
+    }
 
 	public void dropWeapon()
 	{

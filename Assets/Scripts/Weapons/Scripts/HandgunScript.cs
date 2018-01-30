@@ -11,7 +11,9 @@ public class HandgunScript : WeaponScript
 		"Handgun",
 		25.0f, // range
 		0.5f, //delay
-		50);  //durability/ammo
+		50,  //durability/ammo
+        true,
+        3);
     }
 	
 

@@ -11,6 +11,8 @@ public class ChainScript : WeaponScript
 		"Chain",
 		4.0f, // range
 		1.5f, //delay
-		30);  //durability/ammo
+		30,  //durability/ammo
+        false,
+        1);
 	}
 }

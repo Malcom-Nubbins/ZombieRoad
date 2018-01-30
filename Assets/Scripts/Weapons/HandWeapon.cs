@@ -10,13 +10,17 @@ public abstract class HandWeapon {
 	private float attackingDelay;
 	private string weaponName;
 	private int durability;
+    private bool ranged;
+    private int weaponTargetCount;
 
-	public HandWeapon(string weaponName, float attackingDistance, float attackingDelay, int durability)
+	public HandWeapon(string weaponName, float attackingDistance, float attackingDelay, int durability, bool ranged, int weaponTargetCount)
 	{
 		this.weaponName = weaponName;
 		this.attackingDistance = attackingDistance;
 		this.attackingDelay = attackingDelay;
 		this.durability = durability;
+        this.ranged = ranged;
+        this.weaponTargetCount = weaponTargetCount;
 	}
 
 	public string getWeaponName()
@@ -44,6 +48,14 @@ public abstract class HandWeapon {
 	{
 		durability--;
 	}
+    public bool getRanged()
+    {
+        return ranged;
+    }
+    public int getWeaponTargetCount()
+    {
+        return weaponTargetCount;
+    }
 
 
 	public abstract void attack(GameObject gameObject);
