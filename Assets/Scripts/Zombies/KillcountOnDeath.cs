@@ -21,6 +21,8 @@ public class KillcountOnDeath : MonoBehaviour
         else
         {
             Killcount.AddKill();
+            if (Killcount.GetKills() % 10 == 0)
+                Currency.AddCurrency();
         }
     }
 
