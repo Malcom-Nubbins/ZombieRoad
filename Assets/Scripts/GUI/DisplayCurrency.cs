@@ -14,5 +14,6 @@ public class DisplayCurrency : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         currency.text = "Coins: " + Currency.GetCurrency();
+
 	}
 }
