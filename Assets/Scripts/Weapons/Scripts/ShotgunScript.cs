@@ -12,7 +12,7 @@ public class ShotgunScript : WeaponScript
 		"Shotgun",
 		21.0f, // range
 		0.1f, //delay
-		20000,  //durability/ammo
+		1,  //durability/ammo
         true,
         10);
     }

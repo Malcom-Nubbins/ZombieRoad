@@ -9,7 +9,7 @@ public class HammerScript : WeaponScript {
 		this.weapon = new Hammer(
 		"Hammer",
 		3.0f, // range
-		1.0f, //delay
+		0.1f, //delay
 		20,  //durability/ammo
         false,
         1);
