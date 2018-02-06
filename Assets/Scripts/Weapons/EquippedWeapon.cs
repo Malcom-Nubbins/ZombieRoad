@@ -22,10 +22,35 @@ public class EquippedWeapon : MonoBehaviour
 	{
 		zombieMask = 1 << 8;
 	}
+
 	
 	// Update is called once per frame
 	void Update()
 	{
+        if(equippedWeapon != null)
+        {
+		    if (GameObject.Find("WeaponInfo") != null)
+		    {
+                
+                weaponInfo = GameObject.Find("WeaponInfo").GetComponent<Text>();
+                weaponInfo.color = Color.blue;
+			    if (equippedWeapon == null)
+			    {
+				    weaponInfo.text = " ";
+			    }
+			    else
+			    {
+
+				    weaponInfo.text = equippedWeapon.getWeaponName() + "\n Durability: " + equippedWeapon.getDurability();
+			    }
+		    }
+        }
+        else if(equippedWeapon == null)
+        {
+            weaponInfo = GameObject.Find("WeaponInfo").GetComponent<Text>();
+            weaponInfo.text = "No Weapon equipped";
+            weaponInfo.color = Color.red;
+        }
         
 		//Debug.Log(attacking);
 		zombie = zombieDetector.GetNearestZombie();
@@ -68,18 +93,7 @@ public class EquippedWeapon : MonoBehaviour
 				attacking = false;
 			}
 		}
-		if (GameObject.Find("WeaponInfo") != null)
-		{
-			weaponInfo = GameObject.Find("WeaponInfo").GetComponent<Text>();
-			if (equippedWeapon == null)
-			{
-				weaponInfo.text = " ";
-			}
-			else
-			{
-				weaponInfo.text = equippedWeapon.getWeaponName() + "\n Durability: " + equippedWeapon.getDurability();
-			}
-		}
+
         
 
 

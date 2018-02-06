@@ -4,12 +4,8 @@ using UnityEngine;
 
 public class Shotgun : HandWeapon
 {
-	GameObject ParticleEmitter;
-	ParticleSystem ParticleEmitterPS;
 	public Shotgun(string weaponName, float attackingDistance, float attackingDelay, int durability, bool ranged, int weaponTargetCount) : base(weaponName, attackingDistance, attackingDelay, durability, ranged, weaponTargetCount)
     {
-		//ParticleEmitter = GameObject.Find("ShotgunBullet");
-		//ParticleEmitterPS = ParticleEmitter.GetComponent<ParticleSystem>();
 	}
 	public override void attack(GameObject gameObject)
 	{
