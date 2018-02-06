@@ -13,6 +13,8 @@ public class VehicleGenerator : MonoBehaviour
 		if (rg.Exit.Length < 8) rg.RefreshExits();
 		int i = rg.Exit[(int)RoadGenerator.Direction.North] ? (int)RoadGenerator.Direction.West : (int)RoadGenerator.Direction.South;
 
+		if (rg.CullingExempt) return;
+
 		int r = Random.Range(0, 10);
 		if (r == 1)
 		{

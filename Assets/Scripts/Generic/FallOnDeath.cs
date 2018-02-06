@@ -13,7 +13,7 @@ public class FallOnDeath : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         GetComponent<Health>().onDeath += OnDeath;
-        SetAxisToRotateAround(transform.right);
+        SetAxisToRotateAround(Vector3.zero);
 	}
 
     void Update()
@@ -24,6 +24,10 @@ public class FallOnDeath : MonoBehaviour
             timeDead += Time.deltaTime;
             if (timeDead <= fallTime)
             {
+                if (axisToRotateAround == Vector3.zero)
+                {
+                    axisToRotateAround = transform.right;
+                }
                 transform.Rotate(axisToRotateAround, (-90.0f / fallTime) * Time.deltaTime, Space.World);
             }
         }
