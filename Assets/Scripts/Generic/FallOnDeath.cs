@@ -24,7 +24,7 @@ public class FallOnDeath : MonoBehaviour
             timeDead += Time.deltaTime;
             if (timeDead <= fallTime)
             {
-                transform.Rotate(axisToRotateAround, (-90.0f / fallTime) * Time.deltaTime);
+                transform.Rotate(axisToRotateAround, (-90.0f / fallTime) * Time.deltaTime, Space.World);
             }
         }
     }
