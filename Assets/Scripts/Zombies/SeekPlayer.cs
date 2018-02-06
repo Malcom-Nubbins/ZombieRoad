@@ -27,7 +27,7 @@ public class SeekPlayer : MonoBehaviour
 	
 	void Update()
     {
-        Vector3 toPlayer = followCamera.target.transform.position - transform.position;
+        Vector3 toPlayer = (RoadTileManager.bMainMenu ? followCamera.MainMenuZombieTarget.transform.position : followCamera.target.transform.position) - transform.position;
         toPlayer.y = 0;//dont move up or down, physics will handle that
 
         if (toPlayer.magnitude <= 200)
