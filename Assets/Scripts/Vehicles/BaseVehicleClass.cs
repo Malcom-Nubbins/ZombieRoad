@@ -48,8 +48,8 @@ public class BaseVehicleClass : Movement
 	// Use this for initialization
 	void Start()
 	{
-        Debug.Log("Vehicle Started: " + gameObject.name);
-        if (!_vehicleUIGroup) _vehicleUIGroup = GameObject.Find("VehicleUI").GetComponent<CanvasGroup>();
+        //Debug.Log("Vehicle Started: " + gameObject.name);
+        if (!RoadTileManager.bMainMenu && !_vehicleUIGroup) _vehicleUIGroup = GameObject.Find("VehicleUI").GetComponent<CanvasGroup>();
 		//_vehicleUIGroup.alpha = 0.0f;
 
 		vehicleRB = GetComponent<Rigidbody>();
@@ -60,7 +60,7 @@ public class BaseVehicleClass : Movement
 		maxFuel = totalFuel;
 		_maxHealth = health;
 
-		if (!_vehicleExitButtonGroup) _vehicleExitButtonGroup = GameObject.Find("ExitVehicleButton").GetComponent<CanvasGroup>();
+		if (!RoadTileManager.bMainMenu && !_vehicleExitButtonGroup) _vehicleExitButtonGroup = GameObject.Find("ExitVehicleButton").GetComponent<CanvasGroup>();
 		//_vehicleExitButtonGroup.alpha = 0.0f;
 
         // Debug
@@ -72,8 +72,8 @@ public class BaseVehicleClass : Movement
         if (_driver == null)
             return;
 
-        if (!_vehicleUIGroup) _vehicleUIGroup = GameObject.Find("VehicleUI").GetComponent<CanvasGroup>();
-        if (!_vehicleExitButtonGroup) _vehicleExitButtonGroup = GameObject.Find("ExitVehicleButton").GetComponent<CanvasGroup>();
+        if (!RoadTileManager.bMainMenu && !_vehicleUIGroup) _vehicleUIGroup = GameObject.Find("VehicleUI").GetComponent<CanvasGroup>();
+        if (!RoadTileManager.bMainMenu && !_vehicleExitButtonGroup) _vehicleExitButtonGroup = GameObject.Find("ExitVehicleButton").GetComponent<CanvasGroup>();
         _fuelSlider = GameObject.Find("FuelSlider").GetComponent<Slider>();
 		_vehHealthSlider = GameObject.Find("VehicleHealthSlider").GetComponent<Slider>();
 		_vehExitButton = GameObject.Find("ExitVehicleButton").GetComponent<Button>();

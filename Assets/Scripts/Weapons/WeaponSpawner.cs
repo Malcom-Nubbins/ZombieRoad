@@ -22,7 +22,7 @@ public class WeaponSpawner : MonoBehaviour {
 
         GameObject[] spawnableWeapons = UnlockManager.instance.GetUnlockedItems(UnlockableType.WEAPON);
         weaponPrefab = spawnableWeapons[Random.Range(0, spawnableWeapons.Length)];
-        Debug.Log(weaponPrefab);
+        //Debug.Log(weaponPrefab);
         GameObject weapon = Instantiate(weaponPrefab);
         weapon.transform.position = transform.position;
         Destroy(gameObject);

@@ -5,7 +5,7 @@ using UnityEngine;
 public class SeekPlayer : MonoBehaviour
 {
 	// persistent reference to the camera, from which we can retreive the active playercharacter or vehicle
-	public GameObject FollowCamera;
+	public static FollowCamera followCamera;
 	public float speed = 3.0f;
     public float wanderCircleRadius = 2.0f;
     public float wanderCircleDistanceInFront = 3.0f;
@@ -16,10 +16,10 @@ public class SeekPlayer : MonoBehaviour
 	void Start()
     {
         rb = GetComponent<Rigidbody>();
-        if (FollowCamera == null)
+        if (followCamera == null)
         {
-            FollowCamera = Camera.main.gameObject;
-        }
+            followCamera = FindObjectOfType<FollowCamera>();
+		}
         GetComponent<Health>().onDeath += () => {
             enabled = false;
         };
@@ -27,7 +27,7 @@ public class SeekPlayer : MonoBehaviour
 	
 	void Update()
     {
-        Vector3 toPlayer = FollowCamera.GetComponent<FollowCamera>().target.transform.position - transform.position;
+        Vector3 toPlayer = followCamera.target.transform.position - transform.position;
         toPlayer.y = 0;//dont move up or down, physics will handle that
 
         if (toPlayer.magnitude <= 200)

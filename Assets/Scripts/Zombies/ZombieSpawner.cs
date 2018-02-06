@@ -6,7 +6,7 @@ public class ZombieSpawner : MonoBehaviour
 {
 	public bool spawnAllAtOnce;
 	float activeRadius = 150;
-	FollowCamera followCamera;
+	static FollowCamera followCamera;
 	GameObject zombiePrefab;
 	int numberToSpawn = 5;
 	float timeBetweenSpawns = 5;
@@ -22,8 +22,8 @@ public class ZombieSpawner : MonoBehaviour
 			Destroy(gameObject);
 			return;
 		}
-
-		followCamera = Camera.main.GetComponent<FollowCamera>();
+		
+		if (followCamera==null) followCamera = FindObjectOfType<FollowCamera>();
 
 		SphereCollider sphere = GetComponent<SphereCollider>();
 		if (sphere)
