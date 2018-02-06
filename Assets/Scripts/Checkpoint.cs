@@ -23,11 +23,11 @@ public class Checkpoint : MonoBehaviour
 
     Text checkpointDistance;
 
-    static int level = 0;
+    static protected int level = 0;
 	
 	public Mesh[] lods;
 
-	void Start()
+	public virtual void Start()
 	{
 		checkpointPosition = FollowCamera.GetComponent<FollowCamera>().target.transform.position;
 		checkpointPosition.y = -0.1f;
@@ -51,7 +51,7 @@ public class Checkpoint : MonoBehaviour
 		if (!gameObject.GetComponent<MeshFilter>().mesh) gameObject.GetComponent<MeshFilter>().mesh = lods[0];
 	}
 
-	void Update()
+	public virtual void Update()
 	{
 		//Transform checkpointTransform = GetComponent<Transform>();
 		//checkpointTransform.Rotate((Vector3.up * checkpointRotationSpeed) * Time.deltaTime);
@@ -113,7 +113,7 @@ public class Checkpoint : MonoBehaviour
 		RoadMapRoot.BroadcastMessage("Extend", false);
 	}
 
-	void UpdateCheckpoint()
+	public virtual void UpdateCheckpoint()
 	{
 		checkpointRadius *= 1.5f;
 		gameObject.transform.localScale = new Vector3(checkpointRadius * 2, 8.0f, checkpointRadius * 2);

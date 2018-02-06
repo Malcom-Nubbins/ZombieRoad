@@ -7,6 +7,7 @@ public class Unlockable : MonoBehaviour
     public string unlockableID;
     public UnlockableType type;
     public bool unlocked = true;
+    public int Price = 0;
 
     void Start()
     {

@@ -46,6 +46,8 @@ public class RoadTileManager : MonoBehaviour
 	public bool _Cull = true;
 	public static bool bCull;
 
+	public static bool bMainMenu;
+
 	//int MaxTimeUntilFieldCheck = 450;
 	//int TimeUntilFieldCheck;
 
@@ -66,6 +68,8 @@ public class RoadTileManager : MonoBehaviour
 		bCull = _Cull;
 
 		//TimeUntilFieldCheck = MaxTimeUntilFieldCheck;
+
+		bMainMenu = GetComponent<MainMenuDummyCheckpoint>() != null;
 	}
 
 	GameObject EmergencyFieldRemover;
@@ -90,7 +94,7 @@ public class RoadTileManager : MonoBehaviour
 		//if (TimeUntilFieldCheck==0)
 		//{
 		//	//110 is slightly under a quarter on average
-		if (Time.fixedTime > 1 && EmergencyFieldRemover == null && checkpoint.RoadMapRoot.GetComponentsInChildren<RoadGenerator>()[110] as DisabledRoadGenerator != null)
+		if (Time.fixedTime > 10000000000000 && EmergencyFieldRemover == null && checkpoint.RoadMapRoot.GetComponentsInChildren<RoadGenerator>()[110] as DisabledRoadGenerator != null)
 		{
 			int i = RoadGenerator.Wrap0to7((int)(checkpoint.FollowCamera.GetComponent<FollowCamera>().target.transform.rotation.eulerAngles.y / 45.0f));
 			RaycastHit Hit; Physics.Raycast(RoundDownToGrid(checkpoint.FollowCamera.GetComponent<FollowCamera>().target.transform.position) + new Vector3(RoadGenerator.Xoffset(i) * 12, 500, RoadGenerator.Zoffset(i) * 12), new Vector3(0, -1), out Hit, Mathf.Infinity, 1 << 9);

@@ -10,6 +10,10 @@ public class ShopScreen : MonoBehaviour {
     int _currentSelectedItem;
 
     Text _itemNameText;
+    Text _itemCostText;
+    Text _currentCoinsText;
+
+    Button purchaseButton;
 
     float _currentCooldownTime = 0.0f;
 
@@ -23,7 +27,25 @@ public class ShopScreen : MonoBehaviour {
         _lockedItemDisplay = Instantiate(prefab, Vector3.zero, Quaternion.identity, transform);
 
         _itemNameText = GameObject.Find("ItemNameText").GetComponent<Text>();
+        _itemCostText = GameObject.Find("ItemPriceText").GetComponent<Text>();
+        _currentCoinsText = GameObject.Find("CurrentCoinsText").GetComponent<Text>();
+
         _itemNameText.text = _lockedItemDisplay.name.Substring(0, _lockedItemDisplay.name.IndexOf('('));
+        _itemCostText.text = "Price: " + _lockedItems[_currentSelectedItem].Price + " coins";
+        _currentCoinsText.text = "Coins: " + Currency.GetCurrency();
+
+        purchaseButton = GameObject.Find("Purchase").GetComponent<Button>();
+        purchaseButton.onClick.AddListener(onPurchaseClick);
+    }
+
+    void onPurchaseClick()
+    {
+        if(Currency.GetCurrency() > _lockedItems[_currentSelectedItem].Price)
+        {
+            //UnlockManager.instance.Unlo
+            Currency.RemoveCurrency(_lockedItems[_currentSelectedItem].Price);
+            _currentCoinsText.text = "Coins: " + Currency.GetCurrency();
+        }
     }
 	
     void onNextClick()
@@ -38,6 +60,7 @@ public class ShopScreen : MonoBehaviour {
         Quaternion rotation = Quaternion.Euler(0.0f, 180.0f, 0.0f);
         _lockedItemDisplay = Instantiate(prefab, Vector3.zero, transform.rotation, transform);
         _itemNameText.text = _lockedItemDisplay.name.Substring(0, _lockedItemDisplay.name.IndexOf('('));
+        _itemCostText.text = "Price: " + _lockedItems[_currentSelectedItem].Price + " coins";
     }
 
     void onPrevClick()
@@ -52,6 +75,7 @@ public class ShopScreen : MonoBehaviour {
         Quaternion rotation = Quaternion.Euler(0.0f, 180.0f, 0.0f);
         _lockedItemDisplay = Instantiate(prefab, Vector3.zero, transform.rotation, transform);
         _itemNameText.text = _lockedItemDisplay.name.Substring(0, _lockedItemDisplay.name.IndexOf('('));
+        _itemCostText.text = "Price: " + _lockedItems[_currentSelectedItem].Price + " coins";
     }
 
 	// Update is called once per frame
