@@ -36,7 +36,7 @@ public class Checkpoint : MonoBehaviour
 		gameObject.transform.SetPositionAndRotation(checkpointPosition, gameObject.transform.rotation);
 
         level = 0;
-		timeRemaining = 10;
+		timeRemaining = 9;
 
 		//checkpointRotationSpeed = 50.0f;
 
@@ -65,7 +65,7 @@ public class Checkpoint : MonoBehaviour
 			UpdateCheckpoint();
 		}
 
-		if (timeRemaining > 0 )
+		if (timeRemaining > 0 && !DebugDisableTimer)
 			timeRemaining -= Time.deltaTime;
 
 		if (timeRemaining < 0)
