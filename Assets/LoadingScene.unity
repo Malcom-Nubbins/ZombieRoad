@@ -802,7 +802,7 @@ MonoBehaviour:
   target: {fileID: 1654138309}
   MainMenuZombieTarget: {fileID: 1113123615}
   offset: {x: 0, y: 386, z: -31}
-  CullDistance: 300
+  CullDistance: 340
   rotate: 1
 --- !u!1 &1113123615
 GameObject:
