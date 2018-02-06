@@ -99,6 +99,14 @@ public class UnlockManager : MonoBehaviour
         SaveUnlocks();
         return unlockable;
     }
+
+    public void UnlockItem(Unlockable item)
+    {
+        item.unlocked = true;
+        PlayerPrefs.SetInt(item.unlockableID, item.unlocked ? PP_TRUE : PP_FALSE);
+        PlayerPrefs.SetInt(PP_UNLOCKS_SAVED, PP_TRUE);
+        PlayerPrefs.Save();
+    }
 	
 	void Update()
     {

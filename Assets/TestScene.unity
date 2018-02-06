@@ -618,6 +618,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4478637502609904, guid: e371008d8e166ef4ea29886c7d891ab5,
     type: 2}
   m_PrefabInternal: {fileID: 137625556}
+--- !u!1 &156396184 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1662469913138820, guid: a8852ed89d8f35944bd7a0eb45da7192,
+    type: 2}
+  m_PrefabInternal: {fileID: 860171470}
 --- !u!1001 &162521728
 Prefab:
   m_ObjectHideFlags: 0
@@ -1076,6 +1081,7 @@ MonoBehaviour:
   unlockableID: WeaponChain
   type: 3
   unlocked: 1
+  Price: 0
 --- !u!1 &280894592
 GameObject:
   m_ObjectHideFlags: 0
@@ -1614,7 +1620,7 @@ Prefab:
         type: 2}
       propertyPath: FollowCamera
       value: 
-      objectReference: {fileID: 1550227342}
+      objectReference: {fileID: 156396184}
     - target: {fileID: 114195961261252844, guid: 9dc67150a3482df46bb27a10d5e9ea1c,
         type: 2}
       propertyPath: RoadMapRoot
@@ -1648,6 +1654,7 @@ MonoBehaviour:
   unlockableID: WeaponKnife
   type: 3
   unlocked: 1
+  Price: 0
 --- !u!1001 &374935997
 Prefab:
   m_ObjectHideFlags: 0
@@ -1728,6 +1735,7 @@ MonoBehaviour:
   unlockableID: WeaponIronBar
   type: 3
   unlocked: 1
+  Price: 0
 --- !u!1 &400907971
 GameObject:
   m_ObjectHideFlags: 0
@@ -2371,6 +2379,7 @@ MonoBehaviour:
   unlockableID: WeaponBaseballBat
   type: 3
   unlocked: 1
+  Price: 0
 --- !u!4 &537045427 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4437608340849616, guid: 851e03c9990247c449bd2805ca6e31ea,
@@ -2568,7 +2577,7 @@ Prefab:
         type: 2}
       propertyPath: followCamera
       value: 
-      objectReference: {fileID: 1550227342}
+      objectReference: {fileID: 156396184}
     - target: {fileID: 4760059107280150, guid: c5cb10fa119007f4888248d330d93dd4, type: 2}
       propertyPath: m_LocalPosition.z
       value: 0.431
@@ -2621,6 +2630,11 @@ Prefab:
 --- !u!1 &615707482 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1153349769124904, guid: c5cb10fa119007f4888248d330d93dd4,
+    type: 2}
+  m_PrefabInternal: {fileID: 615707481}
+--- !u!4 &615707483 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4827089163185860, guid: c5cb10fa119007f4888248d330d93dd4,
     type: 2}
   m_PrefabInternal: {fileID: 615707481}
 --- !u!4 &651446824 stripped
@@ -3418,6 +3432,58 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 852752010}
+--- !u!1001 &860171470
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4464441334408324, guid: a8852ed89d8f35944bd7a0eb45da7192, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 3.9899998
+      objectReference: {fileID: 0}
+    - target: {fileID: 4464441334408324, guid: a8852ed89d8f35944bd7a0eb45da7192, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 20.042
+      objectReference: {fileID: 0}
+    - target: {fileID: 4464441334408324, guid: a8852ed89d8f35944bd7a0eb45da7192, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -15.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 4464441334408324, guid: a8852ed89d8f35944bd7a0eb45da7192, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0.35355338
+      objectReference: {fileID: 0}
+    - target: {fileID: 4464441334408324, guid: a8852ed89d8f35944bd7a0eb45da7192, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0.35355338
+      objectReference: {fileID: 0}
+    - target: {fileID: 4464441334408324, guid: a8852ed89d8f35944bd7a0eb45da7192, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0.1464466
+      objectReference: {fileID: 0}
+    - target: {fileID: 4464441334408324, guid: a8852ed89d8f35944bd7a0eb45da7192, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.8535535
+      objectReference: {fileID: 0}
+    - target: {fileID: 4464441334408324, guid: a8852ed89d8f35944bd7a0eb45da7192, type: 2}
+      propertyPath: m_RootOrder
+      value: 48
+      objectReference: {fileID: 0}
+    - target: {fileID: 114745792321684716, guid: a8852ed89d8f35944bd7a0eb45da7192,
+        type: 2}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 615707482}
+    - target: {fileID: 114521714464860386, guid: a8852ed89d8f35944bd7a0eb45da7192,
+        type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 615707483}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: a8852ed89d8f35944bd7a0eb45da7192, type: 2}
+  m_IsPrefabParent: 0
 --- !u!4 &878985631 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4198145194012050, guid: d467e34cd1ad20b4786a7842751a240c,
@@ -3484,6 +3550,7 @@ MonoBehaviour:
   unlockableID: WeaponHandgun
   type: 3
   unlocked: 1
+  Price: 0
 --- !u!1001 &889419842
 Prefab:
   m_ObjectHideFlags: 0
@@ -6015,7 +6082,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &1550227343
 AudioListener:
   m_ObjectHideFlags: 0
@@ -6098,8 +6165,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 615707482}
+  MainMenuZombieTarget: {fileID: 0}
   offset: {x: 0, y: 30, z: -33}
   CullDistance: 200
+  rotate: 1
 --- !u!114 &1550227349
 MonoBehaviour:
   m_ObjectHideFlags: 0
