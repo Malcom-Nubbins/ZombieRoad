@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 4767349869905196}
   - component: {fileID: 33855895891978092}
   - component: {fileID: 23073401782040150}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: shop:sign
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,9 +75,9 @@ GameObject:
   - component: {fileID: 4085271387806916}
   - component: {fileID: 33286235308603278}
   - component: {fileID: 23341184892810058}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: shop:Mesh
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 114312301950468204}
   m_Layer: 0
   m_Name: Burger Shop
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 65775865983565298}
   - component: {fileID: 54347401713826584}
   - component: {fileID: 114395372187881684}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Burger Sign and coll/rb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -143,9 +143,9 @@ GameObject:
   - component: {fileID: 4714978294525370}
   - component: {fileID: 65710761191556262}
   - component: {fileID: 65991696605161144}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Shop Mesh and collision
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -196,7 +196,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1374535507918080}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
