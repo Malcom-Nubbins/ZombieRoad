@@ -58,7 +58,6 @@ GameObject:
   - component: {fileID: 114879626233876794}
   - component: {fileID: 114438567250874226}
   - component: {fileID: 114021146354991488}
-  - component: {fileID: 95910496661020974}
   m_Layer: 0
   m_Name: PlayerCharacter
   m_TagString: Player
@@ -91,6 +90,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4043138725167932}
+  - component: {fileID: 95478276687927028}
+  - component: {fileID: 114920544142112638}
   m_Layer: 0
   m_Name: Animator
   m_TagString: Untagged
@@ -229,7 +230,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1192323003884066}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4329249501419614}
@@ -268,14 +269,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1153349769124904}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.15, y: 2.9, z: 0}
+  m_LocalRotation: {x: 0, y: 0.6809124, z: -0, w: -0.7323649}
+  m_LocalPosition: {x: 19.75, y: 2.9, z: -47.34}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4043138725167932}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -445.83, z: 0}
 --- !u!4 &4952791247278754
 Transform:
   m_ObjectHideFlags: 1
@@ -343,13 +344,13 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!95 &95910496661020974
+--- !u!95 &95478276687927028
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1153349769124904}
+  m_GameObject: {fileID: 1317305137798984}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: aaf6cf34072a3294f99a85941115fdf0, type: 2}
@@ -384,6 +385,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Bullet: {fileID: 0}
   zombieDetector: {fileID: 114747302335946366}
+  zombie: {fileID: 0}
   followCamera: {fileID: 0}
   attacking: 0
 --- !u!114 &114178941160081296
@@ -492,6 +494,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 20
+--- !u!114 &114920544142112638
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1317305137798984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23b6972fb7c7a9a489d6b6b77784f09e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!135 &135444783725829442
 SphereCollider:
   m_ObjectHideFlags: 1
