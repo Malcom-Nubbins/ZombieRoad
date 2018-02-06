@@ -282,6 +282,7 @@ MonoBehaviour:
   unlockableID: HouseYellow
   type: 0
   unlocked: 0
+  Price: 15
 --- !u!114 &114255360198340444
 MonoBehaviour:
   m_ObjectHideFlags: 1

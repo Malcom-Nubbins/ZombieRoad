@@ -522,6 +522,7 @@ MonoBehaviour:
   unlockableID: ShopBurger
   type: 2
   unlocked: 1
+  Price: 15
 --- !u!114 &114395372187881684
 MonoBehaviour:
   m_ObjectHideFlags: 1

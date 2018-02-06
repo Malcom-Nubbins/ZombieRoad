@@ -294,3 +294,4 @@ MonoBehaviour:
   unlockableID: HouseRed
   type: 0
   unlocked: 1
+  Price: 15

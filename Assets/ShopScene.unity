@@ -638,7 +638,7 @@ GameObject:
   - component: {fileID: 1340119687}
   - component: {fileID: 1340119686}
   m_Layer: 5
-  m_Name: Text
+  m_Name: CurrentCoinsText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

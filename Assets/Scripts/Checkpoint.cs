@@ -23,7 +23,7 @@ public class Checkpoint : MonoBehaviour
 
     Text checkpointDistance;
 
-    static int level = 0;
+    static protected int level = 0;
 	
 	public Mesh[] lods;
 
