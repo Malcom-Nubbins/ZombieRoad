@@ -1703,6 +1703,7 @@ MonoBehaviour:
   ChanceT: 25
   ChancePavement: 50
   ChanceGrass: 50
+  ChanceBarrier: 0
   _Cull: 1
 --- !u!4 &551808995
 Transform:
@@ -1961,6 +1962,11 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 549c8619fca936d4bb1029ef18423fd1, type: 2}
+    - target: {fileID: 114195961261252844, guid: 9dc67150a3482df46bb27a10d5e9ea1c,
+        type: 2}
+      propertyPath: DebugDisableTimer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9dc67150a3482df46bb27a10d5e9ea1c, type: 2}
   m_IsPrefabParent: 0

@@ -30,6 +30,12 @@ public class DieWhenHitByVehicle : MonoBehaviour
 
     protected virtual void OnHitByVehicle(BaseVehicleClass vehicle)
     {
+        FallOnDeath fallOnDeath = GetComponent<FallOnDeath>();
+        if (fallOnDeath)
+        {
+            Vector3 toVehicle = vehicle.transform.position - transform.position;
+            fallOnDeath.SetAxisToRotateAround(Vector3.Cross(-toVehicle.normalized, Vector3.up));
+        }
         if (health)
         {
             health.health = 0;
