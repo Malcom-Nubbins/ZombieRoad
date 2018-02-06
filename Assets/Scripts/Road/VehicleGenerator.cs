@@ -10,6 +10,7 @@ public class VehicleGenerator : MonoBehaviour
 	{
 		GameObject player = RoadTileManager.checkpoint.FollowCamera.GetComponent<FollowCamera>().target;
 		RoadGenerator rg = gameObject.GetComponent<RoadGenerator>();
+		if (rg.Exit.Length < 8) rg.RefreshExits();
 		int i = rg.Exit[(int)RoadGenerator.Direction.North] ? (int)RoadGenerator.Direction.West : (int)RoadGenerator.Direction.South;
 
 		int r = Random.Range(0, 10);
