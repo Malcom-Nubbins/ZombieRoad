@@ -113,6 +113,7 @@
      <Compile Include="Assets\Scripts\GUI\DisplayScore.cs" />
      <Compile Include="Assets\Scripts\Killcount.cs" />
      <Compile Include="Assets\Scripts\LoadScene.cs" />
+     <Compile Include="Assets\Scripts\MainMenuDummyCheckpoint.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerDeath.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerHealth.cs" />
      <Compile Include="Assets\Scripts\Player\PlayPlayerWalkingAnimation.cs" />
