@@ -68,15 +68,18 @@ public class EquippedWeapon : MonoBehaviour
 				attacking = false;
 			}
 		}
-        weaponInfo = GameObject.Find("WeaponInfo").GetComponent<Text>();
-        if(equippedWeapon == null)
-        {
-            weaponInfo.text = " ";
-        }
-        else
-        {
-            weaponInfo.text = equippedWeapon.getWeaponName() + "\n Durability: " + equippedWeapon.getDurability() ;
-        }
+		if (GameObject.Find("WeaponInfo") != null)
+		{
+			weaponInfo = GameObject.Find("WeaponInfo").GetComponent<Text>();
+			if (equippedWeapon == null)
+			{
+				weaponInfo.text = " ";
+			}
+			else
+			{
+				weaponInfo.text = equippedWeapon.getWeaponName() + "\n Durability: " + equippedWeapon.getDurability();
+			}
+		}
         
 
 
