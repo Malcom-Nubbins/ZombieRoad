@@ -102,7 +102,7 @@ public class EquippedWeapon : MonoBehaviour
         //attack - pass in the zombie the player is attacking - only 1 for now
         //until they are tagged
         GameObject[] zombiesToAttack = zombieDetector.GetSortedZombies(equippedWeapon.getWeaponTargetCount(), equippedWeapon.getAttackingDistance());
-        Debug.Log(zombiesToAttack.Length);
+        //Debug.Log(zombiesToAttack.Length);
         for(int x = 0; x < zombiesToAttack.Length; x++)
         {
             equippedWeapon.attack(zombiesToAttack[x].gameObject);
