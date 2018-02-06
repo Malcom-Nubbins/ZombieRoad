@@ -62,9 +62,32 @@ public class SeekPlayer : MonoBehaviour
 
             transform.position = transform.position + transform.forward * speed * Time.deltaTime;
         }
+		if (RoadTileManager.bMainMenu && toPlayer.magnitude <= 20)
+			MainMenuDest = new Vector3(Random.value * 200, 0, Random.value * -200) + RoadTileManager.checkpoint.RoadMapRoot.transform.position;
+	}
+
+	private void OnCollisionStay(Collision collision)
+	{
+		if (RoadTileManager.bMainMenu) OnCollisionEnter(collision);
+	}
+
+	void OnCollisionEnter(Collision collision)
+	{
 		if (RoadTileManager.bMainMenu)
 		{
-			if (toPlayer.magnitude <= 20) MainMenuDest = new Vector3(Random.value * 200, 0, Random.value * -200) + RoadTileManager.checkpoint.RoadMapRoot.transform.position;
+			if (collision.gameObject.tag != "Zombie")
+			{
+				return;
+			}
+
+			GameObject zombie = collision.gameObject;
+
+			if (zombie.GetComponent<Health>().health <= 0)
+			{
+				return;
+			}
+
+			gameObject.GetComponent<Health>().health -= 0.5f;
 		}
 	}
 }
