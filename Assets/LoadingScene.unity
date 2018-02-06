@@ -785,6 +785,7 @@ MonoBehaviour:
   FollowCamera: {fileID: 1060524214}
   RoadMapRoot: {fileID: 1654138309}
   DebugDisableTimer: 1
+  TextSizeFlag: 0
   checkpointRadius: 200
   lods: []
 --- !u!114 &1060524220
@@ -798,9 +799,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53834f95ab9ab4924a07a6430fe5864e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 1654138309}
+  target: {fileID: 1113123615}
   offset: {x: 0, y: 386, z: -31}
   CullDistance: 300
+  rotate: 1
 --- !u!1 &1113123615
 GameObject:
   m_ObjectHideFlags: 0
