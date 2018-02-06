@@ -34,6 +34,11 @@ public class OccupyVehicle : MonoBehaviour
 	{
 		if (!Movement.InputLeft() && !Movement.InputRight())
 		{
+            if(vehicle.GetComponent<BaseVehicleClass>().health <= 0 || vehicle.GetComponent<BaseVehicleClass>().GetFuelPercentage() <= 0)
+            {
+                return;
+            }
+
 			GameObject followCamera = gameObject.GetComponent<DisableVehicle>().followCamera;
 			gameObject.GetComponent<DisableVehicle>().followCamera = null;
 			vehicle.GetComponent<DisableVehicle>().followCamera = followCamera;
