@@ -13,6 +13,7 @@ public class Checkpoint : MonoBehaviour
 	public GameObject RoadMapRoot;
 
 	public bool DebugDisableTimer;
+    public bool TextSizeFlag = false;
 
 	public float checkpointRadius;
 	private float timeRemaining;
@@ -22,11 +23,11 @@ public class Checkpoint : MonoBehaviour
 
     Text checkpointDistance;
 
-    static int level = 0;
+    static protected int level = 0;
 	
 	public Mesh[] lods;
 
-	void Start()
+	public virtual void Start()
 	{
 		checkpointPosition = FollowCamera.GetComponent<FollowCamera>().target.transform.position;
 		checkpointPosition.y = -0.1f;
@@ -35,7 +36,7 @@ public class Checkpoint : MonoBehaviour
 		gameObject.transform.SetPositionAndRotation(checkpointPosition, gameObject.transform.rotation);
 
         level = 0;
-		timeRemaining = 10;
+		timeRemaining = 9;
 
 		//checkpointRotationSpeed = 50.0f;
 
@@ -50,7 +51,7 @@ public class Checkpoint : MonoBehaviour
 		if (!gameObject.GetComponent<MeshFilter>().mesh) gameObject.GetComponent<MeshFilter>().mesh = lods[0];
 	}
 
-	void Update()
+	public virtual void Update()
 	{
 		//Transform checkpointTransform = GetComponent<Transform>();
 		//checkpointTransform.Rotate((Vector3.up * checkpointRotationSpeed) * Time.deltaTime);
@@ -74,12 +75,32 @@ public class Checkpoint : MonoBehaviour
 		   // CancelInvoke("decreaseTimeRemaining");
 			timeRemaining = 0;
 
-			PlayerDeath player = GameObject.Find("PlayerCharacter").GetComponent<PlayerDeath>();
+            PlayerDeath player = GameObject.Find("PlayerCharacter").GetComponent<PlayerDeath>();
 			player.killPlayer();
 		}
 
         if (timeRemaining < 10)
+        {
             _checkpointTimer.color = new Color(100, 0, 0);
+            if (_checkpointTimer.fontSize < 65 && TextSizeFlag == true)
+            {
+                _checkpointTimer.fontSize += 1;
+                if(_checkpointTimer.fontSize == 65)
+                {
+                    TextSizeFlag = false;
+                }
+            }
+            else if (timeRemaining > 0)
+            {
+                 _checkpointTimer.fontSize -= 1;
+                if(_checkpointTimer.fontSize == 45)
+                {
+                    TextSizeFlag = true;
+                }
+            }
+
+        }
+
         else
             _checkpointTimer.color = new Color(0, 0, 0);
 
@@ -92,7 +113,7 @@ public class Checkpoint : MonoBehaviour
 		RoadMapRoot.BroadcastMessage("Extend", false);
 	}
 
-	void UpdateCheckpoint()
+	public virtual void UpdateCheckpoint()
 	{
 		checkpointRadius *= 1.5f;
 		gameObject.transform.localScale = new Vector3(checkpointRadius * 2, 8.0f, checkpointRadius * 2);

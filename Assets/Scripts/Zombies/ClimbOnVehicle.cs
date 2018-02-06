@@ -73,9 +73,15 @@ public class ClimbOnVehicle : MonoBehaviour
                 {
                     DetachFromVehicle();
                 }
+                if (transform.position.y - vehicleAttachedTo.transform.position.y < 1.0f)
+                {
+                    //No longer on roof after climbing
+                    DetachFromVehicle();
+                }
             }
             if (vehicleRigidbody && Vector3.Distance(transform.position, vehicleRigidbody.ClosestPointOnBounds(transform.position)) > 1.0f)
             {
+                //Too far from vehicle
                 DetachFromVehicle();
             }
         }

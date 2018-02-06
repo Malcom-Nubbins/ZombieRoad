@@ -6,7 +6,7 @@ public class FollowCamera : MonoBehaviour
     public GameObject target;
     public Vector3 offset;
 	public float CullDistance;
-
+    public bool rotate = true;
 
 	void Start()
     {
@@ -16,11 +16,18 @@ public class FollowCamera : MonoBehaviour
     {
         if (target)
         {
-            float desiredAngle = target.transform.eulerAngles.y;
-            Quaternion rotation = Quaternion.Euler(0, desiredAngle, 0);
+            if (rotate)
+            {
+                float desiredAngle = target.transform.eulerAngles.y;
+                Quaternion rotation = Quaternion.Euler(0, desiredAngle, 0);
 
-            transform.position = target.transform.position + (rotation * offset);
-            transform.LookAt(target.transform);
+                transform.position = target.transform.position + (rotation * offset);
+                transform.LookAt(target.transform);
+            }
+            else
+            {
+                transform.position = target.transform.position + offset;
+            }
 
             if (Input.GetKey(KeyCode.Keypad1))
 				offset.y--;

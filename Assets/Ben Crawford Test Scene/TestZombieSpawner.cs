@@ -18,7 +18,7 @@ public class TestZombieSpawner : MonoBehaviour {
         timer -= Time.deltaTime;
         if (timer <= 0)
         {
-            Instantiate(prefab, transform.position, Quaternion.identity).GetComponent<SeekPlayer>().FollowCamera = FollowCamera;
+            Instantiate(prefab, transform.position, Quaternion.identity)/*.GetComponent<SeekPlayer>().followCamera = FollowCamera*/;
             timer += timeBetweenSpawns;
         }
 	}
