@@ -13,6 +13,7 @@ public class Checkpoint : MonoBehaviour
 	public GameObject RoadMapRoot;
 
 	public bool DebugDisableTimer;
+    public bool TextSizeFlag = false;
 
 	public float checkpointRadius;
 	private float timeRemaining;
@@ -64,7 +65,7 @@ public class Checkpoint : MonoBehaviour
 			UpdateCheckpoint();
 		}
 
-		if (timeRemaining > 0 && !DebugDisableTimer)
+		if (timeRemaining > 0 )
 			timeRemaining -= Time.deltaTime;
 
 		if (timeRemaining < 0)
@@ -74,12 +75,32 @@ public class Checkpoint : MonoBehaviour
 		   // CancelInvoke("decreaseTimeRemaining");
 			timeRemaining = 0;
 
-			PlayerDeath player = GameObject.Find("PlayerCharacter").GetComponent<PlayerDeath>();
+            PlayerDeath player = GameObject.Find("PlayerCharacter").GetComponent<PlayerDeath>();
 			player.killPlayer();
 		}
 
         if (timeRemaining < 10)
+        {
             _checkpointTimer.color = new Color(100, 0, 0);
+            if (_checkpointTimer.fontSize < 65 && TextSizeFlag == true)
+            {
+                _checkpointTimer.fontSize += 1;
+                if(_checkpointTimer.fontSize == 65)
+                {
+                    TextSizeFlag = false;
+                }
+            }
+            else if (timeRemaining > 0)
+            {
+                 _checkpointTimer.fontSize -= 1;
+                if(_checkpointTimer.fontSize == 45)
+                {
+                    TextSizeFlag = true;
+                }
+            }
+
+        }
+
         else
             _checkpointTimer.color = new Color(0, 0, 0);
 
