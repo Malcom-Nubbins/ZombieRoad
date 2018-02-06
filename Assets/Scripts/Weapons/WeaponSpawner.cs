@@ -9,6 +9,12 @@ public class WeaponSpawner : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
+        if (GameObject.Find("RoadTileManager") == null)
+        {
+            // Don't spawn a weapon if there is no roadtilemanager (mainly to stop weapons spawning in the shop screen)
+            Destroy(this);
+            return;
+        }
         if (Random.value < 0.5)
         {
             Destroy(gameObject);
