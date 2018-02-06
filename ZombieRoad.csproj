@@ -142,6 +142,7 @@
     <Compile Include="Assets\Scripts\LoadScene.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerDeath.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerHealth.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayPlayerWalkingAnimation.cs" />
     <Compile Include="Assets\Scripts\ResetKillcount.cs" />
     <Compile Include="Assets\Scripts\Road\Buildings\BuildingGenerator.cs" />
     <Compile Include="Assets\Scripts\Road\Buildings\BuildingManager.cs" />

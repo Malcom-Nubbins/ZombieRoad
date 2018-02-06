@@ -24,13 +24,14 @@ public class WeaponScript : MonoBehaviour
         else
         {
             EquippedWeapon equipped = equippedWeaponObject.GetComponent<EquippedWeapon>();
-		    if(equipped.equippedWeapon!=null && equipped.equippedWeapon.getDurability() <= 0)
-		    {
-			    dropWeapon();
-		    }
+            if(equipped != null)
+            {
+                if (equipped.equippedWeapon != null && equipped.equippedWeapon.getDurability() <= 0)
+                {
+                    dropWeapon();
+                }
+            }
         }
-		
-
 	}
 
 	void OnCollisionEnter(Collision collision)

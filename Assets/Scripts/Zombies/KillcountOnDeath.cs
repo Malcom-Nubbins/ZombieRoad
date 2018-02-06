@@ -20,9 +20,18 @@ public class KillcountOnDeath : MonoBehaviour
         }
         else
         {
-            Killcount.AddKill();
-            if (Killcount.GetKills() % 10 == 0)
-                Currency.AddCurrency();
+            FollowCamera camera = RoadTileManager.checkpoint.FollowCamera.GetComponent<FollowCamera>();
+            if(Vector3.Distance(transform.position, camera.target.transform.position) > camera.CullDistance)
+            {
+                // Culled
+            }
+            else
+            {
+                Killcount.AddKill();
+                if (Killcount.GetKills() % 10 == 0)
+                    Currency.AddCurrency();
+            }
+
         }
     }
 
