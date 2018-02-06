@@ -82,7 +82,7 @@ public class RoadGenerator : MonoBehaviour
 	{
 		CurrentPlayerPosition = RoadTileManager.checkpoint.FollowCamera.GetComponent<FollowCamera>().target.transform.position;
 
-		if (CurrentPlayerPosition.magnitude > 15 && Vector3.Distance(CachedPlayerPosition, CurrentPlayerPosition) < 15) return false;
+		if (!RoadTileManager.bMainMenu && CurrentPlayerPosition.magnitude > 15 && Vector3.Distance(CachedPlayerPosition, CurrentPlayerPosition) < 15) { MySpecificDebug += "15\n"; return false; }
 
 		CachedPlayerPosition = CurrentPlayerPosition;
 
@@ -545,7 +545,7 @@ public class RoadGenerator : MonoBehaviour
 				if (!hit[i].collider)//.gameObject.GetComponent<RoadGenerator>())
 				{
 					//if (DebugLogs) Debug.Log(gameObject.name + " can expand " + (Direction)i+", space left "+(Direction)Wrap0to7(i-1)+", space right "+(Direction)Wrap0to7(i+1));
-					//MySpecificDebug += "I can expand " + (Direction)i + ", space left " + (Direction)Wrap0to7(i - 1) + ", space right " + (Direction)Wrap0to7(i + 1) + "\n";
+					MySpecificDebug += "I can expand " + (Direction)i + ", space left " + (Direction)Wrap0to7(i - 1) + ", space right " + (Direction)Wrap0to7(i + 1) + "\n";
 
 					if (!Exit[i])
 					{
@@ -703,7 +703,7 @@ public class RoadGenerator : MonoBehaviour
 			}
 			if (DebugLogs) Debug.Log(LogExits());
 		}
-		MySpecificDebug += Time.unscaledTime + " Refreshed exits\n";
+		//MySpecificDebug += Time.unscaledTime + " Refreshed exits\n";
 	}
 
 	// where i is the Direction
