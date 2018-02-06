@@ -133,7 +133,7 @@ public class BaseVehicleClass : Movement
         foreach (GameObject zombie in zombies)
         {
             zombie.GetComponent<ClimbOnVehicle>().DetachFromVehicle();
-            zombie.GetComponent<Rigidbody>().AddForce((transform.forward + Vector3.up * 0.5f).normalized * 500, ForceMode.Acceleration);
+            zombie.GetComponent<Rigidbody>().AddForce((transform.forward + Vector3.up * 0.5f).normalized * 500 * (speed / maxSpeed), ForceMode.Acceleration);
         }
 
         Camera.main.GetComponent<TransparentifyObject>().player = _driver.transform;
