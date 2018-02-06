@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 4767349869905196}
   - component: {fileID: 33855895891978092}
   - component: {fileID: 23073401782040150}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: shop:sign
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 65775865983565298}
   - component: {fileID: 54347401713826584}
   - component: {fileID: 114395372187881684}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Burger Sign and coll/rb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
