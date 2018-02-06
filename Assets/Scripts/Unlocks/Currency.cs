@@ -27,7 +27,7 @@ public class Currency : MonoBehaviour {
         currency = PlayerPrefs.GetInt(PP_CURRENCY, 0);
     }
 
-    void Save()
+    static void Save()
     {
         PlayerPrefs.SetInt(PP_CURRENCY, currency);
     }
@@ -35,10 +35,17 @@ public class Currency : MonoBehaviour {
     public static void AddCurrency()
     {
         currency++;
+        Save();
     }
 
     public static int GetCurrency()
     {
         return currency;
+    }
+
+    public static void RemoveCurrency(int amount)
+    {
+        currency -= amount;
+        Save();
     }
 }

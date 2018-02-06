@@ -303,6 +303,7 @@ MonoBehaviour:
   unlockableID: ZombieExploder
   type: 5
   unlocked: 1
+  Price: 10
 --- !u!114 &114653475012181372
 MonoBehaviour:
   m_ObjectHideFlags: 1
