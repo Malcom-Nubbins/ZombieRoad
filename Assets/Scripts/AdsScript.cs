@@ -44,7 +44,7 @@ public class AdsScript : MonoBehaviour
                 break;
 
             case ShowResult.Skipped:
-                Debug.Log("USER SKIPPED ADVERT NEED TO RESET HIS PROGRESS !!!!!!!");
+                Debug.Log("USER SKIPPED ADVERT NEED TO RESET THEIR PROGRESS !!!!!!!");
                 break;
 
             case ShowResult.Failed:
