@@ -92,9 +92,9 @@ Rigidbody:
   m_GameObject: {fileID: 1248550669626918}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 0.1
   m_AngularDrag: 0.05
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
@@ -138,3 +138,4 @@ MonoBehaviour:
   unlockableID: WeaponMachete
   type: 3
   unlocked: 1
+  Price: 0

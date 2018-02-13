@@ -5,6 +5,7 @@ using UnityEngine;
 public class WeaponScript : MonoBehaviour
 {
     GameObject equippedWeaponObject;
+    Transform WepTransform;
 
 
     public HandWeapon weapon;
@@ -17,6 +18,11 @@ public class WeaponScript : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
+        WepTransform = this.transform;
+        if(WepTransform.position.y < -10)
+        {
+            Destroy(gameObject);
+        }
         if(equippedWeaponObject == null)
         {
             equippedWeaponObject = GameObject.Find("EquippedWeapon");
@@ -32,6 +38,7 @@ public class WeaponScript : MonoBehaviour
                 }
             }
         }
+
 	}
 
 	void OnCollisionEnter(Collision collision)
