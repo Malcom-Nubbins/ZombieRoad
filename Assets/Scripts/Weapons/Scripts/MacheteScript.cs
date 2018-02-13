@@ -11,10 +11,10 @@ public class MacheteScript : WeaponScript
 		this.weapon = new Machete(
 		"Machete",
 		4.0f, // range
-		0.1f, //delay
-		2000,  //durability/ammo
+		0.2f, //delay
+		10,  //durability/ammo
         false,
-        20);
+        3);
     }
 
 

@@ -9726,11 +9726,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4217553001171402, guid: 01f063aa33b247e428e76cf54af4c956, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -9.62
+      value: 7.94
       objectReference: {fileID: 0}
     - target: {fileID: 4217553001171402, guid: 01f063aa33b247e428e76cf54af4c956, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1.2
+      value: 4.41
       objectReference: {fileID: 0}
     - target: {fileID: 4217553001171402, guid: 01f063aa33b247e428e76cf54af4c956, type: 2}
       propertyPath: m_LocalPosition.z
@@ -13721,6 +13721,7 @@ MonoBehaviour:
   target: {fileID: 46041682}
   offset: {x: 0, y: 20, z: -10}
   CullDistance: 200
+  rotate: 1
 --- !u!114 &1550227349
 MonoBehaviour:
   m_ObjectHideFlags: 0

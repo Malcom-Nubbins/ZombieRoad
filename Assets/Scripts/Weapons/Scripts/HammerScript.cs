@@ -8,8 +8,8 @@ public class HammerScript : WeaponScript {
 	{
 		this.weapon = new Hammer(
 		"Hammer",
-		3.0f, // range
-		0.1f, //delay
+		3.5f, // range
+		0.4f, //delay
 		20,  //durability/ammo
         false,
         1);
