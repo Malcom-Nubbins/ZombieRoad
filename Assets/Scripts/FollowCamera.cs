@@ -4,7 +4,6 @@ using System.Collections;
 public class FollowCamera : MonoBehaviour
 {
     public GameObject target;
-	public GameObject MainMenuZombieTarget;
     public Vector3 offset;
 	public float CullDistance;
     public bool rotate = true;
