@@ -13,7 +13,7 @@ public class Checkpoint : MonoBehaviour
 	public GameObject RoadMapRoot;
 
 	public bool DebugDisableTimer;
-    public bool TextSizeFlag = false;
+	public bool TextSizeFlag = false;
 
 	public float checkpointRadius;
 	private float timeRemaining;
@@ -21,9 +21,9 @@ public class Checkpoint : MonoBehaviour
 	//private float checkpointRotationSpeed;
 	private Text _checkpointTimer;
 
-    Text checkpointDistance;
+	Text checkpointDistance;
 
-    static protected int level = 0;
+	static protected int level = 0;
 	
 	public Mesh[] lods;
 
@@ -35,7 +35,7 @@ public class Checkpoint : MonoBehaviour
 		checkpointRadius = gameObject.transform.localScale.x / 2.0f;
 		gameObject.transform.SetPositionAndRotation(checkpointPosition, gameObject.transform.rotation);
 
-        level = 0;
+		level = 0;
 		timeRemaining = 9;
 
 		//checkpointRotationSpeed = 50.0f;
@@ -43,7 +43,7 @@ public class Checkpoint : MonoBehaviour
 		_checkpointTimer = GameObject.Find("CheckpointTimerText").GetComponent<Text>();
 		_checkpointTimer.text = "Time Left: " + timeRemaining;
 
-        checkpointDistance = GameObject.Find("CheckpointDistanceText").GetComponent<Text>();
+		checkpointDistance = GameObject.Find("CheckpointDistanceText").GetComponent<Text>();
 
 		for (int i = 0; i < lods.Length; i++)
 			lods[i] = Instantiate(lods[i]);
@@ -58,7 +58,7 @@ public class Checkpoint : MonoBehaviour
 
 		Vector3 playerPosition = FollowCamera.GetComponent<FollowCamera>().target.transform.position;
 		Vector3 distance = playerPosition - checkpointPosition;
-        distance.y = 0;
+		distance.y = 0;
 
 		if (distance.magnitude >= checkpointRadius)
 		{
@@ -75,43 +75,43 @@ public class Checkpoint : MonoBehaviour
 		   // CancelInvoke("decreaseTimeRemaining");
 			timeRemaining = 0;
 
-            PlayerDeath player = GameObject.Find("PlayerCharacter").GetComponent<PlayerDeath>();
+			PlayerDeath player = GameObject.Find("PlayerCharacter").GetComponent<PlayerDeath>();
 			player.killPlayer();
 		}
 
-        if (timeRemaining < 10)
-        {
-            _checkpointTimer.color = new Color(100, 0, 0);
-            if (_checkpointTimer.fontSize < 65 && TextSizeFlag == true)
-            {
-                _checkpointTimer.fontSize += 1;
-                if(_checkpointTimer.fontSize == 65)
-                {
-                    TextSizeFlag = false;
-                }
-            }
-            else if (timeRemaining > 0)
-            {
-                 _checkpointTimer.fontSize -= 1;
-                if(_checkpointTimer.fontSize == 45)
-                {
-                    TextSizeFlag = true;
-                }
-            }
+		if (timeRemaining < 10)
+		{
+			_checkpointTimer.color = new Color(100, 0, 0);
+			if (_checkpointTimer.fontSize < 65 && TextSizeFlag == true)
+			{
+				_checkpointTimer.fontSize += 1;
+				if(_checkpointTimer.fontSize == 65)
+				{
+					TextSizeFlag = false;
+				}
+			}
+			else if (timeRemaining > 0)
+			{
+				 _checkpointTimer.fontSize -= 1;
+				if(_checkpointTimer.fontSize == 45)
+				{
+					TextSizeFlag = true;
+				}
+			}
 
-        }
+		}
 
-        else
-            _checkpointTimer.color = new Color(0, 0, 0);
+		else
+			_checkpointTimer.color = new Color(0, 0, 0);
 
 		_checkpointTimer.text = "Time Left: " + timeRemaining.ToString("0.0");
 
-        float distFromCentre = distance.magnitude;
-        float distFromEdge = checkpointRadius - distFromCentre;
-        checkpointDistance.text = distFromEdge.ToString("0") + "m";
+		float distFromCentre = distance.magnitude;
+		float distFromEdge = checkpointRadius - distFromCentre;
+		checkpointDistance.text = distFromEdge.ToString("0") + "m";
 
-        RoadMapRoot.BroadcastMessage("Extend", false);
-    }
+		RoadMapRoot.BroadcastMessage("Extend", false);
+	}
 
 	public virtual void UpdateCheckpoint()
 	{
@@ -128,22 +128,22 @@ public class Checkpoint : MonoBehaviour
 		checkpointPosition.y = -0.1f;
 		gameObject.transform.SetPositionAndRotation(checkpointPosition, gameObject.transform.rotation);
 
-        level++;
-        float playerSpeed = 10;
-        float fastestVehicleSpeed = 20;
-        float lerp = Mathf.Clamp((float)level / 20.0f, 0, 1);
-        float speedRequired = Mathf.Lerp(playerSpeed * 0.5f, fastestVehicleSpeed, lerp);
-        float extraTime = checkpointRadius / speedRequired;
+		level++;
+		float playerSpeed = 10;
+		float fastestVehicleSpeed = 20;
+		float lerp = Mathf.Clamp((float)level / 20.0f, 0, 1);
+		float speedRequired = Mathf.Lerp(playerSpeed * 0.5f, fastestVehicleSpeed, lerp);
+		float extraTime = checkpointRadius / speedRequired;
 		timeRemaining += extraTime;
 	}
 
-    public float GetRadius()
-    {
-        return checkpointRadius;
-    }
+	public float GetRadius()
+	{
+		return checkpointRadius;
+	}
 
-    public static int GetLevel()
-    {
-        return level;
-    }
+	public static int GetLevel()
+	{
+		return level;
+	}
 }
