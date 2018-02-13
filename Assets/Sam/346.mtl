@@ -1,0 +1,28 @@
+# Fuck 3D Builder
+
+# White
+newmtl Ldraw15
+Kd 1.000 1.000 1.000
+Ka 0.000 0.000 0.000
+Ks 0.6 0.6 0.6
+illum 2
+Tr 1.000
+d 1.000
+
+# Red
+newmtl Ldraw4
+Kd 0.788 0.102 0.035
+Ka 0.212 0.898 0.965
+Ks 0.6 0.6 0.6
+illum 2
+Tr 1.000
+d 1.000
+
+# Bright_Light_Blue 212
+newmtl Ldraw47
+Kd 0.525 0.757 0.882
+Ka 0.475 0.243 0.118
+Ks 0.6 0.6 0.6
+illum 2
+Tr 1.000
+d 1.000
