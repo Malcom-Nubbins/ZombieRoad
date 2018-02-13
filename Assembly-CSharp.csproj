@@ -107,6 +107,8 @@
      <Compile Include="Assets\Scripts\Generic\FallOnDeath.cs" />
      <Compile Include="Assets\Scripts\Generic\Health.cs" />
      <Compile Include="Assets\Scripts\Generic\Movement.cs" />
+     <Compile Include="Assets\Scripts\Generic\PrefabSpawner.cs" />
+     <Compile Include="Assets\Scripts\Generic\SetCenterOfMass.cs" />
      <Compile Include="Assets\Scripts\GUI\CheckpointDisplay.cs" />
      <Compile Include="Assets\Scripts\GUI\DisplayCurrency.cs" />
      <Compile Include="Assets\Scripts\GUI\DisplayKillcount.cs" />
