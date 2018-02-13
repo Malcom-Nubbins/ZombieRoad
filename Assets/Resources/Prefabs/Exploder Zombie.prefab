@@ -279,16 +279,16 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1277317460848094}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 69134ad02b69a1348aa5a609c9de69ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FollowCamera: {fileID: 0}
   speed: 3
   wanderCircleRadius: 2
   wanderCircleDistanceInFront: 3
   wanderCircleRotationSpeed: 90
+  MainMenuDest: {x: 0, y: 0, z: 0}
 --- !u!114 &114621179689374186
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -302,7 +302,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlockableID: ZombieExploder
   type: 5
-  unlocked: 1
+  unlocked: 0
   Price: 10
 --- !u!114 &114653475012181372
 MonoBehaviour:

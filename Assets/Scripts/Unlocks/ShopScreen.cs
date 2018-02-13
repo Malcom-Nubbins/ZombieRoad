@@ -40,11 +40,17 @@ public class ShopScreen : MonoBehaviour {
 
     void onPurchaseClick()
     {
-        if(Currency.GetCurrency() > _lockedItems[_currentSelectedItem].Price)
+        if(Currency.GetCurrency() >= _lockedItems[_currentSelectedItem].Price)
         {
             //UnlockManager.instance.Unlo
             Currency.RemoveCurrency(_lockedItems[_currentSelectedItem].Price);
             _currentCoinsText.text = "Coins: " + Currency.GetCurrency();
+
+            GameObject.Find("UnlockManager").GetComponent<UnlockManager>().UnlockItem(_lockedItems[_currentSelectedItem]);
+
+            _lockedItems = GameObject.Find("UnlockManager").GetComponent<UnlockManager>().GetLockedItems();
+
+            onNextClick();
         }
     }
 	
@@ -61,6 +67,11 @@ public class ShopScreen : MonoBehaviour {
         _lockedItemDisplay = Instantiate(prefab, Vector3.zero, transform.rotation, transform);
         _itemNameText.text = _lockedItemDisplay.name.Substring(0, _lockedItemDisplay.name.IndexOf('('));
         _itemCostText.text = "Price: " + _lockedItems[_currentSelectedItem].Price + " coins";
+
+        if(prefab.GetComponent<SeekPlayer>() != null)
+        {
+            prefab.GetComponent<SeekPlayer>().enabled = false;
+        }
     }
 
     void onPrevClick()

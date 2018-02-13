@@ -35,10 +35,13 @@ public class Health : MonoBehaviour
 
     void Update()
     {
-        if (transform.position.y < -10 || Vector3.Distance(transform.position, _followCamera.target.transform.position) > _followCamera.CullDistance)
+        if(_followCamera != null)
         {
-            health = 0;
-            Destroy(gameObject);
+            if (transform.position.y < -10 || Vector3.Distance(transform.position, _followCamera.target.transform.position) > _followCamera.CullDistance)
+            {
+                health = 0;
+                Destroy(gameObject);
+            }
         }
     }
 
