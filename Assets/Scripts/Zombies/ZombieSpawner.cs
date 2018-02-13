@@ -59,7 +59,7 @@ public class ZombieSpawner : MonoBehaviour
 	
 	void Update()
 	{
-		if (Vector3.Distance(transform.position, RoadTileManager.bMainMenu ? followCamera.MainMenuZombieTarget.transform.position : followCamera.target.transform.position) < activeRadius)
+		if (Vector3.Distance(transform.position, followCamera.target.transform.position) < activeRadius)
 		{
 			timer -= Time.deltaTime;
 			if (timer <= 0)
