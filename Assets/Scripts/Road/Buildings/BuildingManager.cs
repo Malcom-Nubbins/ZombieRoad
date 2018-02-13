@@ -86,6 +86,7 @@ public class BuildingManager : MonoBehaviour
 	public static GameObject RandomShop()
     {
         GameObject[] unlockedShops = UnlockManager.instance.GetUnlockedItems(UnlockableType.SHOP);
+        if (unlockedShops.Length == 0) return Shops[0];
         int r = Random.Range(0, unlockedShops.Length);
 		return !unlockedShops[r] ? Shops[0] : unlockedShops[r];
 	}

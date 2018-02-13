@@ -79,7 +79,7 @@ public class SeekPlayer : MonoBehaviour
 
 			GameObject zombie = collision.gameObject;
 
-			//if (zombie.GetComponent<Health>() == null) return; // shouldn't be happening
+			if (zombie.GetComponent<Health>() == null) return; // shouldn't be happening
 
 			if (zombie.GetComponent<Health>().health <= 0) return;
 
