@@ -10,11 +10,11 @@ public class ShotgunScript : WeaponScript
 	{
 		this.weapon = new Shotgun(
 		"Shotgun",
-		21.0f, // range
-		0.1f, //delay
-		1,  //durability/ammo
+		20.0f, // range
+		0.5f, //delay
+		10,  //durability/ammo
         true,
-        10);
+        6);
     }
 
 

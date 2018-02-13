@@ -9,8 +9,8 @@ public class KnifeScript : WeaponScript
 		this.weapon = new Knife(
 		"Knife",
 		3.0f, // range
-		1.0f, //delay
-		20,  //durability/ammo
+		0.3f, //delay
+		25,  //durability/ammo
         false,
         1);
     }
