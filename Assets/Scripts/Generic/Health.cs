@@ -17,7 +17,7 @@ public class Health : MonoBehaviour
         {
             bool wasAlive = _health > 0;
             _health = value;
-            if (health <= 0 && wasAlive)
+            if (health <= 0 && wasAlive && onDeath != null)
             {
                 onDeath();
             }
