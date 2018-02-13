@@ -9,10 +9,10 @@ public class ChainScript : WeaponScript
 	{
 		this.weapon = new Chain(
 		"Chain",
-		4.0f, // range
-		1.5f, //delay
-		30,  //durability/ammo
+		5.0f, // range
+		0.7f, //delay
+		10,  //durability/ammo
         false,
-        1);
+        4);
 	}
 }

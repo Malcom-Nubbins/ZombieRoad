@@ -9,9 +9,9 @@ public class IronBarScript : WeaponScript
 	{
 		this.weapon = new IronBar(
 		"IronBar",
-		3.0f, // range
-		1.0f, //delay
-		30,  //durability/ammo
+		5.0f, // range
+		0.7f, //delay
+		50,  //durability/ammo
         false,
         1);
     }
