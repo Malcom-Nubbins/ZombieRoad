@@ -7,7 +7,6 @@ using UnityEngine.Advertisements;
 
 public class AdsScript : MonoBehaviour
 {
-
 	// Use this for initialization
 	void Start ()
     {
@@ -54,5 +53,18 @@ public class AdsScript : MonoBehaviour
         }
 
 
+    }
+
+    public void PlayAdOnDeath()
+    {
+        Debug.Log("Playing skippable ad on death Init: " + Advertisement.isInitialized + " TestMode?: " + Advertisement.testMode);
+        Debug.Log("is skippable ad avaiable to show?? :" +Advertisement.IsReady("video"));
+
+        if (Advertisement.IsReady("video"))
+        {
+            Debug.Log("SKIPPABLE ADD IS SHOWING");
+            var options = new ShowOptions { resultCallback = HandleShowingAd };
+            Advertisement.Show(options);
+        }
     }
 }

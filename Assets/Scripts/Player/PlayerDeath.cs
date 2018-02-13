@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Advertisements;
 
 public class PlayerDeath : MonoBehaviour
 {
     float gameOverCountdown = 2.5f;
     bool dead = false;
+    bool showingAd = false;
 
 	void Start()
     {
@@ -17,10 +19,19 @@ public class PlayerDeath : MonoBehaviour
     {
         if (dead)
         {
+
             gameOverCountdown -= Time.deltaTime;
             if (gameOverCountdown <= 0)
             {
-                if(UnlockManager.instance.GetLockedItemCount() > 0)
+                if(!showingAd)
+                {
+                    Debug.Log("call this only once ok unity?");
+                    GetComponent<AdsScript>().PlayAdOnDeath();
+                    showingAd = true;
+                }
+
+
+                if (UnlockManager.instance.GetLockedItemCount() > 0)
                 {
                     Scenes.instance.LoadScene(Scenes.Scene.UNLOCK);
                 }
