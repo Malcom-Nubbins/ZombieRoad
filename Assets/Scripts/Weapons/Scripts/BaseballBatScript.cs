@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BaseballBatScript : WeaponScript
 {
-
+    public AudioClip clip;
 	void Start()
 	{
         this.weapon = new BaseballBat(
@@ -13,6 +13,7 @@ public class BaseballBatScript : WeaponScript
         0.5f, //delay
         10,  //durability/ammo
         false, // true for ranged / false for melee
-        1); // max amount of zombies weapon can hit
+        1,
+        clip); // max amount of zombies weapon can hit
 	}
 }

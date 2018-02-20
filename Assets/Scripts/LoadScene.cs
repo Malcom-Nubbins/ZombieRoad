@@ -13,12 +13,6 @@ public class LoadScene : MonoBehaviour
         Button startButton = GetComponent<Button>();
         startButton.onClick.AddListener(OnClick);
 	}
-	
-	// Update is called once per frame
-	void Update()
-	{
-		
-	}
 
     void OnClick()
     {

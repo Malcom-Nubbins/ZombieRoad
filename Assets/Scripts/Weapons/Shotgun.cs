@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Shotgun : HandWeapon
 {
-	public Shotgun(string weaponName, float attackingDistance, float attackingDelay, int durability, bool ranged, int weaponTargetCount) : base(weaponName, attackingDistance, attackingDelay, durability, ranged, weaponTargetCount)
+	public Shotgun(string weaponName, float attackingDistance, float attackingDelay, int durability, bool ranged, int weaponTargetCount, AudioClip weaponSound) : base(weaponName, attackingDistance, attackingDelay, durability, ranged, weaponTargetCount, weaponSound)
     {
 	}
 	public override void attack(GameObject gameObject)

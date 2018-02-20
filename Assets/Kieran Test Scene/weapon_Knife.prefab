@@ -123,3 +123,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d45bbdadd3c2034dbd89c75cab24d2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: 79cf01749bcdb9842a3a12da923fbe32, type: 3}

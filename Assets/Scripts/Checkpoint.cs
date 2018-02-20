@@ -85,7 +85,7 @@ public class Checkpoint : MonoBehaviour
 			if (_checkpointTimer.fontSize < 65 && TextSizeFlag == true)
 			{
 				_checkpointTimer.fontSize += 1;
-				if(_checkpointTimer.fontSize == 65)
+				if(_checkpointTimer.fontSize == 63)
 				{
 					TextSizeFlag = false;
 				}

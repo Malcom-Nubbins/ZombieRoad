@@ -14,6 +14,7 @@ public class EquippedWeapon : MonoBehaviour
 	public GameObject followCamera;
     float AttackCooldown;
     Text weaponInfo;
+    public AudioSource source;
 
     public bool attacking = false;
 	int zombieMask;
@@ -47,9 +48,12 @@ public class EquippedWeapon : MonoBehaviour
         }
         else if(equippedWeapon == null)
         {
-            weaponInfo = GameObject.Find("WeaponInfo").GetComponent<Text>();
-            weaponInfo.text = "No Weapon equipped";
-            weaponInfo.color = Color.red;
+			if (GameObject.Find("WeaponInfo") != null)
+			{
+				weaponInfo = GameObject.Find("WeaponInfo").GetComponent<Text>();
+				weaponInfo.text = "No Weapon equipped";
+				weaponInfo.color = Color.red;
+			}
         }
         
 		//Debug.Log(attacking);
@@ -133,6 +137,10 @@ public class EquippedWeapon : MonoBehaviour
                 SpawnedBullet.GetComponent<BulletScript>().ShootBullet(zombiesToAttack[x].gameObject);
             }
         }
+        Debug.Log("PYR PYR PYR PYR PYR");
+        source = this.GetComponent<AudioSource>();
+        source.PlayOneShot(equippedWeapon.getWeaponSound());
+        Debug.Log("CUL CUL CUL");
         /*
         if(equippedWeapon.getWeaponName() == "Handgun")
         {

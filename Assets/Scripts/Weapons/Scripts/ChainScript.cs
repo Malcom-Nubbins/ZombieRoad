@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ChainScript : WeaponScript
 {
-
+    public AudioClip clip;
 	void Start()
 	{
 		this.weapon = new Chain(
@@ -13,6 +13,7 @@ public class ChainScript : WeaponScript
 		0.7f, //delay
 		10,  //durability/ammo
         false,
-        4);
+        4,
+        clip);
 	}
 }
