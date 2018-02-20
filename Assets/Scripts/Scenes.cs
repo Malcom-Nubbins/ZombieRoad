@@ -11,7 +11,8 @@ public class Scenes : MonoBehaviour
         GAME = 1,
         UNLOCK = 2,
         GAME_OVER = 3,
-        SHOP = 4
+        SHOP = 4,
+		MAP = 5
     }
     public string[] sceneNames;
 
@@ -24,7 +25,7 @@ public class Scenes : MonoBehaviour
 	
 	public string GetSceneName(Scene scene)
     {
-        return sceneNames[(int)scene];
+        return (scene == Scene.GAME) ? UnlockManager.instance.gameObject.GetComponent<MapSelection>().GetSelectedMap() : sceneNames[(int)scene];
     }
 
     public void LoadScene(Scene scene, LoadSceneMode mode = LoadSceneMode.Single)

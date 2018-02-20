@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class HandgunScript : WeaponScript
 {
+    public AudioClip clip;
 	// Use this for initialization
 	void Start ()
 	{
@@ -13,7 +14,8 @@ public class HandgunScript : WeaponScript
 		0.3f, //delay
 		31,  //durability/ammo
         true,
-        1);
+        1,
+        clip);
     }
 	
 
