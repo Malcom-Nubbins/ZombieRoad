@@ -12,12 +12,16 @@ public class ZombieSpawner : MonoBehaviour
 	float timeBetweenSpawns = 5;
 	float radius;
 	float timer = 0;
+    float timeBetweenSpawnAttempts = 1.0f;//dont try to spawn every frame
+    float spawnAttemptTimer = 0;
+
+    public bool debugSpawnEveryFrame;
 	
 	void Start()
 	{
         int level = Checkpoint.GetLevel();
         float chanceOfSpawning = Mathf.Lerp(0.05f, 0.3f, Mathf.Clamp01(level / 20.0f));
-		if (!(Random.value < chanceOfSpawning))
+		if (!(Random.value < chanceOfSpawning) && !debugSpawnEveryFrame)
 		{
 			Destroy(gameObject);
 			return;
@@ -55,30 +59,65 @@ public class ZombieSpawner : MonoBehaviour
             float maxTimeBetweenSpawns = 5.0f;
             timeBetweenSpawns = Random.Range(minTimeBetweenSpawns, maxTimeBetweenSpawns);
         }
+
+        if (debugSpawnEveryFrame)
+        {
+            numberToSpawn = 10000;
+            timeBetweenSpawns = 1.0f / 30.0f;
+        }
 	}
 	
 	void Update()
 	{
 		if (Vector3.Distance(transform.position, followCamera.target.transform.position) < activeRadius)
 		{
-			timer -= Time.deltaTime;
 			if (timer <= 0)
 			{
-				timer += timeBetweenSpawns;
-				Spawn();
-				numberToSpawn--;
-				if (numberToSpawn <= 0)
-				{
-					Destroy(gameObject);
-				}
+                TrySpawn();
 			}
+            else
+            {
+			    timer -= Time.deltaTime;
+            }
 		}
 	}
+
+    void TrySpawn()
+    {
+        if (spawnAttemptTimer <= 0)
+        {
+            spawnAttemptTimer += timeBetweenSpawnAttempts;
+            Ray ray = new Ray(transform.position - Vector3.up * 0.5f, Vector3.up);
+            float rayLength = 5;
+            bool areaClear = !Physics.Raycast(ray, rayLength);
+            if (debugSpawnEveryFrame)
+            {
+                Debug.DrawLine(ray.origin, ray.origin + ray.direction * rayLength,
+                    areaClear ? Color.green : Color.red, 0.5f);
+            }
+            if (areaClear)
+            {
+                Spawn();
+            }
+        }
+        else
+        {
+            spawnAttemptTimer -= Time.deltaTime;
+        }
+    }
 
 	void Spawn()
 	{
 		GameObject zombie = Instantiate(zombiePrefab);
 		Vector2 xzOffset = Random.insideUnitCircle * radius;
 		zombie.transform.position = transform.position + new Vector3(xzOffset.x, 0, xzOffset.y);
-	}
+        zombie.transform.localRotation = Quaternion.identity;
+
+        timer += timeBetweenSpawns;
+        numberToSpawn--;
+        if (numberToSpawn <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
 }

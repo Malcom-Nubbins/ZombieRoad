@@ -126,13 +126,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1376687743736662}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5, y: 0, z: -5}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -5.51, y: 0.3, z: -4.78}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4645003029607428}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!4 &4645003029607428
 Transform:
   m_ObjectHideFlags: 1
@@ -140,7 +140,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1195365599170674}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 76.06171, y: 0, z: -4.26}
+  m_LocalPosition: {x: 1.2766001, y: 0.32863522, z: 38.879936}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4664814465310886}
@@ -280,6 +280,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnAllAtOnce: 0
+  debugSpawnEveryFrame: 0
 --- !u!114 &114315925074130126
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -293,5 +294,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlockableID: HouseRed
   type: 0
-  unlocked: 1
+  unlocked: 0
   Price: 15
