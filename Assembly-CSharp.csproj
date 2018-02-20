@@ -89,11 +89,11 @@
      <Compile Include="Assets\Asset Store\Pixel_City\Standard Assets\Effects\ImageEffects\Scripts\Twirl.cs" />
      <Compile Include="Assets\Asset Store\Pixel_City\Standard Assets\Effects\ImageEffects\Scripts\VignetteAndChromaticAberration.cs" />
      <Compile Include="Assets\Asset Store\Pixel_City\Standard Assets\Effects\ImageEffects\Scripts\Vortex.cs" />
-     <Compile Include="Assets\Ben Crawford Test Scene\AutoPlay.cs" />
-     <Compile Include="Assets\Ben Crawford Test Scene\DieAfterTimer.cs" />
-     <Compile Include="Assets\Ben Crawford Test Scene\DieInstantly.cs" />
-     <Compile Include="Assets\Ben Crawford Test Scene\PhysicsTest.cs" />
-     <Compile Include="Assets\Ben Crawford Test Scene\TestZombieSpawner.cs" />
+     <Compile Include="Assets\B Crawford Test Scene\AutoPlay.cs" />
+     <Compile Include="Assets\B Crawford Test Scene\DieAfterTimer.cs" />
+     <Compile Include="Assets\B Crawford Test Scene\DieInstantly.cs" />
+     <Compile Include="Assets\B Crawford Test Scene\PhysicsTest.cs" />
+     <Compile Include="Assets\B Crawford Test Scene\TestZombieSpawner.cs" />
      <Compile Include="Assets\Kieran Test Scene\LoadingSceneScripts\ButtonScript.cs" />
      <Compile Include="Assets\Kieran Test Scene\ParticleEffect.cs" />
      <Compile Include="Assets\Scripts\AdsScript.cs" />
