@@ -18,7 +18,8 @@ public class ShopScreen : MonoBehaviour {
     float _currentCooldownTime = 0.0f;
 
 	// Use this for initialization
-	void Start () {
+	void Start()
+	{
         UnlockManager um = GameObject.Find("UnlockManager").GetComponent<UnlockManager>();
         _lockedItems = um.GetLockedItems();
         _currentSelectedItem = 0;
@@ -90,7 +91,8 @@ public class ShopScreen : MonoBehaviour {
     }
 
 	// Update is called once per frame
-	void Update () {
+	void Update()
+	{
         
         if(_currentCooldownTime <= 0.0f)
         {

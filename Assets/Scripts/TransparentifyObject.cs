@@ -28,8 +28,11 @@ public class TransparentifyObject : MonoBehaviour
             {
                 foreach (Renderer meshRenderer in ObstacleHit.collider.gameObject.GetComponentsInChildren<Renderer>())
                 {
-                    meshRenderer.material.SetInt("_ZWrite", 0);
-                    meshRenderer.material.color = new Color(meshRenderer.material.color.r, meshRenderer.material.color.g, meshRenderer.material.color.b, 0.1f);
+                    foreach(Material material in meshRenderer.materials)
+                    {
+                        material.SetInt("_ZWrite", 0);
+                        material.color = new Color(material.color.r, material.color.g, material.color.b, 0.1f);
+                    }
                     hiddenBuildings.Add(ObstacleHit);
                 }
 
@@ -49,8 +52,11 @@ public class TransparentifyObject : MonoBehaviour
             {
                 foreach (Renderer mesh in buildingHit.collider.gameObject.GetComponentsInChildren<Renderer>())
                 {
-                    mesh.material.SetInt("_ZWrite", 1);
-                    mesh.material.color = new Color(mesh.material.color.r, mesh.material.color.g, mesh.material.color.b, 1.0f);
+                    foreach (Material material in mesh.materials)
+                    {
+                        material.SetInt("_ZWrite", 1);
+                        material.color = new Color(material.color.r, material.color.g, material.color.b, 1.0f);
+                    }
                 }
 
                 //foreach (MeshRenderer mesh in buildingHit.transform.GetComponentsInChildren<MeshRenderer>())

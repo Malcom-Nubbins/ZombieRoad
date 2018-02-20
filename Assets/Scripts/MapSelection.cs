@@ -9,4 +9,7 @@ public class MapSelection : MonoBehaviour
 	public string SelectedMap;
 	public string GetSelectedMap() { return SelectedMap; }
 	public bool SetSelectedMap(string NewSelection) { if (SceneManager.GetSceneByName(NewSelection) != null) { SelectedMap = NewSelection; return true; } return false; }
+
+	public string[] AvailableMapNames;
+	public Texture2D[] AvailableMapImages;
 }
