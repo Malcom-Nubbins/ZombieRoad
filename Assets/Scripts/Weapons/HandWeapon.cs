@@ -12,8 +12,9 @@ public abstract class HandWeapon {
 	private int durability;
     private bool ranged;
     private int weaponTargetCount;
+    private AudioClip weaponSound;
 
-	public HandWeapon(string weaponName, float attackingDistance, float attackingDelay, int durability, bool ranged, int weaponTargetCount)
+	public HandWeapon(string weaponName, float attackingDistance, float attackingDelay, int durability, bool ranged, int weaponTargetCount, AudioClip weaponSound)
 	{
 		this.weaponName = weaponName;
 		this.attackingDistance = attackingDistance;
@@ -21,9 +22,19 @@ public abstract class HandWeapon {
 		this.durability = durability;
         this.ranged = ranged;
         this.weaponTargetCount = weaponTargetCount;
+        this.weaponSound = weaponSound;
 	}
+    public HandWeapon(string weaponName, float attackingDistance, float attackingDelay, int durability, bool ranged, int weaponTargetCount)
+    {
+        this.weaponName = weaponName;
+        this.attackingDistance = attackingDistance;
+        this.attackingDelay = attackingDelay;
+        this.durability = durability;
+        this.ranged = ranged;
+        this.weaponTargetCount = weaponTargetCount;
+    }
 
-	public string getWeaponName()
+    public string getWeaponName()
 	{
 		return weaponName;
 	}
@@ -55,6 +66,10 @@ public abstract class HandWeapon {
     public int getWeaponTargetCount()
     {
         return weaponTargetCount;
+    }
+    public AudioClip getWeaponSound()
+    {
+        return weaponSound;
     }
 
 

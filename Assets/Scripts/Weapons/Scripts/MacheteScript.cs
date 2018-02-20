@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MacheteScript : WeaponScript
 {
-
+    public AudioClip clip;
 	// Use this for initialization
 	void Start()
 	{
@@ -14,7 +14,8 @@ public class MacheteScript : WeaponScript
 		0.2f, //delay
 		10,  //durability/ammo
         false,
-        3);
+        3,
+        clip);
     }
 
 

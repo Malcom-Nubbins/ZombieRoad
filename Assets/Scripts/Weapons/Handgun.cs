@@ -12,7 +12,7 @@ public class Handgun : HandWeapon
 //	ParticleSystem ParticleEmitterPS;
 //    ParticleSystem.Particle[] particles;
 
-	public Handgun(string weaponName, float attackingDistance, float attackingDelay, int durability, bool ranged, int weaponTargetCount) : base(weaponName, attackingDistance, attackingDelay, durability, ranged, weaponTargetCount)
+	public Handgun(string weaponName, float attackingDistance, float attackingDelay, int durability, bool ranged, int weaponTargetCount, AudioClip weaponSound) : base(weaponName, attackingDistance, attackingDelay, durability, ranged, weaponTargetCount, weaponSound)
     {
 //		if (ParticleEmitter) SetParticleEmitter(ParticleEmitter);
         //Bullet = GameObject.Find("Bullet");
@@ -49,23 +49,22 @@ public class Handgun : HandWeapon
 
 	public override void attack(GameObject TargetZombie)
 	{
-
         Zombie = TargetZombie;
         Health zombieHealth = TargetZombie.GetComponent<Health>();
 		zombieHealth.health -= 2;
-		//Debug.Log("Handgun attacking");
+        //Debug.Log("Handgun attacking");
         //Bullet.GetComponent<BulletScript>().ShootBullet(TargetZombie,);
 
-        
+
         //ShootBullet();
 
-//        updateParticle(gameObject);
-//        ParticleEmitterPS.Play();
-        
-       
+        //        updateParticle(gameObject);
+        //        ParticleEmitterPS.Play();
 
 
-		
-       
-	}
+
+
+
+
+    }
 }
