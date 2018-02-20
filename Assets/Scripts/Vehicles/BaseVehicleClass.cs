@@ -36,6 +36,11 @@ public class BaseVehicleClass : Movement
 	private CanvasGroup _vehicleUIGroup;
 	private CanvasGroup _vehicleExitButtonGroup;
 
+    AudioSource source;
+    public AudioClip crashSound;
+    public AudioClip engineSound;
+    bool played = false;
+
     List<GameObject> zombiesOnRoof = new List<GameObject>();
 
 	Rigidbody vehicleRB;
@@ -77,6 +82,11 @@ public class BaseVehicleClass : Movement
         _fuelSlider = GameObject.Find("FuelSlider").GetComponent<Slider>();
 		_vehHealthSlider = GameObject.Find("VehicleHealthSlider").GetComponent<Slider>();
 		_vehExitButton = GameObject.Find("ExitVehicleButton").GetComponent<Button>();
+        source = gameObject.GetComponent<AudioSource>();
+        source.clip = engineSound;
+        source.loop = true;
+        source.Play();
+        played = false;
 
 		_vehicleUIGroup.alpha = 1.0f;
 
@@ -112,8 +122,12 @@ public class BaseVehicleClass : Movement
 		_vehicleExitButtonGroup.alpha = 0.0f;
 		_vehExitButton.onClick.RemoveAllListeners();
 		speed = 0.0f;
+        if(!source.isPlaying)
+        {
+            source.Stop();
+        }
 
-		GameObject followCamera = gameObject.GetComponent<DisableVehicle>().followCamera;
+        GameObject followCamera = gameObject.GetComponent<DisableVehicle>().followCamera;
 		gameObject.GetComponent<DisableVehicle>().followCamera = null;
 		_driver.GetComponent<DisableVehicle>().followCamera = followCamera;
 		followCamera.GetComponent<FollowCamera>().target = _driver;
@@ -230,7 +244,11 @@ public class BaseVehicleClass : Movement
 			}
 
 			speed -= 4.5f * Time.deltaTime;
-		}
+            if (source.pitch >= 0.5)
+            {
+                source.pitch -= 0.01f;
+            }
+        }
 		else
 		{
 			if (InputLeft() || InputRight())
@@ -244,6 +262,11 @@ public class BaseVehicleClass : Movement
 					if (speed <= maxSpeed)
 					{
 						speed += (acceleration * accelerationMultiplier * Time.deltaTime);
+                        if(source.pitch <= 1.3)
+                        {
+                            source.pitch += 0.01f;
+                        }
+
 					}
 				}
 				else
@@ -255,7 +278,11 @@ public class BaseVehicleClass : Movement
 					}
 					// Slow the vehicle gradually until it stops if the vehicle runs out of fuel
 					speed -= 2.5f * Time.deltaTime;
-				}
+                    if (source.pitch >= 0.5)
+                    {
+                        source.pitch -= 0.01f;
+                    }
+                }
 			}
 			else
 			{
@@ -266,7 +293,12 @@ public class BaseVehicleClass : Movement
 				}
 
 				speed -= (decel * Time.deltaTime);
-			}
+                if(source.pitch >= 0.5)
+                {
+                    source.pitch -= 0.01f;
+                }
+
+            }
 		}
 
         speed = Mathf.Clamp(speed, 0, maxSpeed);
@@ -326,6 +358,7 @@ public class BaseVehicleClass : Movement
 			{
 				if (Vector3.Angle(transform.forward, -collision.contacts[0].normal) < 30)//driving towards the building
 				{
+
 					Crash();
 				}
 			}
@@ -339,12 +372,22 @@ public class BaseVehicleClass : Movement
 
 	void Crash()
 	{
+
+        if (played == false)
+        {
+            source.Stop();
+            source.pitch = 1.0f;
+            source.loop = false;
+            source.PlayOneShot(crashSound, 1f);
+            played = true;
+        }
         float damageFromCrash = _maxHealth / 3;
         health -= damageFromCrash;
 
         _vehHealthSlider.value = health;
         speed = 0;
 		TryExitVehicle();
+
 	}
 
 	public GameObject GetDriver()

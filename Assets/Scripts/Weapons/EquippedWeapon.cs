@@ -137,10 +137,8 @@ public class EquippedWeapon : MonoBehaviour
                 SpawnedBullet.GetComponent<BulletScript>().ShootBullet(zombiesToAttack[x].gameObject);
             }
         }
-        Debug.Log("PYR PYR PYR PYR PYR");
         source = this.GetComponent<AudioSource>();
         source.PlayOneShot(equippedWeapon.getWeaponSound());
-        Debug.Log("CUL CUL CUL");
         /*
         if(equippedWeapon.getWeaponName() == "Handgun")
         {
