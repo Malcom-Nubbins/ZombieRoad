@@ -25,6 +25,10 @@ public class KillcountOnDeath : MonoBehaviour
             {
                 // Culled
             }
+            else if(RoadTileManager.bMainMenu)
+            {
+                // Main Menu screen
+            }
             else
             {
                 Killcount.AddKill();
