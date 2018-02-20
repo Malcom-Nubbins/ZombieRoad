@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class IronBarScript : WeaponScript
 {
-
+    public AudioClip clip;
 	void Start()
 	{
 		this.weapon = new IronBar(
@@ -13,6 +13,7 @@ public class IronBarScript : WeaponScript
 		0.7f, //delay
 		50,  //durability/ammo
         false,
-        1);
+        1,
+        clip);
     }
 }

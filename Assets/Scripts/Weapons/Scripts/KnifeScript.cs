@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class KnifeScript : WeaponScript
 {
+    public AudioClip clip;
 	void Start()
 	{
 		this.weapon = new Knife(
@@ -12,6 +13,7 @@ public class KnifeScript : WeaponScript
 		0.3f, //delay
 		25,  //durability/ammo
         false,
-        1);
+        1,
+        clip);
     }
 }
