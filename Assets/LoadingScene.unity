@@ -1300,7 +1300,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 611ad54f3e30fd942bbffd111a87926c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SelectedMap: TestScene
+  SelectedMap: SmallTest
+  AvailableMapNames:
+  - SmallTest
+  - EdSheeran
+  AvailableMapImages:
+  - {fileID: 2800000, guid: 952f2ccd70ccf6f47a7e9c2a5ff12a82, type: 3}
+  - {fileID: 2800000, guid: e971b441b2a2a024b979332f3bec96aa, type: 3}
 --- !u!1 &1234504994
 GameObject:
   m_ObjectHideFlags: 0
