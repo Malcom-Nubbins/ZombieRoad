@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class ShotgunScript : WeaponScript
 {
-
-	// Use this for initialization
-	void Start()
+    public AudioClip clip;
+    // Use this for initialization
+    void Start()
 	{
 		this.weapon = new Shotgun(
 		"Shotgun",
@@ -14,7 +14,8 @@ public class ShotgunScript : WeaponScript
 		0.5f, //delay
 		10,  //durability/ammo
         true,
-        6);
+        6,
+        clip);
     }
 
 
