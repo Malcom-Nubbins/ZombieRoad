@@ -93,19 +93,19 @@ public class BuildingManager : MonoBehaviour
 
 	public static bool IsSkyscraper(GameObject o)
 	{
-		if (o.name.Contains("sky")) return true;
+		if (o.name.ToLowerInvariant().Contains("sky")) return true;
 		
 		return false;
 	}
 	public static bool IsHouse(GameObject o)
 	{
-		if (o.name.Contains("hous")) return true;
+		if (o.name.ToLowerInvariant().Contains("hous")) return true;
 
 		return false;
 	}
 	public static bool IsShop(GameObject o)
 	{
-		if (o.name.Contains("shop")) return true;
+		if (o.name.ToLowerInvariant().Contains("shop")) return true;
 
 		return false;
 	}

@@ -47,9 +47,12 @@ public class EquippedWeapon : MonoBehaviour
         }
         else if(equippedWeapon == null)
         {
-            weaponInfo = GameObject.Find("WeaponInfo").GetComponent<Text>();
-            weaponInfo.text = "No Weapon equipped";
-            weaponInfo.color = Color.red;
+			if (GameObject.Find("WeaponInfo") != null)
+			{
+				weaponInfo = GameObject.Find("WeaponInfo").GetComponent<Text>();
+				weaponInfo.text = "No Weapon equipped";
+				weaponInfo.color = Color.red;
+			}
         }
         
 		//Debug.Log(attacking);

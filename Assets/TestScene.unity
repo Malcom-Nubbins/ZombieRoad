@@ -410,6 +410,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnAllAtOnce: 0
+  debugSpawnEveryFrame: 0
 --- !u!4 &111770264
 Transform:
   m_ObjectHideFlags: 0
@@ -1626,6 +1627,11 @@ Prefab:
       propertyPath: RoadMapRoot
       value: 
       objectReference: {fileID: 1156095235}
+    - target: {fileID: 114195961261252844, guid: 9dc67150a3482df46bb27a10d5e9ea1c,
+        type: 2}
+      propertyPath: DebugDisableTimer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9dc67150a3482df46bb27a10d5e9ea1c, type: 2}
   m_IsPrefabParent: 0
@@ -1764,6 +1770,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnAllAtOnce: 0
+  debugSpawnEveryFrame: 0
 --- !u!4 &400907973
 Transform:
   m_ObjectHideFlags: 0
@@ -3115,6 +3122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnAllAtOnce: 0
+  debugSpawnEveryFrame: 0
 --- !u!4 &758501690
 Transform:
   m_ObjectHideFlags: 0
@@ -3816,6 +3824,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnAllAtOnce: 0
+  debugSpawnEveryFrame: 0
 --- !u!4 &951621009
 Transform:
   m_ObjectHideFlags: 0
@@ -3955,6 +3964,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnAllAtOnce: 0
+  debugSpawnEveryFrame: 0
 --- !u!4 &990330824
 Transform:
   m_ObjectHideFlags: 0
@@ -4923,6 +4933,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnAllAtOnce: 0
+  debugSpawnEveryFrame: 0
 --- !u!4 &1266379690
 Transform:
   m_ObjectHideFlags: 0
