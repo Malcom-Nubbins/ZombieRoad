@@ -79,31 +79,33 @@ public class Checkpoint : MonoBehaviour
 			player.killPlayer();
 		}
 
-		if (timeRemaining < 10)
-		{
-			_checkpointTimer.color = new Color(100, 0, 0);
-			if (_checkpointTimer.fontSize < 65 && TextSizeFlag == true)
-			{
-				_checkpointTimer.fontSize += 1;
-				if(_checkpointTimer.fontSize == 65)
-				{
-					TextSizeFlag = false;
-				}
-			}
-			else if (timeRemaining > 0)
-			{
-				 _checkpointTimer.fontSize -= 1;
-				if(_checkpointTimer.fontSize == 45)
-				{
-					TextSizeFlag = true;
-				}
-			}
+        if (timeRemaining < 10)
+        {
+            _checkpointTimer.color = new Color(100, 0, 0);
+            if (_checkpointTimer.fontSize < 65 && TextSizeFlag == true)
+            {
+                _checkpointTimer.fontSize += 1;
+                if (_checkpointTimer.fontSize == 63)
+                {
+                    TextSizeFlag = false;
+                }
+            }
+            else if (timeRemaining > 0)
+            {
+                _checkpointTimer.fontSize -= 1;
+                if (_checkpointTimer.fontSize == 45)
+                {
+                    TextSizeFlag = true;
+                }
+            }
 
-		}
+        }
 
-		else
-			_checkpointTimer.color = new Color(0, 0, 0);
-
+        else
+        {
+            _checkpointTimer.color = new Color(0, 0, 0);
+            _checkpointTimer.fontSize = 51;
+        }
 		_checkpointTimer.text = "Time Left: " + timeRemaining.ToString("0.0");
 
 		float distFromCentre = distance.magnitude;
