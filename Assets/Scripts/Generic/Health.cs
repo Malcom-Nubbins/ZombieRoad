@@ -30,7 +30,7 @@ public class Health : MonoBehaviour
     {
         health = startingHealth;
 
-		if (_followCamera == null) _followCamera = RoadTileManager.checkpoint.FollowCamera.GetComponent<FollowCamera>();
+		if (_followCamera == null && RoadTileManager.checkpoint != null) _followCamera = RoadTileManager.checkpoint.FollowCamera.GetComponent<FollowCamera>();
 	}
 
     void Update()
