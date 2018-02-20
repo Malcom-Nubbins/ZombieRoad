@@ -936,7 +936,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1654138309}
   offset: {x: 0, y: 386, z: -31}
-  CullDistance: 120
+  CullDistance: 130
   rotate: 1
 --- !u!1 &1113123615
 GameObject:
