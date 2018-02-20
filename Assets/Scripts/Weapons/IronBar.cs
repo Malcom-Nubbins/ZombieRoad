@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class IronBar : HandWeapon
 {
-	public IronBar(string weaponName, float attackingDistance, float attackingDelay, int durability, bool ranged, int weaponTargetCount) : base(weaponName, attackingDistance, attackingDelay, durability, ranged, weaponTargetCount)
+	public IronBar(string weaponName, float attackingDistance, float attackingDelay, int durability, bool ranged, int weaponTargetCount, AudioClip weaponSound) : base(weaponName, attackingDistance, attackingDelay, durability, ranged, weaponTargetCount, weaponSound)
     {
 	}
 
