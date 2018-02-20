@@ -3848,6 +3848,11 @@ Prefab:
       propertyPath: engineSound
       value: 
       objectReference: {fileID: 8300000, guid: e925841036bf73d4f8c9a30a671ae90e, type: 3}
+    - target: {fileID: 114843276036137900, guid: 28111b77f86684420bc37075500b3b29,
+        type: 2}
+      propertyPath: zombieHit
+      value: 
+      objectReference: {fileID: 8300000, guid: 160c082fcd05be34199700513185bed7, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 28111b77f86684420bc37075500b3b29, type: 2}
   m_IsPrefabParent: 0

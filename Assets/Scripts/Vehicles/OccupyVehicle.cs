@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class OccupyVehicle : MonoBehaviour
 {
-    AudioSource source;
 	// Use this for initialization
 	void Start()
 	{

@@ -39,6 +39,7 @@ public class BaseVehicleClass : Movement
     AudioSource source;
     public AudioClip crashSound;
     public AudioClip engineSound;
+    public AudioClip zombieHit;
     bool played = false;
 
     List<GameObject> zombiesOnRoof = new List<GameObject>();
@@ -46,6 +47,7 @@ public class BaseVehicleClass : Movement
 	Rigidbody vehicleRB;
 
 	private float _lastHitTime = 0.0f;
+    private float _replayTime = 0.0f;
 
     // Debug
     public bool debugDisableAutoExit = false;
@@ -343,7 +345,7 @@ public class BaseVehicleClass : Movement
 			health -= 0.5f;
 			_vehHealthSlider.value = health;
 			_lastHitTime = 0.5f;
-		}
+        }
 		else
 		{
 			health = 0.0f;
@@ -367,7 +369,17 @@ public class BaseVehicleClass : Movement
 		if(collision.gameObject.CompareTag("Zombie"))
 		{
 			OnCollisionEnter(collision);
-		}
+            if (_replayTime < 0.0f)
+            {
+                source.PlayOneShot(zombieHit);
+                _replayTime = 1.0f;
+            }
+            else
+            {
+                _replayTime -= Time.deltaTime;
+            }
+
+        }
 	}
 
 	void Crash()
