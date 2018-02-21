@@ -84,7 +84,7 @@ public class BaseVehicleClass : Movement
         _fuelSlider = GameObject.Find("FuelSlider").GetComponent<Slider>();
 		_vehHealthSlider = GameObject.Find("VehicleHealthSlider").GetComponent<Slider>();
 		_vehExitButton = GameObject.Find("ExitVehicleButton").GetComponent<Button>();
-        source = gameObject.GetComponent<AudioSource>();
+        source = gameObject.GetComponentInChildren<AudioSource>();
         source.clip = engineSound;
         source.loop = true;
         source.Play();
@@ -124,7 +124,7 @@ public class BaseVehicleClass : Movement
 		_vehicleExitButtonGroup.alpha = 0.0f;
 		_vehExitButton.onClick.RemoveAllListeners();
 		speed = 0.0f;
-        if(!source.isPlaying)
+        if(source.isPlaying)
         {
             source.Stop();
         }
@@ -283,6 +283,10 @@ public class BaseVehicleClass : Movement
                     if (source.pitch >= 0.5)
                     {
                         source.pitch -= 0.01f;
+                    }
+                    else
+                    {
+                        source.Stop();
                     }
                 }
 			}

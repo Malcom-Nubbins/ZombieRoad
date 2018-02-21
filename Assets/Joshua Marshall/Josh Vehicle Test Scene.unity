@@ -668,6 +668,7 @@ MonoBehaviour:
   target: {fileID: 150639209}
   offset: {x: 0, y: 15, z: -16}
   CullDistance: 100
+  rotate: 1
 --- !u!81 &2017478871
 AudioListener:
   m_ObjectHideFlags: 0
