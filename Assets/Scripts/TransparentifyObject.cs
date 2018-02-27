@@ -7,11 +7,13 @@ public class TransparentifyObject : MonoBehaviour
     public Transform player;
 
     private List<RaycastHit> hiddenBuildings;
+    private Camera _camera;
 
 	// Use this for initialization
 	void Start () {
         hiddenBuildings = new List<RaycastHit>();
         player = GetComponent<FollowCamera>().target.transform;
+        _camera = GetComponent<Camera>();
 	}
 	
 	void Update ()
@@ -19,7 +21,7 @@ public class TransparentifyObject : MonoBehaviour
 
         //Debug.Log("Update is being called");
         RaycastHit ObstacleHit;
-        Physics.Raycast(player.position, -transform.forward, out ObstacleHit, Mathf.Infinity, LayerMask.GetMask("Building"));
+        Physics.Raycast(player.position, -_camera.transform.forward, out ObstacleHit, Mathf.Infinity, LayerMask.GetMask("Building"));
         
         if (ObstacleHit.collider)
         {
