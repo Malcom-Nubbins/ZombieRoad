@@ -733,11 +733,10 @@ MonoBehaviour:
   measuredSpeed: 0
   health: 50
   speedModifier: 1.2
-  totalFuel: 50
-  fuelConsumptionRate: 0.8
+  totalFuel: 15
+  fuelConsumptionRate: 1
   maxSpeed: 20
   acceleration: 3.5
-  source: {fileID: 0}
   crashSound: {fileID: 8300000, guid: 312cf61700ebd2c4b9cb0251d83f5111, type: 3}
   engineSound: {fileID: 8300000, guid: e925841036bf73d4f8c9a30a671ae90e, type: 3}
   zombieHit: {fileID: 8300000, guid: 160c082fcd05be34199700513185bed7, type: 3}

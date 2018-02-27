@@ -534,6 +534,7 @@ MonoBehaviour:
   unlockableID: CarSmallBlue
   type: 4
   unlocked: 1
+  Price: 0
 --- !u!114 &114644126986228774
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -552,10 +553,13 @@ MonoBehaviour:
   measuredSpeed: 0
   health: 50
   speedModifier: 1.2
-  totalFuel: 50
-  fuelConsumptionRate: 0.8
+  totalFuel: 18
+  fuelConsumptionRate: 1
   maxSpeed: 16
   acceleration: 3.5
+  crashSound: {fileID: 0}
+  engineSound: {fileID: 0}
+  zombieHit: {fileID: 0}
   debugDisableAutoExit: 0
 --- !u!114 &114987043331759766
 MonoBehaviour:
