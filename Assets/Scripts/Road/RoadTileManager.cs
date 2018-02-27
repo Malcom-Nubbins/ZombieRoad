@@ -86,24 +86,21 @@ public class RoadTileManager : MonoBehaviour
 
 	void FixedUpdate()
 	{
-		//Debug.Log("Tick, count=" + checkpoint.RoadMapRoot.GetComponentsInChildren<RoadGenerator>().Length + ", 110's name "+ checkpoint.RoadMapRoot.GetComponentsInChildren<RoadGenerator>()[110].gameObject.name);
 		if (Input.GetKey(KeyCode.Keypad0))
 			bCull = !bCull;
 
-		//TimeUntilFieldCheck--;
-		//if (TimeUntilFieldCheck==0)
-		//{
-		//	//110 is slightly under a quarter on average
-		if (Time.fixedTime > 10000000000000 && EmergencyFieldRemover == null && checkpoint.RoadMapRoot.GetComponentsInChildren<RoadGenerator>()[110] as DisabledRoadGenerator != null)
+		//Debug.Log(checkpoint.RoadMapRoot.GetComponentsInChildren<RoadGenerator>().Length + " 35:" + checkpoint.RoadMapRoot.GetComponentsInChildren<RoadGenerator>()[35].gameObject.name);
+
+		if (checkpoint.RoadMapRoot.GetComponentsInChildren<RoadGenerator>().Length > 100 /*usually around 140, prevent checking until the map is up to size*/ && EmergencyFieldRemover == null && checkpoint.RoadMapRoot.GetComponentsInChildren<RoadGenerator>()[35] as DisabledRoadGenerator != null /*35 is around a quarter, meaning grass at this position indicates a map with three quarters grass*/)
 		{
 			int i = RoadGenerator.Wrap0to7((int)(checkpoint.FollowCamera.GetComponent<FollowCamera>().target.transform.rotation.eulerAngles.y / 45.0f));
-			RaycastHit Hit; Physics.Raycast(RoundDownToGrid(checkpoint.FollowCamera.GetComponent<FollowCamera>().target.transform.position) + new Vector3(RoadGenerator.Xoffset(i) * 12, 500, RoadGenerator.Zoffset(i) * 12), new Vector3(0, -1), out Hit, Mathf.Infinity, 1 << 9);
+			RaycastHit Hit; Physics.Raycast(RoundDownToGrid(checkpoint.FollowCamera.GetComponent<FollowCamera>().target.transform.position) + new Vector3(RoadGenerator.Xoffset(i) * 6, 500, RoadGenerator.Zoffset(i) * 6), new Vector3(0, -1), out Hit, Mathf.Infinity, 1 << 9);
 
 			if (!Hit.collider)
 			{
-				Debug.Log("FUCKIN FIELD");
+				Debug.Log("FUCKIN FIELD, heading " + (RoadGenerator.Direction)i);
 
-				EmergencyFieldRemover = Instantiate(FourWay, RoundDownToGrid(checkpoint.FollowCamera.GetComponent<FollowCamera>().target.transform.position) + new Vector3(RoadGenerator.Xoffset(i) * 12, FourWay.GetComponent<RoadGenerator>().YOffset, RoadGenerator.Zoffset(i) * 12), Quaternion.identity, checkpoint.RoadMapRoot.transform);
+				EmergencyFieldRemover = Instantiate(FourWay, RoundDownToGrid(checkpoint.FollowCamera.GetComponent<FollowCamera>().target.transform.position) + new Vector3(RoadGenerator.Xoffset(i) * 6, FourWay.GetComponent<RoadGenerator>().YOffset, RoadGenerator.Zoffset(i) * 6), Quaternion.identity, checkpoint.RoadMapRoot.transform);
 				EmergencyFieldRemover.transform.SetAsFirstSibling();
 				RoadGenerator newRG = EmergencyFieldRemover.GetComponent<RoadGenerator>();
 				newRG.CullingExempt = true;

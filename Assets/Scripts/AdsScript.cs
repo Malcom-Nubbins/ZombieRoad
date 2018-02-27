@@ -10,8 +10,8 @@ public class AdsScript : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-        Button startButton = GetComponent<Button>();
-        startButton.onClick.AddListener(OnClick);
+        //Button startButton = GetComponent<Button>();
+        //startButton.onClick.AddListener(OnClick);
 
     }
 	
