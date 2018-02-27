@@ -36,12 +36,15 @@ public class BaseVehicleClass : Movement
 	private CanvasGroup _vehicleUIGroup;
 	private CanvasGroup _vehicleExitButtonGroup;
 
-    AudioSource source;
+    AudioSource engineSource;
+    AudioSource zombieKillSource;
+    AudioSource crashSource;
     public AudioClip crashSound;
     public AudioClip engineSound;
     public AudioClip zombieHit;
-    bool played = false;
-
+    public AudioClip engineDying;
+    bool CrashPlayed = false;
+    bool engineDeathPlayed = false;
     List<GameObject> zombiesOnRoof = new List<GameObject>();
 
 	Rigidbody vehicleRB;
@@ -84,13 +87,34 @@ public class BaseVehicleClass : Movement
         _fuelSlider = GameObject.Find("FuelSlider").GetComponent<Slider>();
 		_vehHealthSlider = GameObject.Find("VehicleHealthSlider").GetComponent<Slider>();
 		_vehExitButton = GameObject.Find("ExitVehicleButton").GetComponent<Button>();
-        source = gameObject.GetComponentInChildren<AudioSource>();
+<<<<<<< HEAD
+        source = gameObject.GetComponent<AudioSource>();
         source.clip = engineSound;
         source.loop = true;
         source.Play();
+        bool CrashPlayed = false;
+        bool engineDeathPlayed = false;
+
+        _vehicleUIGroup.alpha = 1.0f;
+=======
+
+        engineSource = GameObject.Find("VehicleAudioSource").GetComponent<AudioSource>();
+        crashSource = GameObject.Find("CrashAudioSource").GetComponent<AudioSource>();
+        zombieKillSource = GameObject.Find("ZombieKillCollider").GetComponent<AudioSource>();
+
+        engineSource.clip = engineSound;
+        engineSource.loop = true;
+        engineSource.Play();
         played = false;
 
+        crashSource.clip = crashSound;
+        crashSource.loop = false;
+
+        zombieKillSource.clip = zombieHit;
+        zombieKillSource.loop = false;
+
 		_vehicleUIGroup.alpha = 1.0f;
+>>>>>>> 06cb701bc677d7e7d4ba3015260921ab23388e3c
 
 		_vehicleExitButtonGroup.alpha = 1.0f;
 
@@ -118,16 +142,24 @@ public class BaseVehicleClass : Movement
 
 	private void TryExitVehicle()
 	{
+        if(!CrashPlayed)
+        {
+            source.Stop();
+        }
 		if (_driver == null) return;
 
 		_vehicleUIGroup.alpha = 0.0f;
 		_vehicleExitButtonGroup.alpha = 0.0f;
 		_vehExitButton.onClick.RemoveAllListeners();
 		speed = 0.0f;
-        if(source.isPlaying)
+<<<<<<< HEAD
+
+=======
+        if(engineSource.isPlaying)
         {
-            source.Stop();
+            engineSource.Stop();
         }
+>>>>>>> 06cb701bc677d7e7d4ba3015260921ab23388e3c
 
         GameObject followCamera = gameObject.GetComponent<DisableVehicle>().followCamera;
 		gameObject.GetComponent<DisableVehicle>().followCamera = null;
@@ -168,8 +200,14 @@ public class BaseVehicleClass : Movement
             //enabled = false;
             //return;
         }
+        if (!deadState && !source.isPlaying)
+        {
+            source.clip = engineSound;
+            source.loop = true;
+            source.Play();
+        }
 
-        if(!debugDisableAutoExit)
+        if (!debugDisableAutoExit)
         {
             if (measuredSpeed < 2.0f)
             {
@@ -234,11 +272,16 @@ public class BaseVehicleClass : Movement
 
         // Implement damage from zombies
         if (health <= 0)
+        {
 			deadState = true;
+        }
+
+
 
 		// Slow the vehicle gradually until it stops if the vehicle 'dies'
 		if (deadState)
 		{
+
 			if(speed <= 0)
 			{
 				TryExitVehicle();
@@ -246,10 +289,20 @@ public class BaseVehicleClass : Movement
 			}
 
 			speed -= 4.5f * Time.deltaTime;
-            if (source.pitch >= 0.5)
+<<<<<<< HEAD
+            if(!engineDeathPlayed)
             {
-                source.pitch -= 0.01f;
+                source.pitch = 0.5f;
+                source.loop = false;
+                source.PlayOneShot(engineDying);
+                engineDeathPlayed = true;
+=======
+            if (engineSource.pitch >= 0.5)
+            {
+                engineSource.pitch -= 0.01f;
+>>>>>>> 06cb701bc677d7e7d4ba3015260921ab23388e3c
             }
+
         }
 		else
 		{
@@ -264,9 +317,9 @@ public class BaseVehicleClass : Movement
 					if (speed <= maxSpeed)
 					{
 						speed += (acceleration * accelerationMultiplier * Time.deltaTime);
-                        if(source.pitch <= 1.3)
+                        if(engineSource.pitch <= 1.3)
                         {
-                            source.pitch += 0.01f;
+                            engineSource.pitch += 0.01f;
                         }
 
 					}
@@ -280,14 +333,22 @@ public class BaseVehicleClass : Movement
 					}
 					// Slow the vehicle gradually until it stops if the vehicle runs out of fuel
 					speed -= 2.5f * Time.deltaTime;
-                    if (source.pitch >= 0.5)
+<<<<<<< HEAD
+                    deadState = true;
+                    if (source.pitch >= 0.0)
+=======
+                    if (engineSource.pitch >= 0.5)
+>>>>>>> 06cb701bc677d7e7d4ba3015260921ab23388e3c
                     {
-                        source.pitch -= 0.01f;
+                        engineSource.pitch -= 0.01f;
                     }
+<<<<<<< HEAD
+=======
                     else
                     {
-                        source.Stop();
+                        engineSource.Stop();
                     }
+>>>>>>> 06cb701bc677d7e7d4ba3015260921ab23388e3c
                 }
 			}
 			else
@@ -299,9 +360,9 @@ public class BaseVehicleClass : Movement
 				}
 
 				speed -= (decel * Time.deltaTime);
-                if(source.pitch >= 0.5)
+                if(engineSource.pitch >= 0.5)
                 {
-                    source.pitch -= 0.01f;
+                    engineSource.pitch -= 0.01f;
                 }
 
             }
@@ -343,17 +404,33 @@ public class BaseVehicleClass : Movement
 			return;
 		}
 
-		if (health > 0)
-		{
-			//TakeDamage(0.5f);
-			health -= 0.5f;
-			_vehHealthSlider.value = health;
-			_lastHitTime = 0.5f;
+        if (health > 0)
+        {
+            //TakeDamage(0.5f);
+            health -= 0.5f;
+            _vehHealthSlider.value = health;
+            _lastHitTime = 0.5f;
+            foreach (var gameobject in zombiesOnRoof)
+            {
+                if (gameobject.GetInstanceID() == zombie.GetInstanceID())
+                {
+                    Debug.Log("ASDASKJSADKJASD");
+                    return;
+                }
+            }
+            if(zombie.tag == "Zombie")
+            {
+                Debug.Log("PLAYINGGGGGGGGG");
+                source.PlayOneShot(zombieHit);
+            }
+
+
         }
-		else
-		{
-			health = 0.0f;
-		}
+
+        else
+        {
+            health = 0.0f;
+        }
 	}
 
 	void OnCollisionStay(Collision collision)
@@ -373,9 +450,11 @@ public class BaseVehicleClass : Movement
 		if(collision.gameObject.CompareTag("Zombie"))
 		{
 			OnCollisionEnter(collision);
+<<<<<<< HEAD
+=======
             if (_replayTime < 0.0f)
             {
-                source.PlayOneShot(zombieHit);
+                zombieKillSource.Play();
                 _replayTime = 1.0f;
             }
             else
@@ -383,19 +462,28 @@ public class BaseVehicleClass : Movement
                 _replayTime -= Time.deltaTime;
             }
 
+>>>>>>> 06cb701bc677d7e7d4ba3015260921ab23388e3c
         }
 	}
 
 	void Crash()
 	{
 
-        if (played == false)
+        if (CrashPlayed == false)
         {
+<<<<<<< HEAD
             source.Stop();
             source.pitch = 1.0f;
             source.loop = false;
             source.PlayOneShot(crashSound, 1f);
+            CrashPlayed = true;
+=======
+            engineSource.Stop();
+            engineSource.pitch = 1.0f;
+            engineSource.loop = false;
+            crashSource.Play();
             played = true;
+>>>>>>> 06cb701bc677d7e7d4ba3015260921ab23388e3c
         }
         float damageFromCrash = _maxHealth / 3;
         health -= damageFromCrash;

@@ -15,6 +15,8 @@ public class SeekPlayer : MonoBehaviour
 	public Vector3 MainMenuDest;
 	Vector3 seekDirection;
 	float AIdelay;
+    AudioSource zombieSource;
+    public AudioClip zombieAttack;
 
 	void Start()
 	{
@@ -28,7 +30,9 @@ public class SeekPlayer : MonoBehaviour
 		};
 		MainMenuDest = new Vector3(Random.value * followCamera.CullDistance - followCamera.CullDistance/2.0f, 0, Random.value * followCamera.CullDistance - followCamera.CullDistance / 2.0f) + RoadTileManager.checkpoint.RoadMapRoot.transform.position;
 		AIdelay = Random.value;
-	}
+        zombieSource = GetComponent<AudioSource>();
+
+    }
 	
 	void Update()
 	{
@@ -73,7 +77,7 @@ public class SeekPlayer : MonoBehaviour
 
 	void OnCollisionEnter(Collision collision)
 	{
-		if (RoadTileManager.bMainMenu)
+        if (RoadTileManager.bMainMenu)
 		{
 			if (collision.gameObject.tag != "Zombie") return;
 
@@ -84,6 +88,7 @@ public class SeekPlayer : MonoBehaviour
 			if (zombie.GetComponent<Health>().health <= 0) return;
 
 			gameObject.GetComponent<Health>().health -= 0.5f;
+
 		}
 	}
 }

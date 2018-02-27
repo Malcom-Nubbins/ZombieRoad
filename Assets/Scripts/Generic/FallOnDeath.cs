@@ -8,12 +8,15 @@ public class FallOnDeath : MonoBehaviour
     bool dead = false;
     float timeDead = 0;
     Vector3 axisToRotateAround;
+    AudioSource zombieSource;
+    public AudioClip zombieDeath;
 
-	void Start()
+    void Start()
     {
         rb = GetComponent<Rigidbody>();
         GetComponent<Health>().onDeath += OnDeath;
         SetAxisToRotateAround(Vector3.zero);
+        zombieSource = GetComponent<AudioSource>();
 	}
 
     void Update()
@@ -36,6 +39,7 @@ public class FallOnDeath : MonoBehaviour
     void OnDeath()
     {
         dead = true;
+        zombieSource.PlayOneShot(zombieDeath);
     }
 
     void OnCollisionEnter(Collision collision)
