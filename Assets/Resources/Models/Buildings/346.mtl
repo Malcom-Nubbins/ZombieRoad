@@ -18,8 +18,8 @@ illum 2
 Tr 1.000
 d 1.000
 
-# Bright_Light_Blue 212
-newmtl Ldraw47
+# Bright_Light_Blue
+newmtl Ldraw212
 Kd 0.525 0.757 0.882
 Ka 0.475 0.243 0.118
 Ks 0.6 0.6 0.6
