@@ -1282,6 +1282,8 @@ MonoBehaviour:
   - {fileID: 114291891442850652, guid: b84c1b1ab44fde242a69ae271bf043c0, type: 2}
   - {fileID: 114621179689374186, guid: f16fce4477b0f0346bc44ca55c1e971d, type: 2}
   - {fileID: 114165107005762436, guid: 1ccb61b4d224be240a05e21232089b9d, type: 2}
+  - {fileID: 114250525250702796, guid: cd444805e7aca7144b99ac90f403f561, type: 2}
+  - {fileID: 114163665614533976, guid: b0758523390170f46924b3affdd49746, type: 2}
   startUnlocked:
   - {fileID: 114700580680548600, guid: 40bd9ee9968db6d4ca027a69fb663465, type: 2}
   - {fileID: 114312301950468204, guid: 6e9fb28e46330d442a22a0882e471817, type: 2}
@@ -1467,7 +1469,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 205187105f848b848b6011997b920c44, type: 2}
   - {fileID: 2100000, guid: e3d24787f32327f4dbe18e9745e3b0cb, type: 2}
   - {fileID: 2100000, guid: 671290fc075233041bf14b8421573e87, type: 2}
-  - {fileID: 2100000, guid: 3a743b746049fd647900c0ea8b7796f0, type: 2}
+  - {fileID: 0}
 --- !u!4 &1245854463
 Transform:
   m_ObjectHideFlags: 0
