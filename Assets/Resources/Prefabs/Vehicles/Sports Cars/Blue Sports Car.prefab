@@ -931,6 +931,7 @@ MonoBehaviour:
   crashSound: {fileID: 8300000, guid: 312cf61700ebd2c4b9cb0251d83f5111, type: 3}
   engineSound: {fileID: 8300000, guid: e925841036bf73d4f8c9a30a671ae90e, type: 3}
   zombieHit: {fileID: 8300000, guid: 160c082fcd05be34199700513185bed7, type: 3}
+  engineDying: {fileID: 8300000, guid: 6d57e99b07e6908419faa44b17829a16, type: 3}
   debugDisableAutoExit: 0
 --- !u!114 &114987043331759766
 MonoBehaviour:
