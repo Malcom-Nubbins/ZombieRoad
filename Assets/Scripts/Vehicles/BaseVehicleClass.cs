@@ -71,11 +71,11 @@ public class BaseVehicleClass : Movement
 		_maxHealth = health;
 
 		if (!RoadTileManager.bMainMenu && !_vehicleExitButtonGroup) _vehicleExitButtonGroup = GameObject.Find("ExitVehicleButton").GetComponent<CanvasGroup>();
-		//_vehicleExitButtonGroup.alpha = 0.0f;
+        //_vehicleExitButtonGroup.alpha = 0.0f;
 
         // Debug
         //timeBeforeNoButtonsPressedRemovesPlayer = 10000.0f;
-	}
+    }
 
 	private void OnEnable()
 	{
@@ -88,9 +88,9 @@ public class BaseVehicleClass : Movement
 		_vehHealthSlider = GameObject.Find("VehicleHealthSlider").GetComponent<Slider>();
 		_vehExitButton = GameObject.Find("ExitVehicleButton").GetComponent<Button>();
 
-        engineSource = GameObject.Find("VehicleAudioSource").GetComponent<AudioSource>();
-        crashSource = GameObject.Find("CrashAudioSource").GetComponent<AudioSource>();
-        zombieKillSource = GameObject.Find("ZombieKillCollider").GetComponent<AudioSource>();
+        engineSource = transform.Find("VehicleAudioSource").GetComponent<AudioSource>();
+        crashSource = transform.Find("CrashAudioSource").GetComponent<AudioSource>();
+        zombieKillSource = transform.Find("ZombieKillCollider").GetComponent<AudioSource>();
 
         engineSource.clip = engineSound;
         engineSource.loop = true;
@@ -180,11 +180,6 @@ public class BaseVehicleClass : Movement
         {
             //enabled = false;
             //return;
-        }
-        if (!deadState && !engineSource.isPlaying)
-        {
-            engineSource.loop = true;
-            engineSource.Play();
         }
 
         if (!debugDisableAutoExit)
