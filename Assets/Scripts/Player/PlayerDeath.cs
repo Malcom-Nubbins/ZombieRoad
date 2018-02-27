@@ -9,10 +9,13 @@ public class PlayerDeath : MonoBehaviour
     float gameOverCountdown = 2.5f;
     bool dead = false;
     bool showingAd = false;
+    AudioSource PlayerSource;
+    public AudioClip playerDeathSound;
 
-	void Start()
+    void Start()
     {
         GetComponent<Health>().onDeath += OnDeath;
+        PlayerSource = GetComponent<AudioSource>();
 	}
 	
 	void Update()
@@ -67,6 +70,7 @@ public class PlayerDeath : MonoBehaviour
     {
         PlayerHealth playerHealth = GetComponent<PlayerHealth>();
         playerHealth.health = 0;
+        PlayerSource.PlayOneShot(playerDeathSound);
     }
 
     void OnCollisionEnter(Collision collision)

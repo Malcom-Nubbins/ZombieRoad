@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class PlayerHealth : Health {
 
     private Slider _healthSlider;
+    AudioSource PlayerSource;
+    public AudioClip playerHitSound;
 
     private float _lastHitTime = 0.0f;
 
@@ -15,6 +17,7 @@ public class PlayerHealth : Health {
         _healthSlider = GameObject.Find("HealthSlider").GetComponent<Slider>();
         _healthSlider.maxValue = startingHealth;
         onDeath += PlayerHealth_onDeath;
+        PlayerSource = GetComponent<AudioSource>();
 	}
 
     private void PlayerHealth_onDeath()
@@ -65,6 +68,10 @@ public class PlayerHealth : Health {
         if (zombie.GetComponent<Health>().health <= 0)
         {
             return;
+        }
+        if (health >= 0.5f)
+        {
+            PlayerSource.PlayOneShot(playerHitSound);
         }
 
         health -= 0.5f;
