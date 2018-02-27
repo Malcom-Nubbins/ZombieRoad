@@ -444,14 +444,12 @@ MonoBehaviour:
   - {fileID: 1845648901761644, guid: 06d1323479326ca42895f50e6c5ed09b, type: 2}
   - {fileID: 1149320171371916, guid: 5d7d83aed7d55c049abc94d0dfd62816, type: 2}
   _Houses:
-  - {fileID: 1195365599170674, guid: bf4f2fd4c72c25945aa22111fa3f5627, type: 2}
-  - {fileID: 1661340654329924, guid: 40bd9ee9968db6d4ca027a69fb663465, type: 2}
-  - {fileID: 1261247030906472, guid: e5e83df07dc7afd4b8de494454f2bb59, type: 2}
+  - {fileID: 1500864830911148, guid: cd444805e7aca7144b99ac90f403f561, type: 2}
   _Shops:
-  - {fileID: 0}
+  - {fileID: 1973034723863326, guid: b0758523390170f46924b3affdd49746, type: 2}
   ChanceSkyscraper: 0
-  ChanceHouses: 100
-  ChanceShops: 0
+  ChanceHouses: 75
+  ChanceShops: 25
   ChanceNothing: 0
 --- !u!114 &501691855
 MonoBehaviour:
@@ -519,6 +517,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allUnlockables:
   - {fileID: 114250525250702796, guid: cd444805e7aca7144b99ac90f403f561, type: 2}
+  - {fileID: 114163665614533976, guid: b0758523390170f46924b3affdd49746, type: 2}
   - {fileID: 114204360043616240, guid: 44b22ef2a9315b14fad9445e921fee69, type: 2}
   - {fileID: 114556322146533818, guid: 76456fb47c28c4348aa242e129b6055e, type: 2}
   - {fileID: 114212923952598738, guid: 28111b77f86684420bc37075500b3b29, type: 2}
@@ -650,11 +649,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4327974594993910, guid: c5cb10fa119007f4888248d330d93dd4, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4796074601825522, guid: c5cb10fa119007f4888248d330d93dd4, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4952791247278754, guid: c5cb10fa119007f4888248d330d93dd4, type: 2}
       propertyPath: m_RootOrder
@@ -668,6 +667,10 @@ Prefab:
         type: 2}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4702942954196438, guid: c5cb10fa119007f4888248d330d93dd4, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c5cb10fa119007f4888248d330d93dd4, type: 2}

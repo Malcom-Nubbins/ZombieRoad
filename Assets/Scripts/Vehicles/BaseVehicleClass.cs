@@ -183,7 +183,6 @@ public class BaseVehicleClass : Movement
         }
         if (!deadState && !engineSource.isPlaying)
         {
-            engineSource.clip = engineSound;
             engineSource.loop = true;
             engineSource.Play();
         }
@@ -433,13 +432,12 @@ public class BaseVehicleClass : Movement
 	void Crash()
 	{
 
-        if (CrashPlayed == false)
-        {
-            engineSource.Stop();
-            engineSource.pitch = 1.0f;
-            engineSource.loop = false;
-            crashSource.Play();
-        }
+
+        engineSource.Stop();
+        engineSource.pitch = 1.0f;
+        engineSource.loop = false;
+        crashSource.Play();
+        
         float damageFromCrash = _maxHealth / 3;
         health -= damageFromCrash;
 
