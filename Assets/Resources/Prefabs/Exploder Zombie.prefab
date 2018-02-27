@@ -284,7 +284,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69134ad02b69a1348aa5a609c9de69ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 4
   wanderCircleRadius: 2
   wanderCircleDistanceInFront: 3
   wanderCircleRotationSpeed: 90
