@@ -505,7 +505,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 320b35561e6c74ae9b8c45f68e100508, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 6
   rotationAngle: 200
   pivot: {fileID: 4827089163185860}
   centerOfMass: {x: 0, y: -1.5, z: 0}
@@ -588,7 +588,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef9f38b7f4def314b9960c0bc1982969, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 20
+  startingHealth: 2
 --- !u!114 &114920544142112638
 MonoBehaviour:
   m_ObjectHideFlags: 1

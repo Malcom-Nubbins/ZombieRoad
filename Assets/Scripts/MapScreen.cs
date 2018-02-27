@@ -16,8 +16,7 @@ public class MapScreen : MonoBehaviour
 
 	float _currentCooldownTime = 0.0f;
 
-	Sprite mapPreview;
-	SpriteRenderer mpRenderer;
+	RawImage mapPreview;
 
 	Vector2 oo;
 
@@ -33,11 +32,8 @@ public class MapScreen : MonoBehaviour
 		purchaseButton = GameObject.Find("Purchase").GetComponent<Button>();
 		purchaseButton.onClick.AddListener(onPurchaseClick);
 
-		oo = new Vector2(0, 0);
-		mapPreview = Sprite.Create(_maps.AvailableMapImages[_currentSelectedItem], new Rect(0.0f, 0.0f, _maps.AvailableMapImages[_currentSelectedItem].width, _maps.AvailableMapImages[_currentSelectedItem].height), oo);
-
-		mpRenderer = GameObject.Find("MapPreview").GetComponent<SpriteRenderer>();
-		mpRenderer.sprite = mapPreview;
+		mapPreview = GameObject.Find("MapPreview").GetComponent<RawImage>();
+		mapPreview.texture = _maps.AvailableMapImages[_currentSelectedItem];
 	}
 
 	void onPurchaseClick()
@@ -62,10 +58,8 @@ public class MapScreen : MonoBehaviour
 		if (_currentSelectedItem > _maps.AvailableMapNames.Length - 1)
 			_currentSelectedItem = 0;
 
-		mapPreview = null;
-		mapPreview = Sprite.Create(_maps.AvailableMapImages[_currentSelectedItem], new Rect(0.0f, 0.0f, _maps.AvailableMapImages[_currentSelectedItem].width, _maps.AvailableMapImages[_currentSelectedItem].height), oo);
+		mapPreview.texture = _maps.AvailableMapImages[_currentSelectedItem];
 		_itemNameText.text = _maps.AvailableMapNames[_currentSelectedItem];
-		mpRenderer.sprite = mapPreview;
 	}
 
 	void onPrevClick()
@@ -76,10 +70,8 @@ public class MapScreen : MonoBehaviour
 		if (_currentSelectedItem < 0)
 			_currentSelectedItem = _maps.AvailableMapNames.Length - 1;
 
-		mapPreview = null;
-		mapPreview = Sprite.Create(_maps.AvailableMapImages[_currentSelectedItem], new Rect(0.0f, 0.0f, _maps.AvailableMapImages[_currentSelectedItem].width, _maps.AvailableMapImages[_currentSelectedItem].height), oo);
+		mapPreview.texture = _maps.AvailableMapImages[_currentSelectedItem];
 		_itemNameText.text = _maps.AvailableMapNames[_currentSelectedItem];
-		mpRenderer.sprite = mapPreview;
 	}
 
 	// Update is called once per frame

@@ -1123,13 +1123,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 611ad54f3e30fd942bbffd111a87926c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SelectedMap: SmallTest
+  SelectedMap: BCrawfordTestScene
   AvailableMapNames:
-  - SmallTest
-  - EdSheeran
+  - BCrawfordTestScene
   AvailableMapImages:
   - {fileID: 2800000, guid: 952f2ccd70ccf6f47a7e9c2a5ff12a82, type: 3}
-  - {fileID: 2800000, guid: e971b441b2a2a024b979332f3bec96aa, type: 3}
 --- !u!114 &1049487780
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2012,6 +2010,7 @@ MonoBehaviour:
   - BCrawfordTestScene
   - BCrawfordUnlockScene
   - BCrawfordGameOverScene
+  - BCrawfordShopScene
   - BCrawfordShopScene
 --- !u!4 &1996581057
 Transform:

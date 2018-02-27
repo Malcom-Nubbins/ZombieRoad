@@ -17,6 +17,7 @@ public class Checkpoint : MonoBehaviour
 
 	public float checkpointRadius;
 	private float timeRemaining;
+    private float nextTimeRemaining;
 
 	//private float checkpointRotationSpeed;
 	private Text _checkpointTimer;
@@ -36,7 +37,8 @@ public class Checkpoint : MonoBehaviour
 		gameObject.transform.SetPositionAndRotation(checkpointPosition, gameObject.transform.rotation);
 
 		level = 0;
-		timeRemaining = 9;
+		timeRemaining = 5;
+        nextTimeRemaining = 2;//start small so it does not scale too fast
 
 		//checkpointRotationSpeed = 50.0f;
 
@@ -131,12 +133,9 @@ public class Checkpoint : MonoBehaviour
 		gameObject.transform.SetPositionAndRotation(checkpointPosition, gameObject.transform.rotation);
 
 		level++;
-		float playerSpeed = 10;
-		float fastestVehicleSpeed = 20;
-		float lerp = Mathf.Clamp((float)level / 20.0f, 0, 1);
-		float speedRequired = Mathf.Lerp(playerSpeed * 0.5f, fastestVehicleSpeed, lerp);
-		float extraTime = checkpointRadius / speedRequired;
-		timeRemaining += extraTime;
+        nextTimeRemaining *= 1.5f;//scale time the same as radius
+        timeRemaining += nextTimeRemaining;
+        Debug.Log("Checkpoint radius: " + checkpointRadius + ", Time added to get there: " + nextTimeRemaining);
 	}
 
 	public float GetRadius()
