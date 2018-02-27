@@ -98,7 +98,7 @@ public class RoadTileManager : MonoBehaviour
 
 			if (!Hit.collider)
 			{
-				Debug.Log("FUCKIN FIELD, heading " + checkpoint.FollowCamera.GetComponent<FollowCamera>().target.transform.rotation.eulerAngles.y + " ~= " + (RoadGenerator.Direction)i);
+				Debug.Log("FUCKIN FIELD, heading " + (RoadGenerator.Direction)i);
 
 				EmergencyFieldRemover = Instantiate(FourWay, RoundDownToGrid(checkpoint.FollowCamera.GetComponent<FollowCamera>().target.transform.position) + new Vector3(RoadGenerator.Xoffset(i) * 6, FourWay.GetComponent<RoadGenerator>().YOffset, RoadGenerator.Zoffset(i) * 6), Quaternion.identity, checkpoint.RoadMapRoot.transform);
 				EmergencyFieldRemover.transform.SetAsFirstSibling();
