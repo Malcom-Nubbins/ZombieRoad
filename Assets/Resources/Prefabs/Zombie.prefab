@@ -434,9 +434,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4
+  wanderForce: 1
   wanderCircleRadius: 2
   wanderCircleDistanceInFront: 3
   wanderCircleRotationSpeed: 90
+  swarmAlignmentForce: 2
+  swarmCohesionForce: 2
+  swarmSeparationForce: 1
   MainMenuDest: {x: 0, y: 0, z: 0}
   zombieAttack: {fileID: 0}
 --- !u!114 &114654172062120998
