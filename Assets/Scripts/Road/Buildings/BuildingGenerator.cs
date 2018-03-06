@@ -48,7 +48,7 @@ public class BuildingGenerator : MonoBehaviour
 
 		if (newBuildingClass)
 		{
-			GameObject newBuilding = Instantiate(newBuildingClass, transform.position, transform.rotation, transform);
+			/*GameObject newBuilding =*/ Instantiate(newBuildingClass, transform.position, transform.rotation, transform);
 		}
 		else
 		{
