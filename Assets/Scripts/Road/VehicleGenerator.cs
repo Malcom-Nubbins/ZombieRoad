@@ -31,12 +31,12 @@ public class VehicleGenerator : MonoBehaviour
 
 		bool bInVehicle = player.GetComponent<BaseVehicleClass>();
 
-		if (!bInVehicle|| player.GetComponent<BaseVehicleClass>().GetFuelPercentage() < 0.33f)
+		if (!bInVehicle|| player.GetComponent<BaseVehicleClass>().GetFuelPercentage() < 0.5f)
 		{
 			if (r <= 10 && UnlockManager.instance)
 			{
 				GameObject[] UnlockedCars = UnlockManager.instance.GetUnlockedItems(UnlockableType.VEHICLE);
-				r = Random.Range(0, UnlockedCars.Length-1);
+				r = Random.Range(0, UnlockedCars.Length);
 				i = rg.Exit[(int)RoadGenerator.Direction.North] ? (int)RoadGenerator.Direction.West : (int)RoadGenerator.Direction.South;
 				GameObject car = Instantiate(UnlockedCars[r], gameObject.transform.position+new Vector3(RoadGenerator.Xoffset(i)/4,3,RoadGenerator.Zoffset(i)/4), gameObject.transform.rotation);
 				//rg.MySpecificDebug += "generated vehicle @ " + car.transform.position + ", will not cull\n";
