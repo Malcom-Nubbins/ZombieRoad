@@ -382,7 +382,7 @@ public class BaseVehicleClass : Movement
             }
             if(zombie.tag == "Zombie")
             {
-                //Debug.Log("PLAYINGGGGGGGGG");
+                Debug.Log("PLAYING HERE");
                 zombieKillSource.Play();
             }
 
@@ -416,7 +416,24 @@ public class BaseVehicleClass : Movement
             if (_replayTime < 0.0f)
             {
                 if(zombieKillSource)
-                    zombieKillSource.Play();
+                {
+                    GameObject zombie = collision.gameObject;
+
+                    foreach (var gameobject in zombiesOnRoof)
+                    {
+                        if (gameobject.GetInstanceID() == zombie.GetInstanceID())
+                        {
+                            //Debug.Log("ASDASKJSADKJASD");
+                            return;
+                        }
+                    }
+                    if (zombie.tag == "Zombie")
+                    {
+                        Debug.Log("PLAYING HERE");
+                        zombieKillSource.Play();
+                    }
+                }
+
                 _replayTime = 1.0f;
             }
             else
