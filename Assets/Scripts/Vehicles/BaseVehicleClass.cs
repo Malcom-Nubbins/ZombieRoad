@@ -43,8 +43,8 @@ public class BaseVehicleClass : Movement
     public AudioClip engineSound;
     public AudioClip zombieHit;
     public AudioClip engineDying;
-    bool CrashPlayed = false;
-    bool engineDeathPlayed = false;
+    //bool CrashPlayed = false;
+    //bool engineDeathPlayed = false;
     List<GameObject> zombiesOnRoof = new List<GameObject>();
 
 	Rigidbody vehicleRB;

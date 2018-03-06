@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class MapScreen : MonoBehaviour
 {
-
-	GameObject _lockedItemDisplay;
 	MapSelection _maps;
 	int _currentSelectedItem;
 
@@ -17,8 +15,6 @@ public class MapScreen : MonoBehaviour
 	float _currentCooldownTime = 0.0f;
 
 	RawImage mapPreview;
-
-	Vector2 oo;
 
 	// Use this for initialization
 	void Start()
@@ -53,7 +49,7 @@ public class MapScreen : MonoBehaviour
 	void onNextClick()
 	{
 		_currentCooldownTime = 0.3f;
-		Destroy(_lockedItemDisplay);
+
 		_currentSelectedItem++;
 		if (_currentSelectedItem > _maps.AvailableMapNames.Length - 1)
 			_currentSelectedItem = 0;
@@ -65,7 +61,7 @@ public class MapScreen : MonoBehaviour
 	void onPrevClick()
 	{
 		_currentCooldownTime = 0.3f;
-		Destroy(_lockedItemDisplay);
+
 		_currentSelectedItem--;
 		if (_currentSelectedItem < 0)
 			_currentSelectedItem = _maps.AvailableMapNames.Length - 1;
