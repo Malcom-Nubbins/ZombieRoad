@@ -14,15 +14,17 @@ public class EquippedWeapon : MonoBehaviour
 	public GameObject followCamera;
     float AttackCooldown;
     Text weaponInfo;
-    public AudioSource source;
+    AudioSource source;
+    public AudioClip pickUpSound;
 
     public bool attacking = false;
 	//int zombieMask;
 	// Use this for initialization
 	void Start()
 	{
-		//zombieMask = 1 << 8;
-	}
+        source = this.GetComponent<AudioSource>();
+        //zombieMask = 1 << 8;
+    }
 
 	
 	// Update is called once per frame
@@ -103,7 +105,10 @@ public class EquippedWeapon : MonoBehaviour
 
 
     }
-
+    public void playPickUpSound()
+    {
+        source.PlayOneShot(pickUpSound);
+    }
 	public void attack()
 	{
 		//if no weapon is equipped, don't attack
@@ -137,7 +142,6 @@ public class EquippedWeapon : MonoBehaviour
                 SpawnedBullet.GetComponent<BulletScript>().ShootBullet(zombiesToAttack[x].gameObject);
             }
         }
-        source = this.GetComponent<AudioSource>();
         source.PlayOneShot(equippedWeapon.getWeaponSound());
         /*
         if(equippedWeapon.getWeaponName() == "Handgun")
