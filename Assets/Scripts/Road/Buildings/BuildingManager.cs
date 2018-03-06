@@ -6,14 +6,6 @@ public class BuildingManager : MonoBehaviour
 {
 	public static BuildingManager instance;
 
-	public static GameObject[] Skyscrapers;
-	public static GameObject[] Houses;
-	public static GameObject[] Shops;
-
-	public GameObject[] _Skyscrapers;
-	public GameObject[] _Houses;
-	public GameObject[] _Shops;
-
 	[Range(0, 100)]
 	public int ChanceSkyscraper;
 	[Range(0, 100)]
@@ -26,10 +18,6 @@ public class BuildingManager : MonoBehaviour
 	void Awake()
 	{
 		instance = this;
-        
-		Skyscrapers = _Skyscrapers;
-		Houses = _Houses;
-		Shops = _Shops;
 	}
 	public void OnValidate()
 	{
@@ -75,20 +63,20 @@ public class BuildingManager : MonoBehaviour
 	{
         GameObject[] unlockedSkyscrapers = UnlockManager.instance.GetUnlockedItems(UnlockableType.SKYSCRAPER);
 		int r = Random.Range(0, unlockedSkyscrapers.Length);
-		return !unlockedSkyscrapers[r]?Skyscrapers[0]:unlockedSkyscrapers[r];
+		return unlockedSkyscrapers[r];
 	}
 	public static GameObject RandomHouse()
     {
         GameObject[] unlockedHouses = UnlockManager.instance.GetUnlockedItems(UnlockableType.HOUSE);
         int r = Random.Range(0, unlockedHouses.Length);
-		return !unlockedHouses[r] ? Houses[0] : unlockedHouses[r];
+		return unlockedHouses[r];
 	}
 	public static GameObject RandomShop()
     {
         GameObject[] unlockedShops = UnlockManager.instance.GetUnlockedItems(UnlockableType.SHOP);
-        if (unlockedShops.Length == 0) return Shops[0];
+        //if (unlockedShops.Length == 0) return Shops[0];
         int r = Random.Range(0, unlockedShops.Length);
-		return !unlockedShops[r] ? Shops[0] : unlockedShops[r];
+		return unlockedShops[r];
 	}
 
 	public static bool IsSkyscraper(GameObject o)
