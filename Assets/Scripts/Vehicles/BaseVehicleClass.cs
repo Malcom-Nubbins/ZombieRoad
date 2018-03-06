@@ -123,7 +123,7 @@ public class BaseVehicleClass : Movement
 
     void TaskOnClick()
 	{
-		Debug.Log("Button Pressed");
+		//Debug.Log("Button Pressed");
 		speed = 0.0f;
 		TryExitVehicle();
 	}
