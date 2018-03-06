@@ -24,12 +24,13 @@ public class Currency : MonoBehaviour {
 
     void Load()
     {
-        currency = PlayerPrefs.GetInt(PP_CURRENCY, 0);
+        currency = PlayerPrefs.GetInt(PP_CURRENCY);
     }
 
     static void Save()
     {
         PlayerPrefs.SetInt(PP_CURRENCY, currency);
+        PlayerPrefs.Save();
     }
 
     public static void AddCurrency()
