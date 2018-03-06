@@ -4,19 +4,16 @@ using UnityEngine;
 
 public class SetMaterialZWrite : MonoBehaviour {
 
-    public Material[] skyScraperMaterials;
-    public Material[] houseMaterials;
-
+    private Object[] buildingMaterials;
 	// Use this for initialization
 	void Start () {
-		for(int i = 0; i < skyScraperMaterials.Length; i++)
-        {
-            skyScraperMaterials[i].SetInt("_ZWrite", 1);
-        }
 
-        for (int i = 0; i < houseMaterials.Length; i++)
+        buildingMaterials = Resources.LoadAll("Models/Buildings/Materials/", typeof(Material));
+
+        for(int i = 0; i < buildingMaterials.Length; i++)
         {
-            houseMaterials[i].SetInt("_ZWrite", 1);
+            Material mat = (Material)buildingMaterials[i];
+            mat.SetInt("_ZWrite", 1);
         }
     }
 	
