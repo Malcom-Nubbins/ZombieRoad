@@ -26,26 +26,15 @@ public class TransparentifyObject : MonoBehaviour
         if (ObstacleHit.collider)
         {
             //Debug.Log("Object collided with: " + ObstacleHit.collider.gameObject.name);
-            if(!ObstacleHit.collider.gameObject.name.ToLower().Contains("shop"))
+           
+            foreach (Renderer meshRenderer in ObstacleHit.collider.gameObject.GetComponentsInChildren<Renderer>())
             {
-                foreach (Renderer meshRenderer in ObstacleHit.collider.gameObject.GetComponentsInChildren<Renderer>())
+                foreach(Material material in meshRenderer.materials)
                 {
-                    foreach(Material material in meshRenderer.materials)
-                    {
-                        material.SetInt("_ZWrite", 0);
-                        material.color = new Color(material.color.r, material.color.g, material.color.b, 0.1f);
-                    }
-                    hiddenBuildings.Add(ObstacleHit);
+                    material.SetInt("_ZWrite", 0);
+                    material.color = new Color(material.color.r, material.color.g, material.color.b, 0.1f);
                 }
-
-                //foreach (MeshRenderer mesh in ObstacleHit.transform.GetComponentsInChildren<MeshRenderer>())
-                //{
-                //    mesh.enabled = false;
-                //    if(!hiddenBuildings.Contains(ObstacleHit))
-                //    {
-                //        hiddenBuildings.Add(ObstacleHit);
-                //    }
-                //}
+                hiddenBuildings.Add(ObstacleHit);
             }
         }
         else
