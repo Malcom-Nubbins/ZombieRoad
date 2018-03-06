@@ -10,8 +10,8 @@ public class AdsScript : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-        //Button startButton = GetComponent<Button>();
-        //startButton.onClick.AddListener(OnClick);
+        Button startButton = GetComponent<Button>();
+        startButton.onClick.AddListener(OnClick);
 
     }
 	
@@ -23,11 +23,11 @@ public class AdsScript : MonoBehaviour
 
     public void OnClick()
     {
-        Debug.Log("CLICKED! Init: " + Advertisement.isInitialized + " TestMode?: " + Advertisement.testMode);
-        Debug.Log(Advertisement.IsReady("rewardedVideo"));
+       // Debug.Log("CLICKED! Init: " + Advertisement.isInitialized + " TestMode?: " + Advertisement.testMode);
+       // Debug.Log(Advertisement.IsReady("rewardedVideo"));
         if (Advertisement.IsReady("rewardedVideo"))
         {
-            Debug.Log("AD IS READY TO SHOw");
+           // Debug.Log("AD IS READY TO SHOw");
             var options = new ShowOptions { resultCallback = HandleShowingAd };
             Advertisement.Show(options);
         }
@@ -39,16 +39,16 @@ public class AdsScript : MonoBehaviour
         switch (result)
         {
             case ShowResult.Finished:
-                Debug.Log(" AD SHOWN SUCCESSFULLY");
+                //Debug.Log(" AD SHOWN SUCCESSFULLY");
                 // give reward, coins used shop maybe???
                 break;
 
             case ShowResult.Skipped:
-                Debug.Log("USER SKIPPED ADVERT NEED TO RESET THEIR PROGRESS !!!!!!!");
+                //Debug.Log("USER SKIPPED ADVERT NEED TO RESET THEIR PROGRESS !!!!!!!");
                 break;
 
             case ShowResult.Failed:
-                Debug.Log("AD FAILED TO DISPLAY");
+               // Debug.Log("AD FAILED TO DISPLAY");
                 break;
         }
 
@@ -57,12 +57,12 @@ public class AdsScript : MonoBehaviour
 
     public void PlayAdOnDeath()
     {
-        Debug.Log("Playing skippable ad on death Init: " + Advertisement.isInitialized + " TestMode?: " + Advertisement.testMode);
-        Debug.Log("is skippable ad avaiable to show?? :" +Advertisement.IsReady("video"));
+       // Debug.Log("Playing skippable ad on death Init: " + Advertisement.isInitialized + " TestMode?: " + Advertisement.testMode);
+       // Debug.Log("is skippable ad avaiable to show?? :" +Advertisement.IsReady("video"));
 
         if (Advertisement.IsReady("video"))
         {
-            Debug.Log("SKIPPABLE ADD IS SHOWING");
+           // Debug.Log("SKIPPABLE ADD IS SHOWING");
             var options = new ShowOptions { resultCallback = HandleShowingAd };
             Advertisement.Show(options);
         }

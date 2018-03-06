@@ -41,7 +41,8 @@ public class VehicleGenerator : MonoBehaviour
 			//rg.CullingExempt = true;
 			if (RoadTileManager.bMainMenu) car.GetComponent<BaseVehicleClass>().health = 0;
 		}
-		if ((RoadTileManager.bMainMenu || bInVehicle) && r < RoadTileManager.instance.ChanceBarrier)
+
+		if ((RoadTileManager.bMainMenu || bInVehicle) && r > 100 - RoadTileManager.instance.ChanceBarrier)
 		{
 			GameObject[] RoadBlocks = Resources.LoadAll<GameObject>("Prefabs/Destructable Scenery/Fences/Road Barriers");
 			r = Random.Range(0, RoadBlocks.Length);

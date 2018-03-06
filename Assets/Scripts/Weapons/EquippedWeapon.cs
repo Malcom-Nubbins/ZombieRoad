@@ -17,11 +17,11 @@ public class EquippedWeapon : MonoBehaviour
     public AudioSource source;
 
     public bool attacking = false;
-	int zombieMask;
+	//int zombieMask;
 	// Use this for initialization
 	void Start()
 	{
-		zombieMask = 1 << 8;
+		//zombieMask = 1 << 8;
 	}
 
 	

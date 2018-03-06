@@ -43,8 +43,8 @@ public class BaseVehicleClass : Movement
     public AudioClip engineSound;
     public AudioClip zombieHit;
     public AudioClip engineDying;
-    bool CrashPlayed = false;
-    bool engineDeathPlayed = false;
+    //bool CrashPlayed = false;
+    //bool engineDeathPlayed = false;
     List<GameObject> zombiesOnRoof = new List<GameObject>();
 
 	Rigidbody vehicleRB;
@@ -166,6 +166,8 @@ public class BaseVehicleClass : Movement
         }
 
         Camera.main.GetComponent<TransparentifyObject>().player = _driver.transform;
+
+        _driver.GetComponent<OccupyVehicle>().SetOccupyCooldown(2.0f);
 
         _driver = null;
 
@@ -413,7 +415,8 @@ public class BaseVehicleClass : Movement
 
             if (_replayTime < 0.0f)
             {
-                zombieKillSource.Play();
+                if(zombieKillSource)
+                    zombieKillSource.Play();
                 _replayTime = 1.0f;
             }
             else

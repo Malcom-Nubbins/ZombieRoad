@@ -50,10 +50,10 @@ public class Handgun : HandWeapon
 	public override void attack(GameObject TargetZombie)
 	{
         Zombie = TargetZombie;
-        Health zombieHealth = TargetZombie.GetComponent<Health>();
+        Health zombieHealth = Zombie.GetComponent<Health>();
 		zombieHealth.health -= 2;
         //Debug.Log("Handgun attacking");
-        //Bullet.GetComponent<BulletScript>().ShootBullet(TargetZombie,);
+        //Bullet.GetComponent<BulletScript>().ShootBullet(Zombie,);
 
 
         //ShootBullet();

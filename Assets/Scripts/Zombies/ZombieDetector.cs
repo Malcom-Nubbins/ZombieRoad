@@ -17,11 +17,10 @@ public class ZombieDetector : MonoBehaviour
 	
 	void Update()
     {
-        int i = 0;
         nearbyZombies.RemoveAll((GameObject zombie) => !zombie || zombie.GetComponent<Health>().health <= 0);//remove zombies that have been destroyed without calling OnTriggerExit, also removes zombies with 0 HP
             //Find nearest zombie
         nearestZombie = null;
-        float nearestDistance = float.PositiveInfinity;
+        //float nearestDistance = float.PositiveInfinity;
         //Debug.Log(nearbyZombies.Count);
         //Debug.Log("Contains: "+nearbyZombies[0].name);
         sortedZombies = nearbyZombies.OrderBy(x => Vector2.Distance(transform.position, x.transform.position)).ToList();
@@ -32,7 +31,7 @@ public class ZombieDetector : MonoBehaviour
 			if (sortedZombies[0].GetComponent<Health>().health > 0) // make sure nearest zombie is alive
 			{
 				nearestZombie = sortedZombies[0];
-				nearestDistance = Vector3.Distance(transform.position, sortedZombies[0].transform.position);
+				//nearestDistance = Vector3.Distance(transform.position, sortedZombies[0].transform.position);
 				//Debug.Log(nearestDistance);
 			}
 			else

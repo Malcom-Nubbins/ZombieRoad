@@ -12,10 +12,24 @@ public class LoadScene : MonoBehaviour
 	{
         Button startButton = GetComponent<Button>();
         startButton.onClick.AddListener(OnClick);
-	}
+        if (scene == Scenes.Scene.SHOP)
+        {
+            if (UnlockManager.instance.GetLockedItemCount() < 1)
+            {
+                startButton.interactable = false;
+            }
+        }
+    }
 
     void OnClick()
     {
+        if(scene == Scenes.Scene.SHOP)
+        {
+            if(UnlockManager.instance.GetLockedItemCount() < 1)
+            {
+                return;
+            }
+        }
         //print("clicked");
         Scenes.instance.LoadScene(scene);
     }

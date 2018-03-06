@@ -17,6 +17,8 @@ public class ShopScreen : MonoBehaviour {
 
     float _currentCooldownTime = 0.0f;
 
+	Quaternion rotation = Quaternion.Euler(0.0f, 180.0f, 0.0f);
+
 	// Use this for initialization
 	void Start()
 	{
@@ -64,8 +66,7 @@ public class ShopScreen : MonoBehaviour {
             _currentSelectedItem = 0;
 
         GameObject prefab = _lockedItems[_currentSelectedItem].gameObject;
-        Quaternion rotation = Quaternion.Euler(0.0f, 180.0f, 0.0f);
-        _lockedItemDisplay = Instantiate(prefab, Vector3.zero, transform.rotation, transform);
+        _lockedItemDisplay = Instantiate(prefab, Vector3.zero, rotation, transform);
         _itemNameText.text = _lockedItemDisplay.name.Substring(0, _lockedItemDisplay.name.IndexOf('('));
         _itemCostText.text = "Price: " + _lockedItems[_currentSelectedItem].Price + " coins";
 
@@ -84,8 +85,7 @@ public class ShopScreen : MonoBehaviour {
             _currentSelectedItem = _lockedItems.Length - 1;
 
         GameObject prefab = _lockedItems[_currentSelectedItem].gameObject;
-        Quaternion rotation = Quaternion.Euler(0.0f, 180.0f, 0.0f);
-        _lockedItemDisplay = Instantiate(prefab, Vector3.zero, transform.rotation, transform);
+        _lockedItemDisplay = Instantiate(prefab, Vector3.zero, rotation, transform);
         _itemNameText.text = _lockedItemDisplay.name.Substring(0, _lockedItemDisplay.name.IndexOf('('));
         _itemCostText.text = "Price: " + _lockedItems[_currentSelectedItem].Price + " coins";
     }
