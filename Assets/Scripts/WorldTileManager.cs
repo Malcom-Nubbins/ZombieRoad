@@ -60,7 +60,7 @@ public class WorldTileManager : MonoBehaviour
             tiles.Remove(pos);
         }
         tiles[pos] = tile;
-        Debug.Log("AddTile " + tile.gameObject.name);
+        //Debug.Log("AddTile " + tile.gameObject.name);
     }
 
     public void RemoveTile(TilePosition pos)

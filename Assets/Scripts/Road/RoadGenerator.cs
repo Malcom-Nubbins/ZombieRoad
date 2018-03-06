@@ -614,7 +614,7 @@ public class RoadGenerator : WorldTile
         {
             hit[i] = WorldTileManager.instance.GetTile(GetTilePosition() + new TilePosition(Xoffset(i), Zoffset(i)));
             if (hit[i] && hit[i].GetComponent<RoadGenerator>().Exit.Length < 8) hit[i].GetComponent<RoadGenerator>().RefreshExits();
-            if (hit[i]) bCanExtend = true;
+            if (!hit[i]) bCanExtend = true;
         }
 		return bCanExtend;
 	}
