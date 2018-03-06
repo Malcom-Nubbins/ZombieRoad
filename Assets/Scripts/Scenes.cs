@@ -12,7 +12,8 @@ public class Scenes : MonoBehaviour
         UNLOCK = 2,
         GAME_OVER = 3,
         SHOP = 4,
-		MAP = 5
+		MAP = 5,
+        SETTINGS = 6
     }
     public string[] sceneNames;
 

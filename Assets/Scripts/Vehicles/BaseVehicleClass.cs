@@ -167,6 +167,8 @@ public class BaseVehicleClass : Movement
 
         Camera.main.GetComponent<TransparentifyObject>().player = _driver.transform;
 
+        _driver.GetComponent<OccupyVehicle>().SetOccupyCooldown(2.0f);
+
         _driver = null;
 
         timeNotMoving = 0.0f;
@@ -413,7 +415,8 @@ public class BaseVehicleClass : Movement
 
             if (_replayTime < 0.0f)
             {
-                zombieKillSource.Play();
+                if(zombieKillSource)
+                    zombieKillSource.Play();
                 _replayTime = 1.0f;
             }
             else
