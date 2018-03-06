@@ -123,7 +123,7 @@ public class BaseVehicleClass : Movement
 
     void TaskOnClick()
 	{
-		Debug.Log("Button Pressed");
+		//Debug.Log("Button Pressed");
 		speed = 0.0f;
 		TryExitVehicle();
 	}
@@ -374,13 +374,13 @@ public class BaseVehicleClass : Movement
             {
                 if (gameobject.GetInstanceID() == zombie.GetInstanceID())
                 {
-                    Debug.Log("ASDASKJSADKJASD");
+                    //Debug.Log("ASDASKJSADKJASD");
                     return;
                 }
             }
             if(zombie.tag == "Zombie")
             {
-                Debug.Log("PLAYINGGGGGGGGG");
+                //Debug.Log("PLAYINGGGGGGGGG");
                 zombieKillSource.Play();
             }
 
