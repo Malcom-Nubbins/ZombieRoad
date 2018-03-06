@@ -374,13 +374,13 @@ public class BaseVehicleClass : Movement
             {
                 if (gameobject.GetInstanceID() == zombie.GetInstanceID())
                 {
-                    Debug.Log("ASDASKJSADKJASD");
+                    //Debug.Log("ASDASKJSADKJASD");
                     return;
                 }
             }
             if(zombie.tag == "Zombie")
             {
-                Debug.Log("PLAYINGGGGGGGGG");
+                //Debug.Log("PLAYINGGGGGGGGG");
                 zombieKillSource.Play();
             }
 
