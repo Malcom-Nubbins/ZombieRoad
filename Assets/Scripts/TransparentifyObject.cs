@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class TransparentifyObject : MonoBehaviour
@@ -15,10 +16,10 @@ public class TransparentifyObject : MonoBehaviour
         player = GetComponent<FollowCamera>().target.transform;
         _camera = GetComponent<Camera>();
 	}
-	
+
 	void Update ()
     {
-
+       
         //Debug.Log("Update is being called");
         RaycastHit ObstacleHit;
         Physics.Raycast(player.position, -_camera.transform.forward, out ObstacleHit, Mathf.Infinity, LayerMask.GetMask("Building"));
@@ -26,15 +27,24 @@ public class TransparentifyObject : MonoBehaviour
         if (ObstacleHit.collider)
         {
             //Debug.Log("Object collided with: " + ObstacleHit.collider.gameObject.name);
-           
-            foreach (Renderer meshRenderer in ObstacleHit.collider.gameObject.GetComponentsInChildren<Renderer>())
+            if(!hiddenBuildings.Contains(ObstacleHit))
             {
-                foreach(Material material in meshRenderer.materials)
-                {
-                    material.SetInt("_ZWrite", 0);
-                    material.color = new Color(material.color.r, material.color.g, material.color.b, 0.1f);
-                }
                 hiddenBuildings.Add(ObstacleHit);
+            }
+            else
+            {
+                foreach (Renderer meshRenderer in ObstacleHit.collider.gameObject.GetComponentsInChildren<Renderer>())
+                {
+                    foreach (Material material in meshRenderer.materials)
+                    {
+                       // material.SetInt("_ZWrite", 0);
+                        if(material.color.a >= 0.2f)
+                        {
+                            material.color = new Color(material.color.r, material.color.g, material.color.b, material.color.a - 0.05f);
+                        }
+                       
+                    }
+                }
             }
         }
         else
@@ -45,8 +55,11 @@ public class TransparentifyObject : MonoBehaviour
                 {
                     foreach (Material material in mesh.materials)
                     {
-                        material.SetInt("_ZWrite", 1);
-                        material.color = new Color(material.color.r, material.color.g, material.color.b, 1.0f);
+                       // material.SetInt("_ZWrite", 1);
+                        if (material.color.a <= 1.0f)
+                        {
+                            material.color = new Color(material.color.r, material.color.g, material.color.b, material.color.a + 0.05f);
+                        }
                     }
                 }
 
