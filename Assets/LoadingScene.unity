@@ -1221,6 +1221,7 @@ GameObject:
   - component: {fileID: 1060524215}
   - component: {fileID: 1060524220}
   - component: {fileID: 1060524219}
+  - component: {fileID: 1060524221}
   m_Layer: 0
   m_Name: RoadTileManager
   m_TagString: Untagged
@@ -1338,6 +1339,17 @@ MonoBehaviour:
   offset: {x: 0, y: 386, z: -31}
   CullDistance: 135
   rotate: 1
+--- !u!114 &1060524221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1060524214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44312604443669648ad41492ec279b4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1113123615
 GameObject:
   m_ObjectHideFlags: 0

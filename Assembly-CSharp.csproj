@@ -135,6 +135,7 @@
      <Compile Include="Assets\Scripts\SetMaterialZWrite.cs" />
      <Compile Include="Assets\Scripts\TransparentifyObject.cs" />
      <Compile Include="Assets\Scripts\Unlocks\Currency.cs" />
+     <Compile Include="Assets\Scripts\Unlocks\SettingsResetUnlocks.cs" />
      <Compile Include="Assets\Scripts\Unlocks\ShopScreen.cs" />
      <Compile Include="Assets\Scripts\Unlocks\Unlockable.cs" />
      <Compile Include="Assets\Scripts\Unlocks\UnlockManager.cs" />
@@ -165,6 +166,8 @@
      <Compile Include="Assets\Scripts\Weapons\Scripts\WeaponScript.cs" />
      <Compile Include="Assets\Scripts\Weapons\Shotgun.cs" />
      <Compile Include="Assets\Scripts\Weapons\WeaponSpawner.cs" />
+     <Compile Include="Assets\Scripts\WorldTile.cs" />
+     <Compile Include="Assets\Scripts\WorldTileManager.cs" />
      <Compile Include="Assets\Scripts\Zombies\ClimbOnVehicle.cs" />
      <Compile Include="Assets\Scripts\Zombies\KillcountOnDeath.cs" />
      <Compile Include="Assets\Scripts\Zombies\PileIn.cs" />

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RoadGenerator : MonoBehaviour
+public class RoadGenerator : WorldTile
 {
 	public enum Direction : int
 	{
@@ -36,8 +36,8 @@ public class RoadGenerator : MonoBehaviour
 
 	protected bool bHaveExpanded;
 
-	protected RaycastHit[] hit = new RaycastHit[8];
-	protected RaycastHit[] hitPlus = new RaycastHit[8]; // north of north, east of east, etc.
+	protected WorldTile[] hit = new WorldTile[8];
+	protected WorldTile[] hitPlus = new WorldTile[8]; // north of north, east of east, etc.
 
 	protected int[] indices;
 
@@ -48,33 +48,23 @@ public class RoadGenerator : MonoBehaviour
 	// Use this for initialization
 	void Start()
 	{
-		RefreshExits();
-	}
+        RefreshExits();
+    }
 
 	void Awake()
 	{
+        
 	}
-
-	// Update is called once per frame
+    
 	void Update()
 	{
-		if (!CullingExempt && RoadTileManager.bCull && Vector3.Distance(RoadTileManager.checkpoint.FollowCamera.GetComponent<FollowCamera>().target.transform.position, transform.position) > RoadTileManager.checkpoint.FollowCamera.GetComponent<FollowCamera>().CullDistance + 60)
+        FollowCamera followCamera = RoadTileManager.checkpoint.FollowCamera.GetComponent<FollowCamera>();
+		if (!CullingExempt
+            && RoadTileManager.bCull
+            && Vector3.Distance(followCamera.target.transform.position, transform.position) > followCamera.CullDistance + 60)
 		{
-			Destroy(gameObject);
-			//if (gameObject.GetComponent<MeshFilter>().mesh.GetIndices(0).Length > 3)
-			//{
-			//	indices = gameObject.GetComponent<MeshFilter>().mesh.GetIndices(0);
-			//	int[] ind = new int[3]; ind[0] = ind[1] = ind[2] = 0;
-			//	gameObject.GetComponent<MeshFilter>().mesh.SetIndices(ind, gameObject.GetComponent<MeshFilter>().mesh.GetTopology(0), 0);
-			//}
+            WorldTileManager.instance.DestroyTile(GetComponent<WorldTile>());
 		}
-		//else
-		//{
-		//	if (gameObject.GetComponent<MeshFilter>().mesh.GetIndices(0).Length == 3)
-		//	{
-		//		gameObject.GetComponent<MeshFilter>().mesh.SetIndices(indices, gameObject.GetComponent<MeshFilter>().mesh.GetTopology(0), 0);
-		//	}
-		//}
 	}
 
 	// perform common checks that mean we should not Extend
@@ -93,8 +83,8 @@ public class RoadGenerator : MonoBehaviour
 		bool bCanExtend = false;
 
 		// if the Raycasts from last time have any no-hits, we might be able to expand, otherwise we should not need new Raycasts and can bail
-		foreach (RaycastHit h in hit)
-			if (!h.collider)
+		foreach (WorldTile h in hit)
+			if (!h)
 			{
 				bCanExtend = true;
 				break;
@@ -124,27 +114,27 @@ public class RoadGenerator : MonoBehaviour
 
 		for (int i = 0; i < hitPlus.Length; i += 2)
 		{
-			Physics.Raycast(transform.position + new Vector3(2 * Xoffset(i), 500, 2 * Zoffset(i)), new Vector3(0, -1), out hitPlus[i], Mathf.Infinity, 1 << 9);
-			if (hitPlus[i].collider && hitPlus[i].collider.gameObject.GetComponent<RoadGenerator>().Exit.Length < 8) hitPlus[i].collider.gameObject.GetComponent<RoadGenerator>().RefreshExits();
-		}
+            hitPlus[i] = WorldTileManager.instance.GetTile(GetTilePosition() + new TilePosition(2 * Xoffset(i), 2 * Zoffset(i)));
+            if (hitPlus[i] && hitPlus[i].GetComponent<RoadGenerator>().Exit.Length < 8) hitPlus[i].GetComponent<RoadGenerator>().RefreshExits();
+        }
 
 		for (int i = 0; i < hit.Length; i += 2)
 		{
-			if (!hit[i].collider)//.gameObject.GetComponent<RoadGenerator>())
+			if (!hit[i])//.gameObject.GetComponent<RoadGenerator>())
 			{
 				if (Exit[i])
 				{
-					if (!hitPlus[i].collider) // if there is empty space ahead, use this logic
+					if (!hitPlus[i]) // if there is empty space ahead, use this logic
 					{
-						if (!hit[Wrap0to7(i - 1)].collider && !hit[Wrap0to7(i + 1)].collider) // if spaces to left and right
+						if (!hit[Wrap0to7(i - 1)] && !hit[Wrap0to7(i + 1)]) // if spaces to left and right
 						{
 							GameObject newTile = GenerateRandomTile(i, RoadTileManager.checkpoint.RoadMapRoot.transform, true);
 							MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " due to freeze pace\n";
 						}
-						else if (!hit[Wrap0to7(i - 1)].collider && hit[Wrap0to7(i + 1)].collider) // if space left and not right
+						else if (!hit[Wrap0to7(i - 1)] && hit[Wrap0to7(i + 1)]) // if space left and not right
 						{
 							if (DebugLogs) Debug.Log(gameObject.name + " checking " + (Direction)i + " that the tile to the right (" + (Direction)Wrap0to7(i + 1) + ") has an exit facing " + (Direction)Wrap0to7(i - 2));
-							if (hit[Wrap0to7(i + 1)].collider.gameObject.GetComponent<RoadGenerator>().Exit[Wrap0to7(i - 2)])
+							if (hit[Wrap0to7(i + 1)].gameObject.GetComponent<RoadGenerator>().Exit[Wrap0to7(i - 2)])
 							{
 								GameObject newTile = GenerateCornerOrT(i, RoadTileManager.checkpoint.RoadMapRoot.transform, true);
 
@@ -177,10 +167,10 @@ public class RoadGenerator : MonoBehaviour
 								MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", final\n";
 							}
 						}
-						else if (hit[Wrap0to7(i - 1)].collider && !hit[Wrap0to7(i + 1)].collider) // if space right and not left
+						else if (hit[Wrap0to7(i - 1)] && !hit[Wrap0to7(i + 1)]) // if space right and not left
 						{
 							if (DebugLogs) Debug.Log(gameObject.name + " checking " + (Direction)i + " that the tile to the left (" + (Direction)Wrap0to7(i - 1) + ") has an exit facing " + (Direction)Wrap0to7(i + 2));
-							if (hit[Wrap0to7(i - 1)].collider.gameObject.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 2)])
+							if (hit[Wrap0to7(i - 1)].gameObject.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 2)])
 							{
 								GameObject newTile = GenerateCornerOrT(i, RoadTileManager.checkpoint.RoadMapRoot.transform, true);
 
@@ -215,12 +205,12 @@ public class RoadGenerator : MonoBehaviour
 						}
 						else // no unoccupied spaces left or right
 						{
-							if (hit[Wrap0to7(i-1)].collider.gameObject.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 2)] && hit[Wrap0to7(i+1)].collider.gameObject.GetComponent<RoadGenerator>().Exit[Wrap0to7(i - 2)]) // exits to left && right
+							if (hit[Wrap0to7(i-1)].gameObject.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 2)] && hit[Wrap0to7(i+1)].gameObject.GetComponent<RoadGenerator>().Exit[Wrap0to7(i - 2)]) // exits to left && right
 							{
 								GameObject newTile = GenerateQuadOrT(i, RoadTileManager.checkpoint.RoadMapRoot.transform);
 								MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " because the occupied tiles to the left and right have valid exits\n";
 							}
-							else if (hit[Wrap0to7(i - 1)].collider.gameObject.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 2)] && !hit[Wrap0to7(i + 1)].collider.gameObject.GetComponent<RoadGenerator>().Exit[Wrap0to7(i - 2)]) // exit left only
+							else if (hit[Wrap0to7(i - 1)].gameObject.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 2)] && !hit[Wrap0to7(i + 1)].gameObject.GetComponent<RoadGenerator>().Exit[Wrap0to7(i - 2)]) // exit left only
 							{
 								GameObject newTile = GenerateCornerOrT(i, RoadTileManager.checkpoint.RoadMapRoot.transform);
 								MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " because the occupied tile to the left has a valid exit, and the right is blocked\n";
@@ -234,7 +224,7 @@ public class RoadGenerator : MonoBehaviour
 								}
 								MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", final\n";
 							}
-							else if (!hit[Wrap0to7(i - 1)].collider.gameObject.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 2)] && hit[Wrap0to7(i + 1)].collider.gameObject.GetComponent<RoadGenerator>().Exit[Wrap0to7(i - 2)]) // exit right only
+							else if (!hit[Wrap0to7(i - 1)].gameObject.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 2)] && hit[Wrap0to7(i + 1)].gameObject.GetComponent<RoadGenerator>().Exit[Wrap0to7(i - 2)]) // exit right only
 							{
 								GameObject newTile = GenerateCornerOrT(i, RoadTileManager.checkpoint.RoadMapRoot.transform);
 								MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " because the occupied tile to the right has a valid exit, and the left is blocked\n";
@@ -255,9 +245,9 @@ public class RoadGenerator : MonoBehaviour
 							}
 						}
 					}
-					else if (hitPlus[i].collider.gameObject.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 4)]) // exit ahead
+					else if (hitPlus[i].gameObject.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 4)]) // exit ahead
 					{
-						if (!hit[Wrap0to7(i - 1)].collider && !hit[Wrap0to7(i + 1)].collider) // if spaces to left and right
+						if (!hit[Wrap0to7(i - 1)] && !hit[Wrap0to7(i + 1)]) // if spaces to left and right
 						{
 							GameObject newTile = GenerateStraightOrT(i, RoadTileManager.checkpoint.RoadMapRoot.transform);
 							int CwCcw = randCwCcw();
@@ -270,10 +260,10 @@ public class RoadGenerator : MonoBehaviour
 							}
 							MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " since there is an exit ahead and free either side\n";
 						}
-						else if (!hit[Wrap0to7(i - 1)].collider && hit[Wrap0to7(i + 1)].collider) // if space left and not right
+						else if (!hit[Wrap0to7(i - 1)] && hit[Wrap0to7(i + 1)]) // if space left and not right
 						{
 							if (DebugLogs) Debug.Log(gameObject.name + " checking " + (Direction)i + " that the tile to the right (" + (Direction)Wrap0to7(i + 1) + ") has an exit facing " + (Direction)Wrap0to7(i - 2));
-							if (hit[Wrap0to7(i + 1)].collider.gameObject.GetComponent<RoadGenerator>().Exit[Wrap0to7(i - 2)])
+							if (hit[Wrap0to7(i + 1)].gameObject.GetComponent<RoadGenerator>().Exit[Wrap0to7(i - 2)])
 							{
 								GameObject newTile = GeneratePiece(RoadTileManager.T, i, RoadTileManager.checkpoint.RoadMapRoot.transform);
 
@@ -306,10 +296,10 @@ public class RoadGenerator : MonoBehaviour
 								MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", final\n";
 							}
 						}
-						else if (hit[Wrap0to7(i - 1)].collider && !hit[Wrap0to7(i + 1)].collider) // if space right and not left
+						else if (hit[Wrap0to7(i - 1)] && !hit[Wrap0to7(i + 1)]) // if space right and not left
 						{
 							if (DebugLogs) Debug.Log(gameObject.name + " checking " + (Direction)i + " that the tile to the left (" + (Direction)Wrap0to7(i - 1) + ") has an exit facing " + (Direction)Wrap0to7(i + 2));
-							if (hit[Wrap0to7(i - 1)].collider.gameObject.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 2)])
+							if (hit[Wrap0to7(i - 1)].gameObject.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 2)])
 							{
 								GameObject newTile = GeneratePiece(RoadTileManager.T, i, RoadTileManager.checkpoint.RoadMapRoot.transform);
 
@@ -344,12 +334,12 @@ public class RoadGenerator : MonoBehaviour
 						}
 						else // no unoccupied spaces left or right
 						{
-							if (hit[Wrap0to7(i - 1)].collider.gameObject.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 2)] && hit[Wrap0to7(i + 1)].collider.gameObject.GetComponent<RoadGenerator>().Exit[Wrap0to7(i - 2)]) // exits to left && right (and ahead)
+							if (hit[Wrap0to7(i - 1)].gameObject.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 2)] && hit[Wrap0to7(i + 1)].gameObject.GetComponent<RoadGenerator>().Exit[Wrap0to7(i - 2)]) // exits to left && right (and ahead)
 							{
 								GameObject newTile = GeneratePiece(RoadTileManager.FourWay, i, RoadTileManager.checkpoint.RoadMapRoot.transform);
 								MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " because the occupied tiles ahead, and to the left and right have valid exits\n";
 							}
-							else if (hit[Wrap0to7(i - 1)].collider.gameObject.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 2)] && !hit[Wrap0to7(i + 1)].collider.gameObject.GetComponent<RoadGenerator>().Exit[Wrap0to7(i - 2)]) // exit left only (and ahead)
+							else if (hit[Wrap0to7(i - 1)].gameObject.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 2)] && !hit[Wrap0to7(i + 1)].gameObject.GetComponent<RoadGenerator>().Exit[Wrap0to7(i - 2)]) // exit left only (and ahead)
 							{
 								GameObject newTile = GeneratePiece(RoadTileManager.T, i, RoadTileManager.checkpoint.RoadMapRoot.transform);
 								MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " because the occupied tile to the left has a valid exit, and the right is blocked, and exit ahead\n";
@@ -363,7 +353,7 @@ public class RoadGenerator : MonoBehaviour
 								}
 								MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", final\n";
 							}
-							else if (!hit[Wrap0to7(i - 1)].collider.gameObject.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 2)] && hit[Wrap0to7(i + 1)].collider.gameObject.GetComponent<RoadGenerator>().Exit[Wrap0to7(i - 2)]) // exit right only (and ahead)
+							else if (!hit[Wrap0to7(i - 1)].gameObject.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 2)] && hit[Wrap0to7(i + 1)].gameObject.GetComponent<RoadGenerator>().Exit[Wrap0to7(i - 2)]) // exit right only (and ahead)
 							{
 								GameObject newTile = GeneratePiece(RoadTileManager.T, i, RoadTileManager.checkpoint.RoadMapRoot.transform);
 								MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " because the occupied tile to the right has a valid exit, and the left is blocked, and exit ahead\n";
@@ -386,7 +376,7 @@ public class RoadGenerator : MonoBehaviour
 					}
 					else // blockage straight ahead
 					{
-						if (!hit[Wrap0to7(i - 1)].collider && !hit[Wrap0to7(i + 1)].collider) // if spaces to left and right
+						if (!hit[Wrap0to7(i - 1)] && !hit[Wrap0to7(i + 1)]) // if spaces to left and right
 						{
 							GameObject newTile = GenerateCornerOrT(i, RoadTileManager.checkpoint.RoadMapRoot.transform);
 							int CwCcw = randCwCcw();
@@ -399,10 +389,10 @@ public class RoadGenerator : MonoBehaviour
 							}
 							MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " since there is a blockage ahead but free either side\n";
 						}
-						else if (!hit[Wrap0to7(i - 1)].collider && hit[Wrap0to7(i + 1)].collider) // if space left and not right
+						else if (!hit[Wrap0to7(i - 1)] && hit[Wrap0to7(i + 1)]) // if space left and not right
 						{
 							if (DebugLogs) Debug.Log(gameObject.name + " checking " + (Direction)i + " that the tile to the right (" + (Direction)Wrap0to7(i + 1) + ") has an exit facing " + (Direction)Wrap0to7(i - 2));
-							if (hit[Wrap0to7(i + 1)].collider.gameObject.GetComponent<RoadGenerator>().Exit[Wrap0to7(i - 2)])
+							if (hit[Wrap0to7(i + 1)].gameObject.GetComponent<RoadGenerator>().Exit[Wrap0to7(i - 2)])
 							{
 								GameObject newTile = GenerateCornerOrT(i, RoadTileManager.checkpoint.RoadMapRoot.transform);
 
@@ -436,10 +426,10 @@ public class RoadGenerator : MonoBehaviour
 								MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", final\n";
 							}
 						}
-						else if (hit[Wrap0to7(i - 1)].collider && !hit[Wrap0to7(i + 1)].collider) // if space right and not left
+						else if (hit[Wrap0to7(i - 1)] && !hit[Wrap0to7(i + 1)]) // if space right and not left
 						{
 							if (DebugLogs) Debug.Log(gameObject.name + " checking " + (Direction)i + " that the tile to the left (" + (Direction)Wrap0to7(i - 1) + ") has an exit facing " + (Direction)Wrap0to7(i + 2));
-							if (hit[Wrap0to7(i - 1)].collider.gameObject.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 2)])
+							if (hit[Wrap0to7(i - 1)].gameObject.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 2)])
 							{
 								GameObject newTile = GenerateCornerOrT(i, RoadTileManager.checkpoint.RoadMapRoot.transform);
 
@@ -475,7 +465,7 @@ public class RoadGenerator : MonoBehaviour
 						}
 						else // no unoccupied spaces left or right
 						{
-							if (hit[Wrap0to7(i - 1)].collider.gameObject.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 2)] && hit[Wrap0to7(i + 1)].collider.gameObject.GetComponent<RoadGenerator>().Exit[Wrap0to7(i - 2)]) // exits to left && right (and blocked ahead)
+							if (hit[Wrap0to7(i - 1)].gameObject.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 2)] && hit[Wrap0to7(i + 1)].gameObject.GetComponent<RoadGenerator>().Exit[Wrap0to7(i - 2)]) // exits to left && right (and blocked ahead)
 							{
 								GameObject newTile = GeneratePiece(RoadTileManager.T, i, RoadTileManager.checkpoint.RoadMapRoot.transform);
 								MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " because the occupied to the left and right have valid exits and blocked ahead\n";
@@ -489,7 +479,7 @@ public class RoadGenerator : MonoBehaviour
 								}
 								MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", final\n";
 							}
-							else if (hit[Wrap0to7(i - 1)].collider.gameObject.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 2)] && !hit[Wrap0to7(i + 1)].collider.gameObject.GetComponent<RoadGenerator>().Exit[Wrap0to7(i - 2)]) // exit left only (and blocked ahead)
+							else if (hit[Wrap0to7(i - 1)].gameObject.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 2)] && !hit[Wrap0to7(i + 1)].gameObject.GetComponent<RoadGenerator>().Exit[Wrap0to7(i - 2)]) // exit left only (and blocked ahead)
 							{
 								GameObject newTile = GeneratePiece(RoadTileManager.Corner, i, RoadTileManager.checkpoint.RoadMapRoot.transform);
 								MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " because the occupied tile to the left has a valid exit, and the right and ahead are blocked\n";
@@ -503,7 +493,7 @@ public class RoadGenerator : MonoBehaviour
 								}
 								MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", final\n";
 							}
-							else if (!hit[Wrap0to7(i - 1)].collider.gameObject.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 2)] && hit[Wrap0to7(i + 1)].collider.gameObject.GetComponent<RoadGenerator>().Exit[Wrap0to7(i - 2)]) // exit right only (and blocked ahead)
+							else if (!hit[Wrap0to7(i - 1)].gameObject.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 2)] && hit[Wrap0to7(i + 1)].gameObject.GetComponent<RoadGenerator>().Exit[Wrap0to7(i - 2)]) // exit right only (and blocked ahead)
 							{
 								GameObject newTile = GeneratePiece(RoadTileManager.Corner, i, RoadTileManager.checkpoint.RoadMapRoot.transform);
 								MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " because the occupied tile to the right has a valid exit, and the left and ahead are blocked\n";
@@ -542,57 +532,60 @@ public class RoadGenerator : MonoBehaviour
 		if (!bHaveExpanded) // if I haven't placed roads that could expand, place pavements
 			for (int i = 0; i < hit.Length; i += 2)
 			{
-				if (!hit[i].collider)//.gameObject.GetComponent<RoadGenerator>())
+				if (!hit[i])//.gameObject.GetComponent<RoadGenerator>())
 				{
 					//if (DebugLogs) Debug.Log(gameObject.name + " can expand " + (Direction)i+", space left "+(Direction)Wrap0to7(i-1)+", space right "+(Direction)Wrap0to7(i+1));
 					MySpecificDebug += "I can expand " + (Direction)i + ", space left " + (Direction)Wrap0to7(i - 1) + ", space right " + (Direction)Wrap0to7(i + 1) + "\n";
 
 					if (!Exit[i])
 					{
-						if (!hit[Wrap0to7(i - 1)].collider && !hit[Wrap0to7(i + 1)].collider && !hitPlus[i].collider)
+						if (!hit[Wrap0to7(i - 1)] && !hit[Wrap0to7(i + 1)] && !hitPlus[i])
 						{
 							// if there's no neighbouring tiles
 							GameObject newTileClass = RoadTileManager.RandPavementGrass();
-							GameObject newTile = Instantiate(newTileClass, transform.position + new Vector3(Xoffset(i), newTileClass.GetComponent<RoadGenerator>().YOffset, Zoffset(i)), Quaternion.identity, RoadTileManager.checkpoint.RoadMapRoot.transform);
-
-							if (newTile.GetComponent<DisabledRoadGenerator>().TileClassification == DisabledRoadGenerator.Type.Pavement)
+							GameObject newTile = Instantiate(newTileClass, transform.position + new Vector3(Xoffset(i) * WorldTileManager.TILE_SIZE, newTileClass.GetComponent<RoadGenerator>().YOffset, Zoffset(i) * WorldTileManager.TILE_SIZE), Quaternion.identity, RoadTileManager.checkpoint.RoadMapRoot.transform);
+                            WorldTileManager.instance.AddTile(newTile.GetComponent<WorldTile>());
+                            if (newTile.GetComponent<DisabledRoadGenerator>().TileClassification == DisabledRoadGenerator.Type.Pavement)
 							{
 								MySpecificDebug += "Generated pavement to the " + (Direction)i + ", rotating to " + (i * 45 - 90) + "\n";
 								newTile.transform.localRotation = Quaternion.Euler(0, i * 45 - 90, 0);
 							}
 						}
-						else if ( (!hit[Wrap0to7(i - 1)].collider || hit[Wrap0to7(i - 1)].collider && !hit[Wrap0to7(i - 1)].collider.GetComponent<RoadGenerator>().Exit[Wrap0to7(i+2)]) && (!hit[Wrap0to7(i + 1)].collider || hit[Wrap0to7(i + 1)].collider && !hit[Wrap0to7(i + 1)].collider.GetComponent<RoadGenerator>().Exit[Wrap0to7(i - 2)]) && (!hitPlus[i].collider || hitPlus[i].collider && !hitPlus[i].collider.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 4)]) )
+						else if ( (!hit[Wrap0to7(i - 1)] || hit[Wrap0to7(i - 1)] && !hit[Wrap0to7(i - 1)].GetComponent<RoadGenerator>().Exit[Wrap0to7(i+2)]) && (!hit[Wrap0to7(i + 1)] || hit[Wrap0to7(i + 1)] && !hit[Wrap0to7(i + 1)].GetComponent<RoadGenerator>().Exit[Wrap0to7(i - 2)]) && (!hitPlus[i] || hitPlus[i] && !hitPlus[i].GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 4)]) )
 						{
 							// if there's no neighbouring tiles with exits
 							DisabledRoadGenerator.Type newTileType = DisabledRoadGenerator.Type.xInvalid;
-							if (hit[Wrap0to7(i - 1)].collider && hit[Wrap0to7(i - 1)].collider.GetComponent<DisabledRoadGenerator>())
+							if (hit[Wrap0to7(i - 1)] && hit[Wrap0to7(i - 1)].GetComponent<DisabledRoadGenerator>())
 							{
-								newTileType = hit[Wrap0to7(i - 1)].collider.GetComponent<DisabledRoadGenerator>().TileClassification;
+								newTileType = hit[Wrap0to7(i - 1)].GetComponent<DisabledRoadGenerator>().TileClassification;
 							}
-							else if (hit[Wrap0to7(i + 1)].collider && hit[Wrap0to7(i + 1)].collider.GetComponent<DisabledRoadGenerator>())
+							else if (hit[Wrap0to7(i + 1)] && hit[Wrap0to7(i + 1)].GetComponent<DisabledRoadGenerator>())
 							{
-								newTileType = hit[Wrap0to7(i + 1)].collider.GetComponent<DisabledRoadGenerator>().TileClassification;
+								newTileType = hit[Wrap0to7(i + 1)].GetComponent<DisabledRoadGenerator>().TileClassification;
 							}
-							else if (hitPlus[i].collider && hitPlus[i].collider.GetComponent<DisabledRoadGenerator>())
+							else if (hitPlus[i] && hitPlus[i].GetComponent<DisabledRoadGenerator>())
 							{
-								newTileType = hitPlus[i].collider.GetComponent<DisabledRoadGenerator>().TileClassification;
+								newTileType = hitPlus[i].GetComponent<DisabledRoadGenerator>().TileClassification;
 							}
 							GameObject newTile;
 							if (newTileType == DisabledRoadGenerator.Type.Pavement)
 							{
 								GameObject newTileClass = RoadTileManager.Pavement;
-								newTile = Instantiate(newTileClass, transform.position + new Vector3(Xoffset(i), newTileClass.GetComponent<RoadGenerator>().YOffset, Zoffset(i)), Quaternion.identity, RoadTileManager.checkpoint.RoadMapRoot.transform);
-							}
+								newTile = Instantiate(newTileClass, transform.position + new Vector3(Xoffset(i) * WorldTileManager.TILE_SIZE, newTileClass.GetComponent<RoadGenerator>().YOffset, Zoffset(i) * WorldTileManager.TILE_SIZE), Quaternion.identity, RoadTileManager.checkpoint.RoadMapRoot.transform);
+                                WorldTileManager.instance.AddTile(newTile.GetComponent<WorldTile>());
+                            }
 							else if (newTileType == DisabledRoadGenerator.Type.Grass)
 							{
 								GameObject newTileClass = RoadTileManager.Grass;
-								newTile = Instantiate(newTileClass, transform.position + new Vector3(Xoffset(i), newTileClass.GetComponent<RoadGenerator>().YOffset, Zoffset(i)), Quaternion.identity, RoadTileManager.checkpoint.RoadMapRoot.transform);
-							}
+								newTile = Instantiate(newTileClass, transform.position + new Vector3(Xoffset(i) * WorldTileManager.TILE_SIZE, newTileClass.GetComponent<RoadGenerator>().YOffset, Zoffset(i) * WorldTileManager.TILE_SIZE), Quaternion.identity, RoadTileManager.checkpoint.RoadMapRoot.transform);
+                                WorldTileManager.instance.AddTile(newTile.GetComponent<WorldTile>());
+                            }
 							else
 							{
 								GameObject newTileClass = RoadTileManager.RandPavementGrass();
-								newTile = Instantiate(newTileClass, transform.position + new Vector3(Xoffset(i), newTileClass.GetComponent<RoadGenerator>().YOffset, Zoffset(i)), Quaternion.identity, RoadTileManager.checkpoint.RoadMapRoot.transform);
-							}
+								newTile = Instantiate(newTileClass, transform.position + new Vector3(Xoffset(i) * WorldTileManager.TILE_SIZE, newTileClass.GetComponent<RoadGenerator>().YOffset, Zoffset(i) * WorldTileManager.TILE_SIZE), Quaternion.identity, RoadTileManager.checkpoint.RoadMapRoot.transform);
+                                WorldTileManager.instance.AddTile(newTile.GetComponent<WorldTile>());
+                            }
 
 							if (newTile && newTile.GetComponent<DisabledRoadGenerator>().TileClassification == DisabledRoadGenerator.Type.Pavement)
 							{
@@ -616,17 +609,17 @@ public class RoadGenerator : MonoBehaviour
 	//Physics.Raycast(transform.position + new Vector3(-20, 500, 20), new Vector3(0, -1), out hit[7], Mathf.Infinity, 1 << 9);
 	public bool DoHits()
 	{
-		bool bCanExtend = false;
-		for (int i = 0; i < hit.Length; i++)
-		{
-			Physics.Raycast(transform.position + new Vector3(Xoffset(i), 500, Zoffset(i)), new Vector3(0, -1), out hit[i], Mathf.Infinity, 1 << 9);
-			if (hit[i].collider && hit[i].collider.gameObject.GetComponent<RoadGenerator>().Exit.Length < 8) hit[i].collider.gameObject.GetComponent<RoadGenerator>().RefreshExits();
-			if (!hit[i].collider) bCanExtend = true;
-		}
+        bool bCanExtend = false;
+        for (int i = 0; i < hit.Length; i++)
+        {
+            hit[i] = WorldTileManager.instance.GetTile(GetTilePosition() + new TilePosition(Xoffset(i), Zoffset(i)));
+            if (hit[i] && hit[i].GetComponent<RoadGenerator>().Exit.Length < 8) hit[i].GetComponent<RoadGenerator>().RefreshExits();
+            if (hit[i]) bCanExtend = true;
+        }
 		return bCanExtend;
 	}
 
-	public RaycastHit[] GetNeighbours() { return hit; }
+	public WorldTile[] GetNeighbours() { return hit; }
 
 	// for looping through Direction
 	public static int Wrap0to7(int i)
@@ -637,10 +630,10 @@ public class RoadGenerator : MonoBehaviour
 	}
 
 	// where i is the Direction
-	public static int Xoffset(int i) { return 20 * ((i % 4 > 0) ? 1 : 0) * ((i >= 4) ? -1 : 1); }
+	public static int Xoffset(int i) { return ((i % 4 > 0) ? 1 : 0) * ((i >= 4) ? -1 : 1); }
 
 	// where i is the Direction
-	public static int Zoffset(int i) { return 20 * ((i % 4 != 2) ? 1 : 0) * ((i > 2 && i < 6) ? -1 : 1); }
+	public static int Zoffset(int i) { return ((i % 4 != 2) ? 1 : 0) * ((i > 2 && i < 6) ? -1 : 1); }
 
 	public static int randCwCcw() { return Random.Range(0, 2)*2-1; }
 	public int biasCwCCw()
@@ -710,8 +703,8 @@ public class RoadGenerator : MonoBehaviour
 	protected GameObject GenerateRandomTile(int i, Transform RoadMapRootTransform, bool bAllowQuad = false)
 	{
 		GameObject newTileClass = (Exit[Wrap0to7(i+4)]&&!(Exit[Wrap0to7(i+2)]|| Exit[Wrap0to7(i-2)])) ? RoadTileManager.RandomRoadTile(bAllowQuad) : RoadTileManager.Straight;
-		GameObject newTile = Instantiate(newTileClass, transform.position + new Vector3(Xoffset(i), newTileClass.GetComponent<RoadGenerator>().YOffset, Zoffset(i)), Quaternion.identity, RoadMapRootTransform);
-		newTile.transform.SetAsFirstSibling();
+		GameObject newTile = Instantiate(newTileClass, transform.position + new Vector3(Xoffset(i) * WorldTileManager.TILE_SIZE, newTileClass.GetComponent<RoadGenerator>().YOffset, Zoffset(i) * WorldTileManager.TILE_SIZE), Quaternion.identity, RoadMapRootTransform);
+        newTile.transform.SetAsFirstSibling();
 		bHaveExpanded = true;
 		//newTile.GetComponent<RoadGenerator>().Extend(RoadTileManager.checkpoint);
 		newTile.GetComponent<RoadGenerator>().RefreshExits();
@@ -721,7 +714,7 @@ public class RoadGenerator : MonoBehaviour
 			newTile.transform.Rotate(0, CwCcw*90, 0);
 			newTile.GetComponent<RoadGenerator>().RefreshExits();
 		}
-
+        WorldTileManager.instance.AddTile(newTile.GetComponent<WorldTile>());
 		return newTile;
 	}
 
@@ -729,7 +722,7 @@ public class RoadGenerator : MonoBehaviour
 	protected GameObject GenerateCornerOrT(int i, Transform RoadMapRootTransform, bool bAllowQuad = false)
 	{
 		GameObject newTileClass = RoadTileManager.RandCornerT(bAllowQuad);
-		GameObject newTile = Instantiate(newTileClass, transform.position + new Vector3(Xoffset(i), newTileClass.GetComponent<RoadGenerator>().YOffset, Zoffset(i)), Quaternion.identity, RoadMapRootTransform);
+		GameObject newTile = Instantiate(newTileClass, transform.position + new Vector3(Xoffset(i) * WorldTileManager.TILE_SIZE, newTileClass.GetComponent<RoadGenerator>().YOffset, Zoffset(i) * WorldTileManager.TILE_SIZE), Quaternion.identity, RoadMapRootTransform);
 		newTile.transform.SetAsFirstSibling();
 		bHaveExpanded = true;
 		//newTile.GetComponent<RoadGenerator>().Extend(RoadTileManager.checkpoint);
@@ -740,15 +733,15 @@ public class RoadGenerator : MonoBehaviour
 			newTile.transform.Rotate(0, CwCcw*90, 0);
 			newTile.GetComponent<RoadGenerator>().RefreshExits();
 		}
-
-		return newTile;
+        WorldTileManager.instance.AddTile(newTile.GetComponent<WorldTile>());
+        return newTile;
 	}
 
 	// where i is the Direction
 	protected GameObject GenerateStraightOrT(int i, Transform RoadMapRootTransform)
 	{
 		GameObject newTileClass = (Exit[Wrap0to7(i + 4)] && !(Exit[Wrap0to7(i + 2)] || Exit[Wrap0to7(i - 2)])) ? RoadTileManager.RandStraightT() : RoadTileManager.Straight;
-		GameObject newTile = Instantiate(newTileClass, transform.position + new Vector3(Xoffset(i), newTileClass.GetComponent<RoadGenerator>().YOffset, Zoffset(i)), Quaternion.identity, RoadMapRootTransform);
+		GameObject newTile = Instantiate(newTileClass, transform.position + new Vector3(Xoffset(i) * WorldTileManager.TILE_SIZE, newTileClass.GetComponent<RoadGenerator>().YOffset, Zoffset(i) * WorldTileManager.TILE_SIZE), Quaternion.identity, RoadMapRootTransform);
 		newTile.transform.SetAsFirstSibling();
 		bHaveExpanded = true;
 		//newTile.GetComponent<RoadGenerator>().Extend(RoadTileManager.checkpoint);
@@ -759,15 +752,15 @@ public class RoadGenerator : MonoBehaviour
 			newTile.transform.Rotate(0, CwCcw*90, 0);
 			newTile.GetComponent<RoadGenerator>().RefreshExits();
 		}
-
-		return newTile;
+        WorldTileManager.instance.AddTile(newTile.GetComponent<WorldTile>());
+        return newTile;
 	}
 
 	// where i is the Direction
 	protected GameObject GenerateQuadOrT(int i, Transform RoadMapRootTransform)
 	{
 		GameObject newTileClass = RoadTileManager.RandQuadT();
-		GameObject newTile = Instantiate(newTileClass, transform.position + new Vector3(Xoffset(i), newTileClass.GetComponent<RoadGenerator>().YOffset, Zoffset(i)), Quaternion.identity, RoadMapRootTransform);
+		GameObject newTile = Instantiate(newTileClass, transform.position + new Vector3(Xoffset(i) * WorldTileManager.TILE_SIZE, newTileClass.GetComponent<RoadGenerator>().YOffset, Zoffset(i) * WorldTileManager.TILE_SIZE), Quaternion.identity, RoadMapRootTransform);
 		newTile.transform.SetAsFirstSibling();
 		bHaveExpanded = true;
 		//newTile.GetComponent<RoadGenerator>().Extend(RoadTileManager.checkpoint);
@@ -779,14 +772,14 @@ public class RoadGenerator : MonoBehaviour
 				newTile.transform.Rotate(0, CwCcw*90, 0);
 				newTile.GetComponent<RoadGenerator>().RefreshExits();
 			}
-
-		return newTile;
+        WorldTileManager.instance.AddTile(newTile.GetComponent<WorldTile>());
+        return newTile;
 	}
 
 	protected GameObject GenerateCornerOrDead(int i, Transform RoadMapRootTransform)
 	{
 		GameObject newTileClass = RoadTileManager.RandCornerDead();
-		GameObject newTile = Instantiate(newTileClass, transform.position + new Vector3(Xoffset(i), newTileClass.GetComponent<RoadGenerator>().YOffset, Zoffset(i)), Quaternion.identity, RoadMapRootTransform);
+		GameObject newTile = Instantiate(newTileClass, transform.position + new Vector3(Xoffset(i) * WorldTileManager.TILE_SIZE, newTileClass.GetComponent<RoadGenerator>().YOffset, Zoffset(i) * WorldTileManager.TILE_SIZE), Quaternion.identity, RoadMapRootTransform);
 		newTile.transform.SetAsFirstSibling();
 		bHaveExpanded = true;
 		//newTile.GetComponent<RoadGenerator>().Extend(RoadTileManager.checkpoint);
@@ -797,14 +790,14 @@ public class RoadGenerator : MonoBehaviour
 			newTile.transform.Rotate(0, CwCcw * 90, 0);
 			newTile.GetComponent<RoadGenerator>().RefreshExits();
 		}
-
-		return newTile;
+        WorldTileManager.instance.AddTile(newTile.GetComponent<WorldTile>());
+        return newTile;
 	}
 
 	// where i is the Direction
 	protected GameObject GeneratePiece(GameObject newTileClass, int i, Transform RoadMapRootTransform)
 	{
-		GameObject newTile = Instantiate(newTileClass, transform.position + new Vector3(Xoffset(i), newTileClass.GetComponent<RoadGenerator>().YOffset, Zoffset(i)), Quaternion.identity, RoadMapRootTransform);
+		GameObject newTile = Instantiate(newTileClass, transform.position + new Vector3(Xoffset(i) * WorldTileManager.TILE_SIZE, newTileClass.GetComponent<RoadGenerator>().YOffset, Zoffset(i) * WorldTileManager.TILE_SIZE), Quaternion.identity, RoadMapRootTransform);
 		newTile.transform.SetAsFirstSibling();
 		bHaveExpanded = true;
 		//newTile.GetComponent<RoadGenerator>().Extend(RoadTileManager.checkpoint);
@@ -816,8 +809,8 @@ public class RoadGenerator : MonoBehaviour
 				newTile.transform.Rotate(0, CwCcw*90, 0);
 				newTile.GetComponent<RoadGenerator>().RefreshExits();
 			}
-
-		return newTile;
+        WorldTileManager.instance.AddTile(newTile.GetComponent<WorldTile>());
+        return newTile;
 	}
 
 	public string LogExits() { return gameObject.name + " has exits:" + (Exit[0] ? " north," : "") + (Exit[2] ? " east," : "") + (Exit[4] ? " south," : "") + (Exit[6] ? " west," : ""); }

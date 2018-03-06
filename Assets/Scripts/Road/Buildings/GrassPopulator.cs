@@ -20,14 +20,14 @@ public class GrassPopulator : MonoBehaviour
 				int d = 2 * Random.Range(0, 4);
 
 				rg.DoHits();
-				Collider tiled = rg.GetNeighbours()[d].collider;
+				WorldTile tiled = rg.GetNeighbours()[d];
 				if (tiled && tiled.GetComponent<GrassPopulator>() && tiled.GetComponent<GrassPopulator>().FenceDir==RoadGenerator.Wrap0to7(d-4))
 				{
 					//Debug.Log("fence collision prevented");
 				}
 				else
 				{
-					GameObject fence = Instantiate(FenceTemplate, transform.position + new Vector3(RoadGenerator.Xoffset(d)/2, 0, RoadGenerator.Zoffset(d)/2), Quaternion.identity, transform);
+					GameObject fence = Instantiate(FenceTemplate, transform.position + new Vector3((RoadGenerator.Xoffset(d) * WorldTileManager.TILE_SIZE)/2, 0, (RoadGenerator.Zoffset(d) * WorldTileManager.TILE_SIZE)/2), Quaternion.identity, transform);
 					fence.transform.Rotate(0, d * 45 - 90, 0);
 					FenceDir = d;
 				}
