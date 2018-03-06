@@ -40,7 +40,7 @@ public class TransparentifyObject : MonoBehaviour
                        // material.SetInt("_ZWrite", 0);
                         if(material.color.a >= 0.2f)
                         {
-                            material.color = new Color(material.color.r, material.color.g, material.color.b, material.color.a - 0.05f);
+                            material.color = new Color(material.color.r, material.color.g, material.color.b, material.color.a - 0.1f);
                         }
                        
                     }
@@ -58,7 +58,7 @@ public class TransparentifyObject : MonoBehaviour
                        // material.SetInt("_ZWrite", 1);
                         if (material.color.a <= 1.0f)
                         {
-                            material.color = new Color(material.color.r, material.color.g, material.color.b, material.color.a + 0.05f);
+                            material.color = new Color(material.color.r, material.color.g, material.color.b, material.color.a + 0.1f);
                         }
                     }
                 }
