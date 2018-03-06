@@ -1237,7 +1237,6 @@ GameObject:
   - component: {fileID: 1149114672}
   - component: {fileID: 1149114673}
   - component: {fileID: 1149114674}
-  - component: {fileID: 1149114675}
   m_Layer: 0
   m_Name: UnlockManager
   m_TagString: Untagged
@@ -1253,7 +1252,7 @@ Transform:
   m_GameObject: {fileID: 1149114671}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.82, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -1286,6 +1285,7 @@ MonoBehaviour:
   - {fileID: 114250525250702796, guid: cd444805e7aca7144b99ac90f403f561, type: 2}
   - {fileID: 114163665614533976, guid: b0758523390170f46924b3affdd49746, type: 2}
   - {fileID: 114283220402355686, guid: 58c345b4e8e70c84f9befb1f121072a7, type: 2}
+  - {fileID: 114270206442817852, guid: 3927d8ec9a0f3264b9af3443b4e1407e, type: 2}
   startUnlocked:
   - {fileID: 114700580680548600, guid: 40bd9ee9968db6d4ca027a69fb663465, type: 2}
   - {fileID: 114312301950468204, guid: 6e9fb28e46330d442a22a0882e471817, type: 2}
@@ -1311,17 +1311,6 @@ MonoBehaviour:
   AvailableMapImages:
   - {fileID: 2800000, guid: 952f2ccd70ccf6f47a7e9c2a5ff12a82, type: 3}
   - {fileID: 2800000, guid: e971b441b2a2a024b979332f3bec96aa, type: 3}
---- !u!114 &1149114675
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1149114671}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec33382ee983ad94e88e20ecfdc5fe7e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1234504994
 GameObject:
   m_ObjectHideFlags: 0
@@ -1482,12 +1471,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 205187105f848b848b6011997b920c44, type: 2}
   - {fileID: 2100000, guid: e3d24787f32327f4dbe18e9745e3b0cb, type: 2}
   - {fileID: 2100000, guid: 671290fc075233041bf14b8421573e87, type: 2}
-  - {fileID: 2100000, guid: b40c2cf7e3de2024db2fa090646b7b4a, type: 2}
-  - {fileID: 2100000, guid: 06860243947e9ad42bad6701e4dc88fb, type: 2}
-  - {fileID: 2100000, guid: 19b769207f4c16344a35cd37dde66035, type: 2}
-  - {fileID: 2100000, guid: 09594c3ac4a47a34986fec66c05ea34e, type: 2}
-  - {fileID: 2100000, guid: 90c676b82fabf4b4a93c811b5cc64599, type: 2}
-  - {fileID: 2100000, guid: a38455d8fdc44234da34beaaca7ab07b, type: 2}
+  - {fileID: 0}
 --- !u!4 &1245854463
 Transform:
   m_ObjectHideFlags: 0
