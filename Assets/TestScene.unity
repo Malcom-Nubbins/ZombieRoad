@@ -2776,6 +2776,11 @@ Prefab:
       propertyPath: pickUpSound
       value: 
       objectReference: {fileID: 8300000, guid: eba8cce515b0c7b4297dcc9765865c08, type: 3}
+    - target: {fileID: 114351475397625280, guid: c5cb10fa119007f4888248d330d93dd4,
+        type: 2}
+      propertyPath: footsteps
+      value: 
+      objectReference: {fileID: 8300000, guid: f5b50cfe92235494faa59242f8ec1086, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c5cb10fa119007f4888248d330d93dd4, type: 2}
   m_IsPrefabParent: 0
