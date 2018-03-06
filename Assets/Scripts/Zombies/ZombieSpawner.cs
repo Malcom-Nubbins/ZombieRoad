@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[HelpURL("https://cdn.discordapp.com/attachments/368486715779710987/420185975432544257/unknown.png")]
 public class ZombieSpawner : MonoBehaviour
 {
 	public bool spawnAllAtOnce;
