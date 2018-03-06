@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 public class UnlockScreen : MonoBehaviour
 {
     GameObject newItemDisplay;
-	void Start()
+    Quaternion rotation = Quaternion.Euler(0.0f, 180.0f, 0.0f);
+    void Start()
     {
         UnlockManager um = GameObject.Find("UnlockManager").GetComponent<UnlockManager>();
         Unlockable newItem = um.UnlockRandom();
@@ -16,7 +17,7 @@ public class UnlockScreen : MonoBehaviour
             return;
         }
         GameObject prefab = newItem.gameObject;
-        newItemDisplay = Instantiate(prefab, Vector3.zero, Quaternion.identity, transform);
+        newItemDisplay = Instantiate(prefab, Vector3.zero, rotation, transform);
 	}
 	
 	void Update()
