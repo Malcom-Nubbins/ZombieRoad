@@ -12,6 +12,9 @@ public class Movement : MonoBehaviour, ISelectHandler, IDeselectHandler
 	public Vector3 centerOfMass;
 	protected Rigidbody rb;
 
+    public AudioClip footsteps;
+    AudioSource playerSource;
+
 	private Button _turnLeftButton;
 	private Button _turnRightButton;
 
@@ -24,6 +27,7 @@ public class Movement : MonoBehaviour, ISelectHandler, IDeselectHandler
     // Use this for initialization
     void Start () 
 	{
+        playerSource = this.gameObject.GetComponent<AudioSource>();
 		rb = GetComponent<Rigidbody>();
 		rb.centerOfMass = centerOfMass;
 
@@ -36,6 +40,7 @@ public class Movement : MonoBehaviour, ISelectHandler, IDeselectHandler
 
         prevPosition = transform.position;
         measuredSpeed = 0;
+
 	}
 
 	public void Update()
@@ -86,6 +91,11 @@ public class Movement : MonoBehaviour, ISelectHandler, IDeselectHandler
 
 		if (canMove)
 		{
+            if(!playerSource.isPlaying)
+            {
+                playerSource.PlayOneShot(footsteps);
+            }
+
             Vector3 currentVelocity = rb.velocity;
             currentVelocity.y = 0;
 

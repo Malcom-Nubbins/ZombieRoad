@@ -37,7 +37,7 @@ public class Checkpoint : MonoBehaviour
 		gameObject.transform.SetPositionAndRotation(checkpointPosition, gameObject.transform.rotation);
 
 		level = 0;
-		timeRemaining = 5;
+		timeRemaining = 10;
         nextTimeRemaining = 2;//start small so it does not scale too fast
 
 		//checkpointRotationSpeed = 50.0f;

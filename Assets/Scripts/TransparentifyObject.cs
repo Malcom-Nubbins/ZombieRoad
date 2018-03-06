@@ -8,11 +8,13 @@ public class TransparentifyObject : MonoBehaviour
     public Transform player;
 
     private List<RaycastHit> hiddenBuildings;
+    private List<GameObject> buildings;
     private Camera _camera;
 
 	// Use this for initialization
 	void Start () {
         hiddenBuildings = new List<RaycastHit>();
+        buildings = new List<GameObject>();
         player = GetComponent<FollowCamera>().target.transform;
         _camera = GetComponent<Camera>();
 	}
@@ -27,9 +29,9 @@ public class TransparentifyObject : MonoBehaviour
         if (ObstacleHit.collider)
         {
             //Debug.Log("Object collided with: " + ObstacleHit.collider.gameObject.name);
-            if(!hiddenBuildings.Contains(ObstacleHit))
+            if(!buildings.Contains(ObstacleHit.collider.gameObject))
             {
-                hiddenBuildings.Add(ObstacleHit);
+                buildings.Add(ObstacleHit.collider.gameObject);
             }
             else
             {
@@ -37,8 +39,8 @@ public class TransparentifyObject : MonoBehaviour
                 {
                     foreach (Material material in meshRenderer.materials)
                     {
-                       // material.SetInt("_ZWrite", 0);
-                        if(material.color.a >= 0.2f)
+                        //material.SetInt("_ZWrite", 0);
+                        if(material.color.a >= 0.4f)
                         {
                             material.color = new Color(material.color.r, material.color.g, material.color.b, material.color.a - 0.05f);
                         }
@@ -49,16 +51,16 @@ public class TransparentifyObject : MonoBehaviour
         }
         else
         {
-            foreach(RaycastHit buildingHit in hiddenBuildings)
+            foreach(GameObject buildingHit in buildings)
             {
-                foreach (Renderer mesh in buildingHit.collider.gameObject.GetComponentsInChildren<Renderer>())
+                foreach (Renderer mesh in buildingHit.GetComponentsInChildren<Renderer>())
                 {
                     foreach (Material material in mesh.materials)
                     {
-                       // material.SetInt("_ZWrite", 1);
+                        material.SetInt("_ZWrite", 1);
                         if (material.color.a <= 1.0f)
                         {
-                            material.color = new Color(material.color.r, material.color.g, material.color.b, material.color.a + 0.05f);
+                            material.color = new Color(material.color.r, material.color.g, material.color.b, 1.0f);
                         }
                     }
                 }
@@ -69,7 +71,7 @@ public class TransparentifyObject : MonoBehaviour
                 //}
             }
 
-            hiddenBuildings.Clear();
+            buildings.Clear();
         }
     }
 }

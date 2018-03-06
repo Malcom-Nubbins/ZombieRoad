@@ -266,8 +266,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 12, y: 28.328083, z: 15}
-  m_Center: {x: -2, y: 14.1640415, z: 0}
+  m_Size: {x: 12, y: 20.164719, z: 15}
+  m_Center: {x: -2, y: 10.082359, z: 0}
 --- !u!114 &114457729359014864
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -294,5 +294,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlockableID: HouseWhite
   type: 0
-  unlocked: 1
+  unlocked: 0
   Price: 15

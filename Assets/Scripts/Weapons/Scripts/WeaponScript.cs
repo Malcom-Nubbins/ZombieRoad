@@ -7,7 +7,6 @@ public class WeaponScript : MonoBehaviour
     GameObject equippedWeaponObject;
     Transform WepTransform;
 
-
     public HandWeapon weapon;
 	// Use this for initialization
 	void Start()
@@ -85,6 +84,7 @@ public class WeaponScript : MonoBehaviour
 
 		//assign the equipped weapon
 		equipped.equippedWeapon = weapon;
+        equipped.playPickUpSound();
     }
 
 	public void dropWeapon()
