@@ -262,6 +262,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fc6f1497334b3240856fb2fa4520b7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  zombieDeath: {fileID: 0}
 --- !u!114 &114112752329853340
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -285,10 +286,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4
+  wanderForce: 1
   wanderCircleRadius: 2
   wanderCircleDistanceInFront: 3
   wanderCircleRotationSpeed: 90
+  swarmAlignmentForce: 2
+  swarmCohesionForce: 2
+  swarmSeparationForce: 1
   MainMenuDest: {x: 0, y: 0, z: 0}
+  zombieAttack: {fileID: 0}
 --- !u!114 &114621179689374186
 MonoBehaviour:
   m_ObjectHideFlags: 1

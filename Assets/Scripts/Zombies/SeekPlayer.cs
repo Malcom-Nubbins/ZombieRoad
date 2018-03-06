@@ -7,10 +7,16 @@ public class SeekPlayer : MonoBehaviour
 	// persistent reference to the camera, from which we can retreive the active playercharacter or vehicle
 	public static FollowCamera followCamera;
 	public float speed = 3.0f;
+    public float wanderForce = 1.0f;
 	public float wanderCircleRadius = 2.0f;
 	public float wanderCircleDistanceInFront = 3.0f;
 	public float wanderCircleRotationSpeed = 90.0f;
 	float wanderCircleCurrentAngle = 0.0f;
+    public float swarmAlignmentForce = 1.0f;
+    public float swarmCohesionForce = 1.0f;
+    public float swarmSeparationForce = 1.0f;
+
+	Rigidbody rb;
 	public Vector3 MainMenuDest;
 	Vector3 seekDirection;
     AudioSource zombieSource;
@@ -40,6 +46,8 @@ public class SeekPlayer : MonoBehaviour
 			float seekAngle = Mathf.Atan2(seekDirection.z, seekDirection.x);
 			//Debug.DrawRay(transform.position + transform.up, seekDirection * 5, Color.green);
 
+
+            //wander
 			wanderCircleCurrentAngle += Random.Range(-1.0f, 1.0f) * wanderCircleRotationSpeed * Time.deltaTime;
 			if (wanderCircleCurrentAngle < 0) wanderCircleCurrentAngle += 360.0f;
 			if (wanderCircleCurrentAngle >= 360.0f) wanderCircleCurrentAngle -= 360.0f;
@@ -51,9 +59,55 @@ public class SeekPlayer : MonoBehaviour
 			);
 			Vector3 pointOnWanderCirclePosition = (seekDirection * wanderCircleDistanceInFront) + wanderCircleDirection * wanderCircleRadius;
 			Vector3 pointOnWanderCircleDirection = pointOnWanderCirclePosition.normalized;
-			//Debug.DrawRay(transform.position + transform.up, pointOnWanderCircleDirection * 5, Color.red);
+            //Debug.DrawRay(transform.position + transform.up, pointOnWanderCircleDirection * 5, Color.red);
 
-			Vector3 moveDirection = pointOnWanderCircleDirection;
+            //swarm
+            Transform nearest = null;
+            float nearestDistSquared = float.PositiveInfinity;
+            List<Transform> nearZombies = new List<Transform>();
+            Collider[] near = Physics.OverlapSphere(transform.position, 10);
+            foreach (Collider c in near)
+            {
+                if (c != this && c.CompareTag("Zombie"))
+                {
+                    nearZombies.Add(c.transform);
+                    Vector3 toZombie = c.transform.position - transform.position;
+                    float distSquared = Vector3.Dot(toZombie, toZombie);
+                    if (distSquared < nearestDistSquared)
+                    {
+                        distSquared = nearestDistSquared;
+                        nearest = c.transform;
+                    }
+                }
+            }
+            //alignment
+            Vector3 averageForwardDirection = transform.forward;
+            //cohesion
+            Vector3 averagePosition = transform.position;
+            //separation
+            Vector3 separationDirection = Vector3.zero;
+            foreach (Transform zomb in nearZombies)
+            {
+                averageForwardDirection += zomb.forward;
+                averagePosition += zomb.position;
+                separationDirection += (transform.position - zomb.position);
+            }
+            averageForwardDirection.y = 0;
+            averageForwardDirection.Normalize();
+            if (nearZombies.Count > 0) averagePosition /= (nearZombies.Count + 1);//+1 to include this zombies position
+            separationDirection.y = 0;
+            separationDirection.Normalize();
+            Vector3 averagePositionOffset = (averagePosition - transform.position);
+            averagePositionOffset.y = 0;
+            averagePositionOffset.Normalize();
+
+
+            Vector3 moveDirection = Vector3.zero;
+            moveDirection += pointOnWanderCircleDirection * wanderForce;
+            moveDirection += averageForwardDirection * swarmAlignmentForce;
+            moveDirection += averagePositionOffset * swarmCohesionForce;
+            moveDirection += separationDirection * swarmSeparationForce;
+            moveDirection.Normalize();
 
 			Quaternion rotation = transform.rotation;
 			rotation.SetLookRotation(moveDirection, transform.up);
