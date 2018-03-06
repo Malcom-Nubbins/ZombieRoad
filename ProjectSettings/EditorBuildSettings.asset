@@ -50,3 +50,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/MapScene.unity
     guid: 613e40eed3833e34eac4b2fa48404bbe
+  - enabled: 1
+    path: Assets/SettingsScene.unity
+    guid: 2ad99c81a294f0c42bb76cc521519b1d

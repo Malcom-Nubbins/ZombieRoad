@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>Android:13</UnityBuildTarget>
     <UnityVersion>2017.1.1p3</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -165,6 +167,7 @@
     <Compile Include="Assets\Scripts\SetMaterialZWrite.cs" />
     <Compile Include="Assets\Scripts\TransparentifyObject.cs" />
     <Compile Include="Assets\Scripts\Unlocks\Currency.cs" />
+    <Compile Include="Assets\Scripts\Unlocks\SettingsResetUnlocks.cs" />
     <Compile Include="Assets\Scripts\Unlocks\ShopScreen.cs" />
     <Compile Include="Assets\Scripts\Unlocks\Unlockable.cs" />
     <Compile Include="Assets\Scripts\Unlocks\UnlockManager.cs" />
