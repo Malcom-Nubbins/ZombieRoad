@@ -1443,16 +1443,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b1fcda975177ee49b6b20ead7adfd8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Skyscrapers:
-  - {fileID: 1643833422894640, guid: 0b950be3ea4d5b44ba4a7ae32ed1fd8c, type: 2}
-  - {fileID: 1845648901761644, guid: 06d1323479326ca42895f50e6c5ed09b, type: 2}
-  - {fileID: 1149320171371916, guid: 5d7d83aed7d55c049abc94d0dfd62816, type: 2}
-  _Houses:
-  - {fileID: 1195365599170674, guid: bf4f2fd4c72c25945aa22111fa3f5627, type: 2}
-  - {fileID: 1661340654329924, guid: 40bd9ee9968db6d4ca027a69fb663465, type: 2}
-  - {fileID: 1261247030906472, guid: e5e83df07dc7afd4b8de494454f2bb59, type: 2}
-  _Shops:
-  - {fileID: 1374535507918080, guid: 6e9fb28e46330d442a22a0882e471817, type: 2}
   ChanceSkyscraper: 30
   ChanceHouses: 45
   ChanceShops: 20
