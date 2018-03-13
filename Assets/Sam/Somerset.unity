@@ -378,7 +378,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ChanceSkyscraper: 0
   ChanceHouses: 70
-  ChanceShops: 30
+  ChanceShops: 25
   ChanceNothing: 5
 --- !u!114 &501691855
 MonoBehaviour:

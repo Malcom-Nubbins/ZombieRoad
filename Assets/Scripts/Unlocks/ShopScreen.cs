@@ -100,11 +100,11 @@ public class ShopScreen : MonoBehaviour {
             {
                 foreach (Touch touch in Input.touches)
                 {
-                    if (touch.position.x < Screen.width / 3)
+                    if (touch.position.x < Screen.width / 3 && touch.position.y < (Screen.height / 3) * 2)
                     {
                         onPrevClick();
                     }
-                    else if(touch.position.x > (Screen.width / 3) * 2)
+                    else if(touch.position.x > (Screen.width / 3) * 2 && touch.position.y < (Screen.height / 3) * 2)
                     {
                         onNextClick();
                     }
