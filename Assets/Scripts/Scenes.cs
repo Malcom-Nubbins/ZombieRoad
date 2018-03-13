@@ -31,7 +31,6 @@ public class Scenes : MonoBehaviour
 
     public void LoadScene(Scene scene, LoadSceneMode mode = LoadSceneMode.Single)
     {
-		if (scene == Scene.GAME && UnlockManager.instance.gameObject.GetComponent<MapSelection>().GetSelectedMap() == "EdSheeran") Destroy(UnlockManager.instance);
 		SceneManager.LoadScene(GetSceneName(scene), mode);
     }
 }

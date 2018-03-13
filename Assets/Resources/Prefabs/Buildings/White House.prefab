@@ -294,5 +294,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlockableID: HouseWhite
   type: 0
-  unlocked: 0
+  unlocked: 1
   Price: 15

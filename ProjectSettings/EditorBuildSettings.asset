@@ -44,7 +44,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Sam/SmallTest.unity
     guid: ecab7f40bdfb47240ac5aac1f6332405
-  - enabled: 1
+  - enabled: 0
     path: Assets/Sam/EdSheeran.unity
     guid: 004ff405a7941594096f336749f39779
   - enabled: 1
@@ -53,3 +53,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/SettingsScene.unity
     guid: 2ad99c81a294f0c42bb76cc521519b1d
+  - enabled: 1
+    path: Assets/Sam/Somerset.unity
+    guid: e2bd372299c49374fbebb5d1341c2344
