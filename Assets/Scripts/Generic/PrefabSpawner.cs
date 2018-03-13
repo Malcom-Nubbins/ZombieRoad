@@ -8,9 +8,9 @@ public class PrefabSpawner : MonoBehaviour
     
 	void Awake()
     {
-        GameObject obj = Instantiate(prefab);
-        obj.transform.parent = transform;
-        obj.transform.localPosition = Vector3.zero;
-        obj.transform.localRotation = Quaternion.identity;
+        GameObject obj = Instantiate(prefab, transform);
+        //obj.transform.parent = transform;
+        //obj.transform.localPosition = Vector3.zero;
+        //obj.transform.localRotation = Quaternion.identity;
 	}
 }

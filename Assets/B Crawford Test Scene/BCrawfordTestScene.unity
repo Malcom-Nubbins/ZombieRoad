@@ -4514,10 +4514,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 31
       objectReference: {fileID: 0}
-    - target: {fileID: 4497440531497848, guid: 28111b77f86684420bc37075500b3b29, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -539.11
-      objectReference: {fileID: 0}
     - target: {fileID: 1984206477354976, guid: 28111b77f86684420bc37075500b3b29, type: 2}
       propertyPath: m_Name
       value: Truck (1)

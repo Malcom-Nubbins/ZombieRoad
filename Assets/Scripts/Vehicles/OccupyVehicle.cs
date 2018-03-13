@@ -22,7 +22,7 @@ public class OccupyVehicle : MonoBehaviour
 
 	private void OnCollisionEnter(Collision collision)
 	{
-		if (collision.collider.CompareTag("Vehicle"))
+		if (collision.collider.gameObject.GetComponent<BaseVehicleClass>())
 		{
             BaseVehicleClass vehicle = collision.collider.GetComponent<BaseVehicleClass>();
 			TryEnterVehicle(vehicle);
@@ -51,16 +51,17 @@ public class OccupyVehicle : MonoBehaviour
                 }
 
                 GameObject followCamera = gameObject.GetComponent<DisableVehicle>().followCamera;
-                gameObject.GetComponent<DisableVehicle>().followCamera = null;
-                vehicle.GetComponent<DisableVehicle>().followCamera = followCamera;
-                vehicle.SetDriver(gameObject);
                 //if (followCamera == null) Debug.Log("null followcamera");
                 //if (followCamera.GetComponent<FollowCamera>() == null) Debug.Log("null followcamera component");
                 //if (followCamera.GetComponent<FollowCamera>().target == null) Debug.Log("null followcamera component target");
                 //if (vehicle == null) Debug.Log("null vehicle");
                 followCamera.GetComponent<FollowCamera>().target = vehicle.gameObject;
 
-                EnterVehicle(vehicle);
+				gameObject.GetComponent<DisableVehicle>().followCamera = null;
+				vehicle.GetComponent<DisableVehicle>().followCamera = followCamera;
+				vehicle.SetDriver(gameObject);
+
+				EnterVehicle(vehicle);
 
                 Camera.main.GetComponent<TransparentifyObject>().player = vehicle.transform;
             }

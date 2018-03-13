@@ -68,7 +68,7 @@ public class SeekPlayer : MonoBehaviour
             Collider[] near = Physics.OverlapSphere(transform.position, 10);
             foreach (Collider c in near)
             {
-                if (c != this && c.CompareTag("Zombie"))
+                if (c != this && c.CompareTag("Zombie") && c.gameObject.GetComponent<Health>())
                 {
                     nearZombies.Add(c.transform);
                     Vector3 toZombie = c.transform.position - transform.position;
