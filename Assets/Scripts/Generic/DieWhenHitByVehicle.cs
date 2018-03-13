@@ -32,14 +32,18 @@ public class DieWhenHitByVehicle : MonoBehaviour
 
     protected virtual void OnHitByVehicle(BaseVehicleClass vehicle)
     {
-        zombieKillSource = vehicle.GetComponentInChildren<AudioSource>();
-        if(health.health > 0)
+        if(this.tag == "Zombie")
         {
-            if(!zombieKillSource.isPlaying)
+            zombieKillSource = vehicle.GetComponentInChildren<AudioSource>();
+            if(health.health > 0)
             {
-                zombieKillSource.PlayOneShot(zombieHit);
+                if(!zombieKillSource.isPlaying)
+                {
+                    zombieKillSource.PlayOneShot(zombieHit);
+                }
             }
         }
+
 
         
         FallOnDeath fallOnDeath = GetComponent<FallOnDeath>();

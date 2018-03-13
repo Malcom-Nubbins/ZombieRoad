@@ -71,9 +71,10 @@ public class UnlockManager : MonoBehaviour
         {
             return;
         }
-        foreach (Unlockable u in allUnlockables)
+
+        for(int i = 0; i < allUnlockables.Length; ++i)
         {
-            u.unlocked = (PlayerPrefs.GetInt(u.unlockableID) == PP_TRUE);
+            allUnlockables[i].unlocked = (PlayerPrefs.GetInt(allUnlockables[i].unlockableID) == PP_TRUE);
         }
     }
 
