@@ -11,8 +11,6 @@ public class DisabledRoadGenerator : RoadGenerator
 		xInvalid
 	}
 
-	static RaycastHit RaycastHitNull = new RaycastHit();
-
 	public Type TileClassification;
 
 	override public void Extend(bool bForceOOBExtension = false)
