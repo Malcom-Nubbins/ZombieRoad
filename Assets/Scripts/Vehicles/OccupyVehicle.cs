@@ -71,8 +71,11 @@ public class OccupyVehicle : MonoBehaviour
     {
         //place player in vehicle/on bike
         GetComponent<Collider>().enabled = false;
-        gameObject.transform.parent = vehicle.transform;
+        Transform driverTransform = vehicle.transform.Find("DriverTransform");
+        if (driverTransform == null) driverTransform = vehicle.transform;
+        gameObject.transform.parent = driverTransform;
         gameObject.transform.localPosition = Vector3.zero;
+        gameObject.transform.localRotation = Quaternion.identity;
         Rigidbody rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
         rb.constraints = RigidbodyConstraints.FreezeAll;
