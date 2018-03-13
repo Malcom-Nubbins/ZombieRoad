@@ -22,17 +22,17 @@ public class UnlockScreen : MonoBehaviour
 	
 	void Update()
     {
-        Vector3 buildingScale = new Vector3(0.35f, 0.35f, 0.35f);
-        Vector3 otherBuildingScale = new Vector3(0.7f, 0.7f, 0.7f);
+        Vector3 buildingScale = new Vector3(0.30f, 0.30f, 0.30f);
+        Vector3 otherBuildingScale = new Vector3(0.65f, 0.65f, 0.65f);
 
         transform.Rotate(Vector3.up, 20 * Time.deltaTime);
         if (newItemDisplay)
         {
-            if(newItemDisplay.GetComponent<Unlockable>().type == UnlockableType.SKYSCRAPER)
+            if (newItemDisplay.GetComponent<Unlockable>().type == UnlockableType.SKYSCRAPER)
             {
                 newItemDisplay.transform.localScale = buildingScale;
             }
-            else if(newItemDisplay.GetComponent<Unlockable>().type == UnlockableType.HOUSE || newItemDisplay.GetComponent<Unlockable>().type == UnlockableType.SHOP)
+            else if (newItemDisplay.GetComponent<Unlockable>().type == UnlockableType.HOUSE || newItemDisplay.GetComponent<Unlockable>().type == UnlockableType.SHOP)
             {
                 newItemDisplay.transform.localScale = otherBuildingScale;
             }
@@ -41,7 +41,7 @@ public class UnlockScreen : MonoBehaviour
                 newItemDisplay.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
             }
 
-            newItemDisplay.transform.position = new Vector3(0.0f, -5.0f, 20.0f);
+            newItemDisplay.transform.position = new Vector3(0.0f, -8.0f, 20.0f);
         }
-	}
+    }
 }
