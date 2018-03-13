@@ -21,10 +21,10 @@ GameObject:
   - component: {fileID: 4011888613911468}
   - component: {fileID: 33531033820865226}
   - component: {fileID: 23591395000700540}
-  - component: {fileID: 64102457122866712}
   - component: {fileID: 54504250122980838}
   - component: {fileID: 114343483671292986}
   - component: {fileID: 114165107005762436}
+  - component: {fileID: 65809356188904630}
   m_Layer: 0
   m_Name: Weapon_Hammer
   m_TagString: Untagged
@@ -99,8 +99,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!64 &64102457122866712
-MeshCollider:
+--- !u!65 &65809356188904630
+BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -109,10 +109,8 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Convex: 1
-  m_InflateMesh: 0
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Size: {x: 0.99999994, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114165107005762436
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -139,3 +137,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 814219fda3f05fe49af46e15db5d4b33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clip: {fileID: 0}

@@ -21,9 +21,9 @@ GameObject:
   - component: {fileID: 4970255239951708}
   - component: {fileID: 33471025722978710}
   - component: {fileID: 23884620183158778}
-  - component: {fileID: 64765812615352818}
   - component: {fileID: 54474040189103836}
   - component: {fileID: 114816484975780704}
+  - component: {fileID: 65753058905593648}
   m_Layer: 0
   m_Name: weapon_IronBar
   m_TagString: Untagged
@@ -98,8 +98,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!64 &64765812615352818
-MeshCollider:
+--- !u!65 &65753058905593648
+BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -108,10 +108,8 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Convex: 1
-  m_InflateMesh: 0
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Size: {x: 0.99999994, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114816484975780704
 MonoBehaviour:
   m_ObjectHideFlags: 1
