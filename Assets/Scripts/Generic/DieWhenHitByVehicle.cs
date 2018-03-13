@@ -5,11 +5,13 @@ using UnityEngine;
 public class DieWhenHitByVehicle : MonoBehaviour
 {
     Health health;
+    AudioSource zombieKillSource;
+    public AudioClip zombieHit;
 
-	void Start()
+    void Start()
     {
         health = GetComponent<Health>();
-	}
+    }
 	
     void OnTriggerStay(Collider collider)
     {
@@ -30,6 +32,20 @@ public class DieWhenHitByVehicle : MonoBehaviour
 
     protected virtual void OnHitByVehicle(BaseVehicleClass vehicle)
     {
+        if(this.tag == "Zombie")
+        {
+            zombieKillSource = vehicle.GetComponentInChildren<AudioSource>();
+            if(health.health > 0)
+            {
+                if(!zombieKillSource.isPlaying)
+                {
+                    zombieKillSource.PlayOneShot(zombieHit);
+                }
+            }
+        }
+
+
+        
         FallOnDeath fallOnDeath = GetComponent<FallOnDeath>();
         if (fallOnDeath)
         {
