@@ -102,6 +102,7 @@ public class RoadTileManager : MonoBehaviour
 				Debug.Log("FUCKIN FIELD, heading " + (RoadGenerator.Direction)i);
 
 				EmergencyFieldRemover = Instantiate(FourWay, RoundDownToGrid(checkpoint.FollowCamera.GetComponent<FollowCamera>().target.transform.position) + new Vector3(RoadGenerator.Xoffset(i) * 6, FourWay.GetComponent<RoadGenerator>().YOffset, RoadGenerator.Zoffset(i) * 6), Quaternion.identity, checkpoint.RoadMapRoot.transform);
+				WorldTileManager.instance.AddTile(EmergencyFieldRemover.GetComponent<WorldTile>());
 				EmergencyFieldRemover.transform.SetAsFirstSibling();
 				RoadGenerator newRG = EmergencyFieldRemover.GetComponent<RoadGenerator>();
 				newRG.CullingExempt = true;
