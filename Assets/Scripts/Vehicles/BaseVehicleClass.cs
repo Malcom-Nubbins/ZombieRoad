@@ -152,12 +152,8 @@ public class BaseVehicleClass : Movement
 			((transform.localPosition.y + 2) + (transform.localScale.y)),
 			((transform.localPosition.z) + (transform.localScale.z)));
 
-
-		_driver.transform.SetPositionAndRotation(playerReposition, Quaternion.Euler(0.0f, 0.0f, 0.0f));
-		_driver.transform.RotateAround(transform.localPosition, Vector3.up, transform.eulerAngles.y);
-		_driver.GetComponent<Rigidbody>().useGravity = true;
-        _driver.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
-        
+        _driver.GetComponent<OccupyVehicle>().ExitVehicle(this, playerReposition);
+		
         GameObject[] zombies = zombiesOnRoof.ToArray();//copy because zombies will be removed while looping
         foreach (GameObject zombie in zombies)
         {
@@ -166,8 +162,6 @@ public class BaseVehicleClass : Movement
         }
 
         Camera.main.GetComponent<TransparentifyObject>().player = _driver.transform;
-
-        _driver.GetComponent<OccupyVehicle>().SetOccupyCooldown(2.0f);
 
         _driver = null;
 

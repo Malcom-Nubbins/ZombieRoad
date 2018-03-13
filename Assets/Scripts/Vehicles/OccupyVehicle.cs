@@ -22,9 +22,10 @@ public class OccupyVehicle : MonoBehaviour
 
 	private void OnCollisionEnter(Collision collision)
 	{
-		if (collision.collider.gameObject.GetComponent<BaseVehicleClass>())
+		if (collision.collider.CompareTag("Vehicle"))
 		{
-			TryEnterVehicle(collision.collider.gameObject);
+            BaseVehicleClass vehicle = collision.collider.GetComponent<BaseVehicleClass>();
+			TryEnterVehicle(vehicle);
 		}
 	}
 
@@ -38,13 +39,13 @@ public class OccupyVehicle : MonoBehaviour
         _occupyCooldown = cooldown;
     }
 
-	private void TryEnterVehicle(GameObject vehicle)
+	private void TryEnterVehicle(BaseVehicleClass vehicle)
 	{
         if(_occupyCooldown <= 0.0f)
         {
             if (!Movement.InputLeft() && !Movement.InputRight())
             {
-                if (vehicle.GetComponent<BaseVehicleClass>().health <= 0 || vehicle.GetComponent<BaseVehicleClass>().GetFuelPercentage() <= 0)
+                if (vehicle.health <= 0 || vehicle.GetFuelPercentage() <= 0)
                 {
                     return;
                 }
@@ -52,14 +53,40 @@ public class OccupyVehicle : MonoBehaviour
                 GameObject followCamera = gameObject.GetComponent<DisableVehicle>().followCamera;
                 gameObject.GetComponent<DisableVehicle>().followCamera = null;
                 vehicle.GetComponent<DisableVehicle>().followCamera = followCamera;
-                vehicle.GetComponent<BaseVehicleClass>().SetDriver(gameObject);
-                followCamera.GetComponent<FollowCamera>().target = vehicle;
-                gameObject.transform.Translate(0, 100, 0);
-                gameObject.GetComponent<Rigidbody>().useGravity = false;
-                gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+                vehicle.SetDriver(gameObject);
+                //if (followCamera == null) Debug.Log("null followcamera");
+                //if (followCamera.GetComponent<FollowCamera>() == null) Debug.Log("null followcamera component");
+                //if (followCamera.GetComponent<FollowCamera>().target == null) Debug.Log("null followcamera component target");
+                //if (vehicle == null) Debug.Log("null vehicle");
+                followCamera.GetComponent<FollowCamera>().target = vehicle.gameObject;
+
+                EnterVehicle(vehicle);
 
                 Camera.main.GetComponent<TransparentifyObject>().player = vehicle.transform;
             }
         }
 	}
+
+    private void EnterVehicle(BaseVehicleClass vehicle)
+    {
+        //place player in vehicle/on bike
+        GetComponent<Collider>().enabled = false;
+        gameObject.transform.parent = vehicle.transform;
+        gameObject.transform.localPosition = Vector3.zero;
+        Rigidbody rb = GetComponent<Rigidbody>();
+        rb.useGravity = false;
+        rb.constraints = RigidbodyConstraints.FreezeAll;
+    }
+
+    public void ExitVehicle(BaseVehicleClass vehicle, Vector3 position)
+    {
+        transform.parent = null;
+        transform.SetPositionAndRotation(position, Quaternion.Euler(0.0f, 0.0f, 0.0f));
+        transform.RotateAround(vehicle.transform.localPosition, Vector3.up, vehicle.transform.eulerAngles.y);
+        GetComponent<Rigidbody>().useGravity = true;
+        GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+        GetComponent<Collider>().enabled = true;
+
+        SetOccupyCooldown(2.0f);
+    }
 }
