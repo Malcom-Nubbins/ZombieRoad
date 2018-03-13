@@ -197,6 +197,8 @@
     <Compile Include="Assets\Scripts\Weapons\Scripts\WeaponScript.cs" />
     <Compile Include="Assets\Scripts\Weapons\Shotgun.cs" />
     <Compile Include="Assets\Scripts\Weapons\WeaponSpawner.cs" />
+    <Compile Include="Assets\Scripts\WorldTile.cs" />
+    <Compile Include="Assets\Scripts\WorldTileManager.cs" />
     <Compile Include="Assets\Scripts\Zombies\ClimbOnVehicle.cs" />
     <Compile Include="Assets\Scripts\Zombies\KillcountOnDeath.cs" />
     <Compile Include="Assets\Scripts\Zombies\PileIn.cs" />
