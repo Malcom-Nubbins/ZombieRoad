@@ -35,7 +35,7 @@ public class DieWhenHitByVehicle : MonoBehaviour
         if(this.tag == "Zombie")
         {
             zombieKillSource = vehicle.GetComponentInChildren<AudioSource>();
-            if(health.health > 0)
+            if(health && health.health > 0)
             {
                 if(!zombieKillSource.isPlaying)
                 {
