@@ -84,6 +84,17 @@ public class RoadTileManager : MonoBehaviour
 		return new Vector3(RoundDownToGrid(a.x), RoundDownToGrid(a.y), RoundDownToGrid(a.z));
 	}
 
+    void Update()
+    {
+        foreach (WorldTile tile in WorldTileManager.instance.GetAllTiles())
+        {
+            if (tile is RoadGenerator)
+            {
+                ((RoadGenerator)tile).Extend(false);
+            }
+        }
+    }
+
 	void FixedUpdate()
 	{
 		if (Input.GetKey(KeyCode.Keypad0))

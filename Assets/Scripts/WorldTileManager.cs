@@ -32,6 +32,7 @@ public class WorldTileManager : MonoBehaviour
 	void Start()
     {
         //add tiles already in scene
+
         foreach (WorldTile tile in FindObjectsOfType<WorldTile>())
         {
             AddTile(tile);
@@ -48,6 +49,14 @@ public class WorldTileManager : MonoBehaviour
         WorldTile tile = null;
         tiles.TryGetValue(pos, out tile);
         return tile;
+    }
+
+    public IEnumerable<WorldTile> GetAllTiles()
+    {
+        foreach (WorldTile tile in tiles.Values)
+        {
+            yield return tile;
+        }
     }
 
     public void AddTile(WorldTile tile)
