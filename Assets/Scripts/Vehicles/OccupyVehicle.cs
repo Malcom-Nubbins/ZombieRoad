@@ -79,7 +79,7 @@ public class OccupyVehicle : MonoBehaviour
         Rigidbody rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
         rb.constraints = RigidbodyConstraints.FreezeAll;
-        gameObject.GetComponentInChildren<ZombieDetector>().enabled = false;
+        gameObject.GetComponentInChildren<ZombieDetector>().enabled = false; // disable players zombie detector to prevent player using weapons while in vehicle
     }
 
     public void ExitVehicle(BaseVehicleClass vehicle, Vector3 position)
