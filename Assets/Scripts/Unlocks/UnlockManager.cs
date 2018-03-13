@@ -94,7 +94,21 @@ public class UnlockManager : MonoBehaviour
         {
             return null;
         }
-        Unlockable unlockable = locked.ElementAt(Random.Range(0, locked.Count()));
+		float r = Random.value;
+		float chanceSum = 0.0f;
+		Unlockable unlockable = null;
+		foreach (Unlockable u in locked)
+		{
+			chanceSum += 1.0f/u.Price;
+			if (r < chanceSum)
+			{
+				unlockable = u;
+				break;
+			}
+		}
+		//Unlockable unlockable = locked.ElementAt(Random.Range(0, locked.Count()));
+		if (!unlockable) return null;
+
         unlockable.unlocked = true;
         SaveUnlocks();
         return unlockable;
