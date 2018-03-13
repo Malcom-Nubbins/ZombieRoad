@@ -79,10 +79,12 @@ public class OccupyVehicle : MonoBehaviour
         Rigidbody rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
         rb.constraints = RigidbodyConstraints.FreezeAll;
+        gameObject.GetComponentInChildren<ZombieDetector>().enabled = false;
     }
 
     public void ExitVehicle(BaseVehicleClass vehicle, Vector3 position)
     {
+        gameObject.GetComponentInChildren<ZombieDetector>().enabled = true;
         transform.parent = null;
         transform.SetPositionAndRotation(position, Quaternion.Euler(0.0f, 0.0f, 0.0f));
         transform.RotateAround(vehicle.transform.localPosition, Vector3.up, vehicle.transform.eulerAngles.y);
