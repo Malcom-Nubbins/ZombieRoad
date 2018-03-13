@@ -35,6 +35,22 @@ public class TransparentifyObject : MonoBehaviour
             }
             else
             {
+                if(ObstacleHit.collider.gameObject != buildings[0])
+                {
+                    foreach(Renderer mesh in buildings[0].GetComponentsInChildren<Renderer>())
+                    {
+                        foreach (Material material in mesh.materials)
+                        {
+                            material.SetInt("_ZWrite", 1);
+                            if (material.color.a <= 1.0f)
+                            {
+                                material.color = new Color(material.color.r, material.color.g, material.color.b, 1.0f);
+                            }
+                        }
+                    }
+
+                    buildings.RemoveAt(0);
+                }
                 foreach (Renderer meshRenderer in ObstacleHit.collider.gameObject.GetComponentsInChildren<Renderer>())
                 {
                     foreach (Material material in meshRenderer.materials)
