@@ -9,10 +9,9 @@ public class BaseballBat : HandWeapon
 	}
 
 	public override void attack(GameObject gameObject)
-	{
-
+	{ }
 		Health zombieHealth = gameObject.GetComponent<Health>();
 		zombieHealth.health -= 1;
-		Debug.Log("Baseball bat attacking");
+		//Debug.Log("Baseball bat attacking");
 	}
 }

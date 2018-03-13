@@ -42,7 +42,7 @@ public class MapScreen : MonoBehaviour
 		}
 		else
 		{
-			Debug.Log("BAD MAP - " + _maps.AvailableMapNames[_currentSelectedItem]);
+			Debug.LogError("BAD MAP - " + _maps.AvailableMapNames[_currentSelectedItem]);
 		}
 	}
 

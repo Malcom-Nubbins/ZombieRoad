@@ -37,7 +37,7 @@ public class ZombieDetector : MonoBehaviour
 			else
 			{
 				sortedZombies.RemoveAt(0);
-				Debug.Log("REMOVING DEAD ZOMBIE");
+				//Debug.Log("REMOVING DEAD ZOMBIE");
 			}
 		}
 

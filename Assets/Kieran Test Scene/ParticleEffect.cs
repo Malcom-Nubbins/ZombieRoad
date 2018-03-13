@@ -4,53 +4,53 @@ using UnityEngine;
 
 public class ParticleEffect : MonoBehaviour {
 
-    public GameObject prefab;
+	public GameObject prefab;
 
-    ParticleSystem splashEmitterPS;
+	ParticleSystem splashEmitterPS;
 
-    public GameObject FollowCamera;
+	public GameObject FollowCamera;
 
-    List<GameObject> emittersList;
+	List<GameObject> emittersList;
 
-    void Start()
-    {
-        emittersList = new List<GameObject>();
-    }
+	void Start()
+	{
+		emittersList = new List<GameObject>();
+	}
 
-    public void registerAtPosition(Vector3 position, bool looping)
-    {
+	public void registerAtPosition(Vector3 position, bool looping)
+	{
 
-        GameObject emitter = Instantiate(prefab, position, Quaternion.identity);
-        ParticleSystem particleSystem = emitter.GetComponent<ParticleSystem>();
+		GameObject emitter = Instantiate(prefab, position, Quaternion.identity);
+		ParticleSystem particleSystem = emitter.GetComponent<ParticleSystem>();
 
-        Debug.Log(particleSystem.main.startLifetimeMultiplier);
-        StartCoroutine(deregister(emitter, particleSystem.main.startLifetimeMultiplier));
+		//Debug.Log(particleSystem.main.startLifetimeMultiplier);
+		StartCoroutine(deregister(emitter, particleSystem.main.startLifetimeMultiplier));
 
-        emittersList.Add(emitter);
+		emittersList.Add(emitter);
 
-        play(particleSystem);
-    }
+		play(particleSystem);
+	}
 
-    private IEnumerator deregister(GameObject emitter, float delay)
-    {
-        yield return new WaitForSeconds(delay);
+	private IEnumerator deregister(GameObject emitter, float delay)
+	{
+		yield return new WaitForSeconds(delay);
 
-        ParticleSystem particleSystem = emitter.GetComponent<ParticleSystem>();
+		ParticleSystem particleSystem = emitter.GetComponent<ParticleSystem>();
 
-        emittersList.Remove(emitter);
-        Destroy(particleSystem);
-        Destroy(emitter);
-    }
+		emittersList.Remove(emitter);
+		Destroy(particleSystem);
+		Destroy(emitter);
+	}
 
 
-    private void play(ParticleSystem particleSystem)
-    {
-        if (particleSystem.isEmitting)
-        {
-            particleSystem.Clear();
-        }
+	private void play(ParticleSystem particleSystem)
+	{
+		if (particleSystem.isEmitting)
+		{
+			particleSystem.Clear();
+		}
 
-        particleSystem.Play();
-    }
+		particleSystem.Play();
+	}
 
 }

@@ -10,10 +10,8 @@ public class Chain : HandWeapon
 
 	public override void attack(GameObject gameObject)
 	{
-
 		Health zombieHealth = gameObject.GetComponent<Health>();
 		zombieHealth.health -= 1;
-
-		Debug.Log("Chain attacking");
+		//Debug.Log("Chain attacking");
 	}
 }

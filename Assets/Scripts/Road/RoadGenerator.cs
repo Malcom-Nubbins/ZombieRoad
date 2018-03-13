@@ -72,7 +72,7 @@ public class RoadGenerator : WorldTile
 	{
 		CurrentPlayerPosition = RoadTileManager.checkpoint.FollowCamera.GetComponent<FollowCamera>().target.transform.position;
 
-		if (!RoadTileManager.bMainMenu && CurrentPlayerPosition.magnitude > 15 && Vector3.Distance(CachedPlayerPosition, CurrentPlayerPosition) < 15) { MySpecificDebug += "15\n"; return false; }
+		if (!RoadTileManager.bMainMenu && CurrentPlayerPosition.magnitude > 15 && Vector3.Distance(CachedPlayerPosition, CurrentPlayerPosition) < 15) { /*MySpecificDebug += "15\n";*/ return false; }
 
 		CachedPlayerPosition = CurrentPlayerPosition;
 
@@ -694,7 +694,7 @@ public class RoadGenerator : WorldTile
 				default:
 					break;
 			}
-			if (DebugLogs) Debug.Log(LogExits());
+			//if (DebugLogs) Debug.Log(LogExits());
 		}
 		//MySpecificDebug += Time.unscaledTime + " Refreshed exits\n";
 	}
