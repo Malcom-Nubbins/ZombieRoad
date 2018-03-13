@@ -41,7 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4330749942433914}
   - component: {fileID: 135819657441712300}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Tire01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,7 +123,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4616220191981406}
   - component: {fileID: 135986407455650524}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Tire01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -191,7 +191,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1202558191728726}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20.47, y: 0.25, z: -5.004793}
+  m_LocalPosition: {x: -5.326375, y: 121.14724, z: -146.78784}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4819411484377142}
@@ -429,6 +429,7 @@ MonoBehaviour:
   rotationAngle: 60
   pivot: {fileID: 4631303301669104}
   centerOfMass: {x: 0, y: -1.5, z: 0}
+  footsteps: {fileID: 0}
   measuredSpeed: 0
   health: 10
   speedModifier: 1
@@ -439,6 +440,7 @@ MonoBehaviour:
   crashSound: {fileID: 0}
   engineSound: {fileID: 0}
   zombieHit: {fileID: 0}
+  engineDying: {fileID: 0}
   debugDisableAutoExit: 0
 --- !u!135 &135819657441712300
 SphereCollider:
