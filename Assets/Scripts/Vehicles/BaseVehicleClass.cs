@@ -37,11 +37,9 @@ public class BaseVehicleClass : Movement
 	private CanvasGroup _vehicleExitButtonGroup;
 
     AudioSource engineSource;
-    AudioSource zombieKillSource;
     AudioSource crashSource;
     public AudioClip crashSound;
     public AudioClip engineSound;
-    public AudioClip zombieHit;
     public AudioClip engineDying;
     //bool CrashPlayed = false;
     //bool engineDeathPlayed = false;
@@ -90,7 +88,6 @@ public class BaseVehicleClass : Movement
 
         engineSource = transform.Find("VehicleAudioSource").GetComponent<AudioSource>();
         crashSource = transform.Find("CrashAudioSource").GetComponent<AudioSource>();
-        zombieKillSource = transform.Find("ZombieKillCollider").GetComponent<AudioSource>();
 
         engineSource.clip = engineSound;
         engineSource.loop = true;
@@ -98,9 +95,6 @@ public class BaseVehicleClass : Movement
 
         crashSource.clip = crashSound;
         crashSource.loop = false;
-
-        zombieKillSource.clip = zombieHit;
-        zombieKillSource.loop = false;
 
 		_vehicleUIGroup.alpha = 1.0f;
 
@@ -152,12 +146,8 @@ public class BaseVehicleClass : Movement
 			((transform.localPosition.y + 2) + (transform.localScale.y)),
 			((transform.localPosition.z) + (transform.localScale.z)));
 
-
-		_driver.transform.SetPositionAndRotation(playerReposition, Quaternion.Euler(0.0f, 0.0f, 0.0f));
-		_driver.transform.RotateAround(transform.localPosition, Vector3.up, transform.eulerAngles.y);
-		_driver.GetComponent<Rigidbody>().useGravity = true;
-        _driver.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
-        
+        _driver.GetComponent<OccupyVehicle>().ExitVehicle(this, playerReposition);
+		
         GameObject[] zombies = zombiesOnRoof.ToArray();//copy because zombies will be removed while looping
         foreach (GameObject zombie in zombies)
         {
@@ -166,8 +156,6 @@ public class BaseVehicleClass : Movement
         }
 
         Camera.main.GetComponent<TransparentifyObject>().player = _driver.transform;
-
-        _driver.GetComponent<OccupyVehicle>().SetOccupyCooldown(2.0f);
 
         _driver = null;
 
@@ -372,21 +360,6 @@ public class BaseVehicleClass : Movement
             health -= 0.5f;
             _vehHealthSlider.value = health;
             _lastHitTime = 0.5f;
-            foreach (var gameobject in zombiesOnRoof)
-            {
-                if (gameobject.GetInstanceID() == zombie.GetInstanceID())
-                {
-                    //Debug.Log("ASDASKJSADKJASD");
-                    return;
-                }
-            }
-            if(zombie.tag == "Zombie")
-            {
-                Debug.Log("PLAYING HERE");
-                zombieKillSource.Play();
-            }
-
-
         }
 
         else
@@ -408,40 +381,6 @@ public class BaseVehicleClass : Movement
 				}
 			}
 		}
-
-		if(collision.gameObject.CompareTag("Zombie"))
-		{
-			OnCollisionEnter(collision);
-
-            if (_replayTime < 0.0f)
-            {
-                if(zombieKillSource)
-                {
-                    GameObject zombie = collision.gameObject;
-
-                    foreach (var gameobject in zombiesOnRoof)
-                    {
-                        if (gameobject.GetInstanceID() == zombie.GetInstanceID())
-                        {
-                            //Debug.Log("ASDASKJSADKJASD");
-                            return;
-                        }
-                    }
-                    if (zombie.tag == "Zombie")
-                    {
-                        Debug.Log("PLAYING HERE");
-                        zombieKillSource.Play();
-                    }
-                }
-
-                _replayTime = 1.0f;
-            }
-            else
-            {
-                _replayTime -= Time.deltaTime;
-            }
-
-        }
 	}
 
 	void Crash()

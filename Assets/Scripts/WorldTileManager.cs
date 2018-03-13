@@ -53,10 +53,10 @@ public class WorldTileManager : MonoBehaviour
 
     public IEnumerable<WorldTile> GetAllTiles()
     {
-        foreach (WorldTile tile in tiles.Values)
-        {
-            yield return tile;
-        }
+        //copy so tiles can be created and destroyed while iterating
+        WorldTile[] tilesCopy = new WorldTile[tiles.Values.Count];
+        tiles.Values.CopyTo(tilesCopy, 0);
+        return tilesCopy;
     }
 
     public void AddTile(WorldTile tile)
