@@ -122,8 +122,8 @@ public class ShopScreen : MonoBehaviour {
             _currentCooldownTime -= Time.deltaTime;
         }
 
-        Vector3 buildingScale = new Vector3(0.35f, 0.35f, 0.35f);
-        Vector3 otherBuildingScale = new Vector3(0.7f, 0.7f, 0.7f);
+        Vector3 buildingScale = new Vector3(0.30f, 0.30f, 0.30f);
+        Vector3 otherBuildingScale = new Vector3(0.65f, 0.65f, 0.65f);
 
         transform.Rotate(Vector3.up, 20 * Time.deltaTime);
         if (_lockedItemDisplay)
