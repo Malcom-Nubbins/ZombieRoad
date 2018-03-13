@@ -8,14 +8,4 @@ public class Unlockable : MonoBehaviour
     public UnlockableType type;
     public bool unlocked = true;
     public int Price = 0;
-
-    void Start()
-    {
-		
-	}
-	
-	void Update()
-    {
-		
-	}
 }

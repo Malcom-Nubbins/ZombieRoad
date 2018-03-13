@@ -105,14 +105,16 @@ public class RoadTileManager : MonoBehaviour
 		if (checkpoint.RoadMapRoot.GetComponentsInChildren<RoadGenerator>().Length > 100 /*usually around 140, prevent checking until the map is up to size*/ && EmergencyFieldRemover == null && checkpoint.RoadMapRoot.GetComponentsInChildren<RoadGenerator>()[35] as DisabledRoadGenerator != null /*35 is around a quarter, meaning grass at this position indicates a map with three quarters grass*/)
 		{
 			int i = RoadGenerator.Wrap0to7((int)(checkpoint.FollowCamera.GetComponent<FollowCamera>().target.transform.rotation.eulerAngles.y / 45.0f));
-
-            WorldTile Hit = WorldTileManager.instance.GetTile(new TilePosition(checkpoint.FollowCamera.GetComponent<FollowCamera>().target.transform.position) + new TilePosition(RoadGenerator.Xoffset(i) * 6, RoadGenerator.Zoffset(i) * 6));
+			TilePosition hitTest = new TilePosition(RoundDownToGrid(checkpoint.FollowCamera.GetComponent<FollowCamera>().target.transform.position)) + new TilePosition(RoadGenerator.Xoffset(i) * 6, RoadGenerator.Zoffset(i) * 6);
+			//Debug.Log("Testing for a hit at grid "+hitTest.x+","+hitTest.z+"; World location "+hitTest.GetWorldPosition());
+            WorldTile Hit = WorldTileManager.instance.GetTile(hitTest);
 
 			if (!Hit)
 			{
 				Debug.Log("FUCKIN FIELD, heading " + (RoadGenerator.Direction)i);
 
-				EmergencyFieldRemover = Instantiate(FourWay, RoundDownToGrid(checkpoint.FollowCamera.GetComponent<FollowCamera>().target.transform.position) + new Vector3(RoadGenerator.Xoffset(i) * 6, FourWay.GetComponent<RoadGenerator>().YOffset, RoadGenerator.Zoffset(i) * 6), Quaternion.identity, checkpoint.RoadMapRoot.transform);
+				EmergencyFieldRemover = Instantiate(FourWay, hitTest.GetWorldPosition() + new Vector3(0, FourWay.GetComponent<RoadGenerator>().YOffset, 0), Quaternion.identity, checkpoint.RoadMapRoot.transform);
+				//Debug.Log("EFR: "+EmergencyFieldRemover.gameObject.name + " at " + (hitTest.GetWorldPosition() + new Vector3(0, FourWay.GetComponent<RoadGenerator>().YOffset, 0)));
 				WorldTileManager.instance.AddTile(EmergencyFieldRemover.GetComponent<WorldTile>());
 				EmergencyFieldRemover.transform.SetAsFirstSibling();
 				RoadGenerator newRG = EmergencyFieldRemover.GetComponent<RoadGenerator>();
