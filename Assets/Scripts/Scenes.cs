@@ -23,6 +23,20 @@ public class Scenes : MonoBehaviour
     {
         instance = this;
     }
+
+    public Scene GetCurrentScene()
+    {
+        string sceneName = SceneManager.GetActiveScene().name;
+        for (int scene = 0; scene < sceneNames.Length; scene++)
+        {
+            if (sceneNames[scene].Equals(sceneName))
+            {
+                return (Scene)scene;
+            }
+        }
+        Debug.Log("Current scene named " + sceneName + " does not exist in scene names list, defaulting to main menu");
+        return Scene.LOADING;
+    }
 	
 	public string GetSceneName(Scene scene)
     {

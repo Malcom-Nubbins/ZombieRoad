@@ -96,6 +96,7 @@
      <Compile Include="Assets\Kieran Test Scene\LoadingSceneScripts\ButtonScript.cs" />
      <Compile Include="Assets\Kieran Test Scene\ParticleEffect.cs" />
      <Compile Include="Assets\Scripts\AdsScript.cs" />
+     <Compile Include="Assets\Scripts\AutoMainMenu.cs" />
      <Compile Include="Assets\Scripts\AutoPlay.cs" />
      <Compile Include="Assets\Scripts\Checkpoint.cs" />
      <Compile Include="Assets\Scripts\FollowCamera.cs" />
