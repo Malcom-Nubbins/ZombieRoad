@@ -166,6 +166,8 @@ public class BaseVehicleClass : Movement
 	{
         base.Update();
 
+        _lastHitTime = Mathf.Max(0, _lastHitTime - Time.deltaTime);
+
         if (measuredSpeed > maxSpeed)
         {
             //enabled = false;
@@ -343,9 +345,13 @@ public class BaseVehicleClass : Movement
 
         if (_lastHitTime > 0.0f)
 		{
-			_lastHitTime -= Time.deltaTime;
 			return;
 		}
+
+        if ((collision.gameObject.layer & LayerMask.NameToLayer("Road")) != 0)
+        {
+            return;
+        }
 
 		GameObject zombie = collision.gameObject;
 
@@ -371,6 +377,7 @@ public class BaseVehicleClass : Movement
 
 	void OnCollisionStay(Collision collision)
 	{
+        OnCollisionEnter(collision);
 		if (collision.gameObject.CompareTag("Building"))
 		{
 			if (speed > 5)
