@@ -253,7 +253,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 28111295}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 96a442fea42409841884d29cdbe14807, type: 3}
   m_Name: 
@@ -1512,7 +1512,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FollowCamera: {fileID: 1060524214}
   RoadMapRoot: {fileID: 1654138309}
-  DebugDisableTimer: 1
   TextSizeFlag: 0
   checkpointRadius: 200
   lods: []
