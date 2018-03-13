@@ -76,13 +76,24 @@ public class RoadTileManager : MonoBehaviour
 
 	float RoundDownToGrid(float a)
 	{
-		return 20.0f * (int)(a / 20);
+		return WorldTileManager.TILE_SIZE * (int)(a / WorldTileManager.TILE_SIZE);
 	}
 
 	Vector3 RoundDownToGrid(Vector3 a)
 	{
 		return new Vector3(RoundDownToGrid(a.x), RoundDownToGrid(a.y), RoundDownToGrid(a.z));
 	}
+
+    void Update()
+    {
+        foreach (WorldTile tile in WorldTileManager.instance.GetAllTiles())
+        {
+            if (tile is RoadGenerator)
+            {
+                ((RoadGenerator)tile).Extend(false);
+            }
+        }
+    }
 
 	void FixedUpdate()
 	{
@@ -94,9 +105,10 @@ public class RoadTileManager : MonoBehaviour
 		if (checkpoint.RoadMapRoot.GetComponentsInChildren<RoadGenerator>().Length > 100 /*usually around 140, prevent checking until the map is up to size*/ && EmergencyFieldRemover == null && checkpoint.RoadMapRoot.GetComponentsInChildren<RoadGenerator>()[35] as DisabledRoadGenerator != null /*35 is around a quarter, meaning grass at this position indicates a map with three quarters grass*/)
 		{
 			int i = RoadGenerator.Wrap0to7((int)(checkpoint.FollowCamera.GetComponent<FollowCamera>().target.transform.rotation.eulerAngles.y / 45.0f));
-			RaycastHit Hit; Physics.Raycast(RoundDownToGrid(checkpoint.FollowCamera.GetComponent<FollowCamera>().target.transform.position) + new Vector3(RoadGenerator.Xoffset(i) * 6, 500, RoadGenerator.Zoffset(i) * 6), new Vector3(0, -1), out Hit, Mathf.Infinity, 1 << 9);
 
-			if (!Hit.collider)
+            WorldTile Hit = WorldTileManager.instance.GetTile(new TilePosition(checkpoint.FollowCamera.GetComponent<FollowCamera>().target.transform.position) + new TilePosition(RoadGenerator.Xoffset(i) * 6, RoadGenerator.Zoffset(i) * 6));
+
+			if (!Hit)
 			{
 				Debug.Log("FUCKIN FIELD, heading " + (RoadGenerator.Direction)i);
 

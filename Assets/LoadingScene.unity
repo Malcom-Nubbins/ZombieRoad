@@ -1411,6 +1411,7 @@ GameObject:
   - component: {fileID: 1060524215}
   - component: {fileID: 1060524220}
   - component: {fileID: 1060524219}
+  - component: {fileID: 1060524221}
   m_Layer: 0
   m_Name: RoadTileManager
   m_TagString: Untagged
@@ -1443,16 +1444,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b1fcda975177ee49b6b20ead7adfd8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Skyscrapers:
-  - {fileID: 1643833422894640, guid: 0b950be3ea4d5b44ba4a7ae32ed1fd8c, type: 2}
-  - {fileID: 1845648901761644, guid: 06d1323479326ca42895f50e6c5ed09b, type: 2}
-  - {fileID: 1149320171371916, guid: 5d7d83aed7d55c049abc94d0dfd62816, type: 2}
-  _Houses:
-  - {fileID: 1195365599170674, guid: bf4f2fd4c72c25945aa22111fa3f5627, type: 2}
-  - {fileID: 1661340654329924, guid: 40bd9ee9968db6d4ca027a69fb663465, type: 2}
-  - {fileID: 1261247030906472, guid: e5e83df07dc7afd4b8de494454f2bb59, type: 2}
-  _Shops:
-  - {fileID: 1374535507918080, guid: 6e9fb28e46330d442a22a0882e471817, type: 2}
   ChanceSkyscraper: 30
   ChanceHouses: 45
   ChanceShops: 20
@@ -1528,6 +1519,17 @@ MonoBehaviour:
   offset: {x: 0, y: 386, z: -31}
   CullDistance: 135
   rotate: 1
+--- !u!114 &1060524221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1060524214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44312604443669648ad41492ec279b4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1113123615
 GameObject:
   m_ObjectHideFlags: 0
@@ -1677,6 +1679,7 @@ MonoBehaviour:
   - {fileID: 114163665614533976, guid: b0758523390170f46924b3affdd49746, type: 2}
   - {fileID: 114283220402355686, guid: 58c345b4e8e70c84f9befb1f121072a7, type: 2}
   - {fileID: 114270206442817852, guid: 3927d8ec9a0f3264b9af3443b4e1407e, type: 2}
+  - {fileID: 114462021310899214, guid: 15c111f419aa15941b916c48cef3fc63, type: 2}
   startUnlocked:
   - {fileID: 114700580680548600, guid: 40bd9ee9968db6d4ca027a69fb663465, type: 2}
   - {fileID: 114312301950468204, guid: 6e9fb28e46330d442a22a0882e471817, type: 2}

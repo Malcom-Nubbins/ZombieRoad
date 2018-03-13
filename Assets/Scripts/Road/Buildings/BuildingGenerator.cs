@@ -8,12 +8,13 @@ public class BuildingGenerator : MonoBehaviour
 	{
 		bool bHasNeighbour = false;
 
-		RaycastHit[] hit = new RaycastHit[8];
+		WorldTile[] hit = new WorldTile[8];
 
 		for (int i = 0; i < hit.Length; i++)
 		{
-			Physics.Raycast(transform.position + new Vector3(RoadGenerator.Xoffset(i), 500, RoadGenerator.Zoffset(i)), new Vector3(0, -1), out hit[i], Mathf.Infinity, LayerMask.GetMask("Building"));
-			if (hit[i].collider) bHasNeighbour = true;
+            hit[i] = WorldTileManager.instance.GetTile(new TilePosition(RoadGenerator.Xoffset(i), RoadGenerator.Zoffset(i)));
+            if (hit[i].gameObject.layer != LayerMask.NameToLayer("Building")) hit[i] = null;
+            if (hit[i]) bHasNeighbour = true;
 			//gameObject.GetComponent<RoadGenerator>().MySpecificDebug += "ray checking " + (RoadGenerator.Direction)i + " of " + gameObject.transform.position + " has hit " + (hit[i].collider ? hit[i].collider.gameObject.name : "nothing") + "\n";
 		}
 
@@ -25,9 +26,9 @@ public class BuildingGenerator : MonoBehaviour
 		else
 		{
 			List<GameObject> neighbours = new List<GameObject>();
-			foreach (RaycastHit h in hit)
-				if (h.collider)
-					neighbours.Add(h.collider.gameObject);
+			foreach (WorldTile h in hit)
+				if (h)
+					neighbours.Add(h.gameObject);
 
 			int r = Random.Range(0, neighbours.Count);
 			GameObject n = neighbours[r];

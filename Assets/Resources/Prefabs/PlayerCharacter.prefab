@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4796074601825522}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: HandWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34,7 +34,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4702942954196438}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60,7 +60,7 @@ GameObject:
   - component: {fileID: 114021146354991488}
   - component: {fileID: 114348609866270456}
   - component: {fileID: 82950212140006916}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: PlayerCharacter
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -77,7 +77,7 @@ GameObject:
   - component: {fileID: 4740486202466008}
   - component: {fileID: 33944958718701650}
   - component: {fileID: 23696751443625288}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 4043138725167932}
   - component: {fileID: 95478276687927028}
   - component: {fileID: 114920544142112638}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Animator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -112,7 +112,7 @@ GameObject:
   - component: {fileID: 135444783725829442}
   - component: {fileID: 114747302335946366}
   - component: {fileID: 136113388895983248}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ZombieDetector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 135576583133960346}
   - component: {fileID: 114611524679199104}
   - component: {fileID: 114540951408200142}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Zombie pile in radius
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -147,7 +147,7 @@ GameObject:
   - component: {fileID: 4760059107280150}
   - component: {fileID: 114074070608364578}
   - component: {fileID: 82612892787898234}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: EquippedWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -162,7 +162,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4329249501419614}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -551,7 +551,7 @@ MonoBehaviour:
   zombieDetector: {fileID: 114747302335946366}
   zombie: {fileID: 0}
   followCamera: {fileID: 0}
-  source: {fileID: 0}
+  pickUpSound: {fileID: 0}
   attacking: 0
 --- !u!114 &114178941160081296
 MonoBehaviour:
@@ -590,6 +590,7 @@ MonoBehaviour:
   rotationAngle: 200
   pivot: {fileID: 4827089163185860}
   centerOfMass: {x: 0, y: -1.5, z: 0}
+  footsteps: {fileID: 0}
   measuredSpeed: 0
 --- !u!114 &114438567250874226
 MonoBehaviour:

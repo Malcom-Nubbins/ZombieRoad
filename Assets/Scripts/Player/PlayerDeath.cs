@@ -28,7 +28,7 @@ public class PlayerDeath : MonoBehaviour
             {
                 if(!showingAd)
                 {
-                    Debug.Log("call this only once ok unity?");
+                    //Debug.Log("call this only once ok unity?");
                     GetComponent<AdsScript>().PlayAdOnDeath();
                     showingAd = true;
                 }

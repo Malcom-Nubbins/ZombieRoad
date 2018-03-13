@@ -23,24 +23,21 @@ public class DisabledRoadGenerator : RoadGenerator
 
 		for (int i = 0; i < hit.Length; i += 2)
 		{
-			if (!hit[i].collider)
+			if (!hit[i])
 			{
 				bool bProbablyHole = true;
 				for (int j = 0; j < hitPlus.Length; j += 2)
 				{
-					hitPlus[j] = RaycastHitNull;
+					hitPlus[j] = null;
 					int k = 1;
-					Vector3 RayLoc = transform.position + new Vector3(k * Xoffset(j) + Xoffset(i), 500, k * Zoffset(j) + Zoffset(i));
-					Vector3 RayLocNoY = new Vector3(RayLoc.x, 0, RayLoc.z);
-					while (!hitPlus[j].collider && (Vector3.Distance(CachedPlayerPosition, RayLocNoY) < (RoadTileManager.checkpoint.FollowCamera.GetComponent<FollowCamera>().CullDistance + 100)))
+					TilePosition RayLoc = GetTilePosition() + new TilePosition(k * Xoffset(j) + Xoffset(i), k * Zoffset(j) + Zoffset(i));
+					while (!hitPlus[j] && (Vector3.Distance(CachedPlayerPosition, new Vector3(RayLoc.x, 0, RayLoc.z)) < (RoadTileManager.checkpoint.FollowCamera.GetComponent<FollowCamera>().CullDistance + 100)))
 					{
-						Physics.Raycast(RayLoc, new Vector3(0, -1), out hitPlus[j], Mathf.Infinity, LayerMask.GetMask("Road"));
+                        hitPlus[j] = WorldTileManager.instance.GetTile(RayLoc);
 						k++;
-						RayLoc = transform.position + new Vector3(k * Xoffset(j) + Xoffset(i), 500, k * Zoffset(j) + Zoffset(i));
-						RayLocNoY.x = RayLoc.x;
-						RayLocNoY.z = RayLoc.z;
-					}
-					if (hitPlus[j].collider && hitPlus[j].collider.GetComponent<RoadGenerator>().Exit.Length < 8) hitPlus[j].collider.GetComponent<RoadGenerator>().RefreshExits();
+                        RayLoc = GetTilePosition() + new TilePosition(k * Xoffset(j) + Xoffset(i), k * Zoffset(j) + Zoffset(i));
+                    }
+					if (hitPlus[j] && hitPlus[j].GetComponent<RoadGenerator>().Exit.Length < 8) hitPlus[j].GetComponent<RoadGenerator>().RefreshExits();
 
 					MySpecificDebug += (RoadTileManager.checkpoint.FollowCamera.GetComponent<FollowCamera>().CullDistance) - Vector3.Distance(CachedPlayerPosition, transform.position) + "\n";
 
@@ -49,7 +46,7 @@ public class DisabledRoadGenerator : RoadGenerator
 					//	MySpecificDebug += "Nearby boundary hit while hole scanning\n";
 					//	bProbablyHole = true;
 					//}
-					if ((!((RoadTileManager.checkpoint.FollowCamera.GetComponent<FollowCamera>().CullDistance) - Vector3.Distance(CachedPlayerPosition, transform.position) < 20 && (Vector3.Distance(CachedPlayerPosition, RayLocNoY) > (RoadTileManager.checkpoint.FollowCamera.GetComponent<FollowCamera>().CullDistance + 100)))) && (!hitPlus[j].collider || !hitPlus[j].collider.GetComponent<DisabledRoadGenerator>()))
+					if ((!((RoadTileManager.checkpoint.FollowCamera.GetComponent<FollowCamera>().CullDistance) - Vector3.Distance(CachedPlayerPosition, transform.position) < 20 && (Vector3.Distance(CachedPlayerPosition, new Vector3(RayLoc.x, 0, RayLoc.z)) > (RoadTileManager.checkpoint.FollowCamera.GetComponent<FollowCamera>().CullDistance + 100)))) && (!hitPlus[j] || !hitPlus[j].GetComponent<DisabledRoadGenerator>()))
 					{
 						bProbablyHole = false;
 					}
@@ -57,8 +54,9 @@ public class DisabledRoadGenerator : RoadGenerator
 				if (bProbablyHole)
 				{
 					GameObject newTileClass = RoadTileManager.Grass;
-					GameObject newTile = Instantiate(newTileClass, transform.position + new Vector3(Xoffset(i), newTileClass.GetComponent<RoadGenerator>().YOffset-transform.position.y, Zoffset(i)), Quaternion.identity, RoadTileManager.checkpoint.RoadMapRoot.transform);
-					MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " because of probable hole\n";
+					GameObject newTile = Instantiate(newTileClass, transform.position + new Vector3(Xoffset(i) * WorldTileManager.TILE_SIZE, newTileClass.GetComponent<RoadGenerator>().YOffset-transform.position.y, Zoffset(i) * WorldTileManager.TILE_SIZE), Quaternion.identity, RoadTileManager.checkpoint.RoadMapRoot.transform);
+                    WorldTileManager.instance.AddTile(newTile.GetComponent<WorldTile>());
+                    MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " because of probable hole\n";
 				}
 			}
 		}

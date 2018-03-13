@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23702038931789448}
   - component: {fileID: 146908591372272968}
   - component: {fileID: 135027294837779416}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: wheel_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 23920662020261628}
   - component: {fileID: 146804904432827730}
   - component: {fileID: 135165931192701274}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: wheel_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 23033216791299674}
   - component: {fileID: 146616148647900322}
   - component: {fileID: 135800092530893016}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: wheel_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,7 +113,7 @@ GameObject:
   - component: {fileID: 23022949658617858}
   - component: {fileID: 146976551041304490}
   - component: {fileID: 135098577975091648}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: wheel_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -193,7 +193,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1963580973415620}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.0304785, y: 0.14753512, z: 19.597855}
+  m_LocalPosition: {x: -5.226444, y: 120.56155, z: -146.95529}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children:
   - {fileID: 4045244707531532}
@@ -489,6 +489,7 @@ MonoBehaviour:
   rotationAngle: 100
   pivot: {fileID: 4224901709952232}
   centerOfMass: {x: 0, y: -1.5, z: 0}
+  footsteps: {fileID: 0}
   measuredSpeed: 0
   health: 50
   speedModifier: 1.2
@@ -499,6 +500,7 @@ MonoBehaviour:
   crashSound: {fileID: 0}
   engineSound: {fileID: 0}
   zombieHit: {fileID: 0}
+  engineDying: {fileID: 0}
   debugDisableAutoExit: 0
 --- !u!114 &114187579890621332
 MonoBehaviour:
