@@ -70,9 +70,9 @@ public class ShopScreen : MonoBehaviour {
         _itemNameText.text = _lockedItemDisplay.name.Substring(0, _lockedItemDisplay.name.IndexOf('('));
         _itemCostText.text = "Price: " + _lockedItems[_currentSelectedItem].Price + " coins";
 
-        if(prefab.GetComponent<SeekPlayer>() != null)
+        if(_lockedItemDisplay.GetComponent<SeekPlayer>() != null)
         {
-            prefab.GetComponent<SeekPlayer>().enabled = false;
+            _lockedItemDisplay.GetComponent<SeekPlayer>().enabled = false;
         }
     }
 
