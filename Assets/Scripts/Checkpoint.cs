@@ -12,7 +12,7 @@ public class Checkpoint : MonoBehaviour
 	public GameObject FollowCamera;
 	public GameObject RoadMapRoot;
 
-	public bool DebugDisableTimer;
+	//public bool DebugDisableTimer;
 	public bool TextSizeFlag = false;
 
 	public float checkpointRadius;
@@ -67,7 +67,7 @@ public class Checkpoint : MonoBehaviour
 			UpdateCheckpoint();
 		}
 
-		if (timeRemaining > 0 && !DebugDisableTimer)
+		if (timeRemaining > 0 /*&& !DebugDisableTimer*/)
 			timeRemaining -= Time.deltaTime;
 
 		if (timeRemaining < 0)
@@ -84,22 +84,22 @@ public class Checkpoint : MonoBehaviour
         if (timeRemaining < 10)
         {
             _checkpointTimer.color = new Color(100, 0, 0);
-            if (_checkpointTimer.fontSize < 65 && TextSizeFlag == true)
-            {
-                _checkpointTimer.fontSize += 1;
-                if (_checkpointTimer.fontSize == 63)
-                {
-                    TextSizeFlag = false;
-                }
-            }
-            else if (timeRemaining > 0)
-            {
-                _checkpointTimer.fontSize -= 1;
-                if (_checkpointTimer.fontSize == 45)
-                {
-                    TextSizeFlag = true;
-                }
-            }
+            //if (_checkpointTimer.fontSize < 65 && TextSizeFlag == true)
+            //{
+            //    _checkpointTimer.fontSize += 1;
+            //    if (_checkpointTimer.fontSize == 63)
+            //    {
+            //        TextSizeFlag = false;
+            //    }
+            //}
+            //else if (timeRemaining > 0)
+            //{
+            //    _checkpointTimer.fontSize -= 1;
+            //    if (_checkpointTimer.fontSize == 45)
+            //    {
+            //        TextSizeFlag = true;
+            //    }
+            //}
 
         }
 
@@ -133,7 +133,7 @@ public class Checkpoint : MonoBehaviour
 		level++;
         nextTimeRemaining *= 1.5f;//scale time the same as radius
         timeRemaining += nextTimeRemaining;
-        Debug.Log("Checkpoint radius: " + checkpointRadius + ", Time added to get there: " + nextTimeRemaining);
+        //Debug.Log("Checkpoint radius: " + checkpointRadius + ", Time added to get there: " + nextTimeRemaining);
 	}
 
 	public float GetRadius()

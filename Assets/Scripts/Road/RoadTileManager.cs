@@ -111,7 +111,7 @@ public class RoadTileManager : MonoBehaviour
 
 			if (!Hit)
 			{
-				Debug.Log("FUCKIN FIELD, heading " + (RoadGenerator.Direction)i);
+				//Debug.Log("FUCKIN FIELD, heading " + (RoadGenerator.Direction)i);
 
 				EmergencyFieldRemover = Instantiate(FourWay, hitTest.GetWorldPosition() + new Vector3(0, FourWay.GetComponent<RoadGenerator>().YOffset, 0), Quaternion.identity, checkpoint.RoadMapRoot.transform);
 				//Debug.Log("EFR: "+EmergencyFieldRemover.gameObject.name + " at " + (hitTest.GetWorldPosition() + new Vector3(0, FourWay.GetComponent<RoadGenerator>().YOffset, 0)));

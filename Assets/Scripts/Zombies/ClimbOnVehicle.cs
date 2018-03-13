@@ -55,7 +55,7 @@ public class ClimbOnVehicle : MonoBehaviour
                 lookTowardsVehicle.Normalize();
                 transform.rotation = Quaternion.LookRotation(lookTowardsVehicle);
 
-                Debug.DrawLine(vehicleAttachedTo.transform.TransformPoint(localStartClimbPosition), vehicleAttachedTo.transform.TransformPoint(localEndClimbPosition), Color.red);
+                //Debug.DrawLine(vehicleAttachedTo.transform.TransformPoint(localStartClimbPosition), vehicleAttachedTo.transform.TransformPoint(localEndClimbPosition), Color.red);
 
                 climbingPercentDone += climbingSpeed * Time.deltaTime;
                 if (climbingPercentDone >= 1.0f)
