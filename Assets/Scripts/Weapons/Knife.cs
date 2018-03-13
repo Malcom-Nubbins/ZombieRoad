@@ -11,10 +11,9 @@ public class Knife : HandWeapon
 
 	public override void attack(GameObject gameObject)
 	{
-
 		Health zombieHealth = gameObject.GetComponent<Health>();
 		zombieHealth.health -= 1;
 
-		Debug.Log("Knife attacking");
+		//Debug.Log("Knife attacking");
 	}
 }

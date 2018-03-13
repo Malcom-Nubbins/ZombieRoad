@@ -55,16 +55,10 @@ public class Handgun : HandWeapon
         //Debug.Log("Handgun attacking");
         //Bullet.GetComponent<BulletScript>().ShootBullet(Zombie,);
 
-
         //ShootBullet();
 
         //        updateParticle(gameObject);
         //        ParticleEmitterPS.Play();
-
-
-
-
-
 
     }
 }

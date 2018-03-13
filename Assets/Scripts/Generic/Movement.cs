@@ -130,7 +130,7 @@ public class Movement : MonoBehaviour, ISelectHandler, IDeselectHandler
 
 	public void OnSelect(BaseEventData eventData)
 	{
-		Debug.Log("On Select");
+		//Debug.Log("On Select");
 		if(eventData.selectedObject.gameObject.name.Equals("TurnLeftButton"))
 		{
 			_turnLeftPressed = true;
@@ -144,7 +144,7 @@ public class Movement : MonoBehaviour, ISelectHandler, IDeselectHandler
 
 	public void OnDeselect(BaseEventData eventData)
 	{
-		Debug.Log("On Deselect");
+		//Debug.Log("On Deselect");
 		if (eventData.selectedObject.gameObject.name.Equals("TurnLeftButton"))
 		{
 			_turnLeftPressed = false;

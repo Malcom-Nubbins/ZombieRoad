@@ -13,6 +13,6 @@ public class Hammer : HandWeapon
 	{
 		Health zombieHealth = gameObject.GetComponent<Health>();
 		zombieHealth.health -= 1;
-		Debug.Log("Hammer attacking");
+		//Debug.Log("Hammer attacking");
 	}
 }

@@ -12,6 +12,6 @@ public class Machete : HandWeapon
 	{
 		Health zombieHealth = gameObject.GetComponent<Health>();
 		zombieHealth.health -= 1;
-		Debug.Log("Machete attacking");
+		//Debug.Log("Machete attacking");
 	}
 }

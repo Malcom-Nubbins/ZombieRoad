@@ -92,8 +92,7 @@ public class ZombieSpawner : MonoBehaviour
             bool areaClear = !Physics.Raycast(ray, rayLength);
             if (debugSpawnEveryFrame)
             {
-                Debug.DrawLine(ray.origin, ray.origin + ray.direction * rayLength,
-                    areaClear ? Color.green : Color.red, 0.5f);
+                //Debug.DrawLine(ray.origin, ray.origin + ray.direction * rayLength, areaClear ? Color.green : Color.red, 0.5f);
             }
             if (areaClear)
             {

@@ -12,6 +12,6 @@ public class Shotgun : HandWeapon
 		Health zombieHealth = gameObject.GetComponent<Health>();
 		zombieHealth.health -= 2;
 		
-		Debug.Log("Shotgun attacking");
+		//Debug.Log("Shotgun attacking");
 	}
 }

@@ -52,7 +52,7 @@ public class BaseVehicleClass : Movement
     private float _replayTime = 0.0f;
 
     // Debug
-    public bool debugDisableAutoExit = false;
+    //public bool debugDisableAutoExit = false;
 
     // Use this for initialization
     void Start()
@@ -183,7 +183,7 @@ public class BaseVehicleClass : Movement
             //return;
         }
 
-        if (!debugDisableAutoExit)
+        //if (!debugDisableAutoExit)
         {
             if (measuredSpeed < 2.0f)
             {
@@ -215,7 +215,8 @@ public class BaseVehicleClass : Movement
         {
             timeWithNoButtonsPressed += Time.deltaTime;
         }
-        if (!debugDisableAutoExit)
+
+		//if (!debugDisableAutoExit)
         {
 
             if ((totalFuel <= 0.0f || deadState) && speed <= 0.1f
@@ -252,12 +253,9 @@ public class BaseVehicleClass : Movement
             deadState = true;
         }
 
-
-
         // Slow the vehicle gradually until it stops if the vehicle 'dies'
         if (deadState)
         {
-
             if (speed <= 0)
             {
                 TryExitVehicle();
@@ -270,7 +268,6 @@ public class BaseVehicleClass : Movement
             {
                 engineSource.pitch -= 0.01f;
             }
-
         }
         else
         {
@@ -325,7 +322,6 @@ public class BaseVehicleClass : Movement
                 {
                     engineSource.pitch -= 0.01f;
                 }
-
             }
         }
 
