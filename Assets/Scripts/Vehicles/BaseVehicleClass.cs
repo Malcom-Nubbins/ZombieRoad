@@ -347,7 +347,7 @@ public class BaseVehicleClass : Movement
         if (_driver == null)
             return;
 
-		if (_lastHitTime > 0.0f)
+        if (_lastHitTime > 0.0f)
 		{
 			_lastHitTime -= Time.deltaTime;
 			return;
@@ -362,6 +362,7 @@ public class BaseVehicleClass : Movement
 
         if (health > 0)
         {
+            
             //TakeDamage(0.5f);
             health -= 0.5f;
             _vehHealthSlider.value = health;

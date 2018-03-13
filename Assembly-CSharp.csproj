@@ -132,6 +132,8 @@
      <Compile Include="Assets\Scripts\Road\RoadGenerator.cs" />
      <Compile Include="Assets\Scripts\Road\RoadTileManager.cs" />
      <Compile Include="Assets\Scripts\Road\VehicleGenerator.cs" />
+     <Compile Include="Assets\Scripts\Road\WorldTile.cs" />
+     <Compile Include="Assets\Scripts\Road\WorldTileManager.cs" />
      <Compile Include="Assets\Scripts\Scenes.cs" />
      <Compile Include="Assets\Scripts\SetMaterialZWrite.cs" />
      <Compile Include="Assets\Scripts\TransparentifyObject.cs" />
@@ -142,6 +144,7 @@
      <Compile Include="Assets\Scripts\Unlocks\UnlockManager.cs" />
      <Compile Include="Assets\Scripts\Unlocks\UnlockScreen.cs" />
      <Compile Include="Assets\Scripts\Vehicles\BaseVehicleClass.cs" />
+     <Compile Include="Assets\Scripts\Vehicles\BikeLean.cs" />
      <Compile Include="Assets\Scripts\Vehicles\DisableVehicle.cs" />
      <Compile Include="Assets\Scripts\Vehicles\OccupyVehicle.cs" />
      <Compile Include="Assets\Scripts\Vehicles\SkidFX.cs" />
@@ -167,8 +170,6 @@
      <Compile Include="Assets\Scripts\Weapons\Scripts\WeaponScript.cs" />
      <Compile Include="Assets\Scripts\Weapons\Shotgun.cs" />
      <Compile Include="Assets\Scripts\Weapons\WeaponSpawner.cs" />
-     <Compile Include="Assets\Scripts\WorldTile.cs" />
-     <Compile Include="Assets\Scripts\WorldTileManager.cs" />
      <Compile Include="Assets\Scripts\Zombies\ClimbOnVehicle.cs" />
      <Compile Include="Assets\Scripts\Zombies\KillcountOnDeath.cs" />
      <Compile Include="Assets\Scripts\Zombies\PileIn.cs" />
