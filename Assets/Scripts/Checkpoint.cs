@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -27,6 +28,8 @@ public class Checkpoint : MonoBehaviour
 	static protected int level = 0;
 	
 	public Mesh[] lods;
+
+    public event Action OnCheckpointExtend;
 
 	public virtual void Start()
 	{
@@ -134,6 +137,11 @@ public class Checkpoint : MonoBehaviour
         nextTimeRemaining *= 1.5f;//scale time the same as radius
         timeRemaining += nextTimeRemaining;
         //Debug.Log("Checkpoint radius: " + checkpointRadius + ", Time added to get there: " + nextTimeRemaining);
+
+        if (OnCheckpointExtend != null)
+        {
+            OnCheckpointExtend();
+        }
 	}
 
 	public float GetRadius()
