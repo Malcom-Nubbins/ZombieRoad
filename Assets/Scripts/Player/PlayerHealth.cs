@@ -53,27 +53,29 @@ public class PlayerHealth : Health {
 
     void OnCollisionEnter(Collision collision)
     {
-        if(_lastHitTime > 0.0f)
-        {
-            _lastHitTime -= Time.deltaTime;
-            return;
-        }
         if(collision.gameObject.tag != "Zombie")
         {
             return;
         }
-
         GameObject zombie = collision.gameObject;
-
         if (zombie.GetComponent<Health>().health <= 0)
         {
+            return;
+        }
+        GetHitByZombie(zombie);
+    }
+
+    public void GetHitByZombie(GameObject zombie)
+    {
+        if (_lastHitTime > 0.0f)
+        {
+            _lastHitTime -= Time.deltaTime;
             return;
         }
         if (health >= 0.5f)
         {
             PlayerSource.PlayOneShot(playerHitSound);
         }
-
         health -= 0.5f;
         _lastHitTime = 1.0f;
     }
