@@ -932,7 +932,7 @@ Prefab:
     - target: {fileID: 114745792321684716, guid: a8852ed89d8f35944bd7a0eb45da7192,
         type: 2}
       propertyPath: CullDistance
-      value: 100
+      value: 140
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a8852ed89d8f35944bd7a0eb45da7192, type: 2}
