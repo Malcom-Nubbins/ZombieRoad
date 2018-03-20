@@ -68,20 +68,26 @@ public class OccupyVehicle : MonoBehaviour
         }
 	}
 
-    private void EnterVehicle(BaseVehicleClass vehicle)
+    protected virtual void EnterVehicle(BaseVehicleClass vehicle)
     {
-        //place player in vehicle/on bike
-        GetComponent<Collider>().enabled = false;
-        Transform driverTransform = vehicle.transform.Find("DriverTransform");
-        if (driverTransform == null) driverTransform = vehicle.transform;
-        gameObject.transform.parent = driverTransform;
-        gameObject.transform.localPosition = Vector3.zero;
-        gameObject.transform.localRotation = Quaternion.identity;
-        Rigidbody rb = GetComponent<Rigidbody>();
-        rb.useGravity = false;
-        rb.constraints = RigidbodyConstraints.FreezeAll;
-        gameObject.GetComponentInChildren<ZombieDetector>().enabled = false; // disable players zombie detector to prevent player using weapons while in vehicle
-    }
+		Transform driverTransform = vehicle.transform.Find("DriverTransform");
+		if (driverTransform == null)
+		{
+			gameObject.transform.Translate(0, 100, 0);
+		}
+		else
+		{
+			//place player on bike
+			gameObject.transform.parent = driverTransform;
+			gameObject.transform.localPosition = Vector3.zero;
+			gameObject.transform.localRotation = Quaternion.identity;
+		}
+		GetComponent<Collider>().enabled = false;
+		Rigidbody rb = GetComponent<Rigidbody>();
+		rb.useGravity = false;
+		rb.constraints = RigidbodyConstraints.FreezeAll;
+		gameObject.GetComponentInChildren<ZombieDetector>().enabled = false; // disable players zombie detector to prevent player using weapons while in vehicle
+	}
 
     public void ExitVehicle(BaseVehicleClass vehicle, Vector3 position)
     {
