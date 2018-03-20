@@ -11,7 +11,10 @@ public class AdsScript : MonoBehaviour
 	void Start ()
     {
         Button startButton = GetComponent<Button>();
-        startButton.onClick.AddListener(OnClick);
+        if(startButton)
+        {
+            startButton.onClick.AddListener(OnClick);
+        }
 
     }
 	
@@ -25,16 +28,51 @@ public class AdsScript : MonoBehaviour
     {
        // Debug.Log("CLICKED! Init: " + Advertisement.isInitialized + " TestMode?: " + Advertisement.testMode);
        // Debug.Log(Advertisement.IsReady("rewardedVideo"));
-        if (Advertisement.IsReady("rewardedVideo"))
+        if (Advertisement.IsReady("video"))
         {
            // Debug.Log("AD IS READY TO SHOw");
-            var options = new ShowOptions { resultCallback = HandleShowingAd };
+            var options = new ShowOptions { resultCallback = HandleShopAd };
             Advertisement.Show(options);
         }
         
     }
 
-    void HandleShowingAd(ShowResult result)
+    void HandleDeathAd(ShowResult result)
+    {
+        switch(result)
+        {
+            case ShowResult.Finished:
+                int randomNumber = (int)Random.Range(0.0f, 10.0f);
+
+                if(randomNumber == 0)
+                {
+                    if (UnlockManager.instance.GetLockedItemCount() > 0)
+                    {
+                        Scenes.instance.LoadScene(Scenes.Scene.UNLOCK);
+                    }
+                    else
+                    {
+                        Scenes.instance.LoadScene(Scenes.Scene.GAME_OVER);
+                    }
+                }
+                else
+                {
+                    Scenes.instance.LoadScene(Scenes.Scene.GAME_OVER);
+                }
+
+                break;
+
+            case ShowResult.Skipped:
+                Scenes.instance.LoadScene(Scenes.Scene.GAME_OVER);
+                break;
+
+            case ShowResult.Failed:
+                Scenes.instance.LoadScene(Scenes.Scene.GAME_OVER);
+                break;
+        }
+    }
+
+    void HandleShopAd(ShowResult result)
     {
         switch (result)
         {
@@ -43,14 +81,17 @@ public class AdsScript : MonoBehaviour
                 // give reward, coins used shop maybe???
 
                 Currency.AddCurrency(5);
+                Scenes.instance.LoadScene(Scenes.Scene.SHOP);
                 break;
 
             case ShowResult.Skipped:
                 //Debug.Log("USER SKIPPED ADVERT NEED TO RESET THEIR PROGRESS !!!!!!!");
+                Scenes.instance.LoadScene(Scenes.Scene.SHOP);
                 break;
 
             case ShowResult.Failed:
-               // Debug.Log("AD FAILED TO DISPLAY");
+                // Debug.Log("AD FAILED TO DISPLAY");
+                Scenes.instance.LoadScene(Scenes.Scene.SHOP);
                 break;
         }
 
@@ -65,7 +106,7 @@ public class AdsScript : MonoBehaviour
         if (Advertisement.IsReady("video"))
         {
            // Debug.Log("SKIPPABLE ADD IS SHOWING");
-            var options = new ShowOptions { resultCallback = HandleShowingAd };
+            var options = new ShowOptions { resultCallback = HandleDeathAd };
             Advertisement.Show(options);
         }
     }
