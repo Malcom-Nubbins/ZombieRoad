@@ -368,17 +368,32 @@ public class BaseVehicleClass : Movement
 			return;
 		}
 
-		if (health > 0)
-		{
-			//Debug.Log(gameObject.name + " docking health due to collision with " + collision.gameObject.name);
-			health -= 0.5f;
-			_vehHealthSlider.value = health;
-			_lastHitTime = 0.5f;
-		}
-		else
-		{
-			health = 0.0f;
-		}
+        BikeLean bike = GetComponent<BikeLean>();
+        PlayerHealth player = null;
+        if (bike)
+        {
+            player = GetComponentInChildren<PlayerHealth>();
+        }
+        if (bike && player)
+        {
+            //zombie damages player
+            player.GetHitByZombie(zombie);
+        }
+        else
+        {
+            //zombie damages vehicle
+            if (health > 0)
+            {
+                //Debug.Log(gameObject.name + " docking health due to collision with " + collision.gameObject.name);
+                health -= 0.5f;
+                _vehHealthSlider.value = health;
+                _lastHitTime = 0.5f;
+            }
+            else
+            {
+                health = 0.0f;
+            }
+        }
 	}
 
 	void OnCollisionStay(Collision collision)
