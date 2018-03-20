@@ -218,7 +218,7 @@ PlayerSettings:
   appleEnableAutomaticSigning: 0
   AndroidTargetDevice: 0
   AndroidSplashScreenScale: 1
-  androidSplashScreen: {fileID: 0}
+  androidSplashScreen: {fileID: 2800000, guid: 0092517b0425abb4f854bcb74e7f32b9, type: 3}
   AndroidKeystoreName: E:/UniStuff/FINAL YEAR/Studio Sim/Zombie Road/ZombieRoad/ZombieRoad_Keystore.keystore
   AndroidKeyaliasName: zombie-road
   AndroidTVCompatibility: 1
@@ -533,7 +533,7 @@ PlayerSettings:
   psp2InfoBarColor: 0
   psp2ScriptOptimizationLevel: 0
   psmSplashimage: {fileID: 0}
-  splashScreenBackgroundSourceLandscape: {fileID: 21300000, guid: 777ccf6051bcc4746bce9937e2c1ab2e,
+  splashScreenBackgroundSourceLandscape: {fileID: 21300000, guid: 9943d81c2dbd3264bb26dd81fad07a37,
     type: 3}
   splashScreenBackgroundSourcePortrait: {fileID: 0}
   spritePackerPolicy: 
@@ -651,9 +651,9 @@ PlayerSettings:
     UNet: 1
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
-  cloudProjectId: 6f9331f2-f926-4554-a64e-40629ca48970
+  cloudProjectId: 1649c0d1-cb99-4b61-a9c9-3692d68dfa50
   projectName: Zombie Road
-  organizationId: bartoszg
+  organizationId: malcom_nubbins
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
