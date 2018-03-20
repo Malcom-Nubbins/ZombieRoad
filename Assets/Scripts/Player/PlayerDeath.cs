@@ -100,7 +100,7 @@ public class PlayerDeath : MonoBehaviour
         GameObject zombie = collision.gameObject;
 
         //if zombie is dead, don't kill the player
-        if (zombie.GetComponent<Health>().health <= 0)
+        if (!zombie.GetComponent<Health>() || zombie.GetComponent<Health>().health <= 0)
         {
             return;
         }
