@@ -44,6 +44,12 @@ public class Currency : MonoBehaviour {
         return currency;
     }
 
+    public static void AddCurrency(int numOfCoins)
+    {
+        currency += numOfCoins;
+        Save();
+    }
+
     public static void RemoveCurrency(int amount)
     {
         currency -= amount;

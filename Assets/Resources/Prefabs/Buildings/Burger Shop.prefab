@@ -599,6 +599,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dba7fc7c8a77ca34a8c53d6ab6a6e6ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  zombieHit: {fileID: 0}
   breakEffectPrefab: {fileID: 0}
 --- !u!114 &114546578864759652
 MonoBehaviour:
@@ -606,7 +607,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1504451237757982}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ac20dc6bb46fe8c4ebe9ff5acbe93fe9, type: 3}
   m_Name: 

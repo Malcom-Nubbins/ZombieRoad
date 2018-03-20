@@ -177,6 +177,8 @@
      <Compile Include="Assets\Scripts\Zombies\SeekPlayer.cs" />
      <Compile Include="Assets\Scripts\Zombies\ZombieDetector.cs" />
      <Compile Include="Assets\Scripts\Zombies\ZombieSpawner.cs" />
+     <Compile Include="Assets\Scripts\Zombies\ZombieSpawnManager.cs" />
+     <Compile Include="Assets\Scripts\Zombies\ZombieSpawnRate.cs" />
      <Compile Include="Assets\Scripts\Zombies\ZombiesPileIn.cs" />
      <None Include="Assets\Asset Store\Pixel_City\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendOneOne.shader" />
      <None Include="Assets\Asset Store\Pixel_City\Standard Assets\Effects\ImageEffects\Shaders\NoiseEffectShaderRGB.shader" />
