@@ -769,7 +769,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 166ef470a40a10543a47d8423fd5cffb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4e082d7f908d06949b1b39f565f59666, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -901,7 +901,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 63ef6837a506d8a4aab49f04a5303fb5, type: 3}
-    m_FontSize: 100
+    m_FontSize: 65
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -912,7 +912,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Time : 0'
+  m_Text: 'Time Left: 100.00'
 --- !u!114 &114225385095998886
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1093,7 +1093,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: f1f3e3ff8ecc8c64eaf8a4eb46b138db, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b60b8724a1d35c9468b740c14d3d0ab6, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1

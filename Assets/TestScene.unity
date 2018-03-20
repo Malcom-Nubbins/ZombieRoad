@@ -5168,16 +5168,6 @@ Prefab:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114220724336330758, guid: 0049802d8fb2bb84896be1247b7ac1c0,
-        type: 2}
-      propertyPath: m_Text
-      value: 'Time Left: 100.00'
-      objectReference: {fileID: 0}
-    - target: {fileID: 114220724336330758, guid: 0049802d8fb2bb84896be1247b7ac1c0,
-        type: 2}
-      propertyPath: m_FontData.m_FontSize
-      value: 65
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0049802d8fb2bb84896be1247b7ac1c0, type: 2}
   m_IsPrefabParent: 0
