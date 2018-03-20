@@ -13,10 +13,10 @@ public class DisabledRoadGenerator : RoadGenerator
 
 	public Type TileClassification;
 
+	bool bProbablyHoleLastFrame = false;
+
 	override public void Extend(bool bForceOOBExtension = false)
 	{
-		bHaveExpanded = false;
-
 		if (!ShouldExtend()) return;
 
 		for (int i = 0; i < hit.Length; i += 2)
@@ -29,34 +29,34 @@ public class DisabledRoadGenerator : RoadGenerator
 					hitPlus[j] = null;
 					int k = 1;
 					TilePosition RayLoc = GetTilePosition() + new TilePosition(k * Xoffset(j) + Xoffset(i), k * Zoffset(j) + Zoffset(i));
-					while (!hitPlus[j] && (Vector3.Distance(CachedPlayerPosition, new Vector3(RayLoc.x, 0, RayLoc.z)) < (RoadTileManager.checkpoint.FollowCamera.GetComponent<FollowCamera>().CullDistance + 100)))
+					while (!hitPlus[j])
 					{
-                        hitPlus[j] = WorldTileManager.instance.GetTile(RayLoc);
+						hitPlus[j] = WorldTileManager.instance.GetTile(RayLoc);
 						k++;
-                        RayLoc = GetTilePosition() + new TilePosition(k * Xoffset(j) + Xoffset(i), k * Zoffset(j) + Zoffset(i));
-                    }
+						RayLoc = GetTilePosition() + new TilePosition(k * Xoffset(j) + Xoffset(i), k * Zoffset(j) + Zoffset(i));
+						if (Vector3.Distance(RayLoc.GetWorldPosition(), gameObject.transform.position) > RoadTileManager.checkpoint.FollowCamera.GetComponent<FollowCamera>().CullDistance + 100) break; 
+					}
 					if (hitPlus[j] && hitPlus[j].GetComponent<RoadGenerator>().Exit.Length < 8) hitPlus[j].GetComponent<RoadGenerator>().RefreshExits();
 
-					MySpecificDebug += (RoadTileManager.checkpoint.FollowCamera.GetComponent<FollowCamera>().CullDistance) - Vector3.Distance(CachedPlayerPosition, transform.position) + "\n";
+					MySpecificDebug += Time.fixedTime + " hitPlus " + (Direction)j + " concluded with " + (hitPlus[j]?hitPlus[j].gameObject.name + " (" + hitPlus[j].gameObject.transform.position + ")" : "boundary")+"\n";
 
-					//if (!((RoadTileManager.checkpoint.FollowCamera.GetComponent<FollowCamera>().CullDistance) - Vector3.Distance(CachedPlayerPosition, transform.position) < 20 && (Vector3.Distance(CachedPlayerPosition, RayLocNoY) > (RoadTileManager.checkpoint.FollowCamera.GetComponent<FollowCamera>().CullDistance + 100))))
-					//{
-					//	MySpecificDebug += "Nearby boundary hit while hole scanning\n";
-					//	bProbablyHole = true;
-					//}
-					if ((!((RoadTileManager.checkpoint.FollowCamera.GetComponent<FollowCamera>().CullDistance) - Vector3.Distance(CachedPlayerPosition, transform.position) < 20 && (Vector3.Distance(CachedPlayerPosition, new Vector3(RayLoc.x, 0, RayLoc.z)) > (RoadTileManager.checkpoint.FollowCamera.GetComponent<FollowCamera>().CullDistance + 100)))) && (!hitPlus[j] || !hitPlus[j].GetComponent<DisabledRoadGenerator>()))
+					if (hitPlus[j] && !hitPlus[j].GetComponent<DisabledRoadGenerator>())
 					{
 						bProbablyHole = false;
 					}
 				}
-				if (bProbablyHole)
+				if (bProbablyHole && bProbablyHoleLastFrame)
 				{
 					GameObject newTileClass = RoadTileManager.Grass;
 					GameObject newTile = Instantiate(newTileClass, transform.position + new Vector3(Xoffset(i) * WorldTileManager.TILE_SIZE, newTileClass.GetComponent<RoadGenerator>().YOffset-transform.position.y, Zoffset(i) * WorldTileManager.TILE_SIZE), Quaternion.identity, RoadTileManager.checkpoint.RoadMapRoot.transform);
-                    WorldTileManager.instance.AddTile(newTile.GetComponent<WorldTile>());
-                    MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " because of probable hole\n";
+					WorldTileManager.instance.AddTile(newTile.GetComponent<WorldTile>());
+					MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " because of probable hole\n";
+
 				}
+				bProbablyHoleLastFrame = bProbablyHole;
 			}
+			else
+				MySpecificDebug += Time.fixedTime + " hit     " + (Direction)i + " concluded immediately with " + hit[i].gameObject.name + " (" + hit[i].gameObject.transform.position + ")\n";
 		}
 	}
 }
