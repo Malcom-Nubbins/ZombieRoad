@@ -28,20 +28,36 @@ public class PlayerDeath : MonoBehaviour
             {
                 if(!showingAd)
                 {
+                    int nextAdCountdown = PlayerPrefs.GetInt("adCountdown");
+
+                    if(nextAdCountdown == 0)
+                    {
+                        nextAdCountdown = 3;
+                        PlayerPrefs.SetInt("adCountdown", nextAdCountdown);
+                        PlayerPrefs.Save();
+
+                        GetComponent<AdsScript>().PlayAdOnDeath();
+                        showingAd = true;
+                    }
+                    else
+                    {
+                        nextAdCountdown--;
+                        PlayerPrefs.SetInt("adCountdown", nextAdCountdown);
+                        PlayerPrefs.Save();
+
+                        Scenes.instance.LoadScene(Scenes.Scene.GAME_OVER);
+                    }
                     //Debug.Log("call this only once ok unity?");
-                    GetComponent<AdsScript>().PlayAdOnDeath();
-                    showingAd = true;
-                }
 
-
-                if (UnlockManager.instance.GetLockedItemCount() > 0)
-                {
-                    Scenes.instance.LoadScene(Scenes.Scene.UNLOCK);
                 }
-                else
-                {
-                    Scenes.instance.LoadScene(Scenes.Scene.GAME_OVER);
-                }
+                //if (UnlockManager.instance.GetLockedItemCount() > 0)
+                //{
+                //    Scenes.instance.LoadScene(Scenes.Scene.UNLOCK);
+                //}
+                //else
+                //{
+                //    Scenes.instance.LoadScene(Scenes.Scene.GAME_OVER);
+                //}
             }
         }
 	}

@@ -32,6 +32,14 @@ public class UnlockManager : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
         Init();
+        
+        if(!PlayerPrefs.HasKey("adCountdown"))
+        {
+            int nextAdCountdown = 0;
+            PlayerPrefs.SetInt("adCountdown", nextAdCountdown);
+            PlayerPrefs.Save();
+        }
+
 	}
 
     void Init()
