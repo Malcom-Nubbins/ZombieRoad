@@ -28,7 +28,7 @@ public class AdsScript : MonoBehaviour
     {
        // Debug.Log("CLICKED! Init: " + Advertisement.isInitialized + " TestMode?: " + Advertisement.testMode);
        // Debug.Log(Advertisement.IsReady("rewardedVideo"));
-        if (Advertisement.IsReady("video"))
+        if (Advertisement.IsReady("rewardedVideo"))
         {
            // Debug.Log("AD IS READY TO SHOw");
             var options = new ShowOptions { resultCallback = HandleShopAd };

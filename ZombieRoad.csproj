@@ -207,6 +207,8 @@
     <Compile Include="Assets\Scripts\Zombies\SeekPlayer.cs" />
     <Compile Include="Assets\Scripts\Zombies\ZombieDetector.cs" />
     <Compile Include="Assets\Scripts\Zombies\ZombieSpawner.cs" />
+    <Compile Include="Assets\Scripts\Zombies\ZombieSpawnManager.cs" />
+    <Compile Include="Assets\Scripts\Zombies\ZombieSpawnRate.cs" />
     <Compile Include="Assets\Scripts\Zombies\ZombiesPileIn.cs" />
   </ItemGroup>
   <ItemGroup>
