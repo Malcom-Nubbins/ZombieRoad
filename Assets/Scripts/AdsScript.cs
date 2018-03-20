@@ -10,8 +10,8 @@ public class AdsScript : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-       // Button startButton = GetComponent<Button>();
-        //startButton.onClick.AddListener(OnClick);
+        Button startButton = GetComponent<Button>();
+        startButton.onClick.AddListener(OnClick);
 
     }
 	
@@ -41,6 +41,8 @@ public class AdsScript : MonoBehaviour
             case ShowResult.Finished:
                 //Debug.Log(" AD SHOWN SUCCESSFULLY");
                 // give reward, coins used shop maybe???
+
+                Currency.AddCurrency(5);
                 break;
 
             case ShowResult.Skipped:
