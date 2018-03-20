@@ -100,18 +100,20 @@ public class RoadTileManager : MonoBehaviour
 		if (Input.GetKey(KeyCode.Keypad0))
 			bCull = !bCull;
 
+		Transform playerTransform = checkpoint.FollowCamera.GetComponent<FollowCamera>().target.transform;
+
 		//Debug.Log(checkpoint.RoadMapRoot.GetComponentsInChildren<RoadGenerator>().Length + " 35:" + checkpoint.RoadMapRoot.GetComponentsInChildren<RoadGenerator>()[35].gameObject.name);
 
 		if (checkpoint.RoadMapRoot.GetComponentsInChildren<RoadGenerator>().Length > 100 /*usually around 140, prevent checking until the map is up to size*/ && EmergencyFieldRemover == null && checkpoint.RoadMapRoot.GetComponentsInChildren<RoadGenerator>()[35] as DisabledRoadGenerator != null /*35 is around a quarter, meaning grass at this position indicates a map with three quarters grass*/)
 		{
-			int i = RoadGenerator.Wrap0to7((int)(checkpoint.FollowCamera.GetComponent<FollowCamera>().target.transform.rotation.eulerAngles.y / 45.0f));
-			TilePosition hitTest = new TilePosition(RoundDownToGrid(checkpoint.FollowCamera.GetComponent<FollowCamera>().target.transform.position)) + new TilePosition(RoadGenerator.Xoffset(i) * 6, RoadGenerator.Zoffset(i) * 6);
+			int i = RoadGenerator.Wrap0to7(Mathf.RoundToInt(playerTransform.rotation.eulerAngles.y / 45.0f));
+			TilePosition hitTest = new TilePosition(RoundDownToGrid(playerTransform.position)) + new TilePosition(RoadGenerator.Xoffset(i) * 8, RoadGenerator.Zoffset(i) * 8);
 			//Debug.Log("Testing for a hit at grid "+hitTest.x+","+hitTest.z+"; World location "+hitTest.GetWorldPosition());
-            WorldTile Hit = WorldTileManager.instance.GetTile(hitTest);
+			WorldTile Hit = WorldTileManager.instance.GetTile(hitTest);
 
 			if (!Hit)
 			{
-				//Debug.Log("FUCKIN FIELD, heading " + (RoadGenerator.Direction)i);
+				//Debug.Log("FUCKIN FIELD, heading " + playerTransform.rotation.eulerAngles.y + "≈" + (RoadGenerator.Direction)i);
 
 				EmergencyFieldRemover = Instantiate(FourWay, hitTest.GetWorldPosition() + new Vector3(0, FourWay.GetComponent<RoadGenerator>().YOffset, 0), Quaternion.identity, checkpoint.RoadMapRoot.transform);
 				//Debug.Log("EFR: "+EmergencyFieldRemover.gameObject.name + " at " + (hitTest.GetWorldPosition() + new Vector3(0, FourWay.GetComponent<RoadGenerator>().YOffset, 0)));
@@ -124,12 +126,14 @@ public class RoadTileManager : MonoBehaviour
 				//checkpoint.RoadMapRoot.BroadcastMessage("Extend", true);
 			}
 		}
-		else if (EmergencyFieldRemover != null && Vector3.Distance(checkpoint.FollowCamera.GetComponent<FollowCamera>().target.transform.position, EmergencyFieldRemover.transform.position) < checkpoint.FollowCamera.GetComponent<FollowCamera>().CullDistance)
+		else if // Emergency Field Remover has come within the invisible boundary lines (σ回ω・)σ
+			((EmergencyFieldRemover != null && Vector3.Distance(playerTransform.position, EmergencyFieldRemover.transform.position) < checkpoint.FollowCamera.GetComponent<FollowCamera>().CullDistance)
+			|| // Emergency Field Remover is no longer in front of the player
+			(EmergencyFieldRemover != null && Vector3.Dot(playerTransform.position - EmergencyFieldRemover.transform.position, playerTransform.forward) > 90))
 		{
 			EmergencyFieldRemover.GetComponent<RoadGenerator>().CullingExempt = false;
 			EmergencyFieldRemover = null;
 		}
-		//}
 	}
 
 	public static GameObject RandomRoadTile(bool bAllowQuad)
