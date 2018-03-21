@@ -18,8 +18,7 @@ public class Movement : MonoBehaviour, ISelectHandler, IDeselectHandler
 	private Button _turnLeftButton;
 	private Button _turnRightButton;
 
-	static bool _turnLeftPressed;
-	static bool _turnRightPressed;
+    private float _turnLeftRatio;
 
     Vector3 prevPosition;
     public float measuredSpeed;
@@ -40,26 +39,55 @@ public class Movement : MonoBehaviour, ISelectHandler, IDeselectHandler
 
         prevPosition = transform.position;
         measuredSpeed = 0;
-
+        _turnLeftRatio = 0.5f;
 	}
 
 	public void Update()
 	{
-		_turnLeftPressed = false;
-		_turnRightPressed = false;
-		if (Input.touchCount > 0)
+        if (InputLeft() && InputRight())
+            _turnLeftRatio = 0.5f;
+        else if (InputLeft())
+            _turnLeftRatio = 1;
+        else if (InputRight())
+            _turnLeftRatio = 0;
+
+        if (Input.touchCount > 0)
 		{
+            Vector2? leftTouchPosition = null;
+            Vector2? rightTouchPosition = null;
+
+            // Get left and right touches
 			foreach(Touch touch in Input.touches)
 			{
-				if(touch.position.x < Screen.width / 2)
+                Vector2 touchPosition = touch.position;
+				if(touchPosition.x < Screen.width / 2)
 				{
-					_turnLeftPressed = true;
+                    leftTouchPosition = touchPosition;
+
+                    if (rightTouchPosition != null)
+                        break;
 				}
 				else
 				{
-					_turnRightPressed = true;
+                    rightTouchPosition = touchPosition;
+
+                    if (leftTouchPosition != null)
+                        break;
 				}
 			}
+
+            if (leftTouchPosition != null && rightTouchPosition == null)
+                _turnLeftRatio = 1;
+            else if (leftTouchPosition == null && rightTouchPosition != null)
+                _turnLeftRatio = 0;
+            else
+            {
+                // Min Position is right - half screen height
+                float heightAtMinimumLeftRatio = ((Vector2)rightTouchPosition).y - Screen.height / 2;
+                float heightAtMaximumLeftRatio = ((Vector2)rightTouchPosition).y + Screen.height / 2;
+
+                _turnLeftRatio = ((((Vector2)leftTouchPosition).y - heightAtMinimumLeftRatio) / (heightAtMaximumLeftRatio - heightAtMinimumLeftRatio));
+            }
         }
 
         measuredSpeed = Mathf.Lerp(measuredSpeed, (transform.position - prevPosition).magnitude / Time.deltaTime, 0.5f);
@@ -71,22 +99,15 @@ public class Movement : MonoBehaviour, ISelectHandler, IDeselectHandler
 	{
 		bool canMove = false;
 
-		if (InputLeft() && InputRight())
+		if (InputLeft() || InputRight())
 		{
 			//Only move in a forward direction if both buttons pressed.
 			canMove = true;
-		}
-		else if (InputLeft())
-		{
-			//Move in a counter clockwise direction if left arrow pressed.
-			transform.RotateAround(pivot.position, new Vector3(0.0f, 1.0f, 0.0f), -rotationAngle * Time.deltaTime);
-			canMove = true;
-		}
-		else if (InputRight())
-		{
-			//Move in a clockwise direction if right arrow pressed.
-			transform.RotateAround(pivot.position, new Vector3(0.0f, 1.0f, 0.0f), rotationAngle * Time.deltaTime);
-			canMove = true;
+
+            // Decompress ratio as rotation angle unit
+            float decompressedRotationAngle = -(_turnLeftRatio * 2 - 1);
+            Debug.Log(decompressedRotationAngle);
+            transform.RotateAround(pivot.position, Vector3.up, rotationAngle * decompressedRotationAngle * Time.deltaTime);
 		}
 
 		if (canMove)
@@ -114,18 +135,18 @@ public class Movement : MonoBehaviour, ISelectHandler, IDeselectHandler
 		}
 	}
 
-	public static bool InputLeft() { return (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A) || _turnLeftPressed); }
-	public static bool InputRight() { return (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D) || _turnRightPressed); }
+	public static bool InputLeft() { return (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A)); }
+	public static bool InputRight() { return (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)); }
 	public static bool InputUp() { return (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)); }
 
 	void LeftButtonClicked()
 	{
-		_turnLeftPressed = true;
+        _turnLeftRatio = 1;
 	}
 
 	void RightButtonClicked()
 	{
-		_turnRightPressed = true;
+        _turnLeftRatio = 0;
 	}
 
 	public void OnSelect(BaseEventData eventData)
@@ -133,12 +154,12 @@ public class Movement : MonoBehaviour, ISelectHandler, IDeselectHandler
 		//Debug.Log("On Select");
 		if(eventData.selectedObject.gameObject.name.Equals("TurnLeftButton"))
 		{
-			_turnLeftPressed = true;
+			//_turnLeftPressed = true;
 		}
 
 		if(eventData.selectedObject.gameObject.name.Equals("TurnRightButton"))
 		{
-			_turnRightPressed = true;
+			//_turnRightPressed = true;
 		}
 	}
 
@@ -147,12 +168,12 @@ public class Movement : MonoBehaviour, ISelectHandler, IDeselectHandler
 		//Debug.Log("On Deselect");
 		if (eventData.selectedObject.gameObject.name.Equals("TurnLeftButton"))
 		{
-			_turnLeftPressed = false;
+			//_turnLeftPressed = false;
 		}
 
 		if (eventData.selectedObject.gameObject.name.Equals("TurnRightButton"))
 		{
-			_turnRightPressed = false;
+			//_turnRightPressed = false;
 		}
 	}
 }
