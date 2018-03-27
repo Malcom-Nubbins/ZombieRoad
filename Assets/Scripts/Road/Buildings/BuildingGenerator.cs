@@ -11,9 +11,11 @@ public class BuildingGenerator : MonoBehaviour
 
 		WorldTile[] hit = new WorldTile[8];
 
+		TilePosition position = gameObject.GetComponent<WorldTile>().GetTilePosition();
+
 		for (int i = 0; i < hit.Length; i++)
 		{
-			hit[i] = WorldTileManager.instance.GetTile(gameObject.GetComponent<WorldTile>().GetTilePosition() + new TilePosition(RoadGenerator.Xoffset(i), RoadGenerator.Zoffset(i)));
+			hit[i] = WorldTileManager.instance.GetTile(position + new TilePosition(RoadGenerator.Xoffset(i), RoadGenerator.Zoffset(i)));
 			if (hit[i] && !hit[i].GetComponent<BuildingGenerator>()) hit[i] = null;
 			else if (hit[i] && hit[i].GetComponent<BuildingGenerator>() && hit[i].GetComponent<BuildingGenerator>().newBuilding) bHasNeighbour = true;
 			//gameObject.GetComponent<RoadGenerator>().MySpecificDebug += "Checking " + (RoadGenerator.Direction)i + " of " + gameObject.transform.position + " has hit " + (hit[i] ? hit[i].gameObject.name : "nothing") + "\n";
