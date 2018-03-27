@@ -58,7 +58,7 @@ public class PlayerHealth : Health {
             return;
         }
         GameObject zombie = collision.gameObject;
-        if (zombie.GetComponent<Health>().health <= 0)
+        if (!zombie.GetComponent<Health>() || zombie.GetComponent<Health>().health <= 0)
         {
             return;
         }
