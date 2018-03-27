@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BuildingGenerator : MonoBehaviour
 {
+	public GameObject newBuilding;
 	void Update()
 	{
 		bool bHasNeighbour = false;
@@ -12,10 +13,10 @@ public class BuildingGenerator : MonoBehaviour
 
 		for (int i = 0; i < hit.Length; i++)
 		{
-            hit[i] = WorldTileManager.instance.GetTile(new TilePosition(RoadGenerator.Xoffset(i), RoadGenerator.Zoffset(i)));
-            if (hit[i].gameObject.layer != LayerMask.NameToLayer("Building")) hit[i] = null;
-            if (hit[i]) bHasNeighbour = true;
-			//gameObject.GetComponent<RoadGenerator>().MySpecificDebug += "ray checking " + (RoadGenerator.Direction)i + " of " + gameObject.transform.position + " has hit " + (hit[i].collider ? hit[i].collider.gameObject.name : "nothing") + "\n";
+			hit[i] = WorldTileManager.instance.GetTile(new TilePosition(RoadGenerator.Xoffset(i), RoadGenerator.Zoffset(i)));
+			if (hit[i] && !hit[i].GetComponent<BuildingGenerator>()) hit[i] = null;
+			else if (hit[i] && hit[i].GetComponent<BuildingGenerator>() && hit[i].GetComponent<BuildingGenerator>().newBuilding) bHasNeighbour = true;
+			//gameObject.GetComponent<RoadGenerator>().MySpecificDebug += "Checking " + (RoadGenerator.Direction)i + " of " + gameObject.transform.position + " has hit " + (hit[i] ? hit[i].gameObject.name : "nothing") + "\n";
 		}
 
 		GameObject newBuildingClass = null;
@@ -28,7 +29,7 @@ public class BuildingGenerator : MonoBehaviour
 			List<GameObject> neighbours = new List<GameObject>();
 			foreach (WorldTile h in hit)
 				if (h)
-					neighbours.Add(h.gameObject);
+					neighbours.Add(h.GetComponent<BuildingGenerator>().newBuilding);
 
 			int r = Random.Range(0, neighbours.Count);
 			GameObject n = neighbours[r];
@@ -49,7 +50,7 @@ public class BuildingGenerator : MonoBehaviour
 
 		if (newBuildingClass)
 		{
-			/*GameObject newBuilding =*/ Instantiate(newBuildingClass, transform.position, transform.rotation, transform);
+			newBuilding = Instantiate(newBuildingClass, transform.position, transform.rotation, transform);
 		}
 		else
 		{
