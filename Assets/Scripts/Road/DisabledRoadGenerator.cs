@@ -8,6 +8,7 @@ public class DisabledRoadGenerator : RoadGenerator
 	{
 		Pavement,
 		Grass,
+		Water,
 		xInvalid
 	}
 

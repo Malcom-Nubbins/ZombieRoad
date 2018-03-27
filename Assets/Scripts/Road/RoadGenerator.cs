@@ -574,7 +574,7 @@ public class RoadGenerator : WorldTile
 								newTile = Instantiate(newTileClass, transform.position + new Vector3(Xoffset(i) * WorldTileManager.TILE_SIZE, newTileClass.GetComponent<RoadGenerator>().YOffset, Zoffset(i) * WorldTileManager.TILE_SIZE), Quaternion.identity, RoadTileManager.checkpoint.RoadMapRoot.transform);
                                 WorldTileManager.instance.AddTile(newTile.GetComponent<WorldTile>());
                             }
-							else if (newTileType == DisabledRoadGenerator.Type.Grass)
+							else if (newTileType == DisabledRoadGenerator.Type.Grass || newTileType == DisabledRoadGenerator.Type.Water)
 							{
 								GameObject newTileClass = RoadTileManager.Grass;
 								newTile = Instantiate(newTileClass, transform.position + new Vector3(Xoffset(i) * WorldTileManager.TILE_SIZE, newTileClass.GetComponent<RoadGenerator>().YOffset, Zoffset(i) * WorldTileManager.TILE_SIZE), Quaternion.identity, RoadTileManager.checkpoint.RoadMapRoot.transform);

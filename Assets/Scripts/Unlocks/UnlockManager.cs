@@ -130,11 +130,6 @@ public class UnlockManager : MonoBehaviour
         PlayerPrefs.SetInt(PP_UNLOCKS_SAVED, PP_TRUE);
         PlayerPrefs.Save();
     }
-	
-	void Update()
-    {
-		
-	}
 
     public GameObject[] GetUnlockedItems(UnlockableType type)
     {
