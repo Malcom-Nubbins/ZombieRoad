@@ -13,7 +13,7 @@ public class BuildingGenerator : MonoBehaviour
 
 		for (int i = 0; i < hit.Length; i++)
 		{
-			hit[i] = WorldTileManager.instance.GetTile(new TilePosition(RoadGenerator.Xoffset(i), RoadGenerator.Zoffset(i)));
+			hit[i] = WorldTileManager.instance.GetTile(gameObject.GetComponent<WorldTile>().GetTilePosition() + new TilePosition(RoadGenerator.Xoffset(i), RoadGenerator.Zoffset(i)));
 			if (hit[i] && !hit[i].GetComponent<BuildingGenerator>()) hit[i] = null;
 			else if (hit[i] && hit[i].GetComponent<BuildingGenerator>() && hit[i].GetComponent<BuildingGenerator>().newBuilding) bHasNeighbour = true;
 			//gameObject.GetComponent<RoadGenerator>().MySpecificDebug += "Checking " + (RoadGenerator.Direction)i + " of " + gameObject.transform.position + " has hit " + (hit[i] ? hit[i].gameObject.name : "nothing") + "\n";
@@ -22,6 +22,7 @@ public class BuildingGenerator : MonoBehaviour
 		GameObject newBuildingClass = null;
 		if (!bHasNeighbour)
 		{
+			//gameObject.GetComponent<RoadGenerator>().MySpecificDebug += "Random Building\n";
 			newBuildingClass = BuildingManager.RandomBuilding();
 		}
 		else
@@ -29,10 +30,12 @@ public class BuildingGenerator : MonoBehaviour
 			List<GameObject> neighbours = new List<GameObject>();
 			foreach (WorldTile h in hit)
 				if (h)
-					neighbours.Add(h.GetComponent<BuildingGenerator>().newBuilding);
+					if (h.GetComponent<BuildingGenerator>().newBuilding)
+						neighbours.Add(h.GetComponent<BuildingGenerator>().newBuilding);
 
 			int r = Random.Range(0, neighbours.Count);
 			GameObject n = neighbours[r];
+			//gameObject.GetComponent<RoadGenerator>().MySpecificDebug += n.GetComponent<Unlockable>().type.ToString()+"\n";
 
 			if (BuildingManager.IsSkyscraper(n))
 			{

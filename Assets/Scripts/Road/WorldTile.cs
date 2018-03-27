@@ -4,21 +4,6 @@ using UnityEngine;
 
 public class WorldTile : MonoBehaviour
 {
-    void Awake()
-    {
-
-    }
-
-	void Start()
-    {
-		
-	}
-	
-	void Update()
-    {
-		
-	}
-
     public TilePosition GetTilePosition()
     {
         return new TilePosition(transform.position);
