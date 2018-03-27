@@ -76,22 +76,22 @@ public class MapScreen : MonoBehaviour
 
 		if (_currentCooldownTime <= 0.0f)
 		{
-			if (Input.touchCount > 0)
-			{
-				foreach (Touch touch in Input.touches)
-				{
-					if (touch.position.x < Screen.width / 3)
-					{
-						onPrevClick();
-					}
-					else if (touch.position.x > (Screen.width / 3) * 2)
-					{
-						onNextClick();
-					}
-				}
-			}
+            if (Input.touchCount > 0)
+            {
+                foreach (Touch touch in Input.touches)
+                {
+                    if (touch.position.x < Screen.width / 3 && (touch.position.y < (Screen.height / 3) * 2 && touch.position.y > (Screen.height / 4)))
+                    {
+                        onPrevClick();
+                    }
+                    else if (touch.position.x > (Screen.width / 3) * 2 && (touch.position.y < (Screen.height / 3) * 2 && touch.position.y > (Screen.height / 4)))
+                    {
+                        onNextClick();
+                    }
+                }
+            }
 
-			if (Input.GetKey(KeyCode.LeftArrow))
+            if (Input.GetKey(KeyCode.LeftArrow))
 				onPrevClick();
 
 			if (Input.GetKey(KeyCode.RightArrow))
