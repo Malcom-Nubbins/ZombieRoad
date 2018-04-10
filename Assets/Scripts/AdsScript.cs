@@ -10,6 +10,8 @@ public class AdsScript : MonoBehaviour
 {
     string toastString;
     AndroidJavaObject currentActivity;
+    string AndroidGameID = "1741339";
+    string iOSGameID;
 
 	// Use this for initialization
 	void Start ()
@@ -113,7 +115,7 @@ public class AdsScript : MonoBehaviour
     {
        // Debug.Log("Playing skippable ad on death Init: " + Advertisement.isInitialized + " TestMode?: " + Advertisement.testMode);
        // Debug.Log("is skippable ad avaiable to show?? :" +Advertisement.IsReady("video"));
-       if(!Advertisement.isInitialized)
+       if(Advertisement.isInitialized)
         {
             if (Advertisement.IsReady("video"))
             {
@@ -132,8 +134,26 @@ public class AdsScript : MonoBehaviour
             // if unity ads are not initialized ( happens when app is launched offline )
             // try to initlialize again and move to game over scene
             Advertisement.Initialize("1741339");
+            InitAds();
             Scenes.instance.LoadScene(Scenes.Scene.GAME_OVER);
+        }
 
+    }
+
+
+    private void InitAds()
+    {
+        //Advertisement.Initialize("1741339");
+        WWW testWebiste = new WWW("http://google.com");
+        Debug.Log(testWebiste.error);
+        if(testWebiste.error == null)
+        {
+            Debug.Log("HERE");
+            #if UNITY_ANDROID
+                        Advertisement.Initialize(AndroidGameID);
+            #elif UNITY_IOS
+                        Advertisment.Initialize(iOSGameID);
+            #endif
         }
 
     }
