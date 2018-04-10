@@ -4,9 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Advertisements;
+using Assets.Scripts.GUI;
 
 public class AdsScript : MonoBehaviour
 {
+    string toastString;
+    AndroidJavaObject currentActivity;
+
 	// Use this for initialization
 	void Start ()
     {
@@ -34,7 +38,10 @@ public class AdsScript : MonoBehaviour
             var options = new ShowOptions { resultCallback = HandleShopAd };
             Advertisement.Show(options);
         }
-        
+        else
+        {
+            DisplayToast.ShowToast("Could not load ad. Please check internet connection");
+        }
     }
 
     void HandleDeathAd(ShowResult result)
@@ -109,5 +116,11 @@ public class AdsScript : MonoBehaviour
             var options = new ShowOptions { resultCallback = HandleDeathAd };
             Advertisement.Show(options);
         }
+        else
+        {
+            // If ads can't load, go straight to the Game Over screen.
+            Scenes.instance.LoadScene(Scenes.Scene.GAME_OVER);
+        }
     }
+
 }

@@ -43,8 +43,23 @@ public class Scenes : MonoBehaviour
         return (scene == Scene.GAME) ? UnlockManager.instance.gameObject.GetComponent<MapSelection>().GetSelectedMap() : sceneNames[(int)scene];
     }
 
+    public void LoadGameScene()
+    {
+        StartCoroutine(LoadGameSceneAsync());
+    }
+
+    IEnumerator LoadGameSceneAsync()
+    {
+        AsyncOperation gameLoad = SceneManager.LoadSceneAsync(GetSceneName(Scene.GAME));
+
+        while(!gameLoad.isDone)
+        {
+            yield return null;
+        }
+    }
+
     public void LoadScene(Scene scene, LoadSceneMode mode = LoadSceneMode.Single)
     {
-		SceneManager.LoadScene(GetSceneName(scene), mode);
+		SceneManager.LoadSceneAsync(GetSceneName(scene), mode);
     }
 }

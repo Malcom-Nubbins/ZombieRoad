@@ -30,6 +30,12 @@ public class LoadScene : MonoBehaviour
                 return;
             }
         }
+
+        if(scene == Scenes.Scene.GAME)
+        {
+            Scenes.instance.LoadGameScene();
+            return;
+        }
         //print("clicked");
         Scenes.instance.LoadScene(scene);
     }
