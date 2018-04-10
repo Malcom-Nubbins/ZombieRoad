@@ -19,6 +19,7 @@ public class mainMenuMusic : MonoBehaviour
         musicSource = this.gameObject.GetComponent<AudioSource>();
        // musicSource.Play();
         musicBox = this.gameObject;
+        AudioListener.volume = PlayerPrefs.GetFloat("MasterVolume");
 
         DontDestroyOnLoad(musicBox);
 
