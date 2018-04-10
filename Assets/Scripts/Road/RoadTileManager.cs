@@ -52,6 +52,8 @@ public class RoadTileManager : MonoBehaviour
 
 	//int MaxTimeUntilFieldCheck = 450;
 	//int TimeUntilFieldCheck;
+	TilePosition hitTest;
+	Vector3 roundedVec;
 
 	void Awake()
 	{
@@ -74,22 +76,29 @@ public class RoadTileManager : MonoBehaviour
 		bMainMenu = GetComponent<MainMenuDummyCheckpoint>() != null;
 
 		bDebugEnv = Application.platform == RuntimePlatform.WindowsEditor;
+
+		hitTest = new TilePosition();
+		roundedVec = new Vector3();
 	}
 
 	GameObject EmergencyFieldRemover;
-
+	
 	float RoundDownToGrid(float a)
 	{
 		return WorldTileManager.TILE_SIZE * (int)(a / WorldTileManager.TILE_SIZE);
 	}
-
+	
 	Vector3 RoundDownToGrid(Vector3 a)
 	{
-		return new Vector3(RoundDownToGrid(a.x), RoundDownToGrid(a.y), RoundDownToGrid(a.z));
+		roundedVec.x = RoundDownToGrid(a.x);
+		roundedVec.y = RoundDownToGrid(a.y);
+		roundedVec.z = RoundDownToGrid(a.z);
+		return roundedVec;
 	}
 
     void Update()
     {
+		if (!bMainMenu || Time.timeSinceLevelLoad < 5.0f)
         foreach (WorldTile tile in WorldTileManager.instance.GetAllTiles())
         {
             if (tile is RoadGenerator)
@@ -111,7 +120,10 @@ public class RoadTileManager : MonoBehaviour
 		if (checkpoint.RoadMapRoot.GetComponentsInChildren<RoadGenerator>().Length > 100 /*usually around 140, prevent checking until the map is up to size*/ && EmergencyFieldRemover == null && checkpoint.RoadMapRoot.GetComponentsInChildren<RoadGenerator>()[35] as DisabledRoadGenerator != null /*35 is around a quarter, meaning grass at this position indicates a map with three quarters grass*/)
 		{
 			int i = RoadGenerator.Wrap0to7(Mathf.RoundToInt(playerTransform.rotation.eulerAngles.y / 45.0f));
-			TilePosition hitTest = new TilePosition(RoundDownToGrid(playerTransform.position)) + new TilePosition(RoadGenerator.Xoffset(i) * 8, RoadGenerator.Zoffset(i) * 8);
+
+			Vector3 player = RoundDownToGrid(playerTransform.position);
+			hitTest.x = Mathf.FloorToInt(player.x / WorldTileManager.TILE_SIZE) + RoadGenerator.Xoffset(i) * 8;
+			hitTest.z = Mathf.FloorToInt(player.z / WorldTileManager.TILE_SIZE) + RoadGenerator.Zoffset(i) * 8;
 			//Debug.Log("Testing for a hit at grid "+hitTest.x+","+hitTest.z+"; World location "+hitTest.GetWorldPosition());
 			WorldTile Hit = WorldTileManager.instance.GetTile(hitTest);
 
