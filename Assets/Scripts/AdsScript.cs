@@ -8,119 +8,92 @@ using Assets.Scripts.GUI;
 
 public class AdsScript : MonoBehaviour
 {
-    string toastString;
-    AndroidJavaObject currentActivity;
+	string toastString;
+	AndroidJavaObject currentActivity;
 
 	// Use this for initialization
 	void Start ()
-    {
-        Button startButton = GetComponent<Button>();
-        if(startButton)
-        {
-            startButton.onClick.AddListener(OnClick);
-        }
+	{
+		Button startButton = GetComponent<Button>();
+		if(startButton)
+		{
+			startButton.onClick.AddListener(OnClick);
+		}
 
-    }
-	
-	// Update is called once per frame
-	void Update ()
-    {
-		
 	}
 
-    public void OnClick()
-    {
-       // Debug.Log("CLICKED! Init: " + Advertisement.isInitialized + " TestMode?: " + Advertisement.testMode);
-       // Debug.Log(Advertisement.IsReady("rewardedVideo"));
-        if (Advertisement.IsReady("rewardedVideo"))
-        {
-           // Debug.Log("AD IS READY TO SHOw");
-            var options = new ShowOptions { resultCallback = HandleShopAd };
-            Advertisement.Show(options);
-        }
-        else
-        {
-            DisplayToast.ShowToast("Could not load ad. Please check internet connection");
-        }
-    }
+	public void OnClick()
+	{
+	   // Debug.Log("CLICKED! Init: " + Advertisement.isInitialized + " TestMode?: " + Advertisement.testMode);
+	   // Debug.Log(Advertisement.IsReady("rewardedVideo"));
+		if (Advertisement.IsReady("rewardedVideo"))
+		{
+		   // Debug.Log("AD IS READY TO SHOw");
+			var options = new ShowOptions { resultCallback = HandleShopAd };
+			Advertisement.Show(options);
+		}
+		else
+		{
+			DisplayToast.ShowToast("Could not load ad. Please check internet connection");
+		}
+	}
 
-    void HandleDeathAd(ShowResult result)
-    {
-        switch(result)
-        {
-            case ShowResult.Finished:
-                int randomNumber = (int)Random.Range(0.0f, 10.0f);
+	void HandleDeathAd(ShowResult result)
+	{
+		switch(result)
+		{
+			case ShowResult.Finished:
+			case ShowResult.Failed:
+				if (UnlockManager.instance.GetLockedItemCount() > 0)
+				{
+					Scenes.instance.LoadScene(Scenes.Scene.UNLOCK);
+				}
+				else
+				{
+					Scenes.instance.LoadScene(Scenes.Scene.GAME_OVER);
+				}
+				break;
+			case ShowResult.Skipped:
+			default:
+				Scenes.instance.LoadScene(Scenes.Scene.GAME_OVER);
+				break;
+		}
+	}
 
-                if(randomNumber == 0)
-                {
-                    if (UnlockManager.instance.GetLockedItemCount() > 0)
-                    {
-                        Scenes.instance.LoadScene(Scenes.Scene.UNLOCK);
-                    }
-                    else
-                    {
-                        Scenes.instance.LoadScene(Scenes.Scene.GAME_OVER);
-                    }
-                }
-                else
-                {
-                    Scenes.instance.LoadScene(Scenes.Scene.GAME_OVER);
-                }
+	void HandleShopAd(ShowResult result)
+	{
+		switch (result)
+		{
+			case ShowResult.Finished:
+				Currency.AddCurrency(5);
+				Scenes.instance.LoadScene(Scenes.Scene.SHOP);
+				break;
 
-                break;
-
-            case ShowResult.Skipped:
-                Scenes.instance.LoadScene(Scenes.Scene.GAME_OVER);
-                break;
-
-            case ShowResult.Failed:
-                Scenes.instance.LoadScene(Scenes.Scene.GAME_OVER);
-                break;
-        }
-    }
-
-    void HandleShopAd(ShowResult result)
-    {
-        switch (result)
-        {
-            case ShowResult.Finished:
-                //Debug.Log(" AD SHOWN SUCCESSFULLY");
-                // give reward, coins used shop maybe???
-
-                Currency.AddCurrency(5);
-                Scenes.instance.LoadScene(Scenes.Scene.SHOP);
-                break;
-
-            case ShowResult.Skipped:
-                //Debug.Log("USER SKIPPED ADVERT NEED TO RESET THEIR PROGRESS !!!!!!!");
-                Scenes.instance.LoadScene(Scenes.Scene.SHOP);
-                break;
-
-            case ShowResult.Failed:
-                // Debug.Log("AD FAILED TO DISPLAY");
-                Scenes.instance.LoadScene(Scenes.Scene.SHOP);
-                break;
-        }
+			case ShowResult.Skipped:
+			case ShowResult.Failed:
+				Scenes.instance.LoadScene(Scenes.Scene.SHOP);
+				break;
+		}
 
 
-    }
+	}
 
-    public void PlayAdOnDeath()
-    {
-       // Debug.Log("Playing skippable ad on death Init: " + Advertisement.isInitialized + " TestMode?: " + Advertisement.testMode);
-       // Debug.Log("is skippable ad avaiable to show?? :" +Advertisement.IsReady("video"));
+	public void PlayAdOnDeath()
+	{
+	   // Debug.Log("Playing skippable ad on death Init: " + Advertisement.isInitialized + " TestMode?: " + Advertisement.testMode);
+	   // Debug.Log("is skippable ad avaiable to show?? :" +Advertisement.IsReady("video"));
 
-        if (Advertisement.IsReady("video"))
-        {
-           // Debug.Log("SKIPPABLE ADD IS SHOWING");
-            var options = new ShowOptions { resultCallback = HandleDeathAd };
-            Advertisement.Show(options);
-        }
-        else
-        {
-            // If ads can't load, go straight to the Game Over screen.
-            Scenes.instance.LoadScene(Scenes.Scene.GAME_OVER);
-        }
-    }
+		if (Advertisement.IsReady("video"))
+		{
+		   // Debug.Log("SKIPPABLE ADD IS SHOWING");
+			var options = new ShowOptions { resultCallback = HandleDeathAd };
+			Advertisement.Show(options);
+		}
+		else
+		{
+			// If ads can't load, go straight to the Unlock screen.
+			Scenes.instance.LoadScene(Scenes.Scene.UNLOCK);
+		}
+	}
 
 }

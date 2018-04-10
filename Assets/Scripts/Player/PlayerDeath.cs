@@ -45,7 +45,7 @@ public class PlayerDeath : MonoBehaviour
                         PlayerPrefs.SetInt("adCountdown", nextAdCountdown);
                         PlayerPrefs.Save();
 
-                        Scenes.instance.LoadScene(Scenes.Scene.GAME_OVER);
+                        Scenes.instance.LoadScene(Scenes.Scene.UNLOCK);
                     }
                     //Debug.Log("call this only once ok unity?");
 
