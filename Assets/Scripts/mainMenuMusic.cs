@@ -28,7 +28,7 @@ public class mainMenuMusic : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        if(SceneManager.GetActiveScene().name =="TestScene")
+        if(SceneManager.GetActiveScene().name =="Sbuburbs")
         {
             musicSource.Stop();
         }
