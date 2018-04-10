@@ -69,24 +69,17 @@ public class Movement : MonoBehaviour, ISelectHandler, IDeselectHandler
 	// Update is called once per frame
 	protected void FixedUpdate () 
 	{
-		bool canMove = false;
+		bool canMove = InputLeft() || InputRight();
 
-		if (InputLeft() && InputRight())
-		{
-			//Only move in a forward direction if both buttons pressed.
-			canMove = true;
-		}
-		else if (InputLeft())
+		if (InputLeft() && !InputRight())
 		{
 			//Move in a counter clockwise direction if left arrow pressed.
 			transform.RotateAround(pivot.position, new Vector3(0.0f, 1.0f, 0.0f), -rotationAngle * Time.deltaTime);
-			canMove = true;
 		}
-		else if (InputRight())
+		else if (InputRight() && !InputLeft())
 		{
 			//Move in a clockwise direction if right arrow pressed.
 			transform.RotateAround(pivot.position, new Vector3(0.0f, 1.0f, 0.0f), rotationAngle * Time.deltaTime);
-			canMove = true;
 		}
 
 		if (canMove)
@@ -100,8 +93,8 @@ public class Movement : MonoBehaviour, ISelectHandler, IDeselectHandler
             currentVelocity.y = 0;
 
             Vector3 velocity = (transform.forward * speed) * Time.deltaTime;
-            //transform.position = new Vector3(transform.position.x + velocity.x, transform.position.y, transform.position.z + velocity.z);
-            rb.MovePosition(new Vector3(transform.position.x + velocity.x, transform.position.y, transform.position.z + velocity.z));
+            transform.position = new Vector3(transform.position.x + velocity.x, transform.position.y, transform.position.z + velocity.z);
+            //rb.MovePosition(new Vector3(transform.position.x + velocity.x, transform.position.y, transform.position.z + velocity.z));
             //rb.velocity = velocity;
             //rb.velocity = Vector3.zero;
             //rb.AddForce(velocity, ForceMode.VelocityChange);

@@ -87,8 +87,6 @@ public class AdsScript : MonoBehaviour
 		// Debug.Log("is skippable ad avaiable to show?? :" +Advertisement.IsReady("video"));
 		if (Advertisement.isInitialized)
 		{
-			Debug.Log(Advertisement.IsReady("rewardedVideo"));
-			Debug.Log(Advertisement.IsReady("video"));
 			if (Advertisement.IsReady("video"))
 			{
 				// Debug.Log("SKIPPABLE AD IS SHOWING");
