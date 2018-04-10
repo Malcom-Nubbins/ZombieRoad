@@ -48,6 +48,8 @@ public class RoadTileManager : MonoBehaviour
 
 	public static bool bMainMenu;
 
+	public static bool bDebugEnv;
+
 	//int MaxTimeUntilFieldCheck = 450;
 	//int TimeUntilFieldCheck;
 
@@ -70,6 +72,8 @@ public class RoadTileManager : MonoBehaviour
 		//TimeUntilFieldCheck = MaxTimeUntilFieldCheck;
 
 		bMainMenu = GetComponent<MainMenuDummyCheckpoint>() != null;
+
+		bDebugEnv = Application.platform == RuntimePlatform.WindowsEditor;
 	}
 
 	GameObject EmergencyFieldRemover;
