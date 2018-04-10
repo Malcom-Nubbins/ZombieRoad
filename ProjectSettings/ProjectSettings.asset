@@ -219,7 +219,7 @@ PlayerSettings:
   appleEnableAutomaticSigning: 0
   AndroidTargetDevice: 0
   AndroidSplashScreenScale: 1
-  androidSplashScreen: {fileID: 2800000, guid: 0092517b0425abb4f854bcb74e7f32b9, type: 3}
+  androidSplashScreen: {fileID: 0}
   AndroidKeystoreName: E:/UniStuff/FINAL YEAR/Studio Sim/Zombie Road/ZombieRoad/ZombieRoad_Keystore.keystore
   AndroidKeyaliasName: zombie-road
   AndroidTVCompatibility: 1
