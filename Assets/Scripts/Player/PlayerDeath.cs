@@ -31,7 +31,7 @@ public class PlayerDeath : MonoBehaviour
 					if(!showingAd)
 					{
 						int nextAdCountdown = PlayerPrefs.GetInt("adCountdown");
-						Debug.Log(nextAdCountdown);
+
 						if(nextAdCountdown == 0)
 						{
 							nextAdCountdown = 3;

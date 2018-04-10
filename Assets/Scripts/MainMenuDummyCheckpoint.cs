@@ -9,7 +9,7 @@ public class MainMenuDummyCheckpoint : Checkpoint
 	override public void Start() { level = 10; }
 
 	// Update is called once per frame
-	override public void Update() { RoadMapRoot.BroadcastMessage("Extend", false); }
+	override public void Update() {}
 
 	override public void UpdateCheckpoint() { }
 }
