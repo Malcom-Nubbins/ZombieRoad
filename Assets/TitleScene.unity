@@ -1531,7 +1531,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1654138309}
   offset: {x: 0, y: 386, z: -31}
-  CullDistance: 135
+  CullDistance: 125
   rotate: 1
 --- !u!114 &1060524221
 MonoBehaviour:

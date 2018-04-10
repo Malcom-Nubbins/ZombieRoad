@@ -35,7 +35,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4747573178969642}
   - component: {fileID: 135765495163378890}
-  m_Layer: 8
+  m_Layer: 13
   m_Name: DeadCollider
   m_TagString: Zombie
   m_Icon: {fileID: 0}
@@ -308,7 +308,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlockableID: ZombieExploder
   type: 5
-  unlocked: 1
+  unlocked: 0
   Price: 10
 --- !u!114 &114653475012181372
 MonoBehaviour:
@@ -321,6 +321,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae8dfca7649f42941944c94e9d751f1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  zombieHit: {fileID: 0}
   bloodEffectPrefab: {fileID: 1173177863687342, guid: 057f299b238113140823d852178772d9,
     type: 2}
 --- !u!114 &114824630313988890
