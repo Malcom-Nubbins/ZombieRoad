@@ -11,10 +11,10 @@ public class AdsScript : MonoBehaviour
     string toastString;
     AndroidJavaObject currentActivity;
     string AndroidGameID = "1741339";
-    string iOSGameID;
+    string iOSGameID = "1741340";
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start ()
 	{
 		Button startButton = GetComponent<Button>();
 		if(startButton)
@@ -65,22 +65,6 @@ public class AdsScript : MonoBehaviour
 		}
 	}
 
-	private void InitAds()
-	{
-		//Advertisement.Initialize("1741339");
-		WWW testWebsite = new WWW("http://google.com");
-		Debug.Log(testWebsite.error);
-		if (testWebsite.error == null)
-		{
-			Debug.Log("HERE");
-#if UNITY_ANDROID
-			Advertisement.Initialize(AndroidGameID);
-#elif UNITY_IOS
-                        Advertisment.Initialize(iOSGameID);
-#endif
-		}
-	}
-
 	void HandleShopAd(ShowResult result)
 	{
 		switch (result)
@@ -126,7 +110,6 @@ public class AdsScript : MonoBehaviour
 		{
 			// if unity ads are not initialized ( happens when app is launched offline )
 			// try to initlialize again and move to game over scene
-			Advertisement.Initialize("1741339");
 			InitAds();
 			if (UnlockManager.instance.GetLockedItemCount() > 0)
 			{
@@ -138,4 +121,19 @@ public class AdsScript : MonoBehaviour
 			}
 		}
 	}
+
+    private void InitAds()
+    {
+        //Advertisement.Initialize("1741339");
+        WWW testWebsite = new WWW("http://google.com");
+        Debug.Log(testWebsite.error);
+        if (testWebsite.error == null)
+        {
+            #if UNITY_ANDROID
+                Advertisement.Initialize(AndroidGameID);
+            #elif UNITY_IOS
+                Advertisment.Initialize(iOSGameID);
+            #endif
+        }
+    }
 }
