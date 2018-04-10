@@ -1084,7 +1084,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneNames:
   - TitleScene
-  - TestScene
+  - Sbuburbs
   - UnlockScene
   - GameOverScene
   - ShopScene
@@ -1732,9 +1732,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 611ad54f3e30fd942bbffd111a87926c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SelectedMap: TestScene
+  SelectedMap: Sbuburbs
   AvailableMapNames:
-  - TestScene
+  - Sbuburbs
   - Somerset
   AvailableMapImages:
   - {fileID: 2800000, guid: 952f2ccd70ccf6f47a7e9c2a5ff12a82, type: 3}
