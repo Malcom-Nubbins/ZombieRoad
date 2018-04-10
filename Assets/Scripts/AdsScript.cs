@@ -8,8 +8,10 @@ using Assets.Scripts.GUI;
 
 public class AdsScript : MonoBehaviour
 {
-	string toastString;
-	AndroidJavaObject currentActivity;
+    string toastString;
+    AndroidJavaObject currentActivity;
+    string AndroidGameID = "1741339";
+    string iOSGameID;
 
 	// Use this for initialization
 	void Start ()
@@ -40,6 +42,7 @@ public class AdsScript : MonoBehaviour
 			}
 		}
 	}
+
 	void HandleDeathAd(ShowResult result)
 	{
 		switch(result)
@@ -59,6 +62,22 @@ public class AdsScript : MonoBehaviour
 			default:
 				Scenes.instance.LoadScene(Scenes.Scene.GAME_OVER);
 				break;
+		}
+	}
+
+	private void InitAds()
+	{
+		//Advertisement.Initialize("1741339");
+		WWW testWebsite = new WWW("http://google.com");
+		Debug.Log(testWebsite.error);
+		if (testWebsite.error == null)
+		{
+			Debug.Log("HERE");
+#if UNITY_ANDROID
+			Advertisement.Initialize(AndroidGameID);
+#elif UNITY_IOS
+                        Advertisment.Initialize(iOSGameID);
+#endif
 		}
 	}
 
@@ -108,6 +127,7 @@ public class AdsScript : MonoBehaviour
 			// if unity ads are not initialized ( happens when app is launched offline )
 			// try to initlialize again and move to game over scene
 			Advertisement.Initialize("1741339");
+			InitAds();
 			if (UnlockManager.instance.GetLockedItemCount() > 0)
 			{
 				Scenes.instance.LoadScene(Scenes.Scene.UNLOCK);
