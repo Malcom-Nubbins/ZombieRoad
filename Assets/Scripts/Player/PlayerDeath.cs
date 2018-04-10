@@ -31,7 +31,7 @@ public class PlayerDeath : MonoBehaviour
 					if(!showingAd)
 					{
 						int nextAdCountdown = PlayerPrefs.GetInt("adCountdown");
-
+						Debug.Log(nextAdCountdown);
 						if(nextAdCountdown == 0)
 						{
 							nextAdCountdown = 3;
@@ -47,6 +47,7 @@ public class PlayerDeath : MonoBehaviour
 							PlayerPrefs.SetInt("adCountdown", nextAdCountdown);
 							PlayerPrefs.Save();
 
+							showingAd = true; // prevent update from running again before unlock scene loads
 							if (UnlockManager.instance.GetLockedItemCount() > 0)
 							{
 								Scenes.instance.LoadScene(Scenes.Scene.UNLOCK);
@@ -60,6 +61,7 @@ public class PlayerDeath : MonoBehaviour
 				}
 				else
 				{
+					GetComponent<AdsScript>().InitAds();
 					if (UnlockManager.instance.GetLockedItemCount() > 0)
 					{
 						Scenes.instance.LoadScene(Scenes.Scene.UNLOCK);

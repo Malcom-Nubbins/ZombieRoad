@@ -8,13 +8,12 @@ using Assets.Scripts.GUI;
 
 public class AdsScript : MonoBehaviour
 {
-    string toastString;
-    AndroidJavaObject currentActivity;
-    string AndroidGameID = "1741339";
-    string iOSGameID = "1741340";
+	string toastString = "Could not load ad. Please check internet connection.";
+	string AndroidGameID = "1741339";
+	string iOSGameID = "1741340";
 
-    // Use this for initialization
-    void Start ()
+	// Use this for initialization
+	void Start ()
 	{
 		Button startButton = GetComponent<Button>();
 		if(startButton)
@@ -38,7 +37,7 @@ public class AdsScript : MonoBehaviour
 			}
 			else
 			{
-				DisplayToast.ShowToast("Could not load ad. Please check internet connection");
+				DisplayToast.ShowToast(toastString);
 			}
 		}
 	}
@@ -76,6 +75,7 @@ public class AdsScript : MonoBehaviour
 
 			case ShowResult.Skipped:
 			case ShowResult.Failed:
+			default:
 				Scenes.instance.LoadScene(Scenes.Scene.SHOP);
 				break;
 		}
@@ -85,11 +85,13 @@ public class AdsScript : MonoBehaviour
 	{
 		// Debug.Log("Playing skippable ad on death Init: " + Advertisement.isInitialized + " TestMode?: " + Advertisement.testMode);
 		// Debug.Log("is skippable ad avaiable to show?? :" +Advertisement.IsReady("video"));
-		if (!Advertisement.isInitialized)
+		if (Advertisement.isInitialized)
 		{
+			Debug.Log(Advertisement.IsReady("rewardedVideo"));
+			Debug.Log(Advertisement.IsReady("video"));
 			if (Advertisement.IsReady("video"))
 			{
-				// Debug.Log("SKIPPABLE ADD IS SHOWING");
+				// Debug.Log("SKIPPABLE AD IS SHOWING");
 				var options = new ShowOptions { resultCallback = HandleDeathAd };
 				Advertisement.Show(options);
 			}
@@ -122,18 +124,20 @@ public class AdsScript : MonoBehaviour
 		}
 	}
 
-    private void InitAds()
-    {
-        //Advertisement.Initialize("1741339");
-        WWW testWebsite = new WWW("http://google.com");
-        Debug.Log(testWebsite.error);
-        if (testWebsite.error == null)
-        {
-            #if UNITY_ANDROID
-                Advertisement.Initialize(AndroidGameID);
-            #elif UNITY_IOS
-                Advertisment.Initialize(iOSGameID);
-            #endif
-        }
-    }
+	public void InitAds()
+	{
+		WWW testWebsite = new WWW("http://google.com");
+		if (testWebsite.error == null)
+		{
+#if UNITY_ANDROID
+				Advertisement.Initialize(AndroidGameID);
+#elif UNITY_IOS
+				Advertisment.Initialize(iOSGameID);
+#endif
+		}
+		else
+		{
+			DisplayToast.ShowToast(toastString);
+		}
+	}
 }
