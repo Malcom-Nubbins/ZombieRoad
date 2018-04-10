@@ -57,5 +57,8 @@ EditorBuildSettings:
     path: Assets/Sam/Somerset.unity
     guid: e2bd372299c49374fbebb5d1341c2344
   - enabled: 1
-    path: Assets/LoadingScene.unity
-    guid: e010a2727a9190642813024678020ad5
+    path: Assets/B Crawford Test Scene/BCrawfordSettingsScene.unity
+    guid: d5fd0a129f9a1c74c88e439097538f28
+  - enabled: 1
+    path: Assets/B Crawford Test Scene/BCrawfordMapScene.unity
+    guid: 972566beadac286418a3c4a35b1398fa
