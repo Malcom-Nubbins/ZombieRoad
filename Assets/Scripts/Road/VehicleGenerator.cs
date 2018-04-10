@@ -30,7 +30,8 @@ public class VehicleGenerator : MonoBehaviour
 		r = Random.Range(0, 100);
 
 		bool bInVehicle = player.GetComponent<BaseVehicleClass>();
-        
+
+        bool spawnedVehicle = false;
 		if (r <= 40 && UnlockManager.instance)
 		{
 			GameObject[] UnlockedCars = UnlockManager.instance.GetUnlockedItems(UnlockableType.VEHICLE);
@@ -40,6 +41,7 @@ public class VehicleGenerator : MonoBehaviour
 			//if (RoadTileManager.bDebugEnv) rg.MySpecificDebug += "generated vehicle @ " + car.transform.position + "\n";
 
 			if (RoadTileManager.bMainMenu) car.GetComponent<BaseVehicleClass>().health = 0;
+            spawnedVehicle = true;
 		}
 
 		if ((RoadTileManager.bMainMenu || bInVehicle) && r > 100 - RoadTileManager.instance.ChanceBarrier)
@@ -48,6 +50,13 @@ public class VehicleGenerator : MonoBehaviour
 			r = Random.Range(0, RoadBlocks.Length);
 			Instantiate(RoadBlocks[r], transform.position, transform.rotation, transform);
 		}
-		enabled = false;
+        if (spawnedVehicle)
+        {
+            enabled = false;
+        }
+        else
+        {
+            Destroy(this);//remove script so it can be readded in future for more chances to spawn
+        }
 	}
 }

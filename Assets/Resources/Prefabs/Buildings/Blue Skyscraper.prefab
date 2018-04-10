@@ -71,6 +71,7 @@ GameObject:
   - component: {fileID: 4651410179590918}
   - component: {fileID: 65210678452627466}
   - component: {fileID: 114654007044908862}
+  - component: {fileID: 114323425753362924}
   m_Layer: 10
   m_Name: Blue Skyscraper
   m_TagString: Untagged
@@ -236,6 +237,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnAllAtOnce: 0
   debugSpawnEveryFrame: 0
+--- !u!114 &114323425753362924
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1845648901761644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90cf1a00efee29b44aec306680bc4bc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114654007044908862
 MonoBehaviour:
   m_ObjectHideFlags: 1

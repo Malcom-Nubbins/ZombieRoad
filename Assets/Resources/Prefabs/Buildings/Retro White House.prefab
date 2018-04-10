@@ -53,6 +53,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4673071146823722}
   - component: {fileID: 114250525250702796}
+  - component: {fileID: 114460267585161064}
   m_Layer: 10
   m_Name: Retro White House
   m_TagString: Building
@@ -169,3 +170,14 @@ MonoBehaviour:
   type: 0
   unlocked: 1
   Price: 15
+--- !u!114 &114460267585161064
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1500864830911148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90cf1a00efee29b44aec306680bc4bc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
