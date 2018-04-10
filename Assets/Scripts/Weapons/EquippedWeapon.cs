@@ -65,7 +65,7 @@ public class EquippedWeapon : MonoBehaviour
 			//if zombie is dead stop attacking
 			if (!zombie || zombie.GetComponent<Health>().health <= 0)
 			{
-                CancelInvoke("attack");
+                //CancelInvoke("attack");
 				attacking = false;
 				return;
 			}
@@ -85,7 +85,7 @@ public class EquippedWeapon : MonoBehaviour
 				   
 					//Debug.Log("StartAttack");
                    
-					InvokeRepeating("attack", 0.0f, equippedWeapon.getAttackingDelay());
+					//InvokeRepeating("attack", 0.0f, equippedWeapon.getAttackingDelay());
 					attacking = true;
 					
 				}
@@ -95,15 +95,14 @@ public class EquippedWeapon : MonoBehaviour
 				//Debug.Log("ZombiePos: " + zombiePosition + "  PlayerPos: " + playerPosition + "   DISTANCE: " + Vector3.Distance(zombiePosition, playerPosition));
 				//Debug.Log(zombie.name);
 				//if player is not in distance, stop attacking
-				CancelInvoke("attack");
+				//CancelInvoke("attack");
 				attacking = false;
 			}
 		}
-
-        
-
-
-
+        if (attacking)
+        {
+            attack();
+        }
     }
     public void playPickUpSound()
     {
