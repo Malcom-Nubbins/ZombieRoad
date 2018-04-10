@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class ShopScreen : MonoBehaviour {
 
+    UnlockManager um;
+
     GameObject _lockedItemDisplay;
     Unlockable[] _lockedItems;
     int _currentSelectedItem;
@@ -22,72 +24,131 @@ public class ShopScreen : MonoBehaviour {
 	// Use this for initialization
 	void Start()
 	{
-        UnlockManager um = GameObject.Find("UnlockManager").GetComponent<UnlockManager>();
-        _lockedItems = um.GetLockedItems();
-        _currentSelectedItem = 0;
-
-        GameObject prefab = _lockedItems[_currentSelectedItem].gameObject;
-        _lockedItemDisplay = Instantiate(prefab, Vector3.zero, Quaternion.identity, transform);
-
+        um = GameObject.Find("UnlockManager").GetComponent<UnlockManager>();
+        
         _itemNameText = GameObject.Find("ItemNameText").GetComponent<Text>();
         _itemCostText = GameObject.Find("ItemPriceText").GetComponent<Text>();
         _currentCoinsText = GameObject.Find("CurrentCoinsText").GetComponent<Text>();
 
-        _itemNameText.text = _lockedItemDisplay.name.Substring(0, _lockedItemDisplay.name.IndexOf('('));
-        _itemCostText.text = "Price: " + _lockedItems[_currentSelectedItem].Price + " coins";
+        _itemNameText.text = "";
+        _itemCostText.text = "Price: -";
         _currentCoinsText.text = "Coins: " + Currency.GetCurrency();
 
         purchaseButton = GameObject.Find("Purchase").GetComponent<Button>();
         purchaseButton.onClick.AddListener(onPurchaseClick);
+
+        RefreshItems();
+    }
+
+    void RefreshItems()
+    {
+        _lockedItems = um.GetLockedItems();
+        
+        if (_currentSelectedItem >= _lockedItems.Length)
+        {
+            _currentSelectedItem = _lockedItems.Length - 1;
+        }
+        
+        RefreshSelectedItem();
+    }
+    
+    void RefreshSelectedItem()
+    {
+        Destroy(_lockedItemDisplay);
+        if (_currentSelectedItem >= 0 && _currentSelectedItem < _lockedItems.Length)
+        {
+            GameObject prefab = _lockedItems[_currentSelectedItem].gameObject;
+            _lockedItemDisplay = Instantiate(prefab, Vector3.zero, rotation, transform);
+            Collider collider = _lockedItemDisplay.GetComponentInChildren<Collider>();
+
+			if (_lockedItemDisplay.GetComponent<Unlockable>().type == UnlockableType.WEAPON)
+			{
+				float objectSize = 10.0f;
+				if (collider) objectSize = collider.bounds.size.magnitude;
+				float displaySize = 6.0f;
+				float scale = (displaySize / objectSize);
+				_lockedItemDisplay.transform.localScale = Vector3.one * scale;
+				_lockedItemDisplay.transform.localPosition -= Vector3.up * (scale / 2.0f);
+			}
+			else
+			{
+				_lockedItemDisplay.transform.localScale = Vector3.one * 1.5f;
+				_lockedItemDisplay.transform.position = new Vector3(0.0f, -8.0f, 20.0f);
+			
+				if (_lockedItemDisplay.GetComponent<Unlockable>().type == UnlockableType.SKYSCRAPER)
+				{
+					_lockedItemDisplay.transform.localScale = Vector3.one * 0.3f;
+					_lockedItemDisplay.transform.position = new Vector3(0.0f, -8.0f, 20.0f);
+				}
+				else if (_lockedItemDisplay.GetComponent<Unlockable>().type == UnlockableType.HOUSE || _lockedItemDisplay.GetComponent<Unlockable>().type == UnlockableType.SHOP)
+				{
+					_lockedItemDisplay.transform.localScale = Vector3.one * 0.65f;
+					_lockedItemDisplay.transform.position = new Vector3(0.0f, -8.0f, 20.0f);
+				}
+			}
+
+            if (_lockedItemDisplay.GetComponent<SeekPlayer>() != null)
+            {
+                _lockedItemDisplay.GetComponent<SeekPlayer>().enabled = false;
+            }
+            if (_lockedItemDisplay.GetComponent<Rigidbody>())
+            {
+                _lockedItemDisplay.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+            }
+        }
+        
+        UpdateDisplay();
+    }
+
+    void UpdateDisplay()
+    {
+        _currentCoinsText.text = "Coins: " + Currency.GetCurrency();
+        _itemNameText.text = _lockedItemDisplay.name.Substring(0, _lockedItemDisplay.name.IndexOf('('));
+        _itemCostText.text = "Price: " + _lockedItems[_currentSelectedItem].Price + " coins";
     }
 
     void onPurchaseClick()
     {
-        if(Currency.GetCurrency() >= _lockedItems[_currentSelectedItem].Price)
+        if (_lockedItems.Length == 0)
+        {
+            return;
+        }
+        Unlockable item = _lockedItems[_currentSelectedItem];
+        if (Currency.GetCurrency() >= item.Price)
         {
             //UnlockManager.instance.Unlo
-            Currency.RemoveCurrency(_lockedItems[_currentSelectedItem].Price);
-            _currentCoinsText.text = "Coins: " + Currency.GetCurrency();
+            Currency.RemoveCurrency(item.Price);
 
-            GameObject.Find("UnlockManager").GetComponent<UnlockManager>().UnlockItem(_lockedItems[_currentSelectedItem]);
+            um.UnlockItem(item);
 
-            _lockedItems = GameObject.Find("UnlockManager").GetComponent<UnlockManager>().GetLockedItems();
-
-            onNextClick();
+            RefreshItems();
         }
     }
 	
     void onNextClick()
     {
+        if (_lockedItems.Length == 0)
+        {
+            return;
+        }
         _currentCooldownTime = 0.3f;
-        Destroy(_lockedItemDisplay);
         _currentSelectedItem++;
         if (_currentSelectedItem > _lockedItems.Length - 1)
             _currentSelectedItem = 0;
-
-        GameObject prefab = _lockedItems[_currentSelectedItem].gameObject;
-        _lockedItemDisplay = Instantiate(prefab, Vector3.zero, rotation, transform);
-        _itemNameText.text = _lockedItemDisplay.name.Substring(0, _lockedItemDisplay.name.IndexOf('('));
-        _itemCostText.text = "Price: " + _lockedItems[_currentSelectedItem].Price + " coins";
-
-        if(_lockedItemDisplay.GetComponent<SeekPlayer>() != null)
-        {
-            _lockedItemDisplay.GetComponent<SeekPlayer>().enabled = false;
-        }
+        RefreshSelectedItem();
     }
 
     void onPrevClick()
     {
+        if (_lockedItems.Length == 0)
+        {
+            return;
+        }
         _currentCooldownTime = 0.3f;
-        Destroy(_lockedItemDisplay);
         _currentSelectedItem--;
         if (_currentSelectedItem < 0)
             _currentSelectedItem = _lockedItems.Length - 1;
-
-        GameObject prefab = _lockedItems[_currentSelectedItem].gameObject;
-        _lockedItemDisplay = Instantiate(prefab, Vector3.zero, rotation, transform);
-        _itemNameText.text = _lockedItemDisplay.name.Substring(0, _lockedItemDisplay.name.IndexOf('('));
-        _itemCostText.text = "Price: " + _lockedItems[_currentSelectedItem].Price + " coins";
+        RefreshSelectedItem();
     }
 
 	// Update is called once per frame
@@ -122,26 +183,6 @@ public class ShopScreen : MonoBehaviour {
             _currentCooldownTime -= Time.deltaTime;
         }
 
-        Vector3 buildingScale = new Vector3(0.30f, 0.30f, 0.30f);
-        Vector3 otherBuildingScale = new Vector3(0.65f, 0.65f, 0.65f);
-
-        transform.Rotate(Vector3.up, 20 * Time.deltaTime);
-        if (_lockedItemDisplay)
-        {
-            if (_lockedItemDisplay.GetComponent<Unlockable>().type == UnlockableType.SKYSCRAPER)
-            {
-                _lockedItemDisplay.transform.localScale = buildingScale;
-            }
-            else if (_lockedItemDisplay.GetComponent<Unlockable>().type == UnlockableType.HOUSE || _lockedItemDisplay.GetComponent<Unlockable>().type == UnlockableType.SHOP)
-            {
-                _lockedItemDisplay.transform.localScale = otherBuildingScale;
-            }
-            else
-            {
-                _lockedItemDisplay.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
-            }
-
-            _lockedItemDisplay.transform.position = new Vector3(0.0f, -8.0f, 20.0f);
-        }
+        if (_lockedItemDisplay) _lockedItemDisplay.transform.Rotate(Vector3.up, 20 * Time.deltaTime);
     }
 }

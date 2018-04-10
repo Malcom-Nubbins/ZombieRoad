@@ -54,6 +54,7 @@ GameObject:
   - component: {fileID: 4831081355999190}
   - component: {fileID: 54333073196823172}
   - component: {fileID: 114846047226032498}
+  - component: {fileID: 114101489462916364}
   m_Layer: 0
   m_Name: weapon_handgun 1
   m_TagString: Untagged
@@ -168,6 +169,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.25, y: 0.64, z: 1.15}
   m_Center: {x: 0, y: 0.32, z: 0}
+--- !u!114 &114101489462916364
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1665064269280058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8813d7f832cbd00498d769024d7772f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlockableID: WeaponHandgun
+  type: 3
+  unlocked: 1
+  Price: 0
 --- !u!114 &114846047226032498
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -115,7 +115,9 @@
      <Compile Include="Assets\Scripts\GUI\DisplayCurrency.cs" />
      <Compile Include="Assets\Scripts\GUI\DisplayKillcount.cs" />
      <Compile Include="Assets\Scripts\GUI\DisplayScore.cs" />
+     <Compile Include="Assets\Scripts\GUI\DisplayToast.cs" />
      <Compile Include="Assets\Scripts\Killcount.cs" />
+     <Compile Include="Assets\Scripts\LoadGameScene.cs" />
      <Compile Include="Assets\Scripts\LoadScene.cs" />
      <Compile Include="Assets\Scripts\MainMenuDummyCheckpoint.cs" />
      <Compile Include="Assets\Scripts\mainMenuMusic.cs" />
