@@ -26,29 +26,34 @@ public class PlayerDeath : MonoBehaviour
             gameOverCountdown -= Time.deltaTime;
             if (gameOverCountdown <= 0)
             {
-                if(!showingAd)
+                if(Advertisement.isInitialized)
                 {
-                    int nextAdCountdown = PlayerPrefs.GetInt("adCountdown");
-
-                    if(nextAdCountdown == 0)
+                    if(!showingAd)
                     {
-                        nextAdCountdown = 3;
-                        PlayerPrefs.SetInt("adCountdown", nextAdCountdown);
-                        PlayerPrefs.Save();
+                        int nextAdCountdown = PlayerPrefs.GetInt("adCountdown");
 
-                        GetComponent<AdsScript>().PlayAdOnDeath();
-                        showingAd = true;
+                        if(nextAdCountdown == 0)
+                        {
+                            nextAdCountdown = 3;
+                            PlayerPrefs.SetInt("adCountdown", nextAdCountdown);
+                            PlayerPrefs.Save();
+
+                            GetComponent<AdsScript>().PlayAdOnDeath();
+                            showingAd = true;
+                        }
+                        else
+                        {
+                            nextAdCountdown--;
+                            PlayerPrefs.SetInt("adCountdown", nextAdCountdown);
+                            PlayerPrefs.Save();
+
+                            Scenes.instance.LoadScene(Scenes.Scene.GAME_OVER);
+                        }
                     }
-                    else
-                    {
-                        nextAdCountdown--;
-                        PlayerPrefs.SetInt("adCountdown", nextAdCountdown);
-                        PlayerPrefs.Save();
-
-                        Scenes.instance.LoadScene(Scenes.Scene.GAME_OVER);
-                    }
-                    //Debug.Log("call this only once ok unity?");
-
+                }
+                else
+                {
+                    Scenes.instance.LoadScene(Scenes.Scene.GAME_OVER);
                 }
                 //if (UnlockManager.instance.GetLockedItemCount() > 0)
                 //{

@@ -25,23 +25,27 @@ public class AdsScript : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-		
+
 	}
 
     public void OnClick()
     {
        // Debug.Log("CLICKED! Init: " + Advertisement.isInitialized + " TestMode?: " + Advertisement.testMode);
        // Debug.Log(Advertisement.IsReady("rewardedVideo"));
-        if (Advertisement.IsReady("rewardedVideo"))
+       if(Advertisement.isInitialized)
         {
-           // Debug.Log("AD IS READY TO SHOw");
-            var options = new ShowOptions { resultCallback = HandleShopAd };
-            Advertisement.Show(options);
+            if (Advertisement.IsReady("rewardedVideo"))
+            {
+               // Debug.Log("AD IS READY TO SHOw");
+                var options = new ShowOptions { resultCallback = HandleShopAd };
+                Advertisement.Show(options);
+            }
+            else
+            {
+                DisplayToast.ShowToast("Could not load ad. Please check internet connection");
+            }
         }
-        else
-        {
-            DisplayToast.ShowToast("Could not load ad. Please check internet connection");
-        }
+
     }
 
     void HandleDeathAd(ShowResult result)
@@ -109,18 +113,29 @@ public class AdsScript : MonoBehaviour
     {
        // Debug.Log("Playing skippable ad on death Init: " + Advertisement.isInitialized + " TestMode?: " + Advertisement.testMode);
        // Debug.Log("is skippable ad avaiable to show?? :" +Advertisement.IsReady("video"));
-
-        if (Advertisement.IsReady("video"))
+       if(!Advertisement.isInitialized)
         {
-           // Debug.Log("SKIPPABLE ADD IS SHOWING");
-            var options = new ShowOptions { resultCallback = HandleDeathAd };
-            Advertisement.Show(options);
+            if (Advertisement.IsReady("video"))
+            {
+               // Debug.Log("SKIPPABLE ADD IS SHOWING");
+                var options = new ShowOptions { resultCallback = HandleDeathAd };
+                Advertisement.Show(options);
+            }
+            else
+            {
+                // If ads can't load, go straight to the Game Over screen.
+                Scenes.instance.LoadScene(Scenes.Scene.GAME_OVER);
+            }
         }
-        else
+       else
         {
-            // If ads can't load, go straight to the Game Over screen.
+            // if unity ads are not initialized ( happens when app is launched offline )
+            // try to initlialize again and move to game over scene
+            Advertisement.Initialize("1741339");
             Scenes.instance.LoadScene(Scenes.Scene.GAME_OVER);
+
         }
+
     }
 
 }
