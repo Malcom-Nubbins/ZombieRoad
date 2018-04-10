@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/TitleScene.unity
     guid: 9cd09eeefcf39db4b8352f0b2b9f3c03
   - enabled: 1
-    path: Assets/TestScene.unity
+    path: Assets/Sbuburbs.unity
     guid: ddaa88dba2301499facba304562a9c74
   - enabled: 1
     path: Assets/GameOverScene.unity
