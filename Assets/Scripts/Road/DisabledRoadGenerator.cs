@@ -16,6 +16,14 @@ public class DisabledRoadGenerator : RoadGenerator
 
 	bool bProbablyHoleLastFrame = false;
 
+	TilePosition tp;
+	Vector3 v3;
+	private void Start()
+	{
+		tp = new TilePosition();
+		v3 = new Vector3();
+	}
+	bool bProbablyHole;
 	override public void Extend(bool bForceOOBExtension = false)
 	{
 		if (!ShouldExtend()) return;
@@ -24,17 +32,21 @@ public class DisabledRoadGenerator : RoadGenerator
 		{
 			if (!hit[i])
 			{
-				bool bProbablyHole = true;
+				bProbablyHole = true;
 				for (int j = 0; j < hitPlus.Length; j += 2)
 				{
 					hitPlus[j] = null;
 					int k = 1;
-					TilePosition RayLoc = GetTilePosition() + new TilePosition(k * Xoffset(j) + Xoffset(i), k * Zoffset(j) + Zoffset(i));
+					tp.x = k * Xoffset(j) + Xoffset(i);
+					tp.z = k * Zoffset(j) + Zoffset(i);
+					TilePosition RayLoc = GetTilePosition() + tp;
 					while (!hitPlus[j])
 					{
 						hitPlus[j] = WorldTileManager.instance.GetTile(RayLoc);
 						k++;
-						RayLoc = GetTilePosition() + new TilePosition(k * Xoffset(j) + Xoffset(i), k * Zoffset(j) + Zoffset(i));
+						tp.x = k * Xoffset(j) + Xoffset(i);
+						tp.z = k * Zoffset(j) + Zoffset(i);
+						RayLoc = GetTilePosition() + tp;
 						if (Vector3.Distance(RayLoc.GetWorldPosition(), gameObject.transform.position) > RoadTileManager.checkpoint.FollowCamera.GetComponent<FollowCamera>().CullDistance + 100) break; 
 					}
 					if (hitPlus[j] && hitPlus[j].GetComponent<RoadGenerator>().Exit.Length < 8) hitPlus[j].GetComponent<RoadGenerator>().RefreshExits();
@@ -49,7 +61,10 @@ public class DisabledRoadGenerator : RoadGenerator
 				if (bProbablyHole && bProbablyHoleLastFrame)
 				{
 					GameObject newTileClass = RoadTileManager.Grass;
-					GameObject newTile = Instantiate(newTileClass, transform.position + new Vector3(Xoffset(i) * WorldTileManager.TILE_SIZE, newTileClass.GetComponent<RoadGenerator>().YOffset-transform.position.y, Zoffset(i) * WorldTileManager.TILE_SIZE), Quaternion.identity, RoadTileManager.checkpoint.RoadMapRoot.transform);
+					v3.x = Xoffset(i) * WorldTileManager.TILE_SIZE;
+					v3.y = newTileClass.GetComponent<RoadGenerator>().YOffset - transform.position.y;
+					v3.z = Zoffset(i) * WorldTileManager.TILE_SIZE;
+					GameObject newTile = Instantiate(newTileClass, transform.position + v3, Quaternion.identity, RoadTileManager.checkpoint.RoadMapRoot.transform);
 					WorldTileManager.instance.AddTile(newTile.GetComponent<WorldTile>());
 					if (RoadTileManager.bDebugEnv) MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " because of probable hole\n";
 
