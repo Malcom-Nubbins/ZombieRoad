@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Kieran Test Scene/KieranTestScene.unity
     guid: 9068737dcda969a4aabfdeedec5edd2b
   - enabled: 1
-    path: Assets/LoadingScene.unity
+    path: Assets/TitleScene.unity
     guid: 9cd09eeefcf39db4b8352f0b2b9f3c03
   - enabled: 1
     path: Assets/TestScene.unity
