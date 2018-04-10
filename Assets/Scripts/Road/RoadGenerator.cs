@@ -45,20 +45,23 @@ public class RoadGenerator : WorldTile
 
 	protected Vector3 CachedPlayerPosition, CurrentPlayerPosition;
 
+	private TilePosition tp;
+	private static FollowCamera followCamera;
+
 	// Use this for initialization
 	void Start()
 	{
+		tp = new TilePosition();
         RefreshExits();
     }
 
 	void Awake()
 	{
-        
 	}
     
 	void Update()
 	{
-        FollowCamera followCamera = RoadTileManager.checkpoint.FollowCamera.GetComponent<FollowCamera>();
+		if (!followCamera) followCamera = RoadTileManager.checkpoint.FollowCamera.GetComponent<FollowCamera>();
 		if (!CullingExempt
             && RoadTileManager.bCull
             && Vector3.Distance(followCamera.target.transform.position, transform.position) > followCamera.CullDistance + 60)
@@ -67,6 +70,7 @@ public class RoadGenerator : WorldTile
 		}
 	}
 
+	bool bCanExtend;
 	// perform common checks that mean we should not Extend
 	protected bool ShouldExtend()
 	{
@@ -80,7 +84,7 @@ public class RoadGenerator : WorldTile
 		//if (Vector3.Distance(RoadTileManager.checkpoint.transform.position, transform.position) > (RoadTileManager.checkpoint.gameObject.transform.localScale.x/2) + 20) return false;
 		//if (DebugLogs) Debug.Log(gameObject.name + " standing by at " + Vector3.Distance(RoadTileManager.checkpoint.transform.position, transform.position) + " from " + RoadTileManager.checkpoint.transform.position + " (compare to "+( RoadTileManager.checkpoint.gameObject.transform.localScale.x+10)+")" );
 
-		bool bCanExtend = false;
+		bCanExtend = false;
 
 		// if the Raycasts from last time have any no-hits, we might be able to expand, otherwise we should not need new Raycasts and can bail
 		foreach (WorldTile h in hit)
@@ -609,10 +613,13 @@ public class RoadGenerator : WorldTile
 	//Physics.Raycast(transform.position + new Vector3(-20, 500, 20), new Vector3(0, -1), out hit[7], Mathf.Infinity, 1 << 9);
 	public bool DoHits()
 	{
-        bool bCanExtend = false;
+        bCanExtend = false;
+		
         for (int i = 0; i < hit.Length; i++)
         {
-            hit[i] = WorldTileManager.instance.GetTile(GetTilePosition() + new TilePosition(Xoffset(i), Zoffset(i)));
+			tp.x = Xoffset(i);
+			tp.z = Zoffset(i);
+            hit[i] = WorldTileManager.instance.GetTile(GetTilePosition() + tp);
             if (hit[i] && hit[i].GetComponent<RoadGenerator>().Exit.Length < 8) hit[i].GetComponent<RoadGenerator>().RefreshExits();
             if (!hit[i]) bCanExtend = true;
         }

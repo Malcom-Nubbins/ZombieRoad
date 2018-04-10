@@ -109,7 +109,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4175520656040392}
   - component: {fileID: 136439443064522788}
-  m_Layer: 8
+  m_Layer: 13
   m_Name: DeadCollider
   m_TagString: Zombie
   m_Icon: {fileID: 0}
