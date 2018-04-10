@@ -46,7 +46,7 @@ public class ShopScreen : MonoBehaviour {
         
         if (_currentSelectedItem >= _lockedItems.Length)
         {
-            _currentSelectedItem = _lockedItems.Length;
+            _currentSelectedItem = _lockedItems.Length - 1;
         }
         
         RefreshSelectedItem();

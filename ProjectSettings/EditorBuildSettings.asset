@@ -62,3 +62,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/B Crawford Test Scene/BCrawfordMapScene.unity
     guid: 972566beadac286418a3c4a35b1398fa
+  - enabled: 1
+    path: Assets/LoadingScene.unity
+    guid: e010a2727a9190642813024678020ad5

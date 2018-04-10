@@ -5215,6 +5215,21 @@ Prefab:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 224745468253433470, guid: 0049802d8fb2bb84896be1247b7ac1c0,
+        type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0.38268343
+      objectReference: {fileID: 0}
+    - target: {fileID: 224745468253433470, guid: 0049802d8fb2bb84896be1247b7ac1c0,
+        type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.92387956
+      objectReference: {fileID: 0}
+    - target: {fileID: 224745468253433470, guid: 0049802d8fb2bb84896be1247b7ac1c0,
+        type: 2}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 45
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0049802d8fb2bb84896be1247b7ac1c0, type: 2}
   m_IsPrefabParent: 0
