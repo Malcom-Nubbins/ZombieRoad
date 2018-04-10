@@ -8,6 +8,7 @@ public class DisabledRoadGenerator : RoadGenerator
 	{
 		Pavement,
 		Grass,
+		Water,
 		xInvalid
 	}
 
@@ -38,7 +39,7 @@ public class DisabledRoadGenerator : RoadGenerator
 					}
 					if (hitPlus[j] && hitPlus[j].GetComponent<RoadGenerator>().Exit.Length < 8) hitPlus[j].GetComponent<RoadGenerator>().RefreshExits();
 
-					MySpecificDebug += Time.fixedTime + " hitPlus " + (Direction)j + " concluded with " + (hitPlus[j]?hitPlus[j].gameObject.name + " (" + hitPlus[j].gameObject.transform.position + ")" : "boundary")+"\n";
+					if (RoadTileManager.bDebugEnv) MySpecificDebug += Time.fixedTime + " hitPlus " + (Direction)j + " concluded with " + (hitPlus[j]?hitPlus[j].gameObject.name + " (" + hitPlus[j].gameObject.transform.position + ")" : "boundary")+"\n";
 
 					if (hitPlus[j] && !hitPlus[j].GetComponent<DisabledRoadGenerator>())
 					{
@@ -50,13 +51,13 @@ public class DisabledRoadGenerator : RoadGenerator
 					GameObject newTileClass = RoadTileManager.Grass;
 					GameObject newTile = Instantiate(newTileClass, transform.position + new Vector3(Xoffset(i) * WorldTileManager.TILE_SIZE, newTileClass.GetComponent<RoadGenerator>().YOffset-transform.position.y, Zoffset(i) * WorldTileManager.TILE_SIZE), Quaternion.identity, RoadTileManager.checkpoint.RoadMapRoot.transform);
 					WorldTileManager.instance.AddTile(newTile.GetComponent<WorldTile>());
-					MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " because of probable hole\n";
+					if (RoadTileManager.bDebugEnv) MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " because of probable hole\n";
 
 				}
 				bProbablyHoleLastFrame = bProbablyHole;
 			}
 			else
-				MySpecificDebug += Time.fixedTime + " hit     " + (Direction)i + " concluded immediately with " + hit[i].gameObject.name + " (" + hit[i].gameObject.transform.position + ")\n";
+				if (RoadTileManager.bDebugEnv) MySpecificDebug += Time.fixedTime + " hit     " + (Direction)i + " concluded immediately with " + hit[i].gameObject.name + " (" + hit[i].gameObject.transform.position + ")\n";
 		}
 	}
 }

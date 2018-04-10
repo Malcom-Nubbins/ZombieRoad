@@ -6,16 +6,6 @@ public class ExplodeWhenHitByVehicle : DieWhenHitByVehicle
 {
     public GameObject bloodEffectPrefab;
 
-	void Start()
-    {
-		
-	}
-	
-	void Update()
-    {
-		
-	}
-
     protected override void OnHitByVehicle(BaseVehicleClass vehicle)
     {
         base.OnHitByVehicle(vehicle);

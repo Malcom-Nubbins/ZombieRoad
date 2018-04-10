@@ -155,6 +155,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4038750823086020}
+  - component: {fileID: 114234403275874136}
   m_Layer: 0
   m_Name: DriverTransform
   m_TagString: Untagged
@@ -282,7 +283,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1202558191728726}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 22.73, y: 0.25, z: -44.86}
+  m_LocalPosition: {x: 18.401768, y: 0.25, z: -6.768255}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4819411484377142}
@@ -772,6 +773,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   followCamera: {fileID: 0}
+--- !u!114 &114234403275874136
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1643544873781150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43c0dca39d37c2f4aa92879f02719a3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114319856052306998
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -826,7 +838,6 @@ MonoBehaviour:
   crashSound: {fileID: 0}
   engineSound: {fileID: 0}
   engineDying: {fileID: 0}
-  debugDisableAutoExit: 0
 --- !u!135 &135819657441712300
 SphereCollider:
   m_ObjectHideFlags: 1

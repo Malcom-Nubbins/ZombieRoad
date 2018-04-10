@@ -129,7 +129,7 @@ public class RoadGenerator : WorldTile
 						if (!hit[Wrap0to7(i - 1)] && !hit[Wrap0to7(i + 1)]) // if spaces to left and right
 						{
 							GameObject newTile = GenerateRandomTile(i, RoadTileManager.checkpoint.RoadMapRoot.transform, true);
-							MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " due to freeze pace\n";
+							if (RoadTileManager.bDebugEnv) MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " due to freeze pace\n";
 						}
 						else if (!hit[Wrap0to7(i - 1)] && hit[Wrap0to7(i + 1)]) // if space left and not right
 						{
@@ -138,33 +138,33 @@ public class RoadGenerator : WorldTile
 							{
 								GameObject newTile = GenerateCornerOrT(i, RoadTileManager.checkpoint.RoadMapRoot.transform, true);
 
-								MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " because the occupied tile to the right has a valid exit, and the left is unoccupied\n";
-								//MySpecificDebug += "exit " + (Direction)(Wrap0to7(i + 4)) + ":" + (newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 4)]) + " && exit " + (Direction)(Wrap0to7(i + 2)) + ":" + (newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 2)]) + "\n";
+								if (RoadTileManager.bDebugEnv) MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " because the occupied tile to the right has a valid exit, and the left is unoccupied\n";
+								//if (RoadTileManager.bDebugEnv) MySpecificDebug += "exit " + (Direction)(Wrap0to7(i + 4)) + ":" + (newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 4)]) + " && exit " + (Direction)(Wrap0to7(i + 2)) + ":" + (newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 2)]) + "\n";
 								int CwCcw = randCwCcw();
 								while (!(newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 4)]) || !(newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 2)]))
 								{
-									MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", rotating\n";
+									if (RoadTileManager.bDebugEnv) MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", rotating\n";
 
 									newTile.transform.Rotate(0, CwCcw*90, 0);
 									newTile.GetComponent<RoadGenerator>().RefreshExits();
 								}
-								MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", final\n";
+								if (RoadTileManager.bDebugEnv) MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", final\n";
 							}
 							else
 							{
 								GameObject newTile = GenerateRandomTile(i, RoadTileManager.checkpoint.RoadMapRoot.transform);
 
-								MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " because the occupied tile to the right is blocked, and the left is unoccupied\n";
-								//MySpecificDebug += "exit " + (Direction)(Wrap0to7(i + 4)) + ":" + (newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 4)]) + " && exit " + (Direction)(Wrap0to7(i + 2)) + ":" + (newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 2)]) + "\n";
+								if (RoadTileManager.bDebugEnv) MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " because the occupied tile to the right is blocked, and the left is unoccupied\n";
+								//if (RoadTileManager.bDebugEnv) MySpecificDebug += "exit " + (Direction)(Wrap0to7(i + 4)) + ":" + (newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 4)]) + " && exit " + (Direction)(Wrap0to7(i + 2)) + ":" + (newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 2)]) + "\n";
 								int CwCcw = randCwCcw();
 								while (!(newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 4)]) || (newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 2)]))
 								{
-									MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", rotating\n";
+									if (RoadTileManager.bDebugEnv) MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", rotating\n";
 
 									newTile.transform.Rotate(0, CwCcw*90, 0);
 									newTile.GetComponent<RoadGenerator>().RefreshExits();
 								}
-								MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", final\n";
+								if (RoadTileManager.bDebugEnv) MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", final\n";
 							}
 						}
 						else if (hit[Wrap0to7(i - 1)] && !hit[Wrap0to7(i + 1)]) // if space right and not left
@@ -174,33 +174,33 @@ public class RoadGenerator : WorldTile
 							{
 								GameObject newTile = GenerateCornerOrT(i, RoadTileManager.checkpoint.RoadMapRoot.transform, true);
 
-								MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " because the occupied tile to the left has a valid exit, and the right is unoccupied\n";
-								//MySpecificDebug += "exit " + (Direction)(Wrap0to7(i + 4)) + ":" + (newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 4)]) + " && exit " + (Direction)(Wrap0to7(i - 2)) + ":" + (newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i - 2)]) + "\n";
+								if (RoadTileManager.bDebugEnv) MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " because the occupied tile to the left has a valid exit, and the right is unoccupied\n";
+								//if (RoadTileManager.bDebugEnv) MySpecificDebug += "exit " + (Direction)(Wrap0to7(i + 4)) + ":" + (newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 4)]) + " && exit " + (Direction)(Wrap0to7(i - 2)) + ":" + (newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i - 2)]) + "\n";
 								int CwCcw = randCwCcw();
 								while (!(newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 4)]) || !(newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i - 2)]))
 								{
-									MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", rotating\n";
+									if (RoadTileManager.bDebugEnv) MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", rotating\n";
 
 									newTile.transform.Rotate(0, CwCcw*90, 0);
 									newTile.GetComponent<RoadGenerator>().RefreshExits();
 								}
-								MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", final\n";
+								if (RoadTileManager.bDebugEnv) MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", final\n";
 							}
 							else
 							{
 								GameObject newTile = GenerateRandomTile(i, RoadTileManager.checkpoint.RoadMapRoot.transform);
 
-								MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " because the occupied tile to the left is blocked, and the right is unoccupied\n";
-								//MySpecificDebug += "exit " + (Direction)(Wrap0to7(i + 4)) + ":" + (newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 4)]) + " && exit " + (Direction)(Wrap0to7(i - 2)) + ":" + (newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i - 2)]) + "\n";
+								if (RoadTileManager.bDebugEnv) MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " because the occupied tile to the left is blocked, and the right is unoccupied\n";
+								//if (RoadTileManager.bDebugEnv) MySpecificDebug += "exit " + (Direction)(Wrap0to7(i + 4)) + ":" + (newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 4)]) + " && exit " + (Direction)(Wrap0to7(i - 2)) + ":" + (newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i - 2)]) + "\n";
 								int CwCcw = randCwCcw();
 								while (!(newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 4)]) || (newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i - 2)]))
 								{
-									MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", rotating\n";
+									if (RoadTileManager.bDebugEnv) MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", rotating\n";
 
 									newTile.transform.Rotate(0, CwCcw*90, 0);
 									newTile.GetComponent<RoadGenerator>().RefreshExits();
 								}
-								MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", final\n";
+								if (RoadTileManager.bDebugEnv) MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", final\n";
 							}
 						}
 						else // no unoccupied spaces left or right
@@ -208,40 +208,40 @@ public class RoadGenerator : WorldTile
 							if (hit[Wrap0to7(i-1)].gameObject.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 2)] && hit[Wrap0to7(i+1)].gameObject.GetComponent<RoadGenerator>().Exit[Wrap0to7(i - 2)]) // exits to left && right
 							{
 								GameObject newTile = GenerateQuadOrT(i, RoadTileManager.checkpoint.RoadMapRoot.transform);
-								MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " because the occupied tiles to the left and right have valid exits\n";
+								if (RoadTileManager.bDebugEnv) MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " because the occupied tiles to the left and right have valid exits\n";
 							}
 							else if (hit[Wrap0to7(i - 1)].gameObject.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 2)] && !hit[Wrap0to7(i + 1)].gameObject.GetComponent<RoadGenerator>().Exit[Wrap0to7(i - 2)]) // exit left only
 							{
 								GameObject newTile = GenerateCornerOrT(i, RoadTileManager.checkpoint.RoadMapRoot.transform);
-								MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " because the occupied tile to the left has a valid exit, and the right is blocked\n";
+								if (RoadTileManager.bDebugEnv) MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " because the occupied tile to the left has a valid exit, and the right is blocked\n";
 								int CwCcw = randCwCcw();
 								while (!(newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 4)]) || !(newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i - 2)]) || newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 2)])
 								{
-									MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", rotating\n";
+									if (RoadTileManager.bDebugEnv) MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", rotating\n";
 
 									newTile.transform.Rotate(0, CwCcw*90, 0);
 									newTile.GetComponent<RoadGenerator>().RefreshExits();
 								}
-								MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", final\n";
+								if (RoadTileManager.bDebugEnv) MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", final\n";
 							}
 							else if (!hit[Wrap0to7(i - 1)].gameObject.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 2)] && hit[Wrap0to7(i + 1)].gameObject.GetComponent<RoadGenerator>().Exit[Wrap0to7(i - 2)]) // exit right only
 							{
 								GameObject newTile = GenerateCornerOrT(i, RoadTileManager.checkpoint.RoadMapRoot.transform);
-								MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " because the occupied tile to the right has a valid exit, and the left is blocked\n";
+								if (RoadTileManager.bDebugEnv) MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " because the occupied tile to the right has a valid exit, and the left is blocked\n";
 								int CwCcw = randCwCcw();
 								while (!(newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 4)]) || newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i - 2)] || !(newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 2)]))
 								{
-									MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", rotating\n";
+									if (RoadTileManager.bDebugEnv) MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", rotating\n";
 
 									newTile.transform.Rotate(0, CwCcw*90, 0);
 									newTile.GetComponent<RoadGenerator>().RefreshExits();
 								}
-								MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", final\n";
+								if (RoadTileManager.bDebugEnv) MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", final\n";
 							}
 							else
 							{
 								GameObject newTile = GeneratePiece(RoadTileManager.Straight, i, RoadTileManager.checkpoint.RoadMapRoot.transform);
-								MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " because the left and right are blocked\n";
+								if (RoadTileManager.bDebugEnv) MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " because the left and right are blocked\n";
 							}
 						}
 					}
@@ -253,12 +253,12 @@ public class RoadGenerator : WorldTile
 							int CwCcw = randCwCcw();
 							while (!(newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 4)]) || !(newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i)]))
 							{
-								MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", rotating\n";
+								if (RoadTileManager.bDebugEnv) MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", rotating\n";
 
 								newTile.transform.Rotate(0, CwCcw*90, 0);
 								newTile.GetComponent<RoadGenerator>().RefreshExits();
 							}
-							MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " since there is an exit ahead and free either side\n";
+							if (RoadTileManager.bDebugEnv) MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " since there is an exit ahead and free either side\n";
 						}
 						else if (!hit[Wrap0to7(i - 1)] && hit[Wrap0to7(i + 1)]) // if space left and not right
 						{
@@ -267,33 +267,33 @@ public class RoadGenerator : WorldTile
 							{
 								GameObject newTile = GeneratePiece(RoadTileManager.T, i, RoadTileManager.checkpoint.RoadMapRoot.transform);
 
-								MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " because the occupied tile to the right has a valid exit, and the left is unoccupied, and exit ahead\n";
-								//MySpecificDebug += "exit " + (Direction)(Wrap0to7(i + 4)) + ":" + (newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 4)]) + " && exit " + (Direction)(Wrap0to7(i + 2)) + ":" + (newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 2)]) + "\n";
+								if (RoadTileManager.bDebugEnv) MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " because the occupied tile to the right has a valid exit, and the left is unoccupied, and exit ahead\n";
+								//if (RoadTileManager.bDebugEnv) MySpecificDebug += "exit " + (Direction)(Wrap0to7(i + 4)) + ":" + (newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 4)]) + " && exit " + (Direction)(Wrap0to7(i + 2)) + ":" + (newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 2)]) + "\n";
 								int CwCcw = randCwCcw();
 								while (!(newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 4)]) || !(newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 2)]) || !(newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i)]))
 								{
-									MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", rotating\n";
+									if (RoadTileManager.bDebugEnv) MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", rotating\n";
 
 									newTile.transform.Rotate(0, CwCcw*90, 0);
 									newTile.GetComponent<RoadGenerator>().RefreshExits();
 								}
-								MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", final\n";
+								if (RoadTileManager.bDebugEnv) MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", final\n";
 							}
 							else
 							{
 								GameObject newTile = GenerateStraightOrT(i, RoadTileManager.checkpoint.RoadMapRoot.transform);
 
-								MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " because the occupied tile to the right is blocked, and the left is unoccupied, and exit ahead\n";
-								//MySpecificDebug += "exit " + (Direction)(Wrap0to7(i + 4)) + ":" + (newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 4)]) + " && exit " + (Direction)(Wrap0to7(i + 2)) + ":" + (newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 2)]) + "\n";
+								if (RoadTileManager.bDebugEnv) MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " because the occupied tile to the right is blocked, and the left is unoccupied, and exit ahead\n";
+								//if (RoadTileManager.bDebugEnv) MySpecificDebug += "exit " + (Direction)(Wrap0to7(i + 4)) + ":" + (newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 4)]) + " && exit " + (Direction)(Wrap0to7(i + 2)) + ":" + (newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 2)]) + "\n";
 								int CwCcw = randCwCcw();
 								while (!(newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 4)]) || (newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 2)]) || !(newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i)]))
 								{
-									MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", rotating\n";
+									if (RoadTileManager.bDebugEnv) MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", rotating\n";
 
 									newTile.transform.Rotate(0, CwCcw*90, 0);
 									newTile.GetComponent<RoadGenerator>().RefreshExits();
 								}
-								MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", final\n";
+								if (RoadTileManager.bDebugEnv) MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", final\n";
 							}
 						}
 						else if (hit[Wrap0to7(i - 1)] && !hit[Wrap0to7(i + 1)]) // if space right and not left
@@ -303,33 +303,33 @@ public class RoadGenerator : WorldTile
 							{
 								GameObject newTile = GeneratePiece(RoadTileManager.T, i, RoadTileManager.checkpoint.RoadMapRoot.transform);
 
-								MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " because the occupied tile to the left has a valid exit, and the right is unoccupied, and exit ahead\n";
-								//MySpecificDebug += "exit " + (Direction)(Wrap0to7(i + 4)) + ":" + (newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 4)]) + " && exit " + (Direction)(Wrap0to7(i - 2)) + ":" + (newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i - 2)]) + "\n";
+								if (RoadTileManager.bDebugEnv) MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " because the occupied tile to the left has a valid exit, and the right is unoccupied, and exit ahead\n";
+								//if (RoadTileManager.bDebugEnv) MySpecificDebug += "exit " + (Direction)(Wrap0to7(i + 4)) + ":" + (newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 4)]) + " && exit " + (Direction)(Wrap0to7(i - 2)) + ":" + (newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i - 2)]) + "\n";
 								int CwCcw = randCwCcw();
 								while (!(newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 4)]) || !(newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i - 2)]) || !(newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i)]))
 								{
-									MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", rotating\n";
+									if (RoadTileManager.bDebugEnv) MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", rotating\n";
 
 									newTile.transform.Rotate(0, CwCcw*90, 0);
 									newTile.GetComponent<RoadGenerator>().RefreshExits();
 								}
-								MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", final\n";
+								if (RoadTileManager.bDebugEnv) MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", final\n";
 							}
 							else
 							{
 								GameObject newTile = GenerateStraightOrT(i, RoadTileManager.checkpoint.RoadMapRoot.transform);
 
-								MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " because the occupied tile to the left is blocked, and the right is unoccupied, and exit ahead\n";
-								//MySpecificDebug += "exit " + (Direction)(Wrap0to7(i + 4)) + ":" + (newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 4)]) + " && exit " + (Direction)(Wrap0to7(i - 2)) + ":" + (newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i - 2)]) + "\n";
+								if (RoadTileManager.bDebugEnv) MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " because the occupied tile to the left is blocked, and the right is unoccupied, and exit ahead\n";
+								//if (RoadTileManager.bDebugEnv) MySpecificDebug += "exit " + (Direction)(Wrap0to7(i + 4)) + ":" + (newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 4)]) + " && exit " + (Direction)(Wrap0to7(i - 2)) + ":" + (newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i - 2)]) + "\n";
 								int CwCcw = randCwCcw();
 								while (!(newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 4)]) || (newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i - 2)]) || !(newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i)]))
 								{
-									MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", rotating\n";
+									if (RoadTileManager.bDebugEnv) MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", rotating\n";
 
 									newTile.transform.Rotate(0, CwCcw*90, 0);
 									newTile.GetComponent<RoadGenerator>().RefreshExits();
 								}
-								MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", final\n";
+								if (RoadTileManager.bDebugEnv) MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", final\n";
 							}
 						}
 						else // no unoccupied spaces left or right
@@ -337,40 +337,40 @@ public class RoadGenerator : WorldTile
 							if (hit[Wrap0to7(i - 1)].gameObject.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 2)] && hit[Wrap0to7(i + 1)].gameObject.GetComponent<RoadGenerator>().Exit[Wrap0to7(i - 2)]) // exits to left && right (and ahead)
 							{
 								GameObject newTile = GeneratePiece(RoadTileManager.FourWay, i, RoadTileManager.checkpoint.RoadMapRoot.transform);
-								MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " because the occupied tiles ahead, and to the left and right have valid exits\n";
+								if (RoadTileManager.bDebugEnv) MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " because the occupied tiles ahead, and to the left and right have valid exits\n";
 							}
 							else if (hit[Wrap0to7(i - 1)].gameObject.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 2)] && !hit[Wrap0to7(i + 1)].gameObject.GetComponent<RoadGenerator>().Exit[Wrap0to7(i - 2)]) // exit left only (and ahead)
 							{
 								GameObject newTile = GeneratePiece(RoadTileManager.T, i, RoadTileManager.checkpoint.RoadMapRoot.transform);
-								MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " because the occupied tile to the left has a valid exit, and the right is blocked, and exit ahead\n";
+								if (RoadTileManager.bDebugEnv) MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " because the occupied tile to the left has a valid exit, and the right is blocked, and exit ahead\n";
 								int CwCcw = randCwCcw();
 								while (!(newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 4)]) || !(newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i - 2)]) || newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 2)])
 								{
-									MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", rotating\n";
+									if (RoadTileManager.bDebugEnv) MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", rotating\n";
 
 									newTile.transform.Rotate(0, CwCcw*90, 0);
 									newTile.GetComponent<RoadGenerator>().RefreshExits();
 								}
-								MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", final\n";
+								if (RoadTileManager.bDebugEnv) MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", final\n";
 							}
 							else if (!hit[Wrap0to7(i - 1)].gameObject.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 2)] && hit[Wrap0to7(i + 1)].gameObject.GetComponent<RoadGenerator>().Exit[Wrap0to7(i - 2)]) // exit right only (and ahead)
 							{
 								GameObject newTile = GeneratePiece(RoadTileManager.T, i, RoadTileManager.checkpoint.RoadMapRoot.transform);
-								MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " because the occupied tile to the right has a valid exit, and the left is blocked, and exit ahead\n";
+								if (RoadTileManager.bDebugEnv) MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " because the occupied tile to the right has a valid exit, and the left is blocked, and exit ahead\n";
 								int CwCcw = randCwCcw();
 								while (!(newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 4)]) || newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i - 2)] || !(newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 2)]))
 								{
-									MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", rotating\n";
+									if (RoadTileManager.bDebugEnv) MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", rotating\n";
 
 									newTile.transform.Rotate(0, CwCcw*90, 0);
 									newTile.GetComponent<RoadGenerator>().RefreshExits();
 								}
-								MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", final\n";
+								if (RoadTileManager.bDebugEnv) MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", final\n";
 							}
 							else
 							{
 								GameObject newTile = GeneratePiece(RoadTileManager.Straight, i, RoadTileManager.checkpoint.RoadMapRoot.transform);
-								MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " because the left and right are blocked (and exit ahead fwiw)\n";
+								if (RoadTileManager.bDebugEnv) MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " because the left and right are blocked (and exit ahead fwiw)\n";
 							}
 						}
 					}
@@ -382,12 +382,12 @@ public class RoadGenerator : WorldTile
 							int CwCcw = randCwCcw();
 							while (!(newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 4)]) || (newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i)]))
 							{
-								MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", rotating\n";
+								if (RoadTileManager.bDebugEnv) MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", rotating\n";
 
 								newTile.transform.Rotate(0, CwCcw*90, 0);
 								newTile.GetComponent<RoadGenerator>().RefreshExits();
 							}
-							MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " since there is a blockage ahead but free either side\n";
+							if (RoadTileManager.bDebugEnv) MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " since there is a blockage ahead but free either side\n";
 						}
 						else if (!hit[Wrap0to7(i - 1)] && hit[Wrap0to7(i + 1)]) // if space left and not right
 						{
@@ -396,34 +396,34 @@ public class RoadGenerator : WorldTile
 							{
 								GameObject newTile = GenerateCornerOrT(i, RoadTileManager.checkpoint.RoadMapRoot.transform);
 
-								MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " because the occupied tile to the right has a valid exit, and the left is unoccupied, and blockage ahead\n";
-								//MySpecificDebug += "exit " + (Direction)(Wrap0to7(i + 4)) + ":" + (newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 4)]) + " && exit " + (Direction)(Wrap0to7(i + 2)) + ":" + (newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 2)]) + "\n";
+								if (RoadTileManager.bDebugEnv) MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " because the occupied tile to the right has a valid exit, and the left is unoccupied, and blockage ahead\n";
+								//if (RoadTileManager.bDebugEnv) MySpecificDebug += "exit " + (Direction)(Wrap0to7(i + 4)) + ":" + (newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 4)]) + " && exit " + (Direction)(Wrap0to7(i + 2)) + ":" + (newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 2)]) + "\n";
 								int CwCcw = randCwCcw();
 								while (!(newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 4)]) || !(newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 2)]) || newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i)])
 								{
-									MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", rotating\n";
+									if (RoadTileManager.bDebugEnv) MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", rotating\n";
 
 									newTile.transform.Rotate(0, CwCcw*90, 0);
 									newTile.GetComponent<RoadGenerator>().RefreshExits();
 								}
-								MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", final\n";
+								if (RoadTileManager.bDebugEnv) MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", final\n";
 							}
 							else
 							{
 								GameObject newTile = GenerateCornerOrDead(i, RoadTileManager.checkpoint.RoadMapRoot.transform);
 
-								MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " because the occupied tile to the right is blocked, and the left is unoccupied, and blockage ahead\n";
-								//MySpecificDebug += "exit " + (Direction)(Wrap0to7(i + 4)) + ":" + (newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 4)]) + " && exit " + (Direction)(Wrap0to7(i + 2)) + ":" + (newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 2)]) + "\n";
+								if (RoadTileManager.bDebugEnv) MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " because the occupied tile to the right is blocked, and the left is unoccupied, and blockage ahead\n";
+								//if (RoadTileManager.bDebugEnv) MySpecificDebug += "exit " + (Direction)(Wrap0to7(i + 4)) + ":" + (newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 4)]) + " && exit " + (Direction)(Wrap0to7(i + 2)) + ":" + (newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 2)]) + "\n";
 								int CwCcw = randCwCcw();
 								if (!newTile.name.Contains("Dead"))
 									while (!(newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 4)]) || (newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 2)]) || newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i)])
 									{
-										MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", rotating\n";
+										if (RoadTileManager.bDebugEnv) MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", rotating\n";
 
 										newTile.transform.Rotate(0, CwCcw*90, 0);
 										newTile.GetComponent<RoadGenerator>().RefreshExits();
 									}
-								MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", final\n";
+								if (RoadTileManager.bDebugEnv) MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", final\n";
 							}
 						}
 						else if (hit[Wrap0to7(i - 1)] && !hit[Wrap0to7(i + 1)]) // if space right and not left
@@ -433,34 +433,34 @@ public class RoadGenerator : WorldTile
 							{
 								GameObject newTile = GenerateCornerOrT(i, RoadTileManager.checkpoint.RoadMapRoot.transform);
 
-								MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " because the occupied tile to the left has a valid exit, and the right is unoccupied, and blockage ahead\n";
+								if (RoadTileManager.bDebugEnv) MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " because the occupied tile to the left has a valid exit, and the right is unoccupied, and blockage ahead\n";
 								//MySpecificDebug += "exit " + (Direction)(Wrap0to7(i + 4)) + ":" + (newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 4)]) + " && exit " + (Direction)(Wrap0to7(i - 2)) + ":" + (newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i - 2)]) + "\n";
 								int CwCcw = randCwCcw();
 								while (!(newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 4)]) || !(newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i - 2)]) || newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i)])
 								{
-									MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", rotating\n";
+									if (RoadTileManager.bDebugEnv) MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", rotating\n";
 
 									newTile.transform.Rotate(0, CwCcw*90, 0);
 									newTile.GetComponent<RoadGenerator>().RefreshExits();
 								}
-								MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", final\n";
+								if (RoadTileManager.bDebugEnv) MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", final\n";
 							}
 							else
 							{
 								GameObject newTile = GenerateCornerOrDead(i, RoadTileManager.checkpoint.RoadMapRoot.transform);
 
-								MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " because the occupied tile to the left is blocked, and the right is unoccupied, and blockage ahead\n";
-								//MySpecificDebug += "exit " + (Direction)(Wrap0to7(i + 4)) + ":" + (newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 4)]) + " && exit " + (Direction)(Wrap0to7(i - 2)) + ":" + (newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i - 2)]) + "\n";
+								if (RoadTileManager.bDebugEnv) MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " because the occupied tile to the left is blocked, and the right is unoccupied, and blockage ahead\n";
+								//if (RoadTileManager.bDebugEnv) MySpecificDebug += "exit " + (Direction)(Wrap0to7(i + 4)) + ":" + (newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 4)]) + " && exit " + (Direction)(Wrap0to7(i - 2)) + ":" + (newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i - 2)]) + "\n";
 								int CwCcw = randCwCcw();
 								if (!newTile.name.Contains("Dead"))
 									while (!(newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 4)]) || (newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i - 2)]) || newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i)])
 									{
-										MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", rotating\n";
+										if (RoadTileManager.bDebugEnv) MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", rotating\n";
 
 										newTile.transform.Rotate(0, CwCcw*90, 0);
 										newTile.GetComponent<RoadGenerator>().RefreshExits();
 									}
-								MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", final\n";
+								if (RoadTileManager.bDebugEnv) MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", final\n";
 							}
 						}
 						else // no unoccupied spaces left or right
@@ -468,58 +468,58 @@ public class RoadGenerator : WorldTile
 							if (hit[Wrap0to7(i - 1)].gameObject.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 2)] && hit[Wrap0to7(i + 1)].gameObject.GetComponent<RoadGenerator>().Exit[Wrap0to7(i - 2)]) // exits to left && right (and blocked ahead)
 							{
 								GameObject newTile = GeneratePiece(RoadTileManager.T, i, RoadTileManager.checkpoint.RoadMapRoot.transform);
-								MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " because the occupied to the left and right have valid exits and blocked ahead\n";
+								if (RoadTileManager.bDebugEnv) MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " because the occupied to the left and right have valid exits and blocked ahead\n";
 								int CwCcw = randCwCcw();
 								while (newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i)])
 								{
-									MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", rotating\n";
+									if (RoadTileManager.bDebugEnv) MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", rotating\n";
 
 									newTile.transform.Rotate(0, CwCcw*90, 0);
 									newTile.GetComponent<RoadGenerator>().RefreshExits();
 								}
-								MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", final\n";
+								if (RoadTileManager.bDebugEnv) MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", final\n";
 							}
 							else if (hit[Wrap0to7(i - 1)].gameObject.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 2)] && !hit[Wrap0to7(i + 1)].gameObject.GetComponent<RoadGenerator>().Exit[Wrap0to7(i - 2)]) // exit left only (and blocked ahead)
 							{
 								GameObject newTile = GeneratePiece(RoadTileManager.Corner, i, RoadTileManager.checkpoint.RoadMapRoot.transform);
-								MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " because the occupied tile to the left has a valid exit, and the right and ahead are blocked\n";
+								if (RoadTileManager.bDebugEnv) MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " because the occupied tile to the left has a valid exit, and the right and ahead are blocked\n";
 								int CwCcw = randCwCcw();
 								while (!(newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 4)]) || !(newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i - 2)]) || newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i)])
 								{
-									MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", rotating\n";
+									if (RoadTileManager.bDebugEnv) MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", rotating\n";
 
 									newTile.transform.Rotate(0, CwCcw*90, 0);
 									newTile.GetComponent<RoadGenerator>().RefreshExits();
 								}
-								MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", final\n";
+								if (RoadTileManager.bDebugEnv) MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", final\n";
 							}
 							else if (!hit[Wrap0to7(i - 1)].gameObject.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 2)] && hit[Wrap0to7(i + 1)].gameObject.GetComponent<RoadGenerator>().Exit[Wrap0to7(i - 2)]) // exit right only (and blocked ahead)
 							{
 								GameObject newTile = GeneratePiece(RoadTileManager.Corner, i, RoadTileManager.checkpoint.RoadMapRoot.transform);
-								MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " because the occupied tile to the right has a valid exit, and the left and ahead are blocked\n";
+								if (RoadTileManager.bDebugEnv) MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " because the occupied tile to the right has a valid exit, and the left and ahead are blocked\n";
 								int CwCcw = randCwCcw();
 								while (!(newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 4)]) || newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i)] || !(newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 2)]))
 								{
-									MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", rotating\n";
+									if (RoadTileManager.bDebugEnv) MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", rotating\n";
 
 									newTile.transform.Rotate(0, CwCcw*90, 0);
 									newTile.GetComponent<RoadGenerator>().RefreshExits();
 								}
-								MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", final\n";
+								if (RoadTileManager.bDebugEnv) MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", final\n";
 							}
 							else
 							{
 								GameObject newTile = GeneratePiece(RoadTileManager.DeadEnd, i, RoadTileManager.checkpoint.RoadMapRoot.transform);
-								MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " because it's all blocked\n";
+								if (RoadTileManager.bDebugEnv) MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " because it's all blocked\n";
 								int CwCcw = randCwCcw();
 								while (!(newTile.GetComponent<RoadGenerator>().Exit[Wrap0to7(i + 4)]))
 								{
-									MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", rotating\n";
+									if (RoadTileManager.bDebugEnv) MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", rotating\n";
 
 									newTile.transform.Rotate(0, CwCcw*90, 0);
 									newTile.GetComponent<RoadGenerator>().RefreshExits();
 								}
-								MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", final\n";
+								if (RoadTileManager.bDebugEnv) MySpecificDebug += newTile.GetComponent<RoadGenerator>().LogExits() + ", final\n";
 							}
 						}
 					}
@@ -535,7 +535,7 @@ public class RoadGenerator : WorldTile
 				if (!hit[i])//.gameObject.GetComponent<RoadGenerator>())
 				{
 					//if (DebugLogs) Debug.Log(gameObject.name + " can expand " + (Direction)i+", space left "+(Direction)Wrap0to7(i-1)+", space right "+(Direction)Wrap0to7(i+1));
-					MySpecificDebug += "I can expand " + (Direction)i + ", space left " + (Direction)Wrap0to7(i - 1) + ", space right " + (Direction)Wrap0to7(i + 1) + "\n";
+					if (RoadTileManager.bDebugEnv) MySpecificDebug += "I can expand " + (Direction)i + ", space left " + (Direction)Wrap0to7(i - 1) + ", space right " + (Direction)Wrap0to7(i + 1) + "\n";
 
 					if (!Exit[i])
 					{
@@ -547,7 +547,7 @@ public class RoadGenerator : WorldTile
                             WorldTileManager.instance.AddTile(newTile.GetComponent<WorldTile>());
                             if (newTile.GetComponent<DisabledRoadGenerator>().TileClassification == DisabledRoadGenerator.Type.Pavement)
 							{
-								MySpecificDebug += "Generated pavement to the " + (Direction)i + ", rotating to " + (i * 45 - 90) + "\n";
+								if (RoadTileManager.bDebugEnv) MySpecificDebug += "Generated pavement to the " + (Direction)i + ", rotating to " + (i * 45 - 90) + "\n";
 								newTile.transform.localRotation = Quaternion.Euler(0, i * 45 - 90, 0);
 							}
 						}
@@ -574,7 +574,7 @@ public class RoadGenerator : WorldTile
 								newTile = Instantiate(newTileClass, transform.position + new Vector3(Xoffset(i) * WorldTileManager.TILE_SIZE, newTileClass.GetComponent<RoadGenerator>().YOffset, Zoffset(i) * WorldTileManager.TILE_SIZE), Quaternion.identity, RoadTileManager.checkpoint.RoadMapRoot.transform);
                                 WorldTileManager.instance.AddTile(newTile.GetComponent<WorldTile>());
                             }
-							else if (newTileType == DisabledRoadGenerator.Type.Grass)
+							else if (newTileType == DisabledRoadGenerator.Type.Grass || newTileType == DisabledRoadGenerator.Type.Water)
 							{
 								GameObject newTileClass = RoadTileManager.Grass;
 								newTile = Instantiate(newTileClass, transform.position + new Vector3(Xoffset(i) * WorldTileManager.TILE_SIZE, newTileClass.GetComponent<RoadGenerator>().YOffset, Zoffset(i) * WorldTileManager.TILE_SIZE), Quaternion.identity, RoadTileManager.checkpoint.RoadMapRoot.transform);
@@ -589,7 +589,7 @@ public class RoadGenerator : WorldTile
 
 							if (newTile && newTile.GetComponent<DisabledRoadGenerator>().TileClassification == DisabledRoadGenerator.Type.Pavement)
 							{
-								MySpecificDebug += "Generated pavement to the " + (Direction)i + ", rotating to " +(i*45-90)+"\n";
+								if (RoadTileManager.bDebugEnv) MySpecificDebug += "Generated pavement to the " + (Direction)i + ", rotating to " +(i*45-90)+"\n";
 								newTile.transform.localRotation = Quaternion.Euler(0, i * 45 - 90, 0);
 							}
 						}
@@ -663,7 +663,6 @@ public class RoadGenerator : WorldTile
 		// correct road exit directions to reflect a rotated tile
 		if (Exit[2] || Exit[6] || Exit[0] || Exit[4])
 		{
-			//Debug.Log(transform.eulerAngles.y.ToString());
 			bool oldNegZ, oldNegX;
 
 			switch (transform.eulerAngles.y.ToString())
@@ -696,7 +695,7 @@ public class RoadGenerator : WorldTile
 			}
 			//if (DebugLogs) Debug.Log(LogExits());
 		}
-		//MySpecificDebug += Time.unscaledTime + " Refreshed exits\n";
+		//if (RoadTileManager.bDebugEnv) MySpecificDebug += Time.unscaledTime + " Refreshed exits\n";
 	}
 
 	// where i is the Direction

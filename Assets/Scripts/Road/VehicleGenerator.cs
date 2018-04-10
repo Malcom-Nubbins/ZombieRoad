@@ -37,8 +37,8 @@ public class VehicleGenerator : MonoBehaviour
 			r = Random.Range(0, UnlockedCars.Length);
 			i = rg.Exit[(int)RoadGenerator.Direction.North] ? (int)RoadGenerator.Direction.West : (int)RoadGenerator.Direction.South;
 			GameObject car = Instantiate(UnlockedCars[r], gameObject.transform.position+new Vector3((RoadGenerator.Xoffset(i) * WorldTileManager.TILE_SIZE )/ 4,3,(RoadGenerator.Zoffset(i) * WorldTileManager.TILE_SIZE) /4), gameObject.transform.rotation);
-			//rg.MySpecificDebug += "generated vehicle @ " + car.transform.position + ", will not cull\n";
-			//rg.CullingExempt = true;
+			//if (RoadTileManager.bDebugEnv) rg.MySpecificDebug += "generated vehicle @ " + car.transform.position + "\n";
+
 			if (RoadTileManager.bMainMenu) car.GetComponent<BaseVehicleClass>().health = 0;
 		}
 

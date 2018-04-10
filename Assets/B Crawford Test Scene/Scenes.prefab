@@ -57,4 +57,5 @@ MonoBehaviour:
   - BCrawfordUnlockScene
   - BCrawfordGameOverScene
   - BCrawfordShopScene
-  - BCrawfordShopScene
+  - BCrawfordMapScene
+  - BCrawfordSettingsScene

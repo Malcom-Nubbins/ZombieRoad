@@ -77,7 +77,9 @@ public class OccupyVehicle : MonoBehaviour
 		}
 		else
 		{
-			//place player on bike
+            //place player on bike
+            BikeLean bike = vehicle.GetComponent<BikeLean>();
+            bike.enabled = true;
 			gameObject.transform.parent = driverTransform;
 			gameObject.transform.localPosition = Vector3.zero;
 			gameObject.transform.localRotation = Quaternion.identity;
