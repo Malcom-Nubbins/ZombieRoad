@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4023398876743764}
   - component: {fileID: 65618109870987588}
   - component: {fileID: 114291954659201814}
+  - component: {fileID: 114774008633402946}
   m_Layer: 10
   m_Name: Green Skyscraper
   m_TagString: Untagged
@@ -251,3 +252,14 @@ MonoBehaviour:
   type: 1
   unlocked: 1
   Price: 10
+--- !u!114 &114774008633402946
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1149320171371916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90cf1a00efee29b44aec306680bc4bc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

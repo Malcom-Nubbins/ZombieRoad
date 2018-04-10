@@ -93,6 +93,7 @@
      <Compile Include="Assets\B Crawford Test Scene\DieInstantly.cs" />
      <Compile Include="Assets\B Crawford Test Scene\PhysicsTest.cs" />
      <Compile Include="Assets\B Crawford Test Scene\TestZombieSpawner.cs" />
+     <Compile Include="Assets\ExtraVehicleSpawner.cs" />
      <Compile Include="Assets\Kieran Test Scene\LoadingSceneScripts\ButtonScript.cs" />
      <Compile Include="Assets\Kieran Test Scene\ParticleEffect.cs" />
      <Compile Include="Assets\Scripts\AdsScript.cs" />
@@ -139,6 +140,7 @@
      <Compile Include="Assets\Scripts\Road\WorldTileManager.cs" />
      <Compile Include="Assets\Scripts\Scenes.cs" />
      <Compile Include="Assets\Scripts\SetMaterialZWrite.cs" />
+     <Compile Include="Assets\Scripts\SettingMasterVolume.cs" />
      <Compile Include="Assets\Scripts\TransparentifyObject.cs" />
      <Compile Include="Assets\Scripts\Unlocks\Currency.cs" />
      <Compile Include="Assets\Scripts\Unlocks\SettingsResetUnlocks.cs" />

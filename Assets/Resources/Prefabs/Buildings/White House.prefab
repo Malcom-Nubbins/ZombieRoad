@@ -54,6 +54,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4583597596595254}
   - component: {fileID: 114700580680548600}
+  - component: {fileID: 114652498267606032}
   m_Layer: 10
   m_Name: White House
   m_TagString: Building
@@ -281,6 +282,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnAllAtOnce: 0
   debugSpawnEveryFrame: 0
+--- !u!114 &114652498267606032
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1661340654329924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90cf1a00efee29b44aec306680bc4bc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114700580680548600
 MonoBehaviour:
   m_ObjectHideFlags: 1
