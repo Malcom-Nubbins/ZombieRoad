@@ -60,12 +60,32 @@ public class ShopScreen : MonoBehaviour {
             GameObject prefab = _lockedItems[_currentSelectedItem].gameObject;
             _lockedItemDisplay = Instantiate(prefab, Vector3.zero, rotation, transform);
             Collider collider = _lockedItemDisplay.GetComponentInChildren<Collider>();
-            float objectSize = 10.0f;
-            if (collider) objectSize = collider.bounds.size.magnitude;
-            float displaySize = 6.0f;
-            float scale = (displaySize / objectSize);
-            _lockedItemDisplay.transform.localScale = Vector3.one * scale;
-            _lockedItemDisplay.transform.localPosition -= Vector3.up * (scale / 2.0f);
+
+			if (_lockedItemDisplay.GetComponent<Unlockable>().type == UnlockableType.WEAPON)
+			{
+				float objectSize = 10.0f;
+				if (collider) objectSize = collider.bounds.size.magnitude;
+				float displaySize = 6.0f;
+				float scale = (displaySize / objectSize);
+				_lockedItemDisplay.transform.localScale = Vector3.one * scale;
+				_lockedItemDisplay.transform.localPosition -= Vector3.up * (scale / 2.0f);
+			}
+			else
+			{
+				_lockedItemDisplay.transform.localScale = Vector3.one * 1.5f;
+				_lockedItemDisplay.transform.position = new Vector3(0.0f, -8.0f, 20.0f);
+			
+				if (_lockedItemDisplay.GetComponent<Unlockable>().type == UnlockableType.SKYSCRAPER)
+				{
+					_lockedItemDisplay.transform.localScale = Vector3.one * 0.3f;
+					_lockedItemDisplay.transform.position = new Vector3(0.0f, -8.0f, 20.0f);
+				}
+				else if (_lockedItemDisplay.GetComponent<Unlockable>().type == UnlockableType.HOUSE || _lockedItemDisplay.GetComponent<Unlockable>().type == UnlockableType.SHOP)
+				{
+					_lockedItemDisplay.transform.localScale = Vector3.one * 0.65f;
+					_lockedItemDisplay.transform.position = new Vector3(0.0f, -8.0f, 20.0f);
+				}
+			}
 
             if (_lockedItemDisplay.GetComponent<SeekPlayer>() != null)
             {
@@ -162,9 +182,6 @@ public class ShopScreen : MonoBehaviour {
         {
             _currentCooldownTime -= Time.deltaTime;
         }
-
-        //Vector3 buildingScale = new Vector3(0.30f, 0.30f, 0.30f);
-        //Vector3 otherBuildingScale = new Vector3(0.65f, 0.65f, 0.65f);
 
         if (_lockedItemDisplay) _lockedItemDisplay.transform.Rotate(Vector3.up, 20 * Time.deltaTime);
     }
