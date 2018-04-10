@@ -101,6 +101,6 @@ public class OccupyVehicle : MonoBehaviour
         GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
         GetComponent<Collider>().enabled = true;
 
-        SetOccupyCooldown(2.0f);
+        SetOccupyCooldown(1.0f);
     }
 }

@@ -7,13 +7,14 @@ public class Scenes : MonoBehaviour
 {
     public enum Scene
     {
-        LOADING = 0,
+        TITLE = 0,
         GAME = 1,
         UNLOCK = 2,
         GAME_OVER = 3,
         SHOP = 4,
 		MAP = 5,
-        SETTINGS = 6
+        SETTINGS = 6,
+        LOADING = 7
     }
     public string[] sceneNames;
 
@@ -22,6 +23,8 @@ public class Scenes : MonoBehaviour
     private void OnEnable()
     {
         instance = this;
+
+        DontDestroyOnLoad(this);
     }
 
     public Scene GetCurrentScene()
@@ -43,8 +46,23 @@ public class Scenes : MonoBehaviour
         return (scene == Scene.GAME) ? UnlockManager.instance.gameObject.GetComponent<MapSelection>().GetSelectedMap() : sceneNames[(int)scene];
     }
 
+    public void LoadGameScene()
+    {
+        StartCoroutine(LoadGameSceneAsync());
+    }
+
+    IEnumerator LoadGameSceneAsync()
+    {
+        AsyncOperation gameLoad = SceneManager.LoadSceneAsync(GetSceneName(Scene.GAME));
+
+        while(!gameLoad.isDone)
+        {
+            yield return null;
+        }
+    }
+
     public void LoadScene(Scene scene, LoadSceneMode mode = LoadSceneMode.Single)
     {
-		SceneManager.LoadScene(GetSceneName(scene), mode);
+		SceneManager.LoadSceneAsync(GetSceneName(scene), mode);
     }
 }

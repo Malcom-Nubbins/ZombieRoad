@@ -359,7 +359,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -415,7 +415,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -495,7 +495,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -551,7 +551,7 @@ MonoBehaviour:
   zombieDetector: {fileID: 114747302335946366}
   zombie: {fileID: 0}
   followCamera: {fileID: 0}
-  pickUpSound: {fileID: 0}
+  pickUpSound: {fileID: 8300000, guid: eba8cce515b0c7b4297dcc9765865c08, type: 3}
   attacking: 0
 --- !u!114 &114178941160081296
 MonoBehaviour:
@@ -590,7 +590,7 @@ MonoBehaviour:
   rotationAngle: 200
   pivot: {fileID: 4827089163185860}
   centerOfMass: {x: 0, y: -1.5, z: 0}
-  footsteps: {fileID: 0}
+  footsteps: {fileID: 8300000, guid: f5b50cfe92235494faa59242f8ec1086, type: 3}
   measuredSpeed: 0
 --- !u!114 &114438567250874226
 MonoBehaviour:
