@@ -7,13 +7,14 @@ public class Scenes : MonoBehaviour
 {
     public enum Scene
     {
-        LOADING = 0,
+        TITLE = 0,
         GAME = 1,
         UNLOCK = 2,
         GAME_OVER = 3,
         SHOP = 4,
 		MAP = 5,
-        SETTINGS = 6
+        SETTINGS = 6,
+        LOADING = 7
     }
     public string[] sceneNames;
 
@@ -22,6 +23,8 @@ public class Scenes : MonoBehaviour
     private void OnEnable()
     {
         instance = this;
+
+        DontDestroyOnLoad(this);
     }
 
     public Scene GetCurrentScene()

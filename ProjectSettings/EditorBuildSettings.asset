@@ -56,3 +56,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Sam/Somerset.unity
     guid: e2bd372299c49374fbebb5d1341c2344
+  - enabled: 1
+    path: Assets/LoadingScene.unity
+    guid: e010a2727a9190642813024678020ad5

@@ -213,7 +213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e694fd0921a07f42a879bf906b50b82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scene: 1
+  scene: 7
 --- !u!114 &28111299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1072,6 +1072,7 @@ MonoBehaviour:
   - ShopScene
   - MapScene
   - SettingsScene
+  - LoadingScene
 --- !u!4 &782550076
 Transform:
   m_ObjectHideFlags: 0
