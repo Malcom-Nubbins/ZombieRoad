@@ -93,7 +93,6 @@
      <Compile Include="Assets\B Crawford Test Scene\DieInstantly.cs" />
      <Compile Include="Assets\B Crawford Test Scene\PhysicsTest.cs" />
      <Compile Include="Assets\B Crawford Test Scene\TestZombieSpawner.cs" />
-     <Compile Include="Assets\ExtraVehicleSpawner.cs" />
      <Compile Include="Assets\Kieran Test Scene\LoadingSceneScripts\ButtonScript.cs" />
      <Compile Include="Assets\Kieran Test Scene\ParticleEffect.cs" />
      <Compile Include="Assets\Scripts\AdsScript.cs" />
@@ -133,6 +132,7 @@
      <Compile Include="Assets\Scripts\Road\Buildings\GrassPopulationManager.cs" />
      <Compile Include="Assets\Scripts\Road\Buildings\GrassPopulator.cs" />
      <Compile Include="Assets\Scripts\Road\DisabledRoadGenerator.cs" />
+     <Compile Include="Assets\Scripts\Road\ExtraVehicleSpawner.cs" />
      <Compile Include="Assets\Scripts\Road\RoadGenerator.cs" />
      <Compile Include="Assets\Scripts\Road\RoadTileManager.cs" />
      <Compile Include="Assets\Scripts\Road\VehicleGenerator.cs" />
