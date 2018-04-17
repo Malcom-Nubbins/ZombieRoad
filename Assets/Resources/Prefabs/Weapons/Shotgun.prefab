@@ -197,6 +197,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlockableID: WeaponShotgun
   type: 3
-  unlocked: 1
+  unlocked: 0
   Price: 15
-  description: Shotgun
+  description: High damage, slow speed

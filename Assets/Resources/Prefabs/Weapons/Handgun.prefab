@@ -185,9 +185,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlockableID: WeaponHandgun
   type: 3
-  unlocked: 1
+  unlocked: 0
   Price: 15
-  description: Pistol
+  description: Rooty Tooty Point and Shooty
 --- !u!114 &114846047226032498
 MonoBehaviour:
   m_ObjectHideFlags: 1
