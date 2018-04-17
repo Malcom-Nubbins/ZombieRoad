@@ -976,8 +976,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlockableID: CarSportsRed
   type: 4
-  unlocked: 0
+  unlocked: 1
   Price: 10
+  description: Speedy
 --- !u!114 &114572470766825248
 MonoBehaviour:
   m_ObjectHideFlags: 1

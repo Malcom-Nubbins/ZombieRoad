@@ -270,3 +270,4 @@ MonoBehaviour:
   type: 1
   unlocked: 0
   Price: 10
+  description: Spawns more vehicles

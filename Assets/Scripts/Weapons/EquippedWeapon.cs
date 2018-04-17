@@ -101,7 +101,11 @@ public class EquippedWeapon : MonoBehaviour
 		}
         if (attacking)
         {
-            attack();
+            PlayerHealth playerHealth = GameObject.Find("PlayerCharacter").GetComponent<PlayerHealth>();
+            if (playerHealth.health > 0)
+            {
+                attack();
+            }
         }
     }
     public void playPickUpSound()

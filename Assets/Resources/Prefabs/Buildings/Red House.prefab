@@ -303,6 +303,7 @@ MonoBehaviour:
   type: 0
   unlocked: 0
   Price: 15
+  description: Spawns more vehicles
 --- !u!114 &114345921134515920
 MonoBehaviour:
   m_ObjectHideFlags: 1

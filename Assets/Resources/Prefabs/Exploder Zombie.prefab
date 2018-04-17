@@ -310,6 +310,7 @@ MonoBehaviour:
   type: 5
   unlocked: 0
   Price: 10
+  description: Explode instead of cluttering up the road
 --- !u!114 &114653475012181372
 MonoBehaviour:
   m_ObjectHideFlags: 1
