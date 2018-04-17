@@ -1022,7 +1022,7 @@ MonoBehaviour:
   centerOfMass: {x: 0, y: -0.4, z: 0}
   footsteps: {fileID: 0}
   measuredSpeed: 0
-  health: 50
+  health: 40
   speedModifier: 1
   totalFuel: 20
   fuelConsumptionRate: 1
