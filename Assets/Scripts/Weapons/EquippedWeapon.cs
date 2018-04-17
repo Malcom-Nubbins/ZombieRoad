@@ -114,7 +114,7 @@ public class EquippedWeapon : MonoBehaviour
 		if (equippedWeapon == null || AttackCooldown > 0)
 		{
             //Debug.Log(AttackCooldown);
-            AttackCooldown = AttackCooldown - (Time.deltaTime * 50);
+            AttackCooldown = AttackCooldown - (Time.deltaTime );
 			return;
             
 		}

@@ -11,7 +11,7 @@ public class HandgunScript : WeaponScript
 		this.weapon = new Handgun(
 		"Handgun",
 		25.0f, // range
-		0.3f, //delay
+		0.5f, //delay
 		31,  //durability/ammo
         true,
         1,
