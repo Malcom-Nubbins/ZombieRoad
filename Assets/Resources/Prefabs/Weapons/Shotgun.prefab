@@ -69,7 +69,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1550932385614412}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: -0, y: 0, z: 0.46}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4649675986766872}
@@ -197,5 +197,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlockableID: WeaponShotgun
   type: 3
-  unlocked: 0
+  unlocked: 1
   Price: 15

@@ -185,7 +185,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlockableID: WeaponHandgun
   type: 3
-  unlocked: 0
+  unlocked: 1
   Price: 15
 --- !u!114 &114846047226032498
 MonoBehaviour:
