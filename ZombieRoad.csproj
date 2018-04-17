@@ -7,7 +7,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{2D72774E-429A-825D-4088-19806C3B7584}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <AssemblyName>Assembly-CSharp.dll</AssemblyName>
+    <AssemblyName>Assembly-CSharp</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
@@ -287,13 +287,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Unity.PackageManagerUI.Editor.csproj">
-      <Project>{6877705C-FBD9-0C4F-5AFB-6FB431E5D39D}</Project>
-      <Name>Unity.PackageManagerUI.Editor</Name>
-    </ProjectReference>
     <ProjectReference Include="UnityEditor.StandardEvents.csproj">
       <Project>{6800202F-4402-D405-F8CB-03DC7BD78B92}</Project>
       <Name>UnityEditor.StandardEvents</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.PackageManagerUI.Editor.csproj">
+      <Project>{6877705C-FBD9-0C4F-5AFB-6FB431E5D39D}</Project>
+      <Name>Unity.PackageManagerUI.Editor</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -339,7 +339,6 @@
     <Compile Include="Assets\B Crawford Test Scene\DieInstantly.cs" />
     <Compile Include="Assets\B Crawford Test Scene\PhysicsTest.cs" />
     <Compile Include="Assets\B Crawford Test Scene\TestZombieSpawner.cs" />
-    <Compile Include="Assets\ExtraVehicleSpawner.cs" />
     <Compile Include="Assets\Kieran Test Scene\LoadingSceneScripts\ButtonScript.cs" />
     <Compile Include="Assets\Kieran Test Scene\ParticleEffect.cs" />
     <Compile Include="Assets\Scripts\AdsScript.cs" />
@@ -379,6 +378,7 @@
     <Compile Include="Assets\Scripts\Road\Buildings\GrassPopulationManager.cs" />
     <Compile Include="Assets\Scripts\Road\Buildings\GrassPopulator.cs" />
     <Compile Include="Assets\Scripts\Road\DisabledRoadGenerator.cs" />
+    <Compile Include="Assets\Scripts\Road\ExtraVehicleSpawner.cs" />
     <Compile Include="Assets\Scripts\Road\RoadGenerator.cs" />
     <Compile Include="Assets\Scripts\Road\RoadTileManager.cs" />
     <Compile Include="Assets\Scripts\Road\VehicleGenerator.cs" />
