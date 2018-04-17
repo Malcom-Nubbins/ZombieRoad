@@ -132,8 +132,11 @@ public class Checkpoint : MonoBehaviour
         float nextChackpointSizeMultiplier = 1.2f;
 
 		checkpointRadius *= nextChackpointSizeMultiplier;
+
         checkpointDisplayRadius = 0;
-		if (checkpointRadius > 50.0f && checkpointRadius < 256.0f && lods.Length > 1)
+        gameObject.transform.localScale = Vector3.zero;
+
+        if (checkpointRadius > 50.0f && checkpointRadius < 256.0f && lods.Length > 1)
 			gameObject.GetComponent<MeshFilter>().mesh = lods[1];
 		else if (checkpointRadius > 256.0f && checkpointRadius < 1200.0f && lods.Length > 2)
 			gameObject.GetComponent<MeshFilter>().mesh = lods[2];
