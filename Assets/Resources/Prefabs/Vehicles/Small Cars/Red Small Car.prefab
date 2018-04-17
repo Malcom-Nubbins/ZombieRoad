@@ -491,17 +491,16 @@ MonoBehaviour:
   centerOfMass: {x: 0, y: -1.5, z: 0}
   footsteps: {fileID: 0}
   measuredSpeed: 0
-  health: 50
+  health: 30
   speedModifier: 1.2
   totalFuel: 18
   fuelConsumptionRate: 1
   maxSpeed: 14
   acceleration: 3.5
+  deceleration: 4.5
   crashSound: {fileID: 0}
   engineSound: {fileID: 0}
-  zombieHit: {fileID: 0}
   engineDying: {fileID: 0}
-  debugDisableAutoExit: 0
 --- !u!114 &114187579890621332
 MonoBehaviour:
   m_ObjectHideFlags: 1
