@@ -8,19 +8,22 @@ public class ExtraVehicleSpawner : MonoBehaviour
 
 	void Start()
     {
-        TilePosition pos = new TilePosition(transform.position);
-        foreach (TilePosition neighborOffset in new TilePosition[] { new TilePosition(-1, 0), new TilePosition(1, 0), new TilePosition(0, -1), new TilePosition(0, 1) })
+        if (Random.value < spawnChance)
         {
-            if (Random.value < spawnChance)
+            TilePosition pos = new TilePosition(transform.position);
+            //for each neighbor tile
+            for (int x = -1; x <= 1; x++)
             {
-                WorldTile tile = WorldTileManager.instance.GetTile(pos + neighborOffset);
-                if (tile)
+                for (int z = -1; z <= 1; z++)
                 {
-                    for (int i = 0; i < 10; i++)//eventually will spawn a vehicle
+                    WorldTile tile = WorldTileManager.instance.GetTile(pos + new TilePosition(x, z));
+                    if (tile)
                     {
-                        if (!tile.GetComponent<VehicleGenerator>())
+                        //if it has a vehicle generator, then it can have vehicles spawned on it
+                        VehicleGenerator vehicleGenerator = tile.GetComponent<VehicleGenerator>();
+                        if (vehicleGenerator)
                         {
-                            tile.gameObject.AddComponent<VehicleGenerator>();
+                            vehicleGenerator.TrySpawn();
                         }
                     }
                 }
