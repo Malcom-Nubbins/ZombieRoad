@@ -548,8 +548,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlockableID: CarSmallSilver
   type: 4
-  unlocked: 0
+  unlocked: 1
   Price: 5
+  description: Basic car
 --- !u!114 &114644126986228774
 MonoBehaviour:
   m_ObjectHideFlags: 1

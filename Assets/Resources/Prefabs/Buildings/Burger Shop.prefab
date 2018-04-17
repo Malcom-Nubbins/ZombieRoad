@@ -588,6 +588,7 @@ MonoBehaviour:
   type: 2
   unlocked: 1
   Price: 15
+  description: Spawns weapons
 --- !u!114 &114395372187881684
 MonoBehaviour:
   m_ObjectHideFlags: 1

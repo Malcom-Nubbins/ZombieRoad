@@ -198,4 +198,5 @@ MonoBehaviour:
   unlockableID: WeaponShotgun
   type: 3
   unlocked: 0
-  Price: 15
+  Price: 0
+  description: Shotgun

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class UnlockScreen : MonoBehaviour
@@ -9,6 +10,7 @@ public class UnlockScreen : MonoBehaviour
 	public GameObject Coins;
 
 	GameObject newItemDisplay;
+    Text itemDescriptionText;
     Quaternion rotation = Quaternion.Euler(0.0f, 180.0f, 0.0f);
 	GameObject lootbox;
 	AnimationCurve[] animLB = new AnimationCurve[2];
@@ -18,6 +20,9 @@ public class UnlockScreen : MonoBehaviour
 	float fTimeToFullSize;
 	void Start()
     {
+        itemDescriptionText = GameObject.Find("ItemDescriptionText").GetComponent<Text>();
+        itemDescriptionText.text = "";
+
 		/*Scale*/animLB[0] = new AnimationCurve(new Keyframe(0, 9.0f), new Keyframe(fTimeToBurst, 8.0f), new Keyframe(fTimeToBurst+1.0f, 7000.0f));
 		/* Yaw */animLB[1] = new AnimationCurve(new Keyframe(0, 175), new Keyframe(1, 185));
 		animLB[0].postWrapMode = WrapMode.ClampForever;
@@ -78,6 +83,11 @@ public class UnlockScreen : MonoBehaviour
 			newItemDisplay.transform.localScale = new Vector3(animNID.Evaluate(Time.timeSinceLevelLoad), animNID.Evaluate(Time.timeSinceLevelLoad), animNID.Evaluate(Time.timeSinceLevelLoad));
 
             newItemDisplay.transform.position = new Vector3(0.0f, -6.75f, 20.0f);
+
+            if (itemDescriptionText.text.Equals(""))
+            {
+                itemDescriptionText.text = newItemDisplay.GetComponent<Unlockable>().description;
+            }
 		}
     }
 }

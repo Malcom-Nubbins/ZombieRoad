@@ -186,7 +186,8 @@ MonoBehaviour:
   unlockableID: WeaponHandgun
   type: 3
   unlocked: 0
-  Price: 15
+  Price: 0
+  description: Pistol
 --- !u!114 &114846047226032498
 MonoBehaviour:
   m_ObjectHideFlags: 1

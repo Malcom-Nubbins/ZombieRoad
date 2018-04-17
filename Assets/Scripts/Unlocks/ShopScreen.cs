@@ -13,6 +13,7 @@ public class ShopScreen : MonoBehaviour {
 
     Text _itemNameText;
     Text _itemCostText;
+    Text _itemDescriptionText;
     Text _currentCoinsText;
 
     Button purchaseButton;
@@ -28,6 +29,7 @@ public class ShopScreen : MonoBehaviour {
         
         _itemNameText = GameObject.Find("ItemNameText").GetComponent<Text>();
         _itemCostText = GameObject.Find("ItemPriceText").GetComponent<Text>();
+        _itemDescriptionText = GameObject.Find("ItemDescriptionText").GetComponent<Text>();
         _currentCoinsText = GameObject.Find("CurrentCoinsText").GetComponent<Text>();
 
         _itemNameText.text = "";
@@ -105,6 +107,7 @@ public class ShopScreen : MonoBehaviour {
         _currentCoinsText.text = "Coins: " + Currency.GetCurrency();
         _itemNameText.text = _lockedItemDisplay.name.Substring(0, _lockedItemDisplay.name.IndexOf('('));
         _itemCostText.text = "Price: " + _lockedItems[_currentSelectedItem].Price + " coins";
+        _itemDescriptionText.text = _lockedItems[_currentSelectedItem].description;
     }
 
     void onPurchaseClick()

@@ -559,6 +559,7 @@ MonoBehaviour:
   type: 4
   unlocked: 0
   Price: 5
+  description: Basic car
 --- !u!114 &114572470766825248
 MonoBehaviour:
   m_ObjectHideFlags: 1
