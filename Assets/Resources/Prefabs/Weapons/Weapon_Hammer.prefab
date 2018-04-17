@@ -126,6 +126,7 @@ MonoBehaviour:
   type: 3
   unlocked: 1
   Price: 5
+  description: A hammer
 --- !u!114 &114343483671292986
 MonoBehaviour:
   m_ObjectHideFlags: 1

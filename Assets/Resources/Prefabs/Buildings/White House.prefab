@@ -293,6 +293,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90cf1a00efee29b44aec306680bc4bc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnChance: 0.5
 --- !u!114 &114700580680548600
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -308,3 +309,4 @@ MonoBehaviour:
   type: 0
   unlocked: 1
   Price: 15
+  description: Spawns more vehicles

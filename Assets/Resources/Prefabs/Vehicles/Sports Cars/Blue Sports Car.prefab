@@ -906,6 +906,7 @@ MonoBehaviour:
   type: 4
   unlocked: 1
   Price: 0
+  description: Speedy
 --- !u!114 &114644126986228774
 MonoBehaviour:
   m_ObjectHideFlags: 1

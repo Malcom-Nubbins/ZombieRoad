@@ -811,6 +811,7 @@ MonoBehaviour:
   type: 4
   unlocked: 1
   Price: 0
+  description: Not very safe, but won't run out of fuel
 --- !u!114 &114767771723590728
 MonoBehaviour:
   m_ObjectHideFlags: 1

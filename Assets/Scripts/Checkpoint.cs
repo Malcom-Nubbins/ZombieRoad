@@ -129,7 +129,9 @@ public class Checkpoint : MonoBehaviour
 
 	public virtual void UpdateCheckpoint()
 	{
-		checkpointRadius *= 1.5f;
+        float nextChackpointSizeMultiplier = 1.2f;
+
+		checkpointRadius *= nextChackpointSizeMultiplier;
         checkpointDisplayRadius = 0;
 		if (checkpointRadius > 50.0f && checkpointRadius < 256.0f && lods.Length > 1)
 			gameObject.GetComponent<MeshFilter>().mesh = lods[1];
@@ -143,7 +145,7 @@ public class Checkpoint : MonoBehaviour
 		gameObject.transform.SetPositionAndRotation(checkpointPosition, gameObject.transform.rotation);
 
 		level++;
-        nextTimeRemaining *= 1.5f;//scale time the same as radius
+        nextTimeRemaining *= nextChackpointSizeMultiplier;//scale time the same as radius
         timeRemaining += nextTimeRemaining;
         //Debug.Log("Checkpoint radius: " + checkpointRadius + ", Time added to get there: " + nextTimeRemaining);
 

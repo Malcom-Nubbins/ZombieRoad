@@ -322,5 +322,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlockableID: ShopSub
   type: 2
-  unlocked: 1
+  unlocked: 0
   Price: 15
+  description: eef freef

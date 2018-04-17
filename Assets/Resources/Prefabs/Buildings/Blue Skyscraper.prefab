@@ -248,6 +248,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90cf1a00efee29b44aec306680bc4bc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnChance: 0.5
 --- !u!114 &114654007044908862
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -261,5 +262,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlockableID: SkyscraperBlue
   type: 1
-  unlocked: 1
+  unlocked: 0
   Price: 10
+  description: Spawns more vehicles
