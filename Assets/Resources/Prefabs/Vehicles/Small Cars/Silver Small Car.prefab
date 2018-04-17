@@ -28,7 +28,7 @@ GameObject:
   - component: {fileID: 114120709303691022}
   - component: {fileID: 114073963236570632}
   m_Layer: 0
-  m_Name: Blue Small Car
+  m_Name: Silver Small Car
   m_TagString: Vehicle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -249,9 +249,11 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 7ad728bed83b6994cbf204590f9ae71e, type: 2}
   m_StaticBatchInfo:
@@ -264,6 +266,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -281,11 +284,13 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 7ad728bed83b6994cbf204590f9ae71e, type: 2}
+  - {fileID: 2100000, guid: f472c51771638d1419b89b919be5d53e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -296,6 +301,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -313,9 +319,11 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 7ad728bed83b6994cbf204590f9ae71e, type: 2}
   m_StaticBatchInfo:
@@ -328,6 +336,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -345,9 +354,11 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 7ad728bed83b6994cbf204590f9ae71e, type: 2}
   m_StaticBatchInfo:
@@ -360,6 +371,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -377,9 +389,11 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 7ad728bed83b6994cbf204590f9ae71e, type: 2}
   m_StaticBatchInfo:
@@ -392,6 +406,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -519,7 +534,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf955ce88a39406479a0813e00a6f5ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  withBloodMaterial: {fileID: 2100000, guid: 5c1a092127ccd8644a161c97e42e39ee, type: 2}
+  withBloodMaterial: {fileID: 2100000, guid: 62e11692887c6ca4d984e022d1b1c324, type: 2}
 --- !u!114 &114204360043616240
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -531,10 +546,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8813d7f832cbd00498d769024d7772f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unlockableID: CarSmallBlue
+  unlockableID: CarSmallSilver
   type: 4
-  unlocked: 1
-  Price: 0
+  unlocked: 0
+  Price: 5
 --- !u!114 &114644126986228774
 MonoBehaviour:
   m_ObjectHideFlags: 1

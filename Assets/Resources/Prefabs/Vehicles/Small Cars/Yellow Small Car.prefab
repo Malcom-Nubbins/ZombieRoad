@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 114200062863944200}
   - component: {fileID: 114583668557035408}
   m_Layer: 0
-  m_Name: Red Small Car
+  m_Name: Yellow Small Car
   m_TagString: Vehicle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -325,7 +325,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 0419a0b70b52da14f85c5a9a5f240068, type: 2}
+  - {fileID: 2100000, guid: 6da1f41eac593ff4d9f00281ce04f9e3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -555,7 +555,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8813d7f832cbd00498d769024d7772f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unlockableID: CarSmallRed
+  unlockableID: CarSmallYellow
   type: 4
   unlocked: 0
   Price: 5
@@ -570,7 +570,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf955ce88a39406479a0813e00a6f5ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  withBloodMaterial: {fileID: 2100000, guid: a0df66a2d98fca645892389119c07ccb, type: 2}
+  withBloodMaterial: {fileID: 2100000, guid: e0bfbe27dc3cddf40af56badfcfdaadb, type: 2}
 --- !u!114 &114583668557035408
 MonoBehaviour:
   m_ObjectHideFlags: 1
