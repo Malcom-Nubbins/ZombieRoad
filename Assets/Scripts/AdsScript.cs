@@ -33,13 +33,17 @@ public class AdsScript : MonoBehaviour
 			{
 				// Debug.Log("AD IS READY TO SHOw");
 				var options = new ShowOptions { resultCallback = HandleShopAd };
-				Advertisement.Show(options);
+				Advertisement.Show("rewardedVideo", options);
 			}
 			else
 			{
 				DisplayToast.ShowToast(toastString);
 			}
 		}
+        else
+        {
+            DisplayToast.ShowToast(toastString);
+        }
 	}
 
 	void HandleDeathAd(ShowResult result)
@@ -91,7 +95,7 @@ public class AdsScript : MonoBehaviour
 			{
 				// Debug.Log("SKIPPABLE AD IS SHOWING");
 				var options = new ShowOptions { resultCallback = HandleDeathAd };
-				Advertisement.Show(options);
+				Advertisement.Show("video", options);
 			}
 			else
 			{
