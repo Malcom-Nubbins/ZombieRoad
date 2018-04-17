@@ -31,6 +31,8 @@ public class Checkpoint : MonoBehaviour
 
     public event Action OnCheckpointExtend;
 
+    float checkpointDisplayRadius;//goes from 0 to checkpointRadius to animate next checkpoint
+
 	public virtual void Start()
 	{
 		checkpointPosition = FollowCamera.GetComponent<FollowCamera>().target.transform.position;
@@ -64,6 +66,13 @@ public class Checkpoint : MonoBehaviour
 		Vector3 playerPosition = FollowCamera.GetComponent<FollowCamera>().target.transform.position;
 		Vector3 distance = playerPosition - checkpointPosition;
 		distance.y = 0;
+
+        if (checkpointDisplayRadius < checkpointRadius)
+        {
+            checkpointDisplayRadius += checkpointRadius * 1.0f * Time.deltaTime;
+            if (checkpointDisplayRadius > checkpointRadius) checkpointDisplayRadius = checkpointRadius;
+            gameObject.transform.localScale = new Vector3(checkpointDisplayRadius * 2, 8.0f, checkpointDisplayRadius * 2);
+        }
 
 		if (distance.magnitude >= checkpointRadius)
 		{
@@ -121,7 +130,7 @@ public class Checkpoint : MonoBehaviour
 	public virtual void UpdateCheckpoint()
 	{
 		checkpointRadius *= 1.5f;
-		gameObject.transform.localScale = new Vector3(checkpointRadius * 2, 8.0f, checkpointRadius * 2);
+        checkpointDisplayRadius = 0;
 		if (checkpointRadius > 50.0f && checkpointRadius < 256.0f && lods.Length > 1)
 			gameObject.GetComponent<MeshFilter>().mesh = lods[1];
 		else if (checkpointRadius > 256.0f && checkpointRadius < 1200.0f && lods.Length > 2)
