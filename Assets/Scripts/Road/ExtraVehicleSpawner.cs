@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class ExtraVehicleSpawner : MonoBehaviour
 {
-    public float spawnChance = 0.5f;
+    
 
 	void Start()
     {
-        if (Random.value < spawnChance)
+        if (Random.value < gameObject.GetComponent<Unlockable>().Price / 100.0f)
         {
             TilePosition pos = new TilePosition(transform.position);
             //for each neighbor tile

@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4645003029607428}
   - component: {fileID: 114315925074130126}
-  - component: {fileID: 114001947746342446}
+  - component: {fileID: 114345921134515920}
   m_Layer: 10
   m_Name: Red House
   m_TagString: Building
@@ -173,9 +173,11 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 205187105f848b848b6011997b920c44, type: 2}
   m_StaticBatchInfo:
@@ -188,6 +190,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -205,9 +208,11 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 19eb47762a22f2c4e820a62ab39830ba, type: 2}
   m_StaticBatchInfo:
@@ -220,6 +225,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -269,17 +275,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 12, y: 19.804031, z: 15}
   m_Center: {x: -1.7000003, y: 9.902016, z: -0.00000007152555}
---- !u!114 &114001947746342446
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1195365599170674}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90cf1a00efee29b44aec306680bc4bc1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114231524685961178
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -308,3 +303,15 @@ MonoBehaviour:
   type: 0
   unlocked: 0
   Price: 15
+--- !u!114 &114345921134515920
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1195365599170674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b592c2c47dc271e42a510c7affa938c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnChance: 0.5

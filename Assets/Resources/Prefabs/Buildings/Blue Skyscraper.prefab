@@ -71,7 +71,7 @@ GameObject:
   - component: {fileID: 4651410179590918}
   - component: {fileID: 65210678452627466}
   - component: {fileID: 114654007044908862}
-  - component: {fileID: 114323425753362924}
+  - component: {fileID: 114517935238609174}
   m_Layer: 10
   m_Name: Blue Skyscraper
   m_TagString: Untagged
@@ -143,9 +143,11 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 62e4951ae8fa3bf46a1803c9ce95961a, type: 2}
   m_StaticBatchInfo:
@@ -158,6 +160,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -175,9 +178,11 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: e8489905ddd448b4ab0b675fa5fd5cda, type: 2}
   m_StaticBatchInfo:
@@ -190,6 +195,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -237,7 +243,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnAllAtOnce: 0
   debugSpawnEveryFrame: 0
---- !u!114 &114323425753362924
+--- !u!114 &114517935238609174
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -245,9 +251,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1845648901761644}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90cf1a00efee29b44aec306680bc4bc1, type: 3}
+  m_Script: {fileID: 11500000, guid: b592c2c47dc271e42a510c7affa938c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnChance: 0.5
 --- !u!114 &114654007044908862
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -261,5 +268,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlockableID: SkyscraperBlue
   type: 1
-  unlocked: 1
+  unlocked: 0
   Price: 10

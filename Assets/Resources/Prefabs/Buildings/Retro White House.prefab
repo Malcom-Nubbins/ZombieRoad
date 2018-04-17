@@ -53,7 +53,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4673071146823722}
   - component: {fileID: 114250525250702796}
-  - component: {fileID: 114460267585161064}
+  - component: {fileID: 114837520750367566}
   m_Layer: 10
   m_Name: Retro White House
   m_TagString: Building
@@ -111,9 +111,11 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 671290fc075233041bf14b8421573e87, type: 2}
   - {fileID: 2100000, guid: e3d24787f32327f4dbe18e9745e3b0cb, type: 2}
@@ -128,6 +130,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -168,9 +171,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlockableID: HouseWhite
   type: 0
-  unlocked: 1
+  unlocked: 0
   Price: 15
---- !u!114 &114460267585161064
+--- !u!114 &114837520750367566
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -178,6 +181,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1500864830911148}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90cf1a00efee29b44aec306680bc4bc1, type: 3}
+  m_Script: {fileID: 11500000, guid: b592c2c47dc271e42a510c7affa938c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnChance: 0.5

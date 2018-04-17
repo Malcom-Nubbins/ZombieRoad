@@ -37,7 +37,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4243224913013360}
   - component: {fileID: 114057574929689842}
-  - component: {fileID: 114315218489137458}
+  - component: {fileID: 114568253740037808}
   m_Layer: 10
   m_Name: Yellow House
   m_TagString: Building
@@ -173,9 +173,11 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: ce7a714a853d7c24888e4e766f615cce, type: 2}
   m_StaticBatchInfo:
@@ -188,6 +190,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -205,9 +208,11 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 205187105f848b848b6011997b920c44, type: 2}
   m_StaticBatchInfo:
@@ -220,6 +225,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -297,7 +303,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnAllAtOnce: 0
   debugSpawnEveryFrame: 0
---- !u!114 &114315218489137458
+--- !u!114 &114568253740037808
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -305,6 +311,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1261247030906472}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90cf1a00efee29b44aec306680bc4bc1, type: 3}
+  m_Script: {fileID: 11500000, guid: b592c2c47dc271e42a510c7affa938c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnChance: 0.5

@@ -5,7 +5,7 @@ using UnityEngine;
 public class VehicleGenerator : MonoBehaviour
 {
     public float spawnChance = 0.4f;
-    bool hasSpawned = false;
+    public bool hasSpawned = false;
 
     RoadGenerator rg;
     
@@ -60,6 +60,7 @@ public class VehicleGenerator : MonoBehaviour
             GameObject benchTemplate = Resources.Load<GameObject>("Prefabs/Destructable Scenery/bench");
             GameObject bench = Instantiate(benchTemplate, gameObject.transform.position + new Vector3((RoadGenerator.Xoffset(i) * WorldTileManager.TILE_SIZE) / 2.25f + (RoadGenerator.Xoffset(RoadGenerator.Wrap0to7(i - 2) * (int)WorldTileManager.TILE_SIZE)) / 5, 1.6f, (RoadGenerator.Zoffset(i) * WorldTileManager.TILE_SIZE) / 2.25f + (RoadGenerator.Zoffset(RoadGenerator.Wrap0to7(i - 2)) * WorldTileManager.TILE_SIZE) / 5), gameObject.transform.rotation);
             if (bSpinBench) bench.transform.Rotate(0, 180, 0);
+            hasSpawned = true;
         }
 
         r = Random.Range(0, 100);
@@ -70,7 +71,8 @@ public class VehicleGenerator : MonoBehaviour
         {
             GameObject[] RoadBlocks = Resources.LoadAll<GameObject>("Prefabs/Destructable Scenery/Fences/Road Barriers");
             r = Random.Range(0, RoadBlocks.Length);
-            Instantiate(RoadBlocks[r], transform.position, transform.rotation, transform);
+            Instantiate(RoadBlocks[r], transform.position, transform.rotation, transform);hasSpawned = true;
         }
+        
     }
 }

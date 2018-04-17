@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4023398876743764}
   - component: {fileID: 65618109870987588}
   - component: {fileID: 114291954659201814}
-  - component: {fileID: 114774008633402946}
+  - component: {fileID: 114086183280208224}
   m_Layer: 10
   m_Name: Green Skyscraper
   m_TagString: Untagged
@@ -143,9 +143,11 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: decdfb31ad7a5ed4bac663f0ea9c7e5a, type: 2}
   m_StaticBatchInfo:
@@ -158,6 +160,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -175,9 +178,11 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 62e4951ae8fa3bf46a1803c9ce95961a, type: 2}
   m_StaticBatchInfo:
@@ -190,6 +195,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -224,6 +230,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 17, y: 47.06996, z: 16}
   m_Center: {x: -0, y: 23.53498, z: 0}
+--- !u!114 &114086183280208224
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1149320171371916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b592c2c47dc271e42a510c7affa938c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnChance: 0.5
 --- !u!114 &114216955866127778
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -250,16 +268,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlockableID: SkyscraperGreen
   type: 1
-  unlocked: 1
+  unlocked: 0
   Price: 10
---- !u!114 &114774008633402946
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1149320171371916}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90cf1a00efee29b44aec306680bc4bc1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
