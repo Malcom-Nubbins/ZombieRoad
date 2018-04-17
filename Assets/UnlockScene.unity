@@ -701,7 +701,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e18d36e79d85d424e8ab0b8de1b42ab7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EffectPrefab: {fileID: 1088577136088666, guid: b0aaede4014376141818aa11d4925e00,
+  EffectPrefab: {fileID: 1088577136088666, guid: 68f220739efc0374ca23c36355fd4854,
     type: 2}
   Coins: {fileID: 1861811674704100, guid: a21a2c6f4d581c149afe626409352df8, type: 2}
 --- !u!4 &1999087013
