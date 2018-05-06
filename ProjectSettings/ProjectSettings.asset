@@ -119,7 +119,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 0.493
+  bundleVersion: 0.528
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -154,7 +154,7 @@ PlayerSettings:
   applicationIdentifier:
     Android: com.HoppingVikings.ZombieRoad
   buildNumber: {}
-  AndroidBundleVersionCode: 8
+  AndroidBundleVersionCode: 9
   AndroidMinSdkVersion: 16
   AndroidTargetSdkVersion: 0
   AndroidPreferredInstallLocation: 1
