@@ -887,8 +887,8 @@ MonoBehaviour:
   speedModifier: 1
   totalFuel: 500
   fuelConsumptionRate: 0
-  maxSpeed: 11
-  acceleration: 10
+  maxSpeed: 9
+  acceleration: 5
   deceleration: 20
   crashSound: {fileID: 0}
   engineSound: {fileID: 0}
