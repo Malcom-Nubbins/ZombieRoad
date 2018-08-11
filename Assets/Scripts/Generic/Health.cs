@@ -26,11 +26,17 @@ public class Health : MonoBehaviour
     public delegate void OnDeath();
     public event OnDeath onDeath;
 
+	void Awake()
+	{
+		health = startingHealth;
+
+		if (_followCamera == null && RoadTileManager.checkpoint != null)
+			_followCamera = RoadTileManager.checkpoint.FollowCamera.GetComponent<FollowCamera>();
+	}
+
     void Start()
     {
-        health = startingHealth;
-
-		if (_followCamera == null && RoadTileManager.checkpoint != null) _followCamera = RoadTileManager.checkpoint.FollowCamera.GetComponent<FollowCamera>();
+       
 	}
 
     void Update()

@@ -5,10 +5,13 @@ using UnityEngine;
 public class OccupyVehicle : MonoBehaviour
 {
     private float _occupyCooldown;
+
+	private bool _occupiedVehicle;
 	// Use this for initialization
 	void Start()
 	{
-        _occupyCooldown = 0.0f;	
+        _occupyCooldown = 0.0f;
+		_occupiedVehicle = false;
 	}
 
 	// Update is called once per frame
@@ -41,7 +44,7 @@ public class OccupyVehicle : MonoBehaviour
 
 	private void TryEnterVehicle(BaseVehicleClass vehicle)
 	{
-        if(_occupyCooldown <= 0.0f)
+        if(_occupyCooldown <= 0.0f && !_occupiedVehicle)
         {
             if (!Movement.InputLeft() && !Movement.InputRight())
             {
@@ -55,7 +58,8 @@ public class OccupyVehicle : MonoBehaviour
                 //if (followCamera.GetComponent<FollowCamera>() == null) Debug.Log("null followcamera component");
                 //if (followCamera.GetComponent<FollowCamera>().target == null) Debug.Log("null followcamera component target");
                 //if (vehicle == null) Debug.Log("null vehicle");
-                followCamera.GetComponent<FollowCamera>().target = vehicle.gameObject;
+				if(followCamera != null)
+					followCamera.GetComponent<FollowCamera>().target = vehicle.gameObject;
 
 				gameObject.GetComponent<DisableVehicle>().followCamera = null;
 				vehicle.GetComponent<DisableVehicle>().followCamera = followCamera;
@@ -64,6 +68,8 @@ public class OccupyVehicle : MonoBehaviour
 				EnterVehicle(vehicle);
 
                 Camera.main.GetComponent<TransparentifyObject>().player = vehicle.transform;
+
+	            _occupiedVehicle = true;
             }
         }
 	}
@@ -102,5 +108,6 @@ public class OccupyVehicle : MonoBehaviour
         GetComponent<Collider>().enabled = true;
 
         SetOccupyCooldown(1.0f);
+	    _occupiedVehicle = false;
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class RoadTileManager : MonoBehaviour
@@ -79,6 +80,13 @@ public class RoadTileManager : MonoBehaviour
 
 		hitTest = new TilePosition();
 		roundedVec = new Vector3();
+
+		//StartCoroutine(UpdateRoutine());
+	}
+
+	void Start()
+	{
+		StartCoroutine(UpdateRoutine());
 	}
 
 	GameObject EmergencyFieldRemover;
@@ -96,17 +104,37 @@ public class RoadTileManager : MonoBehaviour
 		return roundedVec;
 	}
 
+	private IEnumerator UpdateRoutine()
+	{
+		while (true)
+		{
+			if (!bMainMenu || Time.timeSinceLevelLoad < 5.0f)
+			{
+				if(bMainMenu)
+					yield return new WaitForSeconds(0.05f);
+				else
+				{
+					yield return new WaitForSeconds(0.2f);
+				}
+
+				foreach (WorldTile tile in WorldTileManager.instance.GetAllTiles())
+				{
+					var generator = tile as RoadGenerator;
+					if (generator != null)
+					{
+						generator.Extend(false);
+					}
+				}
+			}
+
+			yield return null;
+		}
+	}
+
     void Update()
     {
-		if (!bMainMenu || Time.timeSinceLevelLoad < 5.0f)
-        foreach (WorldTile tile in WorldTileManager.instance.GetAllTiles())
-        {
-            if (tile is RoadGenerator)
-            {
-                ((RoadGenerator)tile).Extend(false);
-            }
-        }
-    }
+	    
+	}
 
 	void FixedUpdate()
 	{

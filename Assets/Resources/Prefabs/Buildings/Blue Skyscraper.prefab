@@ -26,7 +26,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1082154219479434
 GameObject:
@@ -43,7 +43,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1165077001658870
 GameObject:
@@ -146,7 +146,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 2
   m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 62e4951ae8fa3bf46a1803c9ce95961a, type: 2}
@@ -181,7 +181,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 2
   m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: e8489905ddd448b4ab0b675fa5fd5cda, type: 2}
@@ -254,7 +254,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b592c2c47dc271e42a510c7affa938c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnChance: 0.5
 --- !u!114 &114654007044908862
 MonoBehaviour:
   m_ObjectHideFlags: 1

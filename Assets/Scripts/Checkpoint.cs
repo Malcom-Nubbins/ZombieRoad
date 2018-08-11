@@ -13,7 +13,7 @@ public class Checkpoint : MonoBehaviour
 	public GameObject FollowCamera;
 	public GameObject RoadMapRoot;
 
-	//public bool DebugDisableTimer;
+	public bool DebugDisableTimer;
 	public bool TextSizeFlag = false;
 
 	public float checkpointRadius;
@@ -79,7 +79,7 @@ public class Checkpoint : MonoBehaviour
 			UpdateCheckpoint();
 		}
 
-		if (timeRemaining > 0 /*&& !DebugDisableTimer*/)
+		if (timeRemaining > 0 && !DebugDisableTimer)
 			timeRemaining -= Time.deltaTime;
 
 		if (timeRemaining < 0)

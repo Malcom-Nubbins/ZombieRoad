@@ -34,6 +34,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1133161587109482
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4261543767839330}
+  - component: {fileID: 82991641893072884}
+  m_Layer: 0
+  m_Name: VehicleAudioSource
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1262837587265030
 GameObject:
   m_ObjectHideFlags: 0
@@ -46,22 +62,6 @@ GameObject:
   - component: {fileID: 23702442549473674}
   m_Layer: 0
   m_Name: car_model
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1338868885371078
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4191797175382038}
-  - component: {fileID: 82423795707683390}
-  m_Layer: 0
-  m_Name: CrashAudioSource
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -140,32 +140,17 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1591123282181500
+--- !u!1 &1613477879357766
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4530935535419448}
-  - component: {fileID: 82013476571598532}
+  - component: {fileID: 4430039432195916}
+  - component: {fileID: 82113508891655734}
   m_Layer: 0
-  m_Name: VehicleAudioSource
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1692966250844720
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4696081196896320}
-  m_Layer: 0
-  m_Name: engine
+  m_Name: CrashAudioSource
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -203,18 +188,18 @@ Transform:
   m_Father: {fileID: 4372527579862904}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4191797175382038
+--- !u!4 &4261543767839330
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1338868885371078}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 39.484245, y: -0.19920349, z: 24.855572}
-  m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
+  m_GameObject: {fileID: 1133161587109482}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4372527579862904}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4372527579862904
 Transform:
@@ -223,28 +208,28 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1010170593791510}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -21.25, y: 10.54, z: -58.65593}
+  m_LocalPosition: {x: -5.594619, y: 121.35501, z: -147.35349}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children:
   - {fileID: 4706842656557844}
   - {fileID: 4139797009591708}
-  - {fileID: 4530935535419448}
-  - {fileID: 4191797175382038}
+  - {fileID: 4261543767839330}
+  - {fileID: 4430039432195916}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 83.18, z: 0}
---- !u!4 &4530935535419448
+--- !u!4 &4430039432195916
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1591123282181500}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 18.247526, y: -0.19920349, z: -0.6602526}
-  m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
+  m_GameObject: {fileID: 1613477879357766}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4372527579862904}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4545655340623416
 Transform:
@@ -271,19 +256,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4706842656557844}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4696081196896320
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1692966250844720}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.30526567, z: -2.5383415}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4706842656557844}
-  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4696229190597124
 Transform:
@@ -312,7 +284,6 @@ Transform:
   - {fileID: 4545655340623416}
   - {fileID: 4930558304271582}
   - {fileID: 4609831098669990}
-  - {fileID: 4696081196896320}
   m_Father: {fileID: 4372527579862904}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -578,18 +549,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4, y: 3.7, z: 7}
   m_Center: {x: 0, y: 2.5, z: 0}
---- !u!82 &82013476571598532
+--- !u!82 &82113508891655734
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1591123282181500}
+  m_GameObject: {fileID: 1613477879357766}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -673,18 +644,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!82 &82423795707683390
+--- !u!82 &82991641893072884
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1338868885371078}
+  m_GameObject: {fileID: 1133161587109482}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -785,7 +756,7 @@ MonoBehaviour:
     type: 2}
   fireParticleSystemPrefab: {fileID: 1459066268151376, guid: 74d0618bd6416a04aaa35d06d9ee9e6c,
     type: 2}
-  smokeEffectEngine: {fileID: 4696081196896320}
+  smokeEffectEngine: {fileID: 0}
 --- !u!114 &114120709303691022
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -827,7 +798,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlockableID: CarSmallSilver
   type: 4
-  unlocked: 1
+  unlocked: 0
   Price: 5
   description: Basic car
 --- !u!114 &114644126986228774
@@ -854,9 +825,9 @@ MonoBehaviour:
   maxSpeed: 16
   acceleration: 3.5
   deceleration: 4.5
-  crashSound: {fileID: 8300000, guid: 312cf61700ebd2c4b9cb0251d83f5111, type: 3}
-  engineSound: {fileID: 8300000, guid: e925841036bf73d4f8c9a30a671ae90e, type: 3}
-  engineDying: {fileID: 8300000, guid: 6d57e99b07e6908419faa44b17829a16, type: 3}
+  crashSound: {fileID: 0}
+  engineSound: {fileID: 0}
+  engineDying: {fileID: 0}
 --- !u!114 &114987043331759766
 MonoBehaviour:
   m_ObjectHideFlags: 1

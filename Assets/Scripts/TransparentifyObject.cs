@@ -19,32 +19,53 @@ public class TransparentifyObject : MonoBehaviour
         _camera = GetComponent<Camera>();
 	}
 
+	private IEnumerator FadeOutRoutine(GameObject building)
+	{
+		foreach(Renderer meshRenderer in building.GetComponentsInChildren<Renderer>())
+		{
+			foreach(Material material in meshRenderer.materials)
+			{
+				for(float f = 1.0f; f >= 0.4f; f -= 0.05f)
+				{
+					Color c = material.color;
+					c.a = f;
+					material.color = c;
+					yield return null;
+				}
+			}
+		}
+	}
+
+	private IEnumerator FadeInRoutine(GameObject building)
+	{
+		foreach (Renderer mesh in building.GetComponentsInChildren<Renderer>())
+		{
+			foreach (Material material in mesh.materials)
+			{
+				material.SetInt("_ZWrite", 1);
+				for(float f = material.color.a; f <= 1.0f; f += 0.05f)
+				{
+					Color c = material.color;
+					c.a = f;
+					material.color = c;
+					yield return null;
+				}
+			}
+		}
+	}
+
 	void Update ()
     {
-       
-        //Debug.Log("Update is being called");
-        RaycastHit[] ObstacleHit = Physics.RaycastAll(player.position, -_camera.transform.forward, Mathf.Infinity, LayerMask.GetMask("Building")); ;
-        //Physics.RaycastAll(player.position, -_camera.transform.forward, out ObstacleHit, Mathf.Infinity, LayerMask.GetMask("Building"));
+        RaycastHit[] ObstacleHit = Physics.RaycastAll(player.position, -_camera.transform.forward, Mathf.Infinity, LayerMask.GetMask("Building"));
         
         foreach(RaycastHit hit in ObstacleHit)
         {
             if (!buildings.Contains(hit.collider.gameObject))
             {
                 buildings.Add(hit.collider.gameObject);
-            }
 
-            foreach (Renderer meshRenderer in hit.collider.gameObject.GetComponentsInChildren<Renderer>())
-            {
-                foreach (Material material in meshRenderer.materials)
-                {
-                    //material.SetInt("_ZWrite", 0);
-                    if (material.color.a >= 0.4f)
-                    {
-                        material.color = new Color(material.color.r, material.color.g, material.color.b, material.color.a - 0.05f);
-                    }
-
-                }
-            }
+				StartCoroutine(FadeOutRoutine(hit.collider.gameObject));
+            }            
         }
 
         List<GameObject> hits = new List<GameObject>();
@@ -57,22 +78,8 @@ public class TransparentifyObject : MonoBehaviour
         {
             if(!hits.Contains(buildingHit))
             {
-                foreach (Renderer mesh in buildingHit.GetComponentsInChildren<Renderer>())
-                {
-                    foreach (Material material in mesh.materials)
-                    {
-                        material.SetInt("_ZWrite", 1);
-                        if (material.color.a <= 1.0f)
-                        {
-                            material.color = new Color(material.color.r, material.color.g, material.color.b, 1.0f);
-                        }
-                    }
-                }
+				StartCoroutine(FadeInRoutine(buildingHit));    
             }
-            //foreach (MeshRenderer mesh in buildingHit.transform.GetComponentsInChildren<MeshRenderer>())
-            //{
-            //    mesh.enabled = true;
-            //}
         }
 
         if(ObstacleHit.Length < 1)
