@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZombieRoad", "Assembly-CSharp.csproj", "{069B8B68-FDA7-80E5-AB25-1EA74FC85DD0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{069B8B68-FDA7-80E5-AB25-1EA74FC85DD0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZombieRoad", "Assembly-CSharp-Editor.csproj", "{8149A46C-7570-740A-2227-FC91DD5B05CD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-Editor", "Assembly-CSharp-Editor.csproj", "{8149A46C-7570-740A-2227-FC91DD5B05CD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
