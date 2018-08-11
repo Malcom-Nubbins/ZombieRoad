@@ -24,9 +24,11 @@ public class DisabledRoadGenerator : RoadGenerator
 		v3 = new Vector3();
 	}
 	bool bProbablyHole;
-	override public void Extend(bool bForceOOBExtension = false)
+
+	public override void Extend(bool bForceOOBExtension = false)
 	{
-		if (!ShouldExtend()) return;
+		if (!ShouldExtend())
+			return;
 
 		for (int i = 0; i < hit.Length; i += 2)
 		{
@@ -47,11 +49,14 @@ public class DisabledRoadGenerator : RoadGenerator
 						tp.x = k * Xoffset(j) + Xoffset(i);
 						tp.z = k * Zoffset(j) + Zoffset(i);
 						RayLoc = GetTilePosition() + tp;
-						if (Vector3.Distance(RayLoc.GetWorldPosition(), gameObject.transform.position) > RoadTileManager.checkpoint.FollowCamera.GetComponent<FollowCamera>().CullDistance + 100) break; 
+						if (Vector3.Distance(RayLoc.GetWorldPosition(), gameObject.transform.position) > RoadTileManager.checkpoint.FollowCamera.GetComponent<FollowCamera>().CullDistance + 100)
+							return; 
 					}
-					if (hitPlus[j] && hitPlus[j].GetComponent<RoadGenerator>().Exit.Length < 8) hitPlus[j].GetComponent<RoadGenerator>().RefreshExits();
+					if (hitPlus[j] && hitPlus[j].GetComponent<RoadGenerator>().Exit.Length < 8)
+						hitPlus[j].GetComponent<RoadGenerator>().RefreshExits();
 
-					if (RoadTileManager.bDebugEnv) MySpecificDebug += Time.fixedTime + " hitPlus " + (Direction)j + " concluded with " + (hitPlus[j]?hitPlus[j].gameObject.name + " (" + hitPlus[j].gameObject.transform.position + ")" : "boundary")+"\n";
+					if (RoadTileManager.bDebugEnv)
+						MySpecificDebug += Time.fixedTime + " hitPlus " + (Direction)j + " concluded with " + (hitPlus[j]?hitPlus[j].gameObject.name + " (" + hitPlus[j].gameObject.transform.position + ")" : "boundary")+"\n";
 
 					if (hitPlus[j] && !hitPlus[j].GetComponent<DisabledRoadGenerator>())
 					{

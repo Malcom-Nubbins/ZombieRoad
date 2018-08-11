@@ -119,8 +119,9 @@ public class RoadGenerator : WorldTile
 		for (int i = 0; i < hitPlus.Length; i += 2)
 		{
             hitPlus[i] = WorldTileManager.instance.GetTile(GetTilePosition() + new TilePosition(2 * Xoffset(i), 2 * Zoffset(i)));
-            if (hitPlus[i] && hitPlus[i].GetComponent<RoadGenerator>().Exit.Length < 8) hitPlus[i].GetComponent<RoadGenerator>().RefreshExits();
-        }
+            if (hitPlus[i] && hitPlus[i].GetComponent<RoadGenerator>().Exit.Length < 8)
+	            hitPlus[i].GetComponent<RoadGenerator>().RefreshExits();
+		}
 
 		for (int i = 0; i < hit.Length; i += 2)
 		{
@@ -620,7 +621,8 @@ public class RoadGenerator : WorldTile
 			tp.x = Xoffset(i);
 			tp.z = Zoffset(i);
             hit[i] = WorldTileManager.instance.GetTile(GetTilePosition() + tp);
-            if (hit[i] && hit[i].GetComponent<RoadGenerator>().Exit.Length < 8) hit[i].GetComponent<RoadGenerator>().RefreshExits();
+            if (hit[i] && hit[i].GetComponent<RoadGenerator>().Exit.Length < 8)
+	            hit[i].GetComponent<RoadGenerator>().RefreshExits();
             if (!hit[i]) bCanExtend = true;
         }
 		return bCanExtend;

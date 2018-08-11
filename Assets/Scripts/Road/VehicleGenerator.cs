@@ -10,14 +10,21 @@ public class VehicleGenerator : MonoBehaviour
     RoadGenerator rg;
     
     void Start()
+    {
+	    StartCoroutine(StartRoutine());
+    }
+
+	private IEnumerator StartRoutine()
 	{
-        rg = gameObject.GetComponent<RoadGenerator>();
-        if (rg.Exit.Length < 8) rg.RefreshExits();
-        SpawnNonVehicles();
-        if (Random.value < spawnChance)
-        {
-            TrySpawn();
-        }
+		rg = gameObject.GetComponent<RoadGenerator>();
+		if (rg.Exit.Length < 8)
+			rg.RefreshExits();
+		SpawnNonVehicles();
+		if (Random.value < spawnChance)
+		{
+			TrySpawn();
+		}
+		yield return null;
 	}
 
     public bool TrySpawn()
