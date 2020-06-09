@@ -1,10 +1,10 @@
-﻿using System.Collections;
-using UnityEngine.UI;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.Advertisements;
+﻿using UnityEngine;
+
+#if ENABLE_ADS
 using Assets.Scripts.GUI;
+using UnityEngine.Advertisements;
+using UnityEngine.UI;
+#endif
 
 public class AdsScript : MonoBehaviour
 {
@@ -12,6 +12,7 @@ public class AdsScript : MonoBehaviour
 	string AndroidGameID = "1741339";
 	string iOSGameID = "1741340";
 
+#if ENABLE_ADS
 	// Use this for initialization
 	void Start ()
 	{
@@ -20,7 +21,6 @@ public class AdsScript : MonoBehaviour
 		{
 			startButton.onClick.AddListener(OnClick);
 		}
-
 	}
 
 	public void OnClick()
@@ -84,9 +84,11 @@ public class AdsScript : MonoBehaviour
 				break;
 		}
 	}
+#endif
 
 	public void PlayAdOnDeath()
 	{
+#if ENABLE_ADS
 		// Debug.Log("Playing skippable ad on death Init: " + Advertisement.isInitialized + " TestMode?: " + Advertisement.testMode);
 		// Debug.Log("is skippable ad avaiable to show?? :" +Advertisement.IsReady("video"));
 		if (Advertisement.isInitialized)
@@ -124,10 +126,12 @@ public class AdsScript : MonoBehaviour
 				Scenes.instance.LoadScene(Scenes.Scene.GAME_OVER);
 			}
 		}
+#endif
 	}
 
 	public void InitAds()
 	{
+#if ENABLE_ADS
 		WWW testWebsite = new WWW("http://google.com");
 		if (testWebsite.error == null)
 		{
@@ -141,5 +145,6 @@ public class AdsScript : MonoBehaviour
 		{
 			DisplayToast.ShowToast(toastString);
 		}
+#endif
 	}
 }

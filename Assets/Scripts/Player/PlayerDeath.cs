@@ -26,6 +26,7 @@ public class PlayerDeath : MonoBehaviour
 			gameOverCountdown -= Time.deltaTime;
 			if (gameOverCountdown <= 0)
 			{
+#if ENABLE_ADS
 				if(Advertisement.isInitialized)
 				{
 					if(!showingAd)
@@ -62,6 +63,7 @@ public class PlayerDeath : MonoBehaviour
 				else
 				{
 					GetComponent<AdsScript>().InitAds();
+#endif
 					if (UnlockManager.instance.GetLockedItemCount() > 0)
 					{
 						Scenes.instance.LoadScene(Scenes.Scene.UNLOCK);
@@ -70,7 +72,9 @@ public class PlayerDeath : MonoBehaviour
 					{
 						Scenes.instance.LoadScene(Scenes.Scene.GAME_OVER);
 					}
-				}
+#if ENABLE_ADS
+			}
+#endif
 			}
 		}
 	}
