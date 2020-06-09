@@ -171,6 +171,7 @@ MonoBehaviour:
   type: 3
   unlocked: 1
   Price: 0
+  description: 
 --- !u!114 &114879010937288418
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -186,3 +187,4 @@ MonoBehaviour:
   type: 3
   unlocked: 0
   Price: 5
+  description: Not a spoon
