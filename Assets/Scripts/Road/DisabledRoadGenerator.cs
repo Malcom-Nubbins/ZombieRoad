@@ -1,10 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class DisabledRoadGenerator : RoadGenerator
 {
-	public enum Type : int
+	public enum Type
 	{
 		Pavement,
 		Grass,
@@ -16,13 +14,8 @@ public class DisabledRoadGenerator : RoadGenerator
 
 	bool bProbablyHoleLastFrame = false;
 
-	TilePosition tp;
-	Vector3 v3;
-	private void Start()
-	{
-		tp = new TilePosition();
-		v3 = new Vector3();
-	}
+	TilePosition tp = new TilePosition();
+	Vector3 v3 = new Vector3();
 	bool bProbablyHole;
 
 	public override void Extend(bool bForceOOBExtension = false)
