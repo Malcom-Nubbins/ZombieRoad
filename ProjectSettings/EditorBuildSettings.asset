@@ -5,12 +5,6 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Kieran Test Scene/LoadingScene.unity
-    guid: 39b94a2331cea4a4aaccbe6286697fc7
-  - enabled: 0
-    path: Assets/Kieran Test Scene/KieranTestScene.unity
-    guid: 9068737dcda969a4aabfdeedec5edd2b
   - enabled: 1
     path: Assets/TitleScene.unity
     guid: 9cd09eeefcf39db4b8352f0b2b9f3c03
@@ -20,27 +14,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/GameOverScene.unity
     guid: 89f0fd13557c2d340bfce0ab1a410c0a
-  - enabled: 0
-    path: Assets/B Crawford Test Scene/BCrawfordLoadingScene.unity
-    guid: 0b9d87f263820f04dba29b2d3252da2d
-  - enabled: 0
-    path: Assets/B Crawford Test Scene/BCrawfordTestScene.unity
-    guid: 5d85020f91d240d4d8943797ae8e48c9
-  - enabled: 0
-    path: Assets/B Crawford Test Scene/BCrawfordUnlockScene.unity
-    guid: bb9ce5b25150b564ab5cd27643e1a1e8
   - enabled: 1
     path: Assets/UnlockScene.unity
     guid: 244eba1e1fb2d8e41b4475934fc57558
-  - enabled: 0
-    path: Assets/B Crawford Test Scene/BCrawfordGameOverScene.unity
-    guid: 79006402d0941c948906e07183cca94b
   - enabled: 1
     path: Assets/ShopScene.unity
     guid: 1e15910d36b92884fb07d54246fcda73
-  - enabled: 0
-    path: Assets/B Crawford Test Scene/BCrawfordShopScene.unity
-    guid: 1f8a4522fca095049914ba638016ae1b
   - enabled: 0
     path: Assets/Sam/SmallTest.unity
     guid: ecab7f40bdfb47240ac5aac1f6332405
@@ -56,12 +35,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Sam/Somerset.unity
     guid: e2bd372299c49374fbebb5d1341c2344
-  - enabled: 0
-    path: Assets/B Crawford Test Scene/BCrawfordSettingsScene.unity
-    guid: d5fd0a129f9a1c74c88e439097538f28
-  - enabled: 0
-    path: Assets/B Crawford Test Scene/BCrawfordMapScene.unity
-    guid: 972566beadac286418a3c4a35b1398fa
   - enabled: 1
     path: Assets/LoadingScene.unity
     guid: e010a2727a9190642813024678020ad5
