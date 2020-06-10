@@ -50,7 +50,7 @@ public class DisabledRoadGenerator : RoadGenerator
 						tp.z = k * Zoffset(j) + Zoffset(i);
 						RayLoc = GetTilePosition() + tp;
 						if (Vector3.Distance(RayLoc.GetWorldPosition(), gameObject.transform.position) > RoadTileManager.checkpoint.FollowCamera.CullDistance + 100)
-							return; 
+							break; 
 					}
 					if (hitPlus[j] && hitPlus[j].GetComponent<RoadGenerator>().Exit.Length < 8)
 						hitPlus[j].GetComponent<RoadGenerator>().RefreshExits();
