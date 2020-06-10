@@ -1,40 +1,33 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class MapScreen : MonoBehaviour
 {
-	MapSelection _maps;
+	[SerializeField] private TextMeshPro m_MapName;
+	[SerializeField] private RawImage m_MapPreview;
+	[SerializeField] private Button m_SelectMapButton;
+
+	private MapSelection m_Maps;
 	int _currentSelectedItem;
 
-	Text _itemNameText;
-
-	Button purchaseButton;
-
 	float _currentCooldownTime = 0.0f;
-
-	RawImage mapPreview;
 
 	// Use this for initialization
 	void Start()
 	{
-		_maps = GameObject.Find("UnlockManager").GetComponent<MapSelection>();
+		m_Maps = GameObject.Find("UnlockManager").GetComponent<MapSelection>();
 		_currentSelectedItem = 0;
-
-		_itemNameText = GameObject.Find("ItemNameText").GetComponent<Text>();
-		_itemNameText.text = _maps.AvailableMapNames[_currentSelectedItem];
-
-		purchaseButton = GameObject.Find("Purchase").GetComponent<Button>();
-		purchaseButton.onClick.AddListener(onPurchaseClick);
-
-		mapPreview = GameObject.Find("MapPreview").GetComponent<RawImage>();
-		mapPreview.texture = _maps.AvailableMapImages[_currentSelectedItem];
+		m_MapName.text = m_Maps.AvailableMapNames[_currentSelectedItem];
+		m_SelectMapButton.onClick.AddListener(onPurchaseClick);
+		m_MapPreview.texture = m_Maps.AvailableMapImages[_currentSelectedItem];
 	}
 
 	void onPurchaseClick()
 	{
-		bool succ = _maps.SetSelectedMap(_maps.AvailableMapNames[_currentSelectedItem]);
+		bool succ = m_Maps.SetSelectedMap(m_Maps.AvailableMapNames[_currentSelectedItem]);
 
 		if (succ)
 		{
@@ -42,7 +35,7 @@ public class MapScreen : MonoBehaviour
 		}
 		else
 		{
-			Debug.LogError("BAD MAP - " + _maps.AvailableMapNames[_currentSelectedItem]);
+			Debug.LogError("BAD MAP - " + m_Maps.AvailableMapNames[_currentSelectedItem]);
 		}
 	}
 
@@ -51,11 +44,11 @@ public class MapScreen : MonoBehaviour
 		_currentCooldownTime = 0.3f;
 
 		_currentSelectedItem++;
-		if (_currentSelectedItem > _maps.AvailableMapNames.Length - 1)
+		if (_currentSelectedItem > m_Maps.AvailableMapNames.Length - 1)
 			_currentSelectedItem = 0;
 
-		mapPreview.texture = _maps.AvailableMapImages[_currentSelectedItem];
-		_itemNameText.text = _maps.AvailableMapNames[_currentSelectedItem];
+		m_MapPreview.texture = m_Maps.AvailableMapImages[_currentSelectedItem];
+		m_MapName.text = m_Maps.AvailableMapNames[_currentSelectedItem];
 	}
 
 	void onPrevClick()
@@ -64,10 +57,10 @@ public class MapScreen : MonoBehaviour
 
 		_currentSelectedItem--;
 		if (_currentSelectedItem < 0)
-			_currentSelectedItem = _maps.AvailableMapNames.Length - 1;
+			_currentSelectedItem = m_Maps.AvailableMapNames.Length - 1;
 
-		mapPreview.texture = _maps.AvailableMapImages[_currentSelectedItem];
-		_itemNameText.text = _maps.AvailableMapNames[_currentSelectedItem];
+		m_MapPreview.texture = m_Maps.AvailableMapImages[_currentSelectedItem];
+		m_MapName.text = m_Maps.AvailableMapNames[_currentSelectedItem];
 	}
 
 	// Update is called once per frame

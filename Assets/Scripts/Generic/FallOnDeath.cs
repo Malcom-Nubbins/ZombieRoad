@@ -39,7 +39,10 @@ public class FallOnDeath : MonoBehaviour
     void OnDeath()
     {
         dead = true;
-        zombieSource.PlayOneShot(zombieDeath);
+        if(zombieDeath != null)
+        {
+            zombieSource.PlayOneShot(zombieDeath);
+        }
     }
 
     void OnCollisionEnter(Collision collision)

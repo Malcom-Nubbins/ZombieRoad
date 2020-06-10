@@ -175,8 +175,6 @@ public class BaseVehicleClass : Movement
 	{
 		base.Update();
 
-		
-
 		if (measuredSpeed > maxSpeed)
 		{
 			//enabled = false;
@@ -386,7 +384,11 @@ public class BaseVehicleClass : Movement
             {
                 //Debug.Log(gameObject.name + " docking health due to collision with " + collision.gameObject.name);
                 health -= 0.5f;
-                _vehHealthSlider.value = health;
+				if(_vehHealthSlider != null)
+				{
+					_vehHealthSlider.value = health;
+				}
+                
                 _lastHitTime = 0.5f;
             }
             else

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,7 +22,7 @@ public class Checkpoint : MonoBehaviour
     private float nextTimeRemaining;
 
 	//private float checkpointRotationSpeed;
-	private Text _checkpointTimer;
+	[SerializeField] private TextMeshProUGUI m_CheckpointTimerText;
 
 	Text checkpointDistance;
 
@@ -47,8 +48,7 @@ public class Checkpoint : MonoBehaviour
 
 		//checkpointRotationSpeed = 50.0f;
 
-		_checkpointTimer = GameObject.Find("CheckpointTimerText").GetComponent<Text>();
-		_checkpointTimer.text = "Time Left: " + timeRemaining;
+		m_CheckpointTimerText.text = "Time Left: " + timeRemaining;
 
 		checkpointDistance = GameObject.Find("CheckpointDistanceText").GetComponent<Text>();
 
@@ -93,34 +93,40 @@ public class Checkpoint : MonoBehaviour
 			player.killPlayer();
 		}
 
-        if (timeRemaining < 10)
+        if (timeRemaining < 10 && timeRemaining > 0)
         {
-            _checkpointTimer.color = new Color(100, 0, 0);
-			if (_checkpointTimer.fontSize < 65 && TextSizeFlag == true)
+			m_CheckpointTimerText.color = new Color(100, 0, 0);
+
+			if(m_CheckpointTimerText.fontSize < 47 && TextSizeFlag)
 			{
-				_checkpointTimer.fontSize += 1;
-				if (_checkpointTimer.fontSize == 65)
+				m_CheckpointTimerText.fontSize += 30.0f * Time.deltaTime;
+				if (m_CheckpointTimerText.fontSize >= 47)
 				{
+					m_CheckpointTimerText.fontSize = 47;
 					TextSizeFlag = false;
 				}
 			}
-			else if (timeRemaining > 0)
+			else
 			{
-				_checkpointTimer.fontSize -= 1;
-				if (_checkpointTimer.fontSize == 45)
+				m_CheckpointTimerText.fontSize -= 30.0f * Time.deltaTime;
+				if (m_CheckpointTimerText.fontSize <= 36)
 				{
 					TextSizeFlag = true;
+					m_CheckpointTimerText.fontSize = 36;
 				}
 			}
-
 		}
-
+		else if(timeRemaining <= 0)
+		{
+			m_CheckpointTimerText.color = new Color(100, 0, 0);
+			m_CheckpointTimerText.fontSize = 47;
+		}
         else
         {
-            _checkpointTimer.color = new Color(0, 0, 0);
-            _checkpointTimer.fontSize = 65;
+			m_CheckpointTimerText.color = new Color(0, 0, 0);
+			m_CheckpointTimerText.fontSize = 47;
         }
-		_checkpointTimer.text = "Time Left: " + timeRemaining.ToString("0.0");
+		m_CheckpointTimerText.text = "Time Left: " + timeRemaining.ToString("0.0");
 
 		float distFromCentre = distance.magnitude;
 		float distFromEdge = checkpointRadius - distFromCentre;
