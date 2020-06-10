@@ -3315,7 +3315,7 @@ PrefabInstance:
     - target: {fileID: 20471930343165978, guid: a8852ed89d8f35944bd7a0eb45da7192,
         type: 3}
       propertyPath: orthographic size
-      value: 25.7
+      value: 22.51
       objectReference: {fileID: 0}
     - target: {fileID: 20471930343165978, guid: a8852ed89d8f35944bd7a0eb45da7192,
         type: 3}
@@ -4912,7 +4912,7 @@ PrefabInstance:
     - target: {fileID: 223358713075098908, guid: 0049802d8fb2bb84896be1247b7ac1c0,
         type: 3}
       propertyPath: m_RenderMode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 223358713075098908, guid: 0049802d8fb2bb84896be1247b7ac1c0,
         type: 3}
@@ -4923,6 +4923,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_PlaneDistance
       value: -30
+      objectReference: {fileID: 0}
+    - target: {fileID: 223358713075098908, guid: 0049802d8fb2bb84896be1247b7ac1c0,
+        type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224231908140746180, guid: 0049802d8fb2bb84896be1247b7ac1c0,
         type: 3}

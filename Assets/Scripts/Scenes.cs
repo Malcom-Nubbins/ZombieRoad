@@ -19,11 +19,17 @@ public class Scenes : MonoBehaviour
 
 	public static Scenes instance;
 
-	void OnEnable()
+	void Start()
 	{
+		if(instance != null)
+		{
+			Destroy(gameObject);
+			return;
+		}
+
 		instance = this;
 
-		DontDestroyOnLoad(this);
+		DontDestroyOnLoad(gameObject);
 	}
 
 	public Scene GetCurrentScene()

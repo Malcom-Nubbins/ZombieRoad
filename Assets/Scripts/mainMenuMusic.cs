@@ -7,23 +7,24 @@ public class MainMenuMusic : MonoBehaviour
 
 	[SerializeField, NonNull] AudioSource musicSource;
 	
-	void OnEnable()
+	void Start()
 	{
 		if (inst != null && inst != this)
 		{
-			Destroy(this);
+			Destroy(gameObject);
+			return;
 		}
+		inst = this;
 
 		// musicSource.Play();
 		AudioListener.volume = PlayerPrefs.GetFloat("MasterVolume");
 
 		DontDestroyOnLoad(gameObject);
-		inst = this;
 	}
 	
 	void Update()
 	{
-		if (SceneManager.GetActiveScene().name == "Sbuburbs")
+		if (SceneManager.GetActiveScene().name == "Sbuburbs" || SceneManager.GetActiveScene().name == "Somerset")
 		{
 			musicSource.Stop();
 		}
