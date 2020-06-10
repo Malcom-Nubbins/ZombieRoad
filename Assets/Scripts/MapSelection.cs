@@ -5,10 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class MapSelection : MonoBehaviour
 {
-	// public for the editor's sake, fix later
-	public string SelectedMap;
-	public string GetSelectedMap() { return SelectedMap; }
-	public bool SetSelectedMap(string NewSelection) { if (SceneManager.GetSceneByName(NewSelection) != null) { SelectedMap = NewSelection; return true; } return false; }
+	[SerializeField] private string _selectedMap;
+	public string GetSelectedMap() { return _selectedMap; }
+	public bool SetSelectedMap(string NewSelection) { if (SceneManager.GetSceneByName(NewSelection) != null) { _selectedMap = NewSelection; return true; } return false; }
 
 	public string[] AvailableMapNames;
 	public Texture2D[] AvailableMapImages;
