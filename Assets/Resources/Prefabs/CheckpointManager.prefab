@@ -101,6 +101,8 @@ MonoBehaviour:
   TextSizeFlag: 0
   checkpointRadius: 0
   checkpointTimer: {fileID: 0}
+  checkpointDistance: {fileID: 0}
+  mesh: {fileID: 33874694679617166}
   lods:
   - {fileID: 4300000, guid: 8e4eb5e1e6bce2e43bbdb57c34ead3ca, type: 3}
   - {fileID: 4300002, guid: 8e4eb5e1e6bce2e43bbdb57c34ead3ca, type: 3}

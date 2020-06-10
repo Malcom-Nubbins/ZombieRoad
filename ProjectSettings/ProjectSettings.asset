@@ -757,7 +757,7 @@ PlayerSettings:
     Hub: 0
     UNet: 1
   facebookSdkVersion: 7.9.4
-  apiCompatibilityLevel: 2
+  apiCompatibilityLevel: 3
   cloudProjectId: 1649c0d1-cb99-4b61-a9c9-3692d68dfa50
   projectName: Zombie Road
   organizationId: malcom_nubbins
