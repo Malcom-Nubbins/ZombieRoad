@@ -33,7 +33,7 @@ public class SeekPlayer : MonoBehaviour
 		GetComponent<Health>().onDeath += () => {
 			enabled = false;
 		};
-		MainMenuDest = new Vector3(Random.value * followCamera.CullDistance - followCamera.CullDistance/2.0f, 0, Random.value * followCamera.CullDistance - followCamera.CullDistance / 2.0f) + RoadTileManager.checkpoint.RoadMapRoot.transform.position;
+		MainMenuDest = new Vector3(Random.value * followCamera.CullDistance - followCamera.CullDistance/2.0f, 0, Random.value * followCamera.CullDistance - followCamera.CullDistance / 2.0f) + RoadTileManager.checkpoint.RoadMapRoot.position;
         zombieSource = GetComponent<AudioSource>();
 
 		StartCoroutine(SeekPlayerRoutine());
@@ -132,7 +132,7 @@ public class SeekPlayer : MonoBehaviour
 			}
 
 			if (RoadTileManager.bMainMenu && toPlayer.magnitude <= 20)
-				MainMenuDest = new Vector3(Random.value * followCamera.CullDistance - followCamera.CullDistance / 2.0f, 0, Random.value * followCamera.CullDistance - followCamera.CullDistance / 2.0f) + RoadTileManager.checkpoint.RoadMapRoot.transform.position;
+				MainMenuDest = new Vector3(Random.value * followCamera.CullDistance - followCamera.CullDistance / 2.0f, 0, Random.value * followCamera.CullDistance - followCamera.CullDistance / 2.0f) + RoadTileManager.checkpoint.RoadMapRoot.position;
 
 			yield return null;
 		}

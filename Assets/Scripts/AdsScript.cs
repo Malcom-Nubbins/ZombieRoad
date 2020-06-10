@@ -1,23 +1,23 @@
 ﻿using UnityEngine;
 
 #if ENABLE_ADS
-using Assets.Scripts.GUI;
+using ZR.GUI;
 using UnityEngine.Advertisements;
 using UnityEngine.UI;
 #endif
 
 public class AdsScript : MonoBehaviour
 {
+#if ENABLE_ADS
 	string toastString = "Could not load ad. Please check internet connection.";
 	string AndroidGameID = "1741339";
 	string iOSGameID = "1741340";
 
-#if ENABLE_ADS
 	// Use this for initialization
 	void Start ()
 	{
 		Button startButton = GetComponent<Button>();
-		if(startButton)
+		if (startButton)
 		{
 			startButton.onClick.AddListener(OnClick);
 		}
@@ -48,7 +48,7 @@ public class AdsScript : MonoBehaviour
 
 	void HandleDeathAd(ShowResult result)
 	{
-		switch(result)
+		switch (result)
 		{
 			case ShowResult.Finished:
 			case ShowResult.Failed:

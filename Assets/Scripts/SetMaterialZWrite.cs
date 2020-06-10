@@ -1,24 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class SetMaterialZWrite : MonoBehaviour {
-
-    private Object[] buildingMaterials;
+public class SetMaterialZWrite : MonoBehaviour
+{
+	Object[] buildingMaterials;
 	// Use this for initialization
-	void Start () {
+	void Start()
+	{
+		buildingMaterials = Resources.LoadAll("Models/Buildings/Materials/", typeof(Material));
 
-        buildingMaterials = Resources.LoadAll("Models/Buildings/Materials/", typeof(Material));
-
-        for(int i = 0; i < buildingMaterials.Length; i++)
-        {
-            Material mat = (Material)buildingMaterials[i];
-            mat.SetInt("_ZWrite", 1);
-        }
-    }
-	
-	// Update is called once per frame
-	void Update () {
-		
+		for (int i = 0; i < buildingMaterials.Length; ++i)
+		{
+			Material mat = (Material)buildingMaterials[i];
+			mat.SetInt("_ZWrite", 1);
+		}
 	}
 }

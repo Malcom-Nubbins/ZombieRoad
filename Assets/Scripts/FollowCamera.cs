@@ -1,35 +1,30 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class FollowCamera : MonoBehaviour
 {
-    public GameObject target;
-    public Vector3 offset;
+	public GameObject target;
+	[SerializeField] Vector3 offset;
 	public float CullDistance;
-    public bool rotate = true;
+	[SerializeField] bool rotate = true;
 
-	void Start()
-    {
-    }
-        
-    void LateUpdate()
-    {
-        if (target)
-        {
-            if (rotate)
-            {
-                float desiredAngle = target.transform.eulerAngles.y;
-                Quaternion rotation = Quaternion.Euler(0, desiredAngle, 0);
+	void LateUpdate()
+	{
+		if (target)
+		{
+			if (rotate)
+			{
+				float desiredAngle = target.transform.eulerAngles.y;
+				Quaternion rotation = Quaternion.Euler(0, desiredAngle, 0);
 
-                transform.position = target.transform.position + (rotation * offset);
-                transform.LookAt(target.transform);
-            }
-            else
-            {
-                transform.position = target.transform.position + offset;
-            }
+				transform.position = target.transform.position + (rotation * offset);
+				transform.LookAt(target.transform);
+			}
+			else
+			{
+				transform.position = target.transform.position + offset;
+			}
 
-            if (Input.GetKey(KeyCode.Keypad1))
+			if (Input.GetKey(KeyCode.Keypad1))
 				offset.y--;
 			if (Input.GetKey(KeyCode.Keypad2))
 				offset.z--;
@@ -44,5 +39,5 @@ public class FollowCamera : MonoBehaviour
 			if (Input.GetKey(KeyCode.Keypad5))
 				offset = new Vector3(0, 33, -31);
 		}
-    }
+	}
 }

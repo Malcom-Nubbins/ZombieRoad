@@ -54,7 +54,8 @@ PlayerSettings:
   m_StackTraceTypes: 010000000100000001000000010000000100000001000000
   iosShowActivityIndicatorOnLoading: -1
   androidShowActivityIndicatorOnLoading: 2
-  iosUseCustomAppBackgroundBehavior: 0
+  iosAppInBackgroundBehavior: 0
+  displayResolutionDialog: 1
   iosAllowHTTPDownload: 1
   allowedAutorotateToPortrait: 0
   allowedAutorotateToPortraitUpsideDown: 0
@@ -168,6 +169,7 @@ PlayerSettings:
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
     Android: com.HoppingVikings.ZombieRoad
+    Standalone: com.HoppingVikings.ZombieRoad
   buildNumber: {}
   AndroidBundleVersionCode: 9
   AndroidMinSdkVersion: 19
@@ -240,6 +242,7 @@ PlayerSettings:
   iOSRequireARKit: 0
   iOSAutomaticallyDetectAndAddCapabilities: 1
   appleEnableProMotion: 0
+  vulkanEditorSupport: 0
   clonedFromGUID: 00000000000000000000000000000000
   templatePackageId: 
   templateDefaultScene: 
