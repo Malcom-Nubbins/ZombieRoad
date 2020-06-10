@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,32 +8,33 @@ public class Checkpoint : MonoBehaviour
 	private Vector3 checkpointPosition;
 
 	// persistent reference to the camera, from which we can retreive the active playercharacter or vehicle
-	public GameObject FollowCamera;
-	public GameObject RoadMapRoot;
+	[NonNull] public FollowCamera FollowCamera;
+	[NonNull] public Transform RoadMapRoot;
 
-	public bool DebugDisableTimer;
-	public bool TextSizeFlag = false;
+	[SerializeField] bool debugDisableTimer;
+	[SerializeField] bool TextSizeFlag = false;
 
-	public float checkpointRadius;
-	private float timeRemaining;
-    private float nextTimeRemaining;
+	[SerializeField] float checkpointRadius;
+	float timeRemaining;
+	float nextTimeRemaining;
 
-	//private float checkpointRotationSpeed;
-	private Text _checkpointTimer;
+	//float checkpointRotationSpeed;
+	[SerializeField] Text checkpointTimer;
 
-	Text checkpointDistance;
+	[SerializeField] Text checkpointDistance;
 
 	static protected int level = 0;
-	
-	public Mesh[] lods;
 
-    public event Action OnCheckpointExtend;
+	[SerializeField, NonNull] MeshFilter mesh;
+	[SerializeField] Mesh[] lods;
 
-    float checkpointDisplayRadius;//goes from 0 to checkpointRadius to animate next checkpoint
+	public event Action OnCheckpointExtend;
+
+	float checkpointDisplayRadius;//goes from 0 to checkpointRadius to animate next checkpoint
 
 	public virtual void Start()
 	{
-		checkpointPosition = FollowCamera.GetComponent<FollowCamera>().target.transform.position;
+		checkpointPosition = FollowCamera.target.transform.position;
 		checkpointPosition.y = -0.1f;
 
 		checkpointRadius = gameObject.transform.localScale.x / 2.0f;
@@ -43,19 +42,16 @@ public class Checkpoint : MonoBehaviour
 
 		level = 0;
 		timeRemaining = 10;
-        nextTimeRemaining = 2;//start small so it does not scale too fast
+		nextTimeRemaining = 2;//start small so it does not scale too fast
 
 		//checkpointRotationSpeed = 50.0f;
+		
+		checkpointTimer.text = "Time Left: " + timeRemaining;
 
-		_checkpointTimer = GameObject.Find("CheckpointTimerText").GetComponent<Text>();
-		_checkpointTimer.text = "Time Left: " + timeRemaining;
-
-		checkpointDistance = GameObject.Find("CheckpointDistanceText").GetComponent<Text>();
-
-		for (int i = 0; i < lods.Length; i++)
+		for (int i = 0; i < lods.Length; ++i)
 			lods[i] = Instantiate(lods[i]);
 
-		if (!gameObject.GetComponent<MeshFilter>().mesh) gameObject.GetComponent<MeshFilter>().mesh = lods[0];
+		if (!mesh.mesh) mesh.mesh = lods[0];
 	}
 
 	public virtual void Update()
@@ -63,23 +59,23 @@ public class Checkpoint : MonoBehaviour
 		//Transform checkpointTransform = GetComponent<Transform>();
 		//checkpointTransform.Rotate((Vector3.up * checkpointRotationSpeed) * Time.deltaTime);
 
-		Vector3 playerPosition = FollowCamera.GetComponent<FollowCamera>().target.transform.position;
+		Vector3 playerPosition = FollowCamera.target.transform.position;
 		Vector3 distance = playerPosition - checkpointPosition;
 		distance.y = 0;
 
-        if (checkpointDisplayRadius < checkpointRadius)
-        {
-            checkpointDisplayRadius += checkpointRadius * 1.0f * Time.deltaTime;
-            if (checkpointDisplayRadius > checkpointRadius) checkpointDisplayRadius = checkpointRadius;
-            gameObject.transform.localScale = new Vector3(checkpointDisplayRadius * 2, 8.0f, checkpointDisplayRadius * 2);
-        }
+		if (checkpointDisplayRadius < checkpointRadius)
+		{
+			checkpointDisplayRadius += checkpointRadius * 1.0f * Time.deltaTime;
+			if (checkpointDisplayRadius > checkpointRadius) checkpointDisplayRadius = checkpointRadius;
+			gameObject.transform.localScale = new Vector3(checkpointDisplayRadius * 2, 8.0f, checkpointDisplayRadius * 2);
+		}
 
 		if (distance.magnitude >= checkpointRadius)
 		{
 			UpdateCheckpoint();
 		}
 
-		if (timeRemaining > 0 && !DebugDisableTimer)
+		if (timeRemaining > 0 && !debugDisableTimer)
 			timeRemaining -= Time.deltaTime;
 
 		if (timeRemaining < 0)
@@ -93,34 +89,32 @@ public class Checkpoint : MonoBehaviour
 			player.killPlayer();
 		}
 
-        if (timeRemaining < 10)
-        {
-            _checkpointTimer.color = new Color(100, 0, 0);
-			if (_checkpointTimer.fontSize < 65 && TextSizeFlag == true)
+		if (timeRemaining < 10)
+		{
+			checkpointTimer.color = new Color(100, 0, 0);
+			if (checkpointTimer.fontSize < 65 && TextSizeFlag == true)
 			{
-				_checkpointTimer.fontSize += 1;
-				if (_checkpointTimer.fontSize == 65)
+				checkpointTimer.fontSize += 1;
+				if (checkpointTimer.fontSize == 65)
 				{
 					TextSizeFlag = false;
 				}
 			}
 			else if (timeRemaining > 0)
 			{
-				_checkpointTimer.fontSize -= 1;
-				if (_checkpointTimer.fontSize == 45)
+				checkpointTimer.fontSize -= 1;
+				if (checkpointTimer.fontSize == 45)
 				{
 					TextSizeFlag = true;
 				}
 			}
-
 		}
-
-        else
-        {
-            _checkpointTimer.color = new Color(0, 0, 0);
-            _checkpointTimer.fontSize = 65;
-        }
-		_checkpointTimer.text = "Time Left: " + timeRemaining.ToString("0.0");
+		else
+		{
+			checkpointTimer.color = new Color(0, 0, 0);
+			checkpointTimer.fontSize = 65;
+		}
+		checkpointTimer.text = "Time Left: " + timeRemaining.ToString("0.0");
 
 		float distFromCentre = distance.magnitude;
 		float distFromEdge = checkpointRadius - distFromCentre;
@@ -129,33 +123,30 @@ public class Checkpoint : MonoBehaviour
 
 	public virtual void UpdateCheckpoint()
 	{
-        float nextChackpointSizeMultiplier = 1.2f;
+		float nextChackpointSizeMultiplier = 1.2f;
 
 		checkpointRadius *= nextChackpointSizeMultiplier;
 
-        checkpointDisplayRadius = 0;
-        gameObject.transform.localScale = Vector3.zero;
+		checkpointDisplayRadius = 0;
+		gameObject.transform.localScale = Vector3.zero;
 
-        if (checkpointRadius > 50.0f && checkpointRadius < 256.0f && lods.Length > 1)
-			gameObject.GetComponent<MeshFilter>().mesh = lods[1];
+		if (checkpointRadius > 50.0f && checkpointRadius < 256.0f && lods.Length > 1)
+			mesh.mesh = lods[1];
 		else if (checkpointRadius > 256.0f && checkpointRadius < 1200.0f && lods.Length > 2)
-			gameObject.GetComponent<MeshFilter>().mesh = lods[2];
+			mesh.mesh = lods[2];
 		else if (checkpointRadius > 1200.0f /*&& checkpointRadius < 1200.0f*/ && lods.Length > 3)
-			gameObject.GetComponent<MeshFilter>().mesh = lods[3];
+			mesh.mesh = lods[3];
 
-		checkpointPosition = FollowCamera.GetComponent<FollowCamera>().target.transform.position;
+		checkpointPosition = FollowCamera.target.transform.position;
 		checkpointPosition.y = -0.1f;
 		gameObject.transform.SetPositionAndRotation(checkpointPosition, gameObject.transform.rotation);
 
 		level++;
-        nextTimeRemaining *= nextChackpointSizeMultiplier;//scale time the same as radius
-        timeRemaining += nextTimeRemaining;
-        //Debug.Log("Checkpoint radius: " + checkpointRadius + ", Time added to get there: " + nextTimeRemaining);
+		nextTimeRemaining *= nextChackpointSizeMultiplier;//scale time the same as radius
+		timeRemaining += nextTimeRemaining;
+		//Debug.Log("Checkpoint radius: " + checkpointRadius + ", Time added to get there: " + nextTimeRemaining);
 
-        if (OnCheckpointExtend != null)
-        {
-            OnCheckpointExtend();
-        }
+		OnCheckpointExtend?.Invoke();
 	}
 
 	public float GetRadius()

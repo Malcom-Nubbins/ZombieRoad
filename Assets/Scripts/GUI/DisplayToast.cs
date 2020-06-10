@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections;
-using System.Linq;
-using System.Text;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Assets.Scripts.GUI
+namespace ZR.GUI
 {
-    class DisplayToast
+	class DisplayToast
     {
         static AndroidJavaObject currentActivity;
         static string toastMessage;

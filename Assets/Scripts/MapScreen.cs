@@ -1,40 +1,30 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class MapScreen : MonoBehaviour
 {
-	MapSelection _maps;
-	int _currentSelectedItem;
+	MapSelection maps;
+	int currentSelectedItem;
 
-	Text _itemNameText;
+	[SerializeField, NonNull] Text itemNameText;
+	[SerializeField, NonNull] Button purchaseButton;
+	[SerializeField, NonNull] RawImage mapPreview;
 
-	Button purchaseButton;
-
-	float _currentCooldownTime = 0.0f;
-
-	RawImage mapPreview;
-
-	// Use this for initialization
+	float currentCooldownTime = 0.0f;
+	
 	void Start()
 	{
-		_maps = GameObject.Find("UnlockManager").GetComponent<MapSelection>();
-		_currentSelectedItem = 0;
+		maps = GameObject.Find("UnlockManager").GetComponent<MapSelection>();
+		currentSelectedItem = 0;
 
-		_itemNameText = GameObject.Find("ItemNameText").GetComponent<Text>();
-		_itemNameText.text = _maps.AvailableMapNames[_currentSelectedItem];
+		itemNameText.text = maps.AvailableMapNames[currentSelectedItem];
 
-		purchaseButton = GameObject.Find("Purchase").GetComponent<Button>();
-		purchaseButton.onClick.AddListener(onPurchaseClick);
-
-		mapPreview = GameObject.Find("MapPreview").GetComponent<RawImage>();
-		mapPreview.texture = _maps.AvailableMapImages[_currentSelectedItem];
+		mapPreview.texture = maps.AvailableMapImages[currentSelectedItem];
 	}
 
-	void onPurchaseClick()
+	public void OnPurchaseClick()
 	{
-		bool succ = _maps.SetSelectedMap(_maps.AvailableMapNames[_currentSelectedItem]);
+		bool succ = maps.SetSelectedMap(maps.AvailableMapNames[currentSelectedItem]);
 
 		if (succ)
 		{
@@ -42,64 +32,63 @@ public class MapScreen : MonoBehaviour
 		}
 		else
 		{
-			Debug.LogError("BAD MAP - " + _maps.AvailableMapNames[_currentSelectedItem]);
+			Debug.LogError("BAD MAP - " + maps.AvailableMapNames[currentSelectedItem]);
 		}
 	}
 
-	void onNextClick()
+	void OnNextClick()
 	{
-		_currentCooldownTime = 0.3f;
+		currentCooldownTime = 0.3f;
 
-		_currentSelectedItem++;
-		if (_currentSelectedItem > _maps.AvailableMapNames.Length - 1)
-			_currentSelectedItem = 0;
+		currentSelectedItem++;
+		if (currentSelectedItem > maps.AvailableMapNames.Length - 1)
+			currentSelectedItem = 0;
 
-		mapPreview.texture = _maps.AvailableMapImages[_currentSelectedItem];
-		_itemNameText.text = _maps.AvailableMapNames[_currentSelectedItem];
+		mapPreview.texture = maps.AvailableMapImages[currentSelectedItem];
+		itemNameText.text = maps.AvailableMapNames[currentSelectedItem];
 	}
 
-	void onPrevClick()
+	void OnPrevClick()
 	{
-		_currentCooldownTime = 0.3f;
+		currentCooldownTime = 0.3f;
 
-		_currentSelectedItem--;
-		if (_currentSelectedItem < 0)
-			_currentSelectedItem = _maps.AvailableMapNames.Length - 1;
+		currentSelectedItem--;
+		if (currentSelectedItem < 0)
+			currentSelectedItem = maps.AvailableMapNames.Length - 1;
 
-		mapPreview.texture = _maps.AvailableMapImages[_currentSelectedItem];
-		_itemNameText.text = _maps.AvailableMapNames[_currentSelectedItem];
+		mapPreview.texture = maps.AvailableMapImages[currentSelectedItem];
+		itemNameText.text = maps.AvailableMapNames[currentSelectedItem];
 	}
 
-	// Update is called once per frame
 	void Update()
 	{
-
-		if (_currentCooldownTime <= 0.0f)
+		if (currentCooldownTime <= 0.0f)
 		{
-            if (Input.touchCount > 0)
-            {
-                foreach (Touch touch in Input.touches)
-                {
-                    if (touch.position.x < Screen.width / 3 && (touch.position.y < (Screen.height / 3) * 2 && touch.position.y > (Screen.height / 4)))
-                    {
-                        onPrevClick();
-                    }
-                    else if (touch.position.x > (Screen.width / 3) * 2 && (touch.position.y < (Screen.height / 3) * 2 && touch.position.y > (Screen.height / 4)))
-                    {
-                        onNextClick();
-                    }
-                }
-            }
+			if (Input.touchCount > 0)
+			{
+				for (int i = 0; i < Input.touches.Length; ++i)
+				{
+					var touch = Input.touches[i];
+					if (touch.position.x < Screen.width / 3 && touch.position.y < Screen.height / 3 * 2 && touch.position.y > Screen.height / 4)
+					{
+						OnPrevClick();
+					}
+					else if (touch.position.x > Screen.width / 3 * 2 && touch.position.y < Screen.height / 3 * 2 && touch.position.y > Screen.height / 4)
+					{
+						OnNextClick();
+					}
+				}
+			}
 
-            if (Input.GetKey(KeyCode.LeftArrow))
-				onPrevClick();
+			if (Input.GetKey(KeyCode.LeftArrow))
+				OnPrevClick();
 
 			if (Input.GetKey(KeyCode.RightArrow))
-				onNextClick();
+				OnNextClick();
 		}
 		else
 		{
-			_currentCooldownTime -= Time.deltaTime;
+			currentCooldownTime -= Time.deltaTime;
 		}
 	}
 }

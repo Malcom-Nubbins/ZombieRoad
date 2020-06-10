@@ -1199,15 +1199,35 @@ Prefab:
         type: 2}
       propertyPath: FollowCamera
       value: 
-      objectReference: {fileID: 1550227342}
+      objectReference: {fileID: 1550227348}
     - target: {fileID: 114195961261252844, guid: 9dc67150a3482df46bb27a10d5e9ea1c,
         type: 2}
       propertyPath: RoadMapRoot
       value: 
-      objectReference: {fileID: 1156095235}
+      objectReference: {fileID: 1156095236}
+    - target: {fileID: 114195961261252844, guid: 9dc67150a3482df46bb27a10d5e9ea1c,
+        type: 2}
+      propertyPath: checkpointTimer
+      value: 
+      objectReference: {fileID: 1319433883}
+    - target: {fileID: 114195961261252844, guid: 9dc67150a3482df46bb27a10d5e9ea1c,
+        type: 2}
+      propertyPath: checkpointDistance
+      value: 
+      objectReference: {fileID: 1319433882}
+    - target: {fileID: 114195961261252844, guid: 9dc67150a3482df46bb27a10d5e9ea1c,
+        type: 2}
+      propertyPath: mesh
+      value: 
+      objectReference: {fileID: 370589254}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9dc67150a3482df46bb27a10d5e9ea1c, type: 2}
   m_IsPrefabAsset: 0
+--- !u!33 &370589254 stripped
+MeshFilter:
+  m_CorrespondingSourceObject: {fileID: 33874694679617166, guid: 9dc67150a3482df46bb27a10d5e9ea1c,
+    type: 2}
+  m_PrefabInternal: {fileID: 370589253}
 --- !u!1001 &374935997
 Prefab:
   m_ObjectHideFlags: 0
@@ -3487,6 +3507,18 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 224544804683670246, guid: 0049802d8fb2bb84896be1247b7ac1c0,
     type: 2}
   m_PrefabInternal: {fileID: 1319433880}
+--- !u!114 &1319433882 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114009444555016852, guid: 0049802d8fb2bb84896be1247b7ac1c0,
+    type: 2}
+  m_PrefabInternal: {fileID: 1319433880}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+--- !u!114 &1319433883 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114220724336330758, guid: 0049802d8fb2bb84896be1247b7ac1c0,
+    type: 2}
+  m_PrefabInternal: {fileID: 1319433880}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!4 &1331796708 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4909511995609802, guid: 5bd922324e66a5e42bfc9677ceddebaf,

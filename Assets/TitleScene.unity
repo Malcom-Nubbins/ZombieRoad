@@ -191,18 +191,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 28111299}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &28111298
@@ -216,6 +205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e694fd0921a07f42a879bf906b50b82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  button: {fileID: 28111297}
   scene: 7
 --- !u!114 &28111299
 MonoBehaviour:
@@ -262,6 +252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96a442fea42409841884d29cdbe14807, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  button: {fileID: 28111297}
 --- !u!1 &99609840
 GameObject:
   m_ObjectHideFlags: 0
@@ -446,6 +437,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e694fd0921a07f42a879bf906b50b82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  button: {fileID: 123300573}
   scene: 5
 --- !u!114 &123300573
 MonoBehaviour:
@@ -785,6 +777,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e694fd0921a07f42a879bf906b50b82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  button: {fileID: 179993418}
   scene: 6
 --- !u!4 &596009483 stripped
 Transform:
@@ -980,6 +973,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b758ab22476dfb24395ca910d160cf0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  musicSource: {fileID: 623849165}
 --- !u!4 &623849167
 Transform:
   m_ObjectHideFlags: 0
@@ -1541,11 +1535,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5dc0b41fc43953428023476c9d19251, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FollowCamera: {fileID: 1060524214}
-  RoadMapRoot: {fileID: 1654138309}
-  DebugDisableTimer: 0
+  FollowCamera: {fileID: 1060524220}
+  RoadMapRoot: {fileID: 1654138310}
+  debugDisableTimer: 0
   TextSizeFlag: 0
   checkpointRadius: 200
+  checkpointTimer: {fileID: 0}
   lods: []
 --- !u!114 &1060524220
 MonoBehaviour:
@@ -1752,7 +1747,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 611ad54f3e30fd942bbffd111a87926c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _selectedMap: Sbuburbs
+  selectedMap: Sbuburbs
   AvailableMapNames:
   - Sbuburbs
   - Somerset
@@ -2431,6 +2426,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e694fd0921a07f42a879bf906b50b82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  button: {fileID: 1910569283}
   scene: 4
 --- !u!1 &2043116705
 GameObject:

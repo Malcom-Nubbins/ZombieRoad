@@ -1,45 +1,43 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Killcount : MonoBehaviour
 {
-    const string PP_KILLS = "kills";
+	const string PP_KILLS = "kills";
 
-    static int kills;
+	static int kills;
 
-    void OnEnable()
-    {
-        Load();
-    }
+	void OnEnable()
+	{
+		Load();
+	}
 
-    void OnDisable()
-    {
-        Save();
-    }
+	void OnDisable()
+	{
+		Save();
+	}
 
-    void Load()
-    {
-        kills = PlayerPrefs.GetInt(PP_KILLS, 0);
-    }
+	void Load()
+	{
+		kills = PlayerPrefs.GetInt(PP_KILLS, 0);
+	}
 
-    void Save()
-    {
-        PlayerPrefs.SetInt(PP_KILLS, kills);
-    }
+	void Save()
+	{
+		PlayerPrefs.SetInt(PP_KILLS, kills);
+	}
 
-    public static void Reset()
-    {
-        kills = 0;
-    }
+	public static void Reset()
+	{
+		kills = 0;
+	}
 
 	public static void AddKill()
-    {
-        kills++;
-    }
+	{
+		kills++;
+	}
 
-    public static int GetKills()
-    {
-        return kills;
-    }
+	public static int GetKills()
+	{
+		return kills;
+	}
 }

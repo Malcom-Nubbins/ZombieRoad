@@ -49,7 +49,7 @@ public class DisabledRoadGenerator : RoadGenerator
 						tp.x = k * Xoffset(j) + Xoffset(i);
 						tp.z = k * Zoffset(j) + Zoffset(i);
 						RayLoc = GetTilePosition() + tp;
-						if (Vector3.Distance(RayLoc.GetWorldPosition(), gameObject.transform.position) > RoadTileManager.checkpoint.FollowCamera.GetComponent<FollowCamera>().CullDistance + 100)
+						if (Vector3.Distance(RayLoc.GetWorldPosition(), gameObject.transform.position) > RoadTileManager.checkpoint.FollowCamera.CullDistance + 100)
 							return; 
 					}
 					if (hitPlus[j] && hitPlus[j].GetComponent<RoadGenerator>().Exit.Length < 8)
@@ -69,7 +69,7 @@ public class DisabledRoadGenerator : RoadGenerator
 					v3.x = Xoffset(i) * WorldTileManager.TILE_SIZE;
 					v3.y = newTileClass.GetComponent<RoadGenerator>().YOffset - transform.position.y;
 					v3.z = Zoffset(i) * WorldTileManager.TILE_SIZE;
-					GameObject newTile = Instantiate(newTileClass, transform.position + v3, Quaternion.identity, RoadTileManager.checkpoint.RoadMapRoot.transform);
+					GameObject newTile = Instantiate(newTileClass, transform.position + v3, Quaternion.identity, RoadTileManager.checkpoint.RoadMapRoot);
 					WorldTileManager.instance.AddTile(newTile.GetComponent<WorldTile>());
 					if (RoadTileManager.bDebugEnv) MySpecificDebug += "Placing " + newTile.name + " to the " + (Direction)i + " because of probable hole\n";
 

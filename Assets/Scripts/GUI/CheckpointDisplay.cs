@@ -13,7 +13,7 @@ public class CheckpointDisplay : MonoBehaviour
 	void Start()
 	{
 		checkpoint = GameObject.Find("CheckpointManager").GetComponent<Checkpoint>();
-		followCam = checkpoint.FollowCamera.GetComponent<FollowCamera>();
+		followCam = checkpoint.FollowCamera;
 		displayRadius = GetComponent<RectTransform>().rect.width / 2;
 	}
 	

@@ -141,7 +141,7 @@ public class RoadTileManager : MonoBehaviour
 		if (Input.GetKey(KeyCode.Keypad0))
 			bCull = !bCull;
 
-		Transform playerTransform = checkpoint.FollowCamera.GetComponent<FollowCamera>().target.transform;
+		Transform playerTransform = checkpoint.FollowCamera.target.transform;
 
 		//Debug.Log(checkpoint.RoadMapRoot.GetComponentsInChildren<RoadGenerator>().Length + " 35:" + checkpoint.RoadMapRoot.GetComponentsInChildren<RoadGenerator>()[35].gameObject.name);
 
@@ -171,7 +171,7 @@ public class RoadTileManager : MonoBehaviour
 			}
 		}
 		else if // Emergency Field Remover has come within the invisible boundary lines (σ回ω・)σ
-			((EmergencyFieldRemover != null && Vector3.Distance(playerTransform.position, EmergencyFieldRemover.transform.position) < checkpoint.FollowCamera.GetComponent<FollowCamera>().CullDistance)
+			((EmergencyFieldRemover != null && Vector3.Distance(playerTransform.position, EmergencyFieldRemover.transform.position) < checkpoint.FollowCamera.CullDistance)
 			|| // Emergency Field Remover is no longer in front of the player
 			(EmergencyFieldRemover != null && Vector3.Dot(playerTransform.position - EmergencyFieldRemover.transform.position, playerTransform.forward) > 90))
 		{
