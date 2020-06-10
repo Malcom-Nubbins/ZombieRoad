@@ -229,6 +229,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e694fd0921a07f42a879bf906b50b82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  button: {fileID: 28111297}
   scene: 7
 --- !u!114 &28111299
 MonoBehaviour:
@@ -279,6 +280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96a442fea42409841884d29cdbe14807, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  button: {fileID: 28111297}
 --- !u!1 &99609840
 GameObject:
   m_ObjectHideFlags: 0
@@ -468,6 +470,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e694fd0921a07f42a879bf906b50b82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  button: {fileID: 123300573}
   scene: 5
 --- !u!114 &123300573
 MonoBehaviour:
@@ -732,7 +735,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -125.900024, y: 125}
+  m_AnchoredPosition: {x: -126, y: 125}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &179993418
@@ -827,6 +830,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e694fd0921a07f42a879bf906b50b82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  button: {fileID: 179993418}
   scene: 6
 --- !u!4 &596009483 stripped
 Transform:
@@ -935,8 +939,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 623849167}
-  - component: {fileID: 623849166}
   - component: {fileID: 623849165}
+  - component: {fileID: 623849166}
   m_Layer: 0
   m_Name: MusicBox
   m_TagString: MusicBox
@@ -1052,6 +1056,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b758ab22476dfb24395ca910d160cf0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  musicSource: {fileID: 623849165}
 --- !u!4 &623849167
 Transform:
   m_ObjectHideFlags: 0
@@ -1642,11 +1647,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5dc0b41fc43953428023476c9d19251, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FollowCamera: {fileID: 1060524214}
-  RoadMapRoot: {fileID: 1654138309}
-  DebugDisableTimer: 0
+  FollowCamera: {fileID: 1060524220}
+  RoadMapRoot: {fileID: 1654138310}
+  debugDisableTimer: 0
   TextSizeFlag: 0
   checkpointRadius: 200
+  m_CheckpointTimerText: {fileID: 0}
+  checkpointDistance: {fileID: 0}
+  mesh: {fileID: 0}
   lods: []
 --- !u!114 &1060524220
 MonoBehaviour:
@@ -1858,7 +1866,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 611ad54f3e30fd942bbffd111a87926c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SelectedMap: Sbuburbs
+  selectedMap: Sbuburbs
   AvailableMapNames:
   - Sbuburbs
   - Somerset
@@ -2206,7 +2214,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -979.4, y: -817}
+  m_AnchoredPosition: {x: -979.5, y: -817}
   m_SizeDelta: {x: 398.8, y: 150.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1642126150
@@ -2580,6 +2588,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e694fd0921a07f42a879bf906b50b82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  button: {fileID: 1910569283}
   scene: 4
 --- !u!1 &2043116705
 GameObject:
@@ -2618,7 +2627,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -50.900024, y: 438}
+  m_AnchoredPosition: {x: -51, y: 438}
   m_SizeDelta: {x: 510.19995, y: 90}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &2043116707

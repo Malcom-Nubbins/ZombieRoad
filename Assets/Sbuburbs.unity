@@ -1465,6 +1465,16 @@ PrefabInstance:
       propertyPath: m_Mass
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114040651470632714, guid: f16fce4477b0f0346bc44ca55c1e971d,
+        type: 3}
+      propertyPath: zombieDeath
+      value: 
+      objectReference: {fileID: 8300000, guid: 11b8104aeebe9c249bf8e4b9a365b51b, type: 3}
+    - target: {fileID: 114653475012181372, guid: f16fce4477b0f0346bc44ca55c1e971d,
+        type: 3}
+      propertyPath: zombieHit
+      value: 
+      objectReference: {fileID: 8300000, guid: 160c082fcd05be34199700513185bed7, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f16fce4477b0f0346bc44ca55c1e971d, type: 3}
 --- !u!4 &323411273 stripped
@@ -1656,12 +1666,12 @@ PrefabInstance:
         type: 3}
       propertyPath: FollowCamera
       value: 
-      objectReference: {fileID: 156396184}
+      objectReference: {fileID: 860171471}
     - target: {fileID: 114195961261252844, guid: 9dc67150a3482df46bb27a10d5e9ea1c,
         type: 3}
       propertyPath: RoadMapRoot
       value: 
-      objectReference: {fileID: 1156095235}
+      objectReference: {fileID: 1156095236}
     - target: {fileID: 114195961261252844, guid: 9dc67150a3482df46bb27a10d5e9ea1c,
         type: 3}
       propertyPath: DebugDisableTimer
@@ -1672,6 +1682,11 @@ PrefabInstance:
       propertyPath: m_CheckpointTimerText
       value: 
       objectReference: {fileID: 1319433881}
+    - target: {fileID: 114195961261252844, guid: 9dc67150a3482df46bb27a10d5e9ea1c,
+        type: 3}
+      propertyPath: checkpointDistance
+      value: 
+      objectReference: {fileID: 1319433882}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9dc67150a3482df46bb27a10d5e9ea1c, type: 3}
 --- !u!114 &370589254 stripped
@@ -5076,6 +5091,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1319433882 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114009444555016852, guid: 0049802d8fb2bb84896be1247b7ac1c0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1319433880}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &1331796708 stripped

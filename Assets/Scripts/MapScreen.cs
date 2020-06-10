@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,12 +6,12 @@ public class MapScreen : MonoBehaviour
 {
 	MapSelection maps;
 	int currentSelectedItem;
-	[SerializeField, NonNull] private TextMeshPro mapName;
+
+	[SerializeField, NonNull] private TextMeshProUGUI mapName;
 	[SerializeField, NonNull] private RawImage mapPreview;
 	[SerializeField, NonNull] private Button selectMapButton;
 
-
-	float _currentCooldownTime = 0.0f;
+	float currentCooldownTime = 0.0f;
 
 	// Use this for initialization
 	void Start()
@@ -21,7 +19,7 @@ public class MapScreen : MonoBehaviour
 		maps = GameObject.Find("UnlockManager").GetComponent<MapSelection>();
 		currentSelectedItem = 0;
 
-		itemNameText.text = maps.AvailableMapNames[currentSelectedItem];
+		mapName.text = maps.AvailableMapNames[currentSelectedItem];
 
 		mapPreview.texture = maps.AvailableMapImages[currentSelectedItem];
 	}
@@ -49,7 +47,7 @@ public class MapScreen : MonoBehaviour
 			currentSelectedItem = 0;
 
 		mapPreview.texture = maps.AvailableMapImages[currentSelectedItem];
-		itemNameText.text = maps.AvailableMapNames[currentSelectedItem];
+		mapName.text = maps.AvailableMapNames[currentSelectedItem];
 	}
 
 	void OnPrevClick()
@@ -61,7 +59,7 @@ public class MapScreen : MonoBehaviour
 			currentSelectedItem = maps.AvailableMapNames.Length - 1;
 
 		mapPreview.texture = maps.AvailableMapImages[currentSelectedItem];
-		itemNameText.text = maps.AvailableMapNames[currentSelectedItem];
+		mapName.text = maps.AvailableMapNames[currentSelectedItem];
 	}
 
 	void Update()
