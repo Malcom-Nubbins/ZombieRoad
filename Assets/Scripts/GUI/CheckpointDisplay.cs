@@ -1,18 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using ZR.Chkpnt;
 
 public class CheckpointDisplay : MonoBehaviour
 {
 	public RectTransform playerDisplayImage;
 
-	Checkpoint checkpoint;
+	BaseCheckpoint checkpoint;
 	FollowCamera followCam;
 	float displayRadius;
 
 	void Start()
 	{
-		checkpoint = GameObject.Find("CheckpointManager").GetComponent<Checkpoint>();
+		checkpoint = GameObject.Find("CheckpointManager").GetComponent<BaseCheckpoint>();
 		followCam = checkpoint.FollowCamera;
 		displayRadius = GetComponent<RectTransform>().rect.width / 2;
 	}

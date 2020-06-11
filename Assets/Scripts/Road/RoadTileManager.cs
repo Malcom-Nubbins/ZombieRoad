@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using ZR.Chkpnt;
 
 namespace ZR.Road
 {
@@ -16,7 +17,7 @@ namespace ZR.Road
 		public static GameObject DeadEnd;
 		public static GameObject FourWay;
 
-		public static Checkpoint checkpoint;
+		public static BaseCheckpoint checkpoint;
 
 		[SerializeField, NonNull] GameObject _Grass;
 		[SerializeField, NonNull] GameObject _Pavement;
@@ -27,7 +28,7 @@ namespace ZR.Road
 		[SerializeField, NonNull] GameObject _DeadEnd;
 		[SerializeField, NonNull] GameObject _FourWay;
 
-		[SerializeField, NonNull] Checkpoint _Checkpoint;
+		[SerializeField, NonNull] BaseCheckpoint _Checkpoint;
 
 		[Range(0, 100)]
 		[SerializeField] int ChanceStraight;
@@ -47,6 +48,7 @@ namespace ZR.Road
 		[SerializeField] bool _Cull = true;
 		public static bool bCull;
 
+		[SerializeField] bool _MainMenu;
 		public static bool bMainMenu;
 
 		public static bool bDebugEnv;
@@ -76,7 +78,7 @@ namespace ZR.Road
 
 			//TimeUntilFieldCheck = MaxTimeUntilFieldCheck;
 
-			bMainMenu = GetComponent<MainMenuDummyCheckpoint>() != null;
+			bMainMenu = _MainMenu;
 
 			bDebugEnv = Application.platform == RuntimePlatform.WindowsEditor;
 

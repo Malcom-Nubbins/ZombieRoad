@@ -1511,6 +1511,7 @@ MonoBehaviour:
   ChanceGrass: 40
   ChanceBarrier: 45
   _Cull: 0
+  _MainMenu: 1
 --- !u!4 &1060524218
 Transform:
   m_ObjectHideFlags: 0
@@ -1537,13 +1538,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FollowCamera: {fileID: 1060524220}
   RoadMapRoot: {fileID: 1654138310}
-  debugDisableTimer: 0
-  TextSizeFlag: 0
   checkpointRadius: 200
-  checkpointTimer: {fileID: 0}
-  checkpointDistance: {fileID: 0}
-  mesh: {fileID: 0}
-  lods: []
 --- !u!114 &1060524220
 MonoBehaviour:
   m_ObjectHideFlags: 0
