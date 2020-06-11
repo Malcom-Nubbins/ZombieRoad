@@ -1541,6 +1541,8 @@ MonoBehaviour:
   TextSizeFlag: 0
   checkpointRadius: 200
   checkpointTimer: {fileID: 0}
+  checkpointDistance: {fileID: 0}
+  mesh: {fileID: 0}
   lods: []
 --- !u!114 &1060524220
 MonoBehaviour:

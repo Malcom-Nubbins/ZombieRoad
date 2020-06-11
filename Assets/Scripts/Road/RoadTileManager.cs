@@ -108,19 +108,13 @@ namespace ZR.Road
 			{
 				if (!bMainMenu || Time.timeSinceLevelLoad < 5.0f)
 				{
-					if (bMainMenu)
-						yield return new WaitForSeconds(0.05f);
-					else
-					{
-						yield return new WaitForSeconds(0.2f);
-					}
-
 					WorldTile[] array = WorldTileManager.instance.GetAllTiles();
 					for (int i = 0; i < array.Length; ++i)
 					{
 						WorldTile tile = array[i];
 						var generator = tile as RoadGenerator;
-						generator?.Extend(false);
+						if (generator != null) generator.Extend(false); // TODO LTS Null-propogator currently does not work here because Unity Is Shit
+						if (i % 20 == 0) yield return null;
 					}
 				}
 
