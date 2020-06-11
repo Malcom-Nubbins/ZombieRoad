@@ -2,7 +2,7 @@
 
 namespace ZR.GUI
 {
-	class DisplayToast
+	internal class DisplayToast
     {
         static AndroidJavaObject currentActivity;
         static string toastMessage;

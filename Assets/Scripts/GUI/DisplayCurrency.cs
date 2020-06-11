@@ -1,19 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class DisplayCurrency : MonoBehaviour {
+namespace ZR.GUI
+{
+	public class DisplayCurrency : MonoBehaviour
+	{
+		[SerializeField, NonNull] Text currency;
 
-    Text currency;
-	// Use this for initialization
-	void Start () {
-        currency = GetComponent<Text>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        currency.text = "Coins: " + Currency.GetCurrency();
-
+		void Update()
+		{
+			currency.text = "Coins: " + Currency.GetCurrency();
+		}
 	}
 }

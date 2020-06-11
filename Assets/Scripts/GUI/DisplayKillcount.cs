@@ -1,12 +1,15 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class DisplayKillcount : MonoBehaviour
+namespace ZR.GUI
 {
-	[SerializeField, NonNull] Text text;
-
-	void Update()
+	public class DisplayKillcount : MonoBehaviour
 	{
-		text.text = "Zombies Killed: " + Killcount.GetKills();
+		[SerializeField, NonNull] Text text;
+
+		void Update()
+		{
+			text.text = "Zombies Killed: " + Killcount.GetKills();
+		}
 	}
 }
